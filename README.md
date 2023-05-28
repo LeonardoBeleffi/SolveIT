@@ -1,2 +1,2 @@
-# Petter
-A little social network about pets.
+# SolveIT
+A little social network about bugs and ways to solve them.
