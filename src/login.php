@@ -11,32 +11,30 @@
     <link rel="stylesheet" type="text/css" href="./css/login.css" />
   </head>
   <body>
-    <main>
-      <header>
-        <div>
+    <header>
+      <div>
 <!-- logo -->
-          <img src="../resources/images/logo" alt="logo" />
-        </div>
-      </header>
+        <img src="../resources/images/logo" alt="logo" />
+      </div>
+    </header>
 
-      <main>
-        <h1>Log In</h1>
-        <form>
-          <label>Username<input type="text" id="username" name="username" /></label>
-          <label>Password<input type="password" id="password" name="password" /></label>
-          <a href="./forgotPassword.php">Forgot your password?</a>
-          <a href="./forgotUsername.php">Forgot your username?</a>
-          <input type="submit" value="Log In" />
-        </form>
-      </main>
-
-      <footer>
-        <a href="./about.php">
-<!-- ALT tutorial -->
-          <img src="../resources/icons/INFO_ABOUT" alt="Informations about this site" />
-        </a>
-      </footer>
+    <main>
+      <h1>Log In</h1>
+      <form>
+        <label>Username<input type="text" id="username" name="username" /></label>
+        <label>Password<input type="password" id="password" name="password" /></label>
+        <a href="./forgotPassword.php">Forgot your password?</a>
+        <a href="./forgotUsername.php">Forgot your username?</a>
+        <input type="submit" value="Log In" />
+      </form>
     </main>
+
+    <footer>
+      <a href="./about.php">
+<!-- ALT tutorial -->
+        <img src="../resources/icons/INFO_ABOUT" alt="Informations about this site" />
+      </a>
+    </footer>
   </body>
 </html>
 <!-- missing php -->
