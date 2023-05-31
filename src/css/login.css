@@ -1,0 +1,51 @@
+body {
+    height: 100vh;
+}
+
+body, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+form > label > input, form > a {
+    display: block;
+}
+
+header img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;    
+}
+
+body {
+    background-color: rgba(217.0000022649765, 217.0000022649765, 217.0000022649765, 1);
+}
+
+main {
+    background-color: rgba(255, 255, 255, 1);;
+}
+
+input {
+    margin: auto;
+    /*margin-left: auto;
+    margin-right: auto;*/
+    background-color: rgba(217.0000022649765, 217.0000022649765, 217.0000022649765, 1);
+    border-radius: 10px;
+}
+
+footer {
+    position: fixed;
+    height: 15%;
+    width: 100%;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 1);
+    text-align: center;
+}
+
+footer img {
+    margin-top: 5%;
+}
+
+@media only screen and (min-width: 768px) {
+}
