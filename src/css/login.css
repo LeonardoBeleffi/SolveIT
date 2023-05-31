@@ -1,51 +1,97 @@
-body {
-    height: 100vh;
+@import "./palette.css";
+
+:root {
+    --header_height: 10%;
+    --footer_height: 7%;
+    --footer_img_height:  60%;
 }
 
-body, h1 {
+body {
+    height: 100vh;
+    background-color: var(--primaryBackground);
     margin: 0;
     padding: 0;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    color: var(--primaryTextColor);  
+}
+
+label {
+    color: var(--secondaryTextColor);  
+}
+
+a {
+    color: var(--linkColor);
 }
 
 form > label > input, form > a {
     display: block;
 }
 
+header {
+    height: var(--header_height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 header img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;    
+    height: 100%;
 }
 
-body {
-    background-color: rgba(217.0000022649765, 217.0000022649765, 217.0000022649765, 1);
+.flexContainer {
+    background-color: var(--primaryBackground);
+    display: flex;
+    align-items: center;
+    height: calc(100% - var(--header_height) - var(--footer_height));
 }
 
-main {
-    background-color: rgba(255, 255, 255, 1);;
+#loginSection {
+    background-color: var(--tertiaryBackground);  
+    border: 1pt solid var(--borderColor);
+    border-radius: 10px;
+    width: 80%;
+    height: 80%;
+    margin: auto;
 }
 
 input {
     margin: auto;
-    /*margin-left: auto;
-    margin-right: auto;*/
-    background-color: rgba(217.0000022649765, 217.0000022649765, 217.0000022649765, 1);
+    background-color: var(--primaryBackground);
     border-radius: 10px;
+    border-color: var(--borderColor);
+}
+
+input[type="submit"]{
+    background-color: var(--buttonColor);
+    border-color: "transparent";
+    border-width: 0;
 }
 
 footer {
     position: fixed;
-    height: 15%;
     width: 100%;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 1);
-    text-align: center;
+    height: var(--footer_height);
+    background-color: var(--secondaryBackground);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
+footer a {
+    display: block;
+    height: var(--footer_img_height);
+}
 footer img {
-    margin-top: 5%;
+    display: block;
+    height: 100%;
+    margin-right: 5%;
 }
 
 @media only screen and (min-width: 768px) {
+
 }

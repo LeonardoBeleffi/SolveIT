@@ -1,0 +1,16 @@
+:root{
+    --primaryBackground: #C2C2C2;
+    --secondaryBackground: #D6D6D6;
+    --tertiaryBackground: #EBEBEB;
+    --primaryColor: #5D5AC9;
+    --secondaryColor: #A4A2E2;
+    --buttonColor: #06B273;
+    --buttonTextColor: #0D0D0D;
+    --borderColor: #1D1D1D;
+    --primaryTextColor: #0F0F0F;
+    --secondaryTextColor: #292929;
+    --disabledTextColor: #474747;
+    --linkColor: #322E9D;
+    --selectionColor: #13F6A3;
+    --debugColor: #ff0000;
+}
