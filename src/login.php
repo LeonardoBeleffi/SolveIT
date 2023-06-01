@@ -22,11 +22,21 @@
       <section  id="loginSection">
         <h1>Log In</h1>
         <form>
-          <label>Username<input type="text" id="username" name="username"/></label>
-          <label>Password<input type="password" id="password" name="password" /></label>
-          <a href="./forgotPassword.php">Forgot your password?</a>
-          <a href="./forgotUsername.php">Forgot your username?</a>
-          <input type="submit" value="Log In" />
+          <div>
+            <label>Username<input type="text" id="username" name="username" ></label>
+          </div>
+          <div>
+            <label>Password<input type="password" id="password" name="password" /></label>
+          </div>
+          <div>
+            <a href="./forgotPassword.php">Forgot your password?</a>
+          </div>  
+          <div>
+            <a href="./forgotUsername.php">Forgot your username?</a>
+          </div>
+          <div> 
+            <input type="submit" value="Log In" />
+          </div>
         </form>
       </section>
     </main>

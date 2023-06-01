@@ -6,31 +6,6 @@
     --footer_img_height:  60%;
 }
 
-body {
-    height: 100vh;
-    background-color: var(--primaryBackground);
-    margin: 0;
-    padding: 0;
-}
-
-h1 {
-    margin: 0;
-    padding: 0;
-    color: var(--primaryTextColor);  
-}
-
-label {
-    color: var(--secondaryTextColor);  
-}
-
-a {
-    color: var(--linkColor);
-}
-
-form > label > input, form > a {
-    display: block;
-}
-
 header {
     height: var(--header_height);
     display: flex;
@@ -40,6 +15,100 @@ header {
 
 header img {
     height: 100%;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--primaryBackground);
+    margin: 0;
+    padding: 0;
+}
+
+form{
+    height: 82%;
+    display: block;
+    align-items: bottom;
+    justify-content: center;
+}
+
+form > div {
+    margin-bottom: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 0;
+    width: 80%;
+    display: block;
+}
+
+h1 {
+    margin-top:5%;
+    margin-bottom:10%;
+    margin-left:10%;
+    margin-right:0;
+    padding: 0;
+    height: 10%;
+    color: var(--primaryTextColor); 
+    font-family: var(--primaryFontFamily); 
+    font-size: 30pt;
+}
+
+div > label, input, a {
+    margin: auto;
+    padding:0;
+    font-family: var(--primaryFontFamily);
+    font-size: 15pt;
+    font-weight: bold;
+}
+
+label > input{
+    display: block;
+}
+
+input {
+    margin: 0;
+    width: 100%;
+    height: 50px;
+    padding-left: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 5px;
+    box-sizing: border-box;
+    background-color: var(--primaryBackground);
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 1px 1px var(--borderColor);;
+    border-color: var(--borderColor);
+}
+
+input[type="submit"]{
+    width: 80%;
+    font-size: 15pt;
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-weight: bold;
+    color: var(--buttonTextColor);
+    background-color: var(--buttonColor);
+    box-shadow: 1px 1px var(--borderColor);
+    border-color: "transparent";
+    border-width: 0;
+}
+
+input[type="submit"]:active {
+    transform: scale(0.92);
+    box-shadow: 3px 3px var(--borderColor);
+    transition: all center 100ms linear;
+}
+
+label {
+    color: var(--secondaryTextColor);  
+}
+
+a {
+    color: var(--linkColor);
+    font-size: 12pt;
+    text-decoration: none;
 }
 
 .flexContainer {
@@ -52,23 +121,11 @@ header img {
 #loginSection {
     background-color: var(--tertiaryBackground);  
     border: 1pt solid var(--borderColor);
-    border-radius: 10px;
+    box-shadow: 3px 3px var(--borderColor);
+    border-radius: 15px;
     width: 80%;
     height: 80%;
     margin: auto;
-}
-
-input {
-    margin: auto;
-    background-color: var(--primaryBackground);
-    border-radius: 10px;
-    border-color: var(--borderColor);
-}
-
-input[type="submit"]{
-    background-color: var(--buttonColor);
-    border-color: "transparent";
-    border-width: 0;
 }
 
 footer {
@@ -86,6 +143,7 @@ footer a {
     display: block;
     height: var(--footer_img_height);
 }
+
 footer img {
     display: block;
     height: 100%;
