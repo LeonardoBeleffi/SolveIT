@@ -24,7 +24,7 @@ body {
     padding: 0;
 }
 
-form {
+form{
     height: 82%;
     display: block;
     align-items: bottom;
@@ -92,13 +92,14 @@ input[type="submit"]{
     font-weight: bold;
     color: var(--buttonTextColor);
     background-color: var(--buttonColor);
-    box-shadow: 1px 1px var(--borderColor);;
+    box-shadow: 1px 1px var(--borderColor);
     border-color: "transparent";
     border-width: 0;
 }
 
 input[type="submit"]:active {
     transform: scale(0.92);
+    box-shadow: 3px 3px var(--borderColor);
     transition: all center 100ms linear;
 }
 
@@ -155,3 +156,4 @@ footer img {
 @media only screen and (min-width: 768px) {
 
 }
+

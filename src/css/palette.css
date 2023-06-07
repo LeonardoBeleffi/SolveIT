@@ -15,3 +15,9 @@
     --debugColor: #ff0000;
     --primaryFontFamily: "Trebuchet MS";
 }
+
+::selection {
+    color: #0F0F0F;
+    background: #13F6A3;
+}
+

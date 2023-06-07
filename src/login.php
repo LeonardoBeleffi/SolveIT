@@ -23,10 +23,10 @@
         <h1>Log In</h1>
         <form>
           <div>
-            <label>Username<input type="text" id="username" name="username"></label>
+            <label>Username<input type="text" id="username" name="username" /></label>
           </div>
           <div>
-            <label>Password<input type="password" id="password" name="password"/></label>
+            <label>Password<input type="password" id="password" name="password" /></label>
           </div>
           <div>
             <a href="./forgotPassword.php">Forgot your password?</a>
@@ -44,7 +44,7 @@
     <footer>
       <a href="./about.php">
 <!-- ALT tutorial -->
-        <img src="../resources/icons/info.svg" alt="Informations about this site" />
+        <img src="/resources/icons/info.svg" alt="Informations about this site" />
       </a>
     </footer>
   </body>
