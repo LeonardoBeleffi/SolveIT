@@ -1,7 +1,7 @@
 @import "./palette.css";
 
 :root {
-    --header_height: 10%;
+    --header_height: 20%;
     --footer_height: 7%;
     --footer_img_height:  60%;
 }
@@ -14,9 +14,9 @@ header {
 }
 
 header img {
-    height: 90%;
+    height: 70%;
     object-fit: contain;
-    margin: 5% auto;
+    margin: auto;
 }
 
 body {
@@ -118,8 +118,9 @@ a {
 .flexContainer {
     background-color: var(--primaryBackground);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     height: calc(100% - var(--header_height) - var(--footer_height));
+    justify-content: center;
 }
 
 #loginSection {
@@ -128,8 +129,10 @@ a {
     box-shadow: 3px 3px var(--borderColor);
     border-radius: 15px;
     width: 80%;
-    height: 80%;
-    margin: auto;
+    height: 90%;
+    /*
+    margin: 0;
+    */
 }
 
 footer {
