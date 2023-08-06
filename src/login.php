@@ -26,15 +26,17 @@
                     <div>
                         <label>Password<input type="password" id="password" name="password" /></label>
                     </div>
-                    <div>
-                        <a href="./forgotPassword.php">Forgot your password?</a>
-                    </div>  
-                    <div>
-                        <a href="./forgotUsername.php">Forgot your username?</a>
-                    </div>
-                    <div>
-                        <a href="./register.php">No account? Register here!</a>
-                    </div>
+                    <nav>
+                        <div>
+                            <a href="./forgotPassword.php">Forgot your password?</a>
+                        </div>  
+                        <div>
+                            <a href="./forgotUsername.php">Forgot your username?</a>
+                        </div>
+                        <div>
+                            <a href="./register.php">No account? Register here!</a>
+                        </div>
+                    </nav>
                     <div> 
                         <input type="submit" value="Sign In" />
                     </div>
