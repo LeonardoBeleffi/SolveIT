@@ -7,8 +7,8 @@
         <meta name="author" content="Beleffi Leonardo, Sangiorgi Marco, Vuksan Tiziano" />
         <meta name="keywords" content="Solveit, Solvit, Solveet, Slovit, Solveti, Bug, Solution, Solve, Fix, StackOverflow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Sign In - SolveIT</title>
-        <link rel="stylesheet" type="text/css" href="./css/login.css" />
+        <title>Sign Up - SolveIT</title>
+        <link rel="stylesheet" type="text/css" href="./css/register.css" />
     </head>
     <body>
         <header>
@@ -17,8 +17,8 @@
         </header>
 
         <main class="flexContainer">
-            <section  id="loginSection">
-                <h1>Sign In</h1>
+            <section  id="registerSection">
+                <h1>Sign Up</h1>
                 <form>
                     <div>
                         <label>Username<input type="text" id="username" name="username" /></label>
@@ -27,16 +27,10 @@
                         <label>Password<input type="password" id="password" name="password" /></label>
                     </div>
                     <div>
-                        <a href="./forgotPassword.php">Forgot your password?</a>
-                    </div>  
-                    <div>
-                        <a href="./forgotUsername.php">Forgot your username?</a>
-                    </div>
-                    <div>
-                        <a href="./register.php">No account? Register here!</a>
+                        <a href="./login.php">Already an account? Sign in here!</a>
                     </div>
                     <div> 
-                        <input type="submit" value="Sign In" />
+                        <input type="submit" value="Sign Up" />
                     </div>
                 </form>
             </section>
