@@ -12,36 +12,27 @@
     </head>
     <body>
         <header>
-            <!-- logo -->
             <img src="/resources/icons/logo.svg" alt="logo" />
         </header>
 
         <main class="flexContainer">
             <section  id="loginSection">
-                <h1>Sign In</h1>
                 <form>
+                    <h1>Sign In</h1>
                     <div>
-                        <label>Username<input type="text" id="username" name="username" /></label>
-                    </div>
-                    <div>
-                        <label>Password<input type="password" id="password" name="password" /></label>
-                    </div>
-                    <nav>
                         <div>
+                            <label>Username<input type="text" id="username" name="username" /></label>
+                            <label>Password<input type="password" id="password" name="password" /></label>
                             <a href="./forgotPassword.php">Forgot your password?</a>
-                        </div>  
-                        <div>
                             <a href="./forgotUsername.php">Forgot your username?</a>
                         </div>
-                        <div>
-                            <a href="./register.php">No account? Register here!</a>
-                        </div>
-                    </nav>
-                    <div> 
                         <input type="submit" value="Sign In" />
                     </div>
                 </form>
             </section>
+            <footer>
+                <p>New to SolveIT? <a href="./register.php">Register here!</a></p>
+            </footer>
         </main>
 
         <footer>
