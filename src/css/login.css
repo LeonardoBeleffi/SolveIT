@@ -6,80 +6,93 @@
     --footer_img_height:  60%;
 }
 
-header {
+body {
+    height: 100vh;
+    min-height: 750px;
+    min-width: 275px;
+    background-color: var(--primaryBackground);
+    margin: 0;
+}
+
+body > header {
     height: var(--header_height);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-    /* TODO REMOVE */
-img {
-    border: 1px solid black;
-}
-
-header img {
+body > header > img {
     height: 70%;
     object-fit: contain;
     /*margin: auto;*/
 }
 
-body {
-    height: 100vh;
+body > main {
+    height: calc(100% - var(--header_height) - var(--footer_height));
     background-color: var(--primaryBackground);
-    /*margin: 0;*/
-    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
 }
 
-form {
-    height: 82%;
-    display: block;
-    align-items: bottom;
-    justify-content: center;
+body > main > * {
+    margin: 0 auto;
 }
 
-form div {
-    /*margin-bottom: 30px;*/
-    /*margin-right: auto;*/
-    /*margin-left: auto;*/
-    /*margin-top: 0;*/
+body > main > section {
+    height: 75%;
     width: 80%;
-    display: block;
+    background-color: var(--tertiaryBackground);
+    border: 1pt solid var(--borderColor);
+    box-shadow: 3px 3px var(--borderColor);
+    border-radius: 15px;
+    /* overflow: scroll; */
 }
 
-h1 {
-    /*margin-top:18px;*/
-    /*margin-bottom:36px;*/
-    /*margin-top:5%;*/
-    /*margin-bottom:10%;*/
-    /*margin-left:10%;*/
-    /*margin-right:0;*/
-    padding: 0;
-    height: 10%;
-    color: var(--primaryTextColor); 
-    font-family: var(--primaryFontFamily); 
-    font-size: 30pt;
+body > main > footer {
+
 }
 
-div > label, input, a {
-    /*margin: auto;*/
-    padding:0;
+body > main > section > form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+body > main > section > form * {
+    margin: 0;
     font-family: var(--primaryFontFamily);
-    font-size: 15pt;
+    font-size: 2vh;
     font-weight: bold;
 }
 
-label > input {
-    display: block;
+body > main > section > form > h1 {
+    color: var(--primaryTextColor);
+    font-family: var(--primaryFontFamily);
+    font-size: 4vh;
+    display: flex;
+    /* flex: 1 2 auto; */
+    justify-content: center;
+    align-items: center;
 }
 
-input {
-    /*margin: 0;*/
+body > main > section > form > div {
+    width: 80%;
+    padding: 1vh 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* flex: 2 1 auto; */
+}
+
+body > main > section > form > div input {
     width: 100%;
     height: 50px;
     padding-left: 5px;
-    padding-top: 0;
-    padding-bottom: 0;
     padding-right: 5px;
     box-sizing: border-box;
     background-color: var(--primaryBackground);
@@ -90,55 +103,43 @@ input {
     border-color: var(--borderColor);
 }
 
-input[type="submit"] {
-    width: 80%;
-    font-size: 15pt;
-    /*margin-top: 50px;*/
-    /*margin-left: 10%;*/
-    /*margin-right: 10%;*/
+body > main > section > form > div > div {
+    display: flex;
+    padding: 4vh 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    /* flex: 0 0 25%; */
+}
+
+body > main > section > form > div > div > * {
+    padding: 1vh 0;
+}
+
+body > main > section > form > div > input[type="submit"] {
+    width: 20vh;
+    font-size: 2vh;
+    margin: 0 auto;
+    padding: 1vh 0;
     font-weight: bold;
     color: var(--buttonTextColor);
     background-color: var(--buttonColor);
     box-shadow: 1px 1px var(--borderColor);
-    border-color: "transparent";
+    border-color: transparent;
     border-width: 0;
 }
 
-input[type="submit"]:active {
+body > main > section > form > div > input[type="submit"]:active {
     transform: scale(0.92);
     box-shadow: 3px 3px var(--borderColor);
     transition: all center 100ms linear;
 }
 
-label {
-    color: var(--secondaryTextColor);  
+body > main > section > form > div > div > label {
+    color: var(--secondaryTextColor);
 }
 
-a {
-    color: var(--linkColor);
-    font-size: 12pt;
-    text-decoration: none;
-}
-
-.flexContainer {
-    background-color: var(--primaryBackground);
-    display: flex;
-    align-items: flex-start;
-    height: calc(100% - var(--header_height) - var(--footer_height));
-    justify-content: center;
-}
-
-#loginSection {
-    background-color: var(--tertiaryBackground);  
-    border: 1pt solid var(--borderColor);
-    box-shadow: 3px 3px var(--borderColor);
-    border-radius: 15px;
-    width: 80%;
-    height: 90%;
-    /*margin: 0;*/
-}
-
-footer {
+body > footer {
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -149,19 +150,33 @@ footer {
     justify-content: flex-end;
 }
 
-footer a {
-    display: block;
-    /*margin-right: 5%;*/
+body > main > footer > * {
+    font-size: 1.75vh;
+}
+
+body > footer > a {
+    display: inline;
     height: var(--footer_img_height);
 }
 
-footer img {
+body > footer > a > img {
     display: block;
     height: 100%;
-    /*margin-right: 5%; */
+    margin-right: 5%;
+}
+
+a {
+    color: var(--linkColor);
+    font-size: 2vh;
+    text-decoration: none;
 }
 
 @media only screen and (min-width: 768px) {
 
+}
+
+    /* TODO REMOVE */
+img {
+    border: 1px solid black;
 }
 
