@@ -162,13 +162,13 @@ body > footer > a {
 body > footer > a > img {
     display: block;
     height: 100%;
-    margin-right: 5%;
 }
 
 a {
     color: var(--linkColor);
     font-size: 2vh;
     text-decoration: none;
+    margin-right: 5%;
 }
 
 @media only screen and (min-width: 768px) {
