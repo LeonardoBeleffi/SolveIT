@@ -15,8 +15,8 @@
             <img src="/resources/icons/logo.svg" alt="logo" />
         </header>
 
-        <main class="flexContainer">
-            <section  id="registerSection">
+        <main>
+            <section>
                 <div>
                 <form>
                     <h1>Sign Up</h1>
@@ -48,5 +48,4 @@
         </footer>
     </body>
 </html>
-<!-- missing php -->
 

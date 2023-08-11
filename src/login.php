@@ -15,8 +15,8 @@
             <img src="/resources/icons/logo.svg" alt="logo" />
         </header>
 
-        <main class="flexContainer">
-            <section  id="loginSection">
+        <main>
+            <section>
                 <form>
                     <h1>Sign In</h1>
                     <div>
@@ -43,5 +43,4 @@
         </footer>
     </body>
 </html>
-<!-- missing php -->
 
