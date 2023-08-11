@@ -25,7 +25,6 @@ body > header {
 body > header > img {
     height: 70%;
     object-fit: contain;
-    /*margin: auto;*/
 }
 
 body > main {
@@ -110,7 +109,6 @@ body > main > section > div > form > div > div {
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    /* flex: 0 0 25%; */
 }
 
 body > main > section > div > form > div > div > * {
@@ -121,7 +119,6 @@ body > main > section > div > form > div > input[type="submit"] {
     width: 20vh;
     font-size: 2vh;
     margin: 0 auto;
-    padding: 1vh 0;
     font-weight: bold;
     color: var(--buttonTextColor);
     background-color: var(--buttonColor);

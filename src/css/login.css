@@ -25,7 +25,6 @@ body > header {
 body > header > img {
     height: 70%;
     object-fit: contain;
-    /*margin: auto;*/
 }
 
 body > main {
@@ -74,7 +73,6 @@ body > main > section > form > h1 {
     font-family: var(--primaryFontFamily);
     font-size: max(30px, 4vh);
     display: flex;
-    /* flex: 1 2 auto; */
     justify-content: center;
     align-items: center;
 }
@@ -86,7 +84,6 @@ body > main > section > form > div {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* flex: 2 1 auto; */
 }
 
 body > main > section > form > div input {
@@ -109,7 +106,6 @@ body > main > section > form > div > div {
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
-    /* flex: 0 0 25%; */
 }
 
 body > main > section > form > div > div > * {
@@ -120,7 +116,6 @@ body > main > section > form > div > input[type="submit"] {
     width: 20vh;
     font-size: 2vh;
     margin: 0 auto;
-    padding: 1vh 0;
     font-weight: bold;
     color: var(--buttonTextColor);
     background-color: var(--buttonColor);
