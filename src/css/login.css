@@ -43,12 +43,11 @@ body > main > * {
 
 body > main > section {
     height: 75%;
-    width: 80%;
+    width: min(80%, 650px);
     background-color: var(--tertiaryBackground);
     border: 1pt solid var(--borderColor);
     box-shadow: 3px 3px var(--borderColor);
     border-radius: 15px;
-    /* overflow: scroll; */
 }
 
 body > main > footer {
@@ -66,14 +65,14 @@ body > main > section > form {
 body > main > section > form * {
     margin: 0;
     font-family: var(--primaryFontFamily);
-    font-size: 2vh;
+    font-size: max(15px, 2vh);
     font-weight: bold;
 }
 
 body > main > section > form > h1 {
     color: var(--primaryTextColor);
     font-family: var(--primaryFontFamily);
-    font-size: 4vh;
+    font-size: max(30px, 4vh);
     display: flex;
     /* flex: 1 2 auto; */
     justify-content: center;
