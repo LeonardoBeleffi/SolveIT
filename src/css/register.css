@@ -1,4 +1,4 @@
-@import "./palette.css";
+@import "/src/css/palette.css";
 
 :root {
     --header_height: 20%;
