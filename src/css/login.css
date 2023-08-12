@@ -10,7 +10,7 @@
 body {
     height: 100vh;
     min-height: 750px;
-    min-width: 275px;
+    min-width: 290px;
     background-color: var(--primaryBackground);
     margin: 0;
 }
@@ -113,8 +113,8 @@ body > main > section > form > div > div > * {
 }
 
 body > main > section > form > div > input[type="submit"] {
-    width: 20vh;
-    font-size: 2vh;
+    width: max(150px, 20vh);
+    font-size: max(15px, 2vh);
     margin: 0 auto;
     font-weight: bold;
     color: var(--buttonTextColor);
@@ -134,6 +134,14 @@ body > main > section > form > div > div > label {
     color: var(--secondaryTextColor);
 }
 
+body > main > footer {
+    width: min(650px, 80%);
+}
+
+body > main > footer > * {
+    font-size: 1.75vh;
+}
+
 body > footer {
     position: fixed;
     width: 100%;
@@ -143,10 +151,6 @@ body > footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-}
-
-body > main > footer > * {
-    font-size: 1.75vh;
 }
 
 body > footer > a {
@@ -165,9 +169,9 @@ body > footer > a > img {
 
 a {
     color: var(--linkColor);
-    font-size: 2vh;
+    /* font-size: 2vh; */
     text-decoration: none;
-    margin-right: 5%;
+    /* margin-right: 5%; */
 }
 
 @media only screen and (min-width: 768px) {
