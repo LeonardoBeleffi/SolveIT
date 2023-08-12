@@ -1,16 +1,16 @@
 @import "/src/css/palette.css";
 
 :root {
-    --header_height: 20%;
-    --footer_height: 7%;
-    --footer_img_height:  4.2vh;
-    --footer_img_width:  4.2vh;
+    --header_height: max(150px, 20%);
+    --footer_height: max(53px, 7%);
+    --footer_img_width: max(32px, 4.2vh);
+    --footer_img_height:  max(32px, 4.2vh);
 }
 
 body {
     height: 100vh;
     min-height: 750px;
-    min-width: 290px;
+    min-width: 275px;
     background-color: var(--primaryBackground);
     margin: 0;
 }
@@ -47,28 +47,32 @@ body > main > section {
     border: 1pt solid var(--borderColor);
     box-shadow: 3px 3px var(--borderColor);
     border-radius: 15px;
+    overflow: hidden;
 }
 
-body > main > footer {
-
+body > main > section > div {
+    height: calc(100% - 2*15px);
+    padding: 15px 0;
+    overflow: scroll;
 }
 
-body > main > section > form {
+body > main > section > div > form {
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-start;
 }
 
-body > main > section > form * {
+body > main > section > div > form * {
     margin: 0;
     font-family: var(--primaryFontFamily);
     font-size: max(15px, 2vh);
     font-weight: bold;
+    width: 100%;
 }
 
-body > main > section > form > h1 {
+body > main > section > div > form > h1 {
     color: var(--primaryTextColor);
     font-family: var(--primaryFontFamily);
     font-size: max(30px, 4vh);
@@ -77,16 +81,16 @@ body > main > section > form > h1 {
     align-items: center;
 }
 
-body > main > section > form > div {
+body > main > section > div > form > div {
     width: 80%;
-    padding: 1vh 0;
+    padding: max(8px, 1vh) 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 }
 
-body > main > section > form > div input {
+body > main > section > div > form > div input {
     width: 100%;
     height: 50px;
     padding-left: 5px;
@@ -100,19 +104,19 @@ body > main > section > form > div input {
     border-color: var(--borderColor);
 }
 
-body > main > section > form > div > div {
+body > main > section > div > form > div > div {
     display: flex;
-    padding: 4vh 0;
+    padding: max(30px, 4vh) 0;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
 }
 
-body > main > section > form > div > div > * {
-    padding: 1vh 0;
+body > main > section > div > form > div > div > * {
+    padding: max(8px, 1vh) 0;
 }
 
-body > main > section > form > div > input[type="submit"] {
+body > main > section > div > form > div > input[type="submit"] {
     width: max(150px, 20vh);
     font-size: max(15px, 2vh);
     margin: 0 auto;
@@ -124,22 +128,14 @@ body > main > section > form > div > input[type="submit"] {
     border-width: 0;
 }
 
-body > main > section > form > div > input[type="submit"]:active {
+body > main > section > div > form > div > input[type="submit"]:active {
     transform: scale(0.92);
     box-shadow: 3px 3px var(--borderColor);
     transition: all center 100ms linear;
 }
 
-body > main > section > form > div > div > label {
+body > main > section > div > form > div > div > label {
     color: var(--secondaryTextColor);
-}
-
-body > main > footer {
-    width: min(650px, 80%);
-}
-
-body > main > footer > * {
-    font-size: 1.75vh;
 }
 
 body > footer {
@@ -153,6 +149,10 @@ body > footer {
     justify-content: flex-end;
 }
 
+body > main > footer > * {
+    font-size: max(14px, 1.75vh);
+}
+
 body > footer > a {
     border-radius: 50%;
     height: var(--footer_img_height);
@@ -160,6 +160,7 @@ body > footer > a {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: max(15px, 2vh);
 }
 
 body > footer > a > img {
@@ -169,9 +170,12 @@ body > footer > a > img {
 
 a {
     color: var(--linkColor);
-    /* font-size: 2vh; */
     text-decoration: none;
-    /* margin-right: 5%; */
+}
+
+.errorDiv {
+    padding-top: max(26px, 3vh);
+    display: block;
 }
 
 @media only screen and (min-width: 768px) {

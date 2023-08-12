@@ -16,8 +16,8 @@
 
     function loadErrorMsg(){
         $msg = getErrorMsg();
-        if(empty($msg)) return;
         setErrorMsg("");
+        if(empty($msg)) return;
         echo    "<div class=\"errorDiv\">" .
                     "<p class=\"errorP\">" .
                         "ERROR:" . $msg .
