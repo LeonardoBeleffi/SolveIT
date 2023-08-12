@@ -83,7 +83,7 @@ body > main > section > div > form > h1 {
 
 body > main > section > div > form > div {
     width: 80%;
-    padding: 1vh 0;
+    padding: max(8px, 1vh) 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -106,14 +106,14 @@ body > main > section > div > form > div input {
 
 body > main > section > div > form > div > div {
     display: flex;
-    padding: 4vh 0;
+    padding: max(30px, 4vh) 0;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
 }
 
 body > main > section > div > form > div > div > * {
-    padding: 1vh 0;
+    padding: max(8px, 1vh) 0;
 }
 
 body > main > section > div > form > div > input[type="submit"] {
@@ -171,6 +171,11 @@ body > footer > a > img {
 a {
     color: var(--linkColor);
     text-decoration: none;
+}
+
+.errorDiv {
+    padding-top: max(26px, 3vh);
+    display: block;
 }
 
 @media only screen and (min-width: 768px) {
