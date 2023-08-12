@@ -64,7 +64,7 @@
     function loadCSS(){
         if(!empty(getCSS())) : 
             foreach(getCSS() as $css):
-                echo "<link rel=\"stylesheet\" href=". $css ."/>";
+                echo "<link rel=\"stylesheet\" type=\"text/css\" href=". $css ." />";
             endforeach;
         endif;
     }
@@ -78,7 +78,7 @@
     function loadJS(){
         if(!empty(getJS())) : 
             foreach(getJS() as $js):
-                echo "<script src=\"". $js ."\"></script>";
+                echo "<script src=\"". $js ."\" ></script>";
             endforeach;
         endif;
     }

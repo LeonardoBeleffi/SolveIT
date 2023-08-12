@@ -1,7 +1,6 @@
 <?php
     // require defaults PHPs
     require_once 'bootstrap.php';
-    require_once 'functions.php';
 
     // check user login
     if(isUserLoggedIn()) {
