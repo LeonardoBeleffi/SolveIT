@@ -1,10 +1,10 @@
 @import "/src/css/palette.css";
 
 :root {
-    --header_height: 20%;
-    --footer_height: 7%;
-    --footer_img_width:  4.2vh;
-    --footer_img_height:  4.2vh;
+    --header_height: max(150px, 20%);
+    --footer_height: max(53px, 7%);
+    --footer_img_width: max(32px, 4.2vh);
+    --footer_img_height:  max(32px, 4.2vh);
 }
 
 body {
@@ -69,6 +69,7 @@ body > main > section > div > form * {
     font-family: var(--primaryFontFamily);
     font-size: max(15px, 2vh);
     font-weight: bold;
+    width: 100%;
 }
 
 body > main > section > div > form > h1 {
@@ -116,8 +117,8 @@ body > main > section > div > form > div > div > * {
 }
 
 body > main > section > div > form > div > input[type="submit"] {
-    width: 20vh;
-    font-size: 2vh;
+    width: max(150px, 20vh);
+    font-size: max(15px, 2vh);
     margin: 0 auto;
     font-weight: bold;
     color: var(--buttonTextColor);
@@ -149,7 +150,7 @@ body > footer {
 }
 
 body > main > footer > * {
-    font-size: 1.75vh;
+    font-size: max(14px, 1.75vh);
 }
 
 body > footer > a {
@@ -159,6 +160,7 @@ body > footer > a {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: max(15px, 2vh);
 }
 
 body > footer > a > img {
@@ -168,9 +170,7 @@ body > footer > a > img {
 
 a {
     color: var(--linkColor);
-    font-size: 2vh;
     text-decoration: none;
-    margin-right: 5%;
 }
 
 @media only screen and (min-width: 768px) {
