@@ -4,5 +4,5 @@
 
     // require database helper for database queries
     require_once("database.php");
-    $dbh = new DatabaseHelper("localhost", "root", "Mysqlsangio03!", "DumBass", 3306);
+    $dbh = new DatabaseHelper("localhost", "root", "admin", "DumBass", 3306);
 ?>
