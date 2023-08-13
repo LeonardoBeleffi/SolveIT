@@ -34,5 +34,4 @@
         </footer>
     </body>
 </html>
-<!-- missing php -->
 
