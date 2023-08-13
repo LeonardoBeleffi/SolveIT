@@ -1,0 +1,184 @@
+@import "./css/palette.css";
+
+:root {
+    --header_height: max(150px, 20%);
+    --footer_height: max(53px, 7%);
+    --footer_img_width: max(32px, 4.2vh);
+    --footer_img_height:  max(32px, 4.2vh);
+}
+
+body {
+    height: 100vh;
+    min-height: 750px;
+    min-width: 275px;
+    background-color: var(--primaryBackground);
+    margin: 0;
+}
+
+body > header {
+    height: var(--header_height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body > header > img {
+    height: 70%;
+    object-fit: contain;
+}
+
+body > main {
+    height: calc(100% - var(--header_height) - var(--footer_height));
+    background-color: var(--primaryBackground);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+body > main > * {
+    margin: 0 auto;
+}
+
+body > main > section {
+    height: 75%;
+    width: min(80%, 650px);
+    background-color: var(--tertiaryBackground);
+    border: 1pt solid var(--borderColor);
+    box-shadow: 3px 3px var(--borderColor);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+body > main > section > div {
+    height: calc(100% - 2*15px);
+    padding: 15px 0;
+    overflow: scroll;
+}
+
+body > main > section > div > form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+body > main > section > div > form * {
+    margin: 0;
+    font-family: var(--primaryFontFamily);
+    font-size: max(15px, 2vh);
+    font-weight: bold;
+    width: 100%;
+}
+
+body > main > section > div > form > h1 {
+    color: var(--primaryTextColor);
+    font-family: var(--primaryFontFamily);
+    font-size: max(30px, 4vh);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body > main > section > div > form > div {
+    width: 80%;
+    padding: max(8px, 1vh) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+body > main > section > div > form > div input {
+    width: 100%;
+    height: 50px;
+    padding-left: 5px;
+    padding-right: 5px;
+    box-sizing: border-box;
+    background-color: var(--primaryBackground);
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 1px 1px var(--borderColor);;
+    border-color: var(--borderColor);
+}
+
+body > main > section > div > form > div > div {
+    display: flex;
+    padding: max(30px, 4vh) 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+body > main > section > div > form > div > div > * {
+    padding: max(8px, 1vh) 0;
+}
+
+body > main > section > div > form > div > input[type="submit"] {
+    width: max(150px, 20vh);
+    font-size: max(15px, 2vh);
+    margin: 0 auto;
+    font-weight: bold;
+    color: var(--buttonTextColor);
+    background-color: var(--buttonColor);
+    box-shadow: 1px 1px var(--borderColor);
+    border-color: transparent;
+    border-width: 0;
+}
+
+body > main > section > div > form > div > input[type="submit"]:active {
+    transform: scale(0.92);
+    box-shadow: 3px 3px var(--borderColor);
+    transition: all center 100ms linear;
+}
+
+body > main > section > div > form > div > div > label {
+    color: var(--secondaryTextColor);
+}
+
+body > footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: var(--footer_height);
+    background-color: var(--secondaryBackground);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+body > main > footer > * {
+    font-size: max(14px, 1.75vh);
+}
+
+body > footer > a {
+    border-radius: 50%;
+    height: var(--footer_img_height);
+    width: var(--footer_img_width);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: max(15px, 2vh);
+}
+
+body > footer > a > img {
+    display: block;
+    height: 100%;
+}
+
+a {
+    color: var(--linkColor);
+    text-decoration: none;
+}
+
+.errorDiv {
+    padding-top: max(26px, 3vh);
+    display: block;
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
