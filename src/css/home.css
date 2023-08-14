@@ -1,4 +1,4 @@
-@import "./css/palette.css";
+@import "palette.css";
 
 :root {
     --header_height: max(150px, 20%);
