@@ -143,19 +143,20 @@ body > footer {
     width: 100%;
     bottom: 0;
     height: var(--footer_height);
-    background-color: var(--secondaryBackground);
+    background-color: var(--selectionColor);
 }
 
 #nav_bar {
-    height: var(--footer_height);
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    background-color: var(--secondaryBackground);
 }
 
 #nav_bar a {
+    height: 100%;
     width: calc(100vw / 5);
-    height: var(--footer_height);
     display: flex;
     align-items: center;
     justify-content: center;
