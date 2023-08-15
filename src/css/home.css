@@ -50,6 +50,45 @@ body > main > section {
     overflow: hidden;
 }
 
+#post_list {
+    list-style-type: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#post_list > li {
+    height: 15vh;
+}
+
+.post_preview {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.post_preview::after {
+    position: absolute;
+    bottom: 0;  
+    height: 100%;
+    width: 100%;
+    content: "";
+    background: linear-gradient(to top,
+        rgba(255,255,255, 1) 0, 
+        rgba(255,255,255, 0) 60%
+        );
+    /* pointer-events: none; */
+}
+
+.post_preview > h1 {
+    margin-bottom: 0;
+}
+
+article {
+    height: 100%;
+    /* border: 1px solid black; */
+}
+
 body > main > section > div {
     height: calc(100% - 2*15px);
     padding: 15px 0;
