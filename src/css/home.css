@@ -144,9 +144,38 @@ body > footer {
     bottom: 0;
     height: var(--footer_height);
     background-color: var(--secondaryBackground);
+}
+
+.nav_bar {
+    height: var(--footer_height);
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-evenly;
+}
+
+.div_container {
+    height: var(--footer_height);
+    width: calc(100vw / 4);
+}
+
+.nav_bar a {
+    width: calc(100vw / 4);
+    height: var(--footer_height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.link_div {
+    /* background-color: var(--primaryBackground); */
+    background-color: var(--selectionColor);
+    height: calc(var(--footer_height) * 15 / 100);
+    width: calc(100vw / 4);
+}
+
+.selected_link_div {
+    height: var(--footer_height);
+    border-radius: 50% 50% 0 0;
 }
 
 body > main > footer > * {
