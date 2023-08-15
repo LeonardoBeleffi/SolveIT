@@ -146,27 +146,27 @@ body > footer {
     background-color: var(--secondaryBackground);
 }
 
-.nav_bar {
+#nav_bar {
     height: var(--footer_height);
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.nav_bar a {
+#nav_bar a {
     width: calc(100vw / 5);
     height: var(--footer_height);
-    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
+    color: var(--primaryTextColor);
 }
 
 .selected_link {
     display: block;
     height: var(--footer_height);
-    background-color: var(--selectedColor);
-    border-radius: 50%;
+    background-color: var(--selectionColor);
+    border-radius: 50% 50% 0 0;
 }
 
 body > main > footer > * {
