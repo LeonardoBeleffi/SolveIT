@@ -1,8 +1,8 @@
 @import "palette.css";
 
 :root {
-    --header_height: max(150px, 20%);
-    --footer_height: max(53px, 7%);
+    --header_height: max(150px, 20vh);
+    --footer_height: max(53px, 7vh);
     --footer_img_width: max(32px, 4.2vh);
     --footer_img_height:  max(32px, 4.2vh);
 }
@@ -153,29 +153,20 @@ body > footer {
     justify-content: space-evenly;
 }
 
-.div_container {
-    height: var(--footer_height);
-    width: calc(100vw / 4);
-}
-
 .nav_bar a {
-    width: calc(100vw / 4);
+    width: calc(100vw / 5);
     height: var(--footer_height);
+    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.link_div {
-    /* background-color: var(--primaryBackground); */
-    background-color: var(--selectionColor);
-    height: calc(var(--footer_height) * 15 / 100);
-    width: calc(100vw / 4);
-}
-
-.selected_link_div {
+.selected_link {
+    display: block;
     height: var(--footer_height);
-    border-radius: 50% 50% 0 0;
+    background-color: var(--selectedColor);
+    border-radius: 50%;
 }
 
 body > main > footer > * {
