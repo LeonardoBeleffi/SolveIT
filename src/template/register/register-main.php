@@ -16,7 +16,7 @@
                 <input type="submit" value="Sign Up" />
             </div>
         </form>
-        <div>
+    </div>
 </section>
 <footer>
     <p>Already an accout? <a href="./login.php">Log in here!</a></p>

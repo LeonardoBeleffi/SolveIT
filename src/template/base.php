@@ -15,7 +15,6 @@
         <!-- load CSS -->
         <?php loadCSS()?>
         <!-- load JS -->
-        <?php loadJS()?>
     </head>
     <body>
         <header>
@@ -32,6 +31,7 @@
             <!-- load footer -->
             <?php require getFooter()?>
         </footer>
+        <?php loadJS()?>
     </body>
 </html>
 

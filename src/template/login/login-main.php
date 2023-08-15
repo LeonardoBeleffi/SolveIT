@@ -13,7 +13,7 @@
                 <input type="submit" value="Sign In" />
             </div>
         </form>
-        <div>
+    </div>
 </section>
 <footer>
     <p>New to SolveIT? <a href="./register.php">Register here!</a></p>

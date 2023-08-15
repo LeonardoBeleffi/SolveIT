@@ -74,6 +74,18 @@ class DatabaseHelper{
 
     ///USER-RELATED QUERIES -----------------------------------------
 
+    public function checkLogin($username, $password){
+        $query = "SELECT u.idUtente as idUtente, username, nome 
+        FROM utente as u, credenziali as c 
+        WHERE u.idUtente = c.idUtente and u.username = ? and c.password = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }    
+
     // prefix --> idUtente, nome, cognome, username, idSettore
     public function getUsersByPrefix($prefix){
         $stmt = $this->db->prepare("SELECT idUtente, nome, cognome, username, idSettore
@@ -208,74 +220,79 @@ class DatabaseHelper{
         }
     }
 
-    // // Post <- idUtenti[], collaboratori[] : bool[idUtenti.size], testo, idSettore, 
-    // public function insertArticle($titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore){
-    //     $query = "INSERT INTO articolo (titoloarticolo, testoarticolo, anteprimaarticolo, dataarticolo, imgarticolo, autore) VALUES (?, ?, ?, ?, ?, ?)";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->bind_param('sssssi',$titoloarticolo, $testoarticolo, $anteprimaarticolo, $dataarticolo, $imgarticolo, $autore);
-    //     $stmt->execute();
-        
-    //     return $stmt->insert_id;
-    // }
+    // data, tipo, idPost -> idAllegato
+    public function insertAllegato($data, $tipo, $idPost){
+        // try {
+            $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
+            $query = "INSERT INTO allegato (data, tipo, idPost) VALUES (?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('dsi',$data, $tipo, $idPost);
+            $stmt->execute();
+            return $stmt->insert_id;
+        // } catch(Exception $e) {
+        //     return false;
+        // }
+    }
 
-    // public function updateArticleOfAuthor($idarticolo, $titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $autore){
-    //     $query = "UPDATE articolo SET titoloarticolo = ?, testoarticolo = ?, anteprimaarticolo = ?, imgarticolo = ? WHERE idarticolo = ? AND autore = ?";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->bind_param('ssssii',$titoloarticolo, $testoarticolo, $anteprimaarticolo, $imgarticolo, $idarticolo, $autore);
-        
-    //     return $stmt->execute();
-    // }
+    // idUtente, idPost, collaboratore -> idPubblicazione
+    public function insertPubblicazione($idUtente, $idPost, $collaboratore){
+        try {
+            $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
+            $query = "INSERT INTO pubblicazione (idUtente, idPost, collaboratore) VALUES (?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iii',$idUtente, $idPost, $collaboratore);
+            $stmt->execute();
+            return $stmt->insert_id;
+        } catch(Exception $e) {
+            return false;
+        }
+    }
 
-    // public function deleteArticleOfAuthor($idarticolo, $autore){
-    //     $query = "DELETE FROM articolo WHERE idarticolo = ? AND autore = ?";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->bind_param('ii',$idarticolo, $autore);
-    //     $stmt->execute();
-    //     var_dump($stmt->error);
-    //     return true;
-    // }
+    // titolo, testo, timestamp -> idPost
+    public function insertPost($titolo, $testo, $timestamp, $idSettore){
+        try {
+            $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
+            $query = "INSERT INTO post (titolo, testo, timestamp, idSettore) VALUES (?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('sssi',$titolo, $testo, $timestamp, $idSettore);
+            $stmt->execute();
+            return $stmt->insert_id;
+        } catch(Exception $e) {
+            return false;
+        }
+    }
 
-    // public function insertCategoryOfArticle($articolo, $categoria){
-    //     $query = "INSERT INTO articolo_ha_categoria (articolo, categoria) VALUES (?, ?)";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->bind_param('ii',$articolo, $categoria);
-    //     return $stmt->execute();
-    // }
 
-    // public function deleteCategoryOfArticle($articolo, $categoria){
-    //     $query = "DELETE FROM articolo_ha_categoria WHERE articolo = ? AND categoria = ?";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->bind_param('ii',$articolo, $categoria);
-    //     return $stmt->execute();
-    // }
+    // titolo, testo, timestamp, idSettore, allegati, tipoAllegati, collaboratori, autore -> idPost
+    public function uploadPost($titolo, $testo, $timestamp, $idSettore, $allegati, $tipoAllegati, $collaboratori, $autore) {
+        // insert post
+        $idPost = $this->insertPost($titolo, $testo, $timestamp, $idSettore);
+        if($idPost === false) {
+            echo "id Post error";
+            return false;
+        }
+        // insert autor
+        $idPubblicazione = $this->insertPubblicazione($autore, $idPost, 0);
+        // insert collabs
+        foreach ($collaboratori as $collaboratore) {
+            $this->insertPubblicazione($collaboratore, $idPost, 1);
+        }
+        // insert attachments 
+        for($i = 0; $i < count($allegati); $i++) {
+            $this->insertAllegato($allegati[$i], $tipoAllegati[$i], $idPost);
+        }
+        return $idPost;
+    }
 
+
+    
+    /// DELETEs-----------
     // public function deleteCategoriesOfArticle($articolo){
     //     $query = "DELETE FROM articolo_ha_categoria WHERE articolo = ?";
     //     $stmt = $this->db->prepare($query);
     //     $stmt->bind_param('i',$articolo);
     //     return $stmt->execute();
     // }
-
-    // public function getAuthors(){
-    //     $query = "SELECT username, nome, GROUP_CONCAT(DISTINCT nomecategoria) as argomenti FROM categoria, articolo, autore, articolo_ha_categoria WHERE idarticolo=articolo AND categoria=idcategoria AND autore=idautore AND attivo=1 GROUP BY username, nome";
-    //     $stmt = $this->db->prepare($query);
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-
-    //     return $result->fetch_all(MYSQLI_ASSOC);
-    // }
-
-    public function checkLogin($username, $password){
-        $query = "SELECT u.idUtente as idUtente, username, nome 
-        FROM utente as u, credenziali as c 
-        WHERE u.idUtente = c.idUtente and u.username = ? and c.password = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }    
 
 }
 ?>
