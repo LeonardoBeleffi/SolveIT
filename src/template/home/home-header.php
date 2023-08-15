@@ -17,6 +17,9 @@
             <a class="nav-link" href="#">Settings</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="newpost.php">Create Post</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="utils/logout.php">Logout</a>
           </li>
         </ul>
