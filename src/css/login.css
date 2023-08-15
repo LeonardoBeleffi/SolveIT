@@ -1,8 +1,8 @@
 @import "/src/css/palette.css";
 
 :root {
-    --header_height: max(150px, 20%);
-    --footer_height: max(53px, 7%);
+    --header_height: max(150px, 20vh);
+    --footer_height: max(53px, 7vh);
     --footer_img_width: max(32px, 4.2vh);
     --footer_img_height:  max(32px, 4.2vh);
 }
