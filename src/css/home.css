@@ -146,6 +146,10 @@ body > footer {
     background-color: var(--selectionColor);
 }
 
+.post_opened {
+    display: none;
+}
+
 #nav_bar {
     height: 80%;
     display: flex;
@@ -201,5 +205,10 @@ a {
 
 @media only screen and (min-width: 768px) {
 
+}
+
+/* TEMP */
+* {
+    /* border: 1px solid black; */
 }
 
