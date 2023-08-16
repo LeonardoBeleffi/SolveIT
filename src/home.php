@@ -4,8 +4,15 @@
     
     // check login routine
     checkUserLogin();
-    echo "Username: " . getUsername() . "<br>";
-    echo "idUtente: " . getIdUtente();
+    echo "Username: " . getUsername() . "<br>".
+        "idUtente: " . getIdUtente();
+
+    // set post query parameter
+    clearPosts();
+    setPostsLimit(10);
+
+    // require post query helper
+    require "utils/download.php";
 
     // set template elements
     clearTemplate();

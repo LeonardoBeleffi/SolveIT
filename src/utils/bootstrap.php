@@ -3,9 +3,10 @@
 
     // Start the session (if not already started)
     session_start();
+    $_SESSION["DEBUG"] = false;
 
     // require database helper for database queries
-    require_once("database.php");
+    require_once "classes/database.php";
 
     // silence warning concerning network connections
     error_reporting(E_ERROR | E_PARSE);
@@ -15,11 +16,10 @@
         setErrorMsg("Cannot connect to remote Database!");
         try{
             $dbh = new DatabaseHelper("localhost", "root", "Mysqlsangio03!", "epiz_34305586_solveit", 3306);
+            setErrorMsg("");
         } catch(Exception $e) {
             setErrorMsg("Cannot connect to local Database!");
-            error_reporting(-1);
         }
-        error_reporting(-1);
     }
     error_reporting(-1);
 ?>

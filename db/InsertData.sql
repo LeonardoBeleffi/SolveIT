@@ -21,8 +21,8 @@ INSERT INTO `settore` (`nomeSettore`) VALUES
 ('officina');
 
 
-INSERT INTO `post` (`idsettore`, `testo`, `timestamp`) VALUES
-(1, 'okokso','2023-07-01 21:19:03');
+INSERT INTO `post` (`idsettore`, `titolo`, `testo`, `timestamp`) VALUES
+(1, 'Il mio post su SolveIt!', 'Se vi capita questo allora fate quest\'altro e via track track tutto funziona!','2023-07-01 21:19:03');
 
 
 INSERT INTO `pubblicazione` (`idutente`, `idpost`) VALUES
@@ -37,6 +37,14 @@ INSERT INTO `tag` (`nome`) VALUES
 INSERT INTO `etichettamento` (`idpost`, `idtag`) VALUES
 (1, 2);
 
+INSERT INTO `commento` (`idpost`, `idutente`, `testo`, `timestamp`) VALUES
+(1, 1, 'bel post, caspita un botto utile!', '2023-07-01 21:19:03'),
+(1, 2, 'Lo sapevamo già', '2023-07-01 21:19:03');
+
+INSERT INTO `mipiace` (`idpost`, `idutente`) VALUES
+(1, 1),
+(1, 2);
+
 
 
 select * from post;
@@ -48,6 +56,7 @@ select * from utente;
 select * from credenziali;
 select * from tag;
 select * from etichettamento;
+select * from commento;
 
 # idPost --> idPost, autore, testo, settore, timestamp
 SELECT p.idPost, u.nome as autore, p.testo, s.nomeSettore as settore, p.timestamp

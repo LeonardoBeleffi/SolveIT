@@ -2,3 +2,4 @@
 *.DS_Store
 *.drawio.bkp
 private
+*test.php
