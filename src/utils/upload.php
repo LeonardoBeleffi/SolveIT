@@ -22,20 +22,17 @@
         // opnening attachments
         $attachs = array();
         $attachsType = array();
+        $attachsName = array();
         for($i = 0; $i < count($_FILES['attachments']['name']); $i++)
         {
-            $myfile = fopen($_FILES['attachments']['tmp_name'][$i], "r") or die("Unable to open ".$_FILES['attachments']['name'][$i]."!");
-            array_push($attachs, $myfile);
+            array_push($attachs, file_get_contents($_FILES['attachments']['tmp_name'][$i]));
             echo $_FILES['attachments']['type'][$i];
+            
             array_push($attachsType, $_FILES['attachments']['type'][$i]);
+            array_push($attachsName, $_FILES['attachments']['name'][$i]);
         }
         // uploading post
-        $idPost = $dbh->uploadPost($_POST['title'], $_POST['text'], date("Y-m-d H:i:s"), 1, $attachs, $attachsType, array()/*$_POST['collabs']*/, getIdUtente());
-
-        // closing attachments
-        foreach ($attachs as $file) {
-           fclose($file);
-        }
+        $idPost = $dbh->uploadPost($_POST['title'], $_POST['text'], date("Y-m-d H:i:s"), 1, $attachs, $attachsName, $attachsType, array()/*$_POST['collabs']*/, getIdUtente());
 
         if($idPost === false) {
             setErrorMsg("Failed uploading Post.");
