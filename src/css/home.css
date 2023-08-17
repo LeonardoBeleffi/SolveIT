@@ -12,6 +12,10 @@
     margin-bottom: 100px;
 }
 
+.attachments * {
+    width: 100%;
+}
+
 body {
     height: 100vh;
     min-height: 750px;

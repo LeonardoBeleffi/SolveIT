@@ -7,13 +7,24 @@
     // check login routine
     checkUserLogin();
 
-    // clear all files
+    // prepare attachments directory
+    $ATTACHMENTS_DIRECTORY = "./private/attachments";
+    if(!is_dir($ATTACHMENTS_DIRECTORY)) {
+        mkdir($ATTACHMENTS_DIRECTORY, 0777, true);
+    }
+    // clear attachments directory
+    foreach(scandir($ATTACHMENTS_DIRECTORY) as $filename) {
+        $filename_abs = realpath($ATTACHMENTS_DIRECTORY."/".$filename);
+        if(is_file($filename_abs)) {
+            unlink($filename_abs);
+        }
+    }
 
     // get specific posts
     if(isset($_SESSION['postsId'])) {
         // ToDo
     }
-
+    
     // get random posts by limit
     if(isset($_SESSION['postsLimit'])) {
         // query random posts
@@ -24,7 +35,6 @@
                 echo "Failed downloading Posts.";
             exit();
         }
-
         $idPosts = [];
         foreach($result as $res) {
             array_push($idPosts,$res["idPost"]);

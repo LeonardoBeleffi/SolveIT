@@ -5,6 +5,8 @@
     // check login routine
     checkUserLogin();
 
+    setErrorMsg("");
+
     // check files variables -  for $_FILES see "https://www.php.net/manual/en/features.file-upload.multiple.php"
     if(isset($_FILES['attachments']) && isset($_POST['title']) && isset($_POST['text']) && isset($_POST['collabs'])) {
         echo "error:".$_FILES['attachments']['error'][0]."<br>";
@@ -25,7 +27,7 @@
         $attachsName = array();
         for($i = 0; $i < count($_FILES['attachments']['name']); $i++)
         {
-            array_push($attachs, file_get_contents($_FILES['attachments']['tmp_name'][$i]));
+            array_push($attachs, $_FILES['attachments']['tmp_name'][$i]);
             echo $_FILES['attachments']['type'][$i];
             
             array_push($attachsType, $_FILES['attachments']['type'][$i]);
@@ -41,6 +43,5 @@
         echo "upload succesful";
     
     }
-    // header("Location: /src/test.php");
-    // exit();
+    goToHome();
 ?>

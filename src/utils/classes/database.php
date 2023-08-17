@@ -246,18 +246,26 @@ class DatabaseHelper{
         }
     }
 
-    // data, tipo, idPost -> idAllegato
-    public function insertAllegato($data, $nome, $tipo, $idPost){
-        try {
+    // file, tipo, idPost -> idAllegato
+    public function insertAllegato($file, $nome, $tipo, $idPost){
+        // try {
             $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
             $query = "INSERT INTO allegato (data, nome, tipo, idPost) VALUES (?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('dssi',$data, $nome, $tipo, $idPost);
+            $null = NULL;
+            $stmt->bind_param('bssi', $null, $nome, $tipo, $idPost);
+            // send file piece by piece
+            $fp = fopen($file, "r");
+            while (!feof($fp)) {
+                $data = fread($fp, 50);
+                $stmt->send_long_data(0, $data);   
+            }
+            fclose($fp);
             $stmt->execute();
             return $stmt->insert_id;
-        } catch(Exception $e) {
-            return false;
-        }
+        // } catch(Exception $e) {
+        //     return false;
+        // }
     }
 
     // idUtente, idPost, collaboratore -> idPubblicazione

@@ -54,6 +54,10 @@
         return $post->attachmentsType;
     }
 
+    function getPostAttachmentsName($post) {
+        return $post->attachmentsName;
+    }
+
     function getPostSector($post) {
         return $post->sector;
     }
@@ -75,24 +79,20 @@
     }
 
     function loadAttachments($post) {
-        //TODO
-        return;
-
-        // var_dump(getPostAttachments($post));
-        // for($i=0; $i<count(getPostAttachments($post)); $i++) {
-        //     loadAttachment(getPostAttachments($post)[$i],getPostAttachmentsType($post)[$i]);
-        // }
+        for($i=0; $i<count(getPostAttachments($post)); $i++) {
+            loadAttachment(getPostAttachments($post)[$i],getPostAttachmentsName($post)[$i],getPostAttachmentsType($post)[$i]);
+        }
     }
 
-    function loadAttachment($attach, $attachType) {
-        echo $attach."<br>";
-        echo $attachType."<br>";
+    function loadAttachment($attach, $attachName, $attachType) {
        if(str_contains($attachType, "image")) {
-            echo "<img src=\"". $attach ."\" >";
+            echo "<img src=\"". $attach ."\" download=\"".$attachName."\">";
        } else if(str_contains($attachType, "audio")) {
-            echo "<audio controls=\"\" src=\"". $attach ."\"></audio>";
-       } else {
-            echo "<a href=\"".$attach."\" download=\"DownloadThis.".$attachType."\">\"DownloadThis.".$attachType."\"</a>";
+        echo "<audio controls=\"\" src=\"". $attach ."\" download=\"".$attachName."\"></audio>";
+        } else if(str_contains($attachType, "video")) {
+            echo "<video controls=\"\" src=\"".$attach."\" download=\"".$attachName."\"></video>";        
+        } else {
+            echo "<a href=\"".$attach."\" download=\"".$attachName."\">\"".$attachName."\"</a>";
        }
     }
 

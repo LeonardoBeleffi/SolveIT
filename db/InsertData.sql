@@ -45,7 +45,10 @@ INSERT INTO `mipiace` (`idpost`, `idutente`) VALUES
 (1, 1),
 (1, 2);
 
-
+SELECT p.idPost as postId, u.idUtente as authorId, u.username as authorName, p.titolo as title, p.testo as text, s.nomeSettore as sector, p.timestamp as timestamp
+        FROM post as p, settore as s, pubblicazione as pub, utente as u
+        where p.idPost = 3
+        and p.idPost = pub.idPost and p.idSettore = s.idSettore and pub.idUtente = u.idUtente;
 
 select * from post;
 select * from pubblicazione;
