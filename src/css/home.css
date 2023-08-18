@@ -1,12 +1,14 @@
-@import "/src/css/palette.css";
+@import "palette.css";
+@import "login.css";
 
 :root {
-    --header_height: max(150px, 20vh);
+    --header_height: max(50px, 5vh);
     --footer_height: max(53px, 7vh);
     --footer_img_width: max(32px, 4.2vh);
     --footer_img_height:  max(32px, 4.2vh);
 }
 
+<<<<<<< Updated upstream
 .mt-4 {
     margin-top: 1.5rem!important;
     margin-bottom: 100px;
@@ -49,98 +51,74 @@ body > main > * {
     margin: 0 auto;
 }
 
+=======
+>>>>>>> Stashed changes
 body > main > section {
-    height: 75%;
-    width: min(80%, 650px);
+    height: 92%;
+    width: min(95%, 650px);
     background-color: var(--tertiaryBackground);
     border: 1pt solid var(--borderColor);
-    box-shadow: 3px 3px var(--borderColor);
+    box-shadow: 0 2px 0 0 var(--disabledTextColor);
     border-radius: 15px;
     overflow: hidden;
 }
 
-body > main > section > div {
-    height: calc(100% - 2*15px);
-    padding: 15px 0;
-    overflow: scroll;
-}
-
-body > main > section > div > form {
+#post_list {
+    list-style-type: none;
     height: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+    gap: 10px;
+    padding: 0;
 }
 
-body > main > section > div > form * {
-    margin: 0;
+#post_list > li {
+    height: 15vh;
+}
+
+.post_preview {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
     font-family: var(--primaryFontFamily);
-    font-size: max(15px, 2vh);
-    font-weight: bold;
-    width: 100%;
+    background-color: var(--secondaryColor);
+    width: 95%;
+    border-radius: 15px;
+    margin: auto;
+    text-overflow: ellipsis;
 }
 
-body > main > section > div > form > h1 {
+.post_preview::after {
+    position: absolute;
+    bottom: 0;  
+    height: 100%;
+    width: 100%;
+    content: "";
+    font-family: var(--primaryFontFamily);
+    /*background: linear-gradient(to top,
+        rgba(255,255,255, 1) 0, 
+        rgba(255,255,255, 0) 30%
+        );*/
+    /* pointer-events: none; */
+}
+
+.post_preview > h1 {
+    margin-bottom: 0;
+}
+
+article {
+    height: 100%;
+    /* border: 1px solid black; */
+}
+
+body > header > h1 {
     color: var(--primaryTextColor);
     font-family: var(--primaryFontFamily);
     font-size: max(30px, 4vh);
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-body > main > section > div > form > div {
-    width: 80%;
-    padding: max(8px, 1vh) 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-}
-
-body > main > section > div > form > div input {
-    width: 100%;
-    height: 50px;
-    padding-left: 5px;
-    padding-right: 5px;
-    box-sizing: border-box;
-    background-color: var(--primaryBackground);
-    border-radius: 15px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 1px 1px var(--borderColor);;
-    border-color: var(--borderColor);
-}
-
-body > main > section > div > form > div > div {
-    display: flex;
-    padding: max(30px, 4vh) 0;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-}
-
-body > main > section > div > form > div > div > * {
-    padding: max(8px, 1vh) 0;
-}
-
-body > main > section > div > form > div > input[type="submit"] {
-    width: max(150px, 20vh);
-    font-size: max(15px, 2vh);
-    margin: 0 auto;
-    font-weight: bold;
-    color: var(--buttonTextColor);
-    background-color: var(--buttonColor);
-    box-shadow: 1px 1px var(--borderColor);
-    border-color: transparent;
-    border-width: 0;
-}
-
-body > main > section > div > form > div > input[type="submit"]:active {
-    transform: scale(0.92);
-    box-shadow: 3px 3px var(--borderColor);
-    /* transition: all center 100ms linear; */
 }
 
 body > main > section > div > form > div > div > label {
@@ -150,44 +128,40 @@ body > main > section > div > form > div > div > label {
 body > footer {
     position: fixed;
     width: 100%;
-    bottom: 0;
+    /*bottom: 0;*/
     height: var(--footer_height);
+    background-color: var(--selectionColor);
+}
+
+.post_opened {
+    display: none;
+}
+
+#nav_bar {
+    height: 85%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
     background-color: var(--secondaryBackground);
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
 }
 
-body > main > footer > * {
-    font-size: max(14px, 1.75vh);
-}
-
-body > footer > a {
-    border-radius: 50%;
-    height: var(--footer_img_height);
-    width: var(--footer_img_width);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: max(15px, 2vh);
-}
-
-body > footer > a > img {
-    display: block;
+#nav_bar a {
     height: 100%;
+    width: calc(100vw / 5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primaryTextColor);
+    font-family: var(--primaryFontFamily);
+    font-weight: bold;
 }
 
-a {
-    color: var(--linkColor);
-    text-decoration: none;
-}
-
-.errorDiv {
-    padding-top: max(26px, 3vh);
+.selected_link {
     display: block;
-}
-
-@media only screen and (min-width: 768px) {
-
+    background-color: var(--selectionColor);
+    bottom: 0;
+    border-radius: 25% 25% 0 0;
 }
 

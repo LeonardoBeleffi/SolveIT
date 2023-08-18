@@ -7,9 +7,14 @@
     // require database helper for database queries
     require_once "classes/database.php";
 
+<<<<<<< Updated upstream
     // session variables
     $_SESSION["ATTACHMENTS_DIRECTORY"] = "./private/attachments";
     $_SESSION["DEBUG"] = false;
+=======
+    // attachments download directory
+    $_SESSION["ATTACHMENTS_DIRECTORY"] = "./private/attachments";
+>>>>>>> Stashed changes
 
     // silence warning concerning network connections
     error_reporting(E_ERROR | E_PARSE);
@@ -20,7 +25,7 @@
     } catch(Exception $e) {
         setErrorMsg("Cannot connect to remote Database!");
         try{
-            $dbh = new DatabaseHelper("localhost", "root", "Mysqlsangio03!", "epiz_34305586_solveit", 3306);
+            $dbh = new DatabaseHelper("localhost", "root", "", "epiz_34305586_solveit", 3306);
             setErrorMsg("");
         } catch(Exception $e) {
             setErrorMsg("Cannot connect to local Database!");

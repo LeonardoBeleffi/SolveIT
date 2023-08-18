@@ -168,9 +168,14 @@ body > footer > a > img {
     height: 100%;
 }
 
+p{
+    font-family: var(--primaryFontFamily);
+}
+
 a {
     color: var(--linkColor);
     text-decoration: none;
+    font-family: var(--primaryFontFamily);
 }
 
 .errorDiv {
