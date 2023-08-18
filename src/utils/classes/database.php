@@ -33,6 +33,18 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // idComment --> postId
+    public function getPostByCommentId($commentId){
+        $stmt = $this->db->prepare("SELECT p.idPost as postId
+        FROM post as p, commento as c
+        where c.idCommento = ? and p.idPost = c.idPost");
+        $stmt->bind_param('i',$commentId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     // idPost --> tagId, tagName
     public function getTagByPost($idPost){
         $stmt = $this->db->prepare("SELECT t.idTag as tagId, nome as tagName
@@ -244,6 +256,19 @@ class DatabaseHelper{
         } catch(Exception $e) {
             return false;
         }
+    }
+
+    // idPost, userId, text, timestamp, parentCommentId -> commentId
+    public function insertCommento($idPost, $userId, $text, $timestamp, $parentCommentId){
+        // try {
+            $query = "INSERT INTO commento (idpost, idutente, testo, timestamp, idCommentoPadre) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iissi',$idPost, $userId, $text, $timestamp, $parentCommentId);
+            $stmt->execute();
+            return $stmt->insert_id;
+        // } catch(Exception $e) {
+        //     return false;
+        // }
     }
 
     // file, tipo, idPost -> idAllegato

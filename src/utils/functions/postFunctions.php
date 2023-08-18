@@ -161,18 +161,20 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
-                    <div class="replies">
-                    <ul>'.loadCommentChildren($comment,$post).'</ul>
-                    </div>
+                    <ul class="replies">
+                    '.loadCommentChildren($comment,$post).'
+                    </ul>
                 </li>';
     }
 
     function loadCommentChildren($comment,$post) {
+        $ret = "";
         foreach(getPostComments($post) as $children) {
             if(getCommentParentId($children) == getCommentId($comment)) {
-                return loadComment($children,$post);
+                $ret = $ret.loadComment($children,$post);
             }
         }
+        return $ret;
     }
 
 ?>

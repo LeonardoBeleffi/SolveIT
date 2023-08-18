@@ -211,6 +211,10 @@ a {
 .reply {
     margin-left: 20px;
 }
+
+ul.replies {
+    list-style: none;
+}
 .expanded {
     display: block;
 }

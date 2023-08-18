@@ -21,7 +21,7 @@
     setHeader("home/home-header.php");
     setFooter("login/login-footer.php");
     setCSS(["./css/home.css", "./css/bootstrap-5.3.1-dist/css/bootstrap.min.css"]);
-    setJS(["./css/bootstrap-5.3.1-dist//js/bootstrap.min.js"]);
+    setJS(["./js/home.js", "./css/bootstrap-5.3.1-dist//js/bootstrap.min.js"]);
 
     // require template
     require "template/base.php";
