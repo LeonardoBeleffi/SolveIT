@@ -78,6 +78,9 @@
         return $post->timestamp;
     }
 
+
+    // ----------------- POST-ATTACHMENTS-RESULTS functions
+
     function loadAttachments($post) {
         for($i=0; $i<count(getPostAttachments($post)); $i++) {
             loadAttachment(getPostAttachments($post)[$i],getPostAttachmentsName($post)[$i],getPostAttachmentsType($post)[$i]);
@@ -94,6 +97,26 @@
         } else {
             echo "<a href=\"".$attach."\" download=\"".$attachName."\">\"".$attachName."\"</a>";
        }
+    }
+
+    function clearAttachmentsDirecory() {
+        // create dir if not present
+        if(!is_dir($_SESSION["ATTACHMENTS_DIRECTORY"])) {
+            mkdir($_SESSION["ATTACHMENTS_DIRECTORY"], 0777, true);
+        }
+        // clear attachments in directory
+        foreach(scandir($_SESSION["ATTACHMENTS_DIRECTORY"]) as $filename) {
+            $filename_abs = realpath($_SESSION["ATTACHMENTS_DIRECTORY"]."/".$filename);
+            if(is_file($filename_abs)) {
+                unlink($filename_abs);
+            }
+        }
+    }
+
+    function saveAttachment($attachName, $attachData) {
+        $filename = $_SESSION["ATTACHMENTS_DIRECTORY"]."/".$attachName;
+        file_put_contents($filename, $attachData);
+        return $filename;
     }
 
     // ----------------- POST-COMMENT-RESULTS functions

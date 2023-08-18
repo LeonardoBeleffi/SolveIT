@@ -3,19 +3,16 @@
 
     // Start the session (if not already started)
     session_start();
-    $_SESSION["DEBUG"] = false;
 
     // require database helper for database queries
     require_once "classes/database.php";
 
-    // attachments download directory
-    $ATTACHMENTS_DIRECTORY = realpath(__DIR__."/../private/attachments");
+    // session variables
+    $_SESSION["ATTACHMENTS_DIRECTORY"] = "./private/attachments";
+    $_SESSION["DEBUG"] = false;
 
     // silence warning concerning network connections
     error_reporting(E_ERROR | E_PARSE);
-
-    // create attachments download directory
-    mkdir($ATTACHMENTS_DIRECTORY, 0777, true);
 
     // try connecting to remote/local database
     try{
@@ -29,5 +26,6 @@
             setErrorMsg("Cannot connect to local Database!");
         }
     }
+    // restore warnings 
     error_reporting(-1);
 ?>
