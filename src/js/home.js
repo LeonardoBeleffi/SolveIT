@@ -25,12 +25,21 @@ window.addEventListener("load", () => {
     posts.forEach(post => {
         post.addEventListener("click", (event) => {
             let e = event.target;
-            post.children[0].style.height = "100%";
-            //post.children[0].children[0].className = "";
-            post.children[0].children[1].style.display ="block";
+            //post.children[0].style.height = "100%";
+    //post.children[0].children[0].className = "";
+                    
+            let toShow = post.querySelector(".post-opened")
+            toShow.style.display = "block";
             posts.forEach(element => {
-                let elementPreview = element.children[0].children[0];
-                if (elementPreview !== e) element.style.display = "none";
+                let elementPreview = element.querySelector(".post-preview");
+                let elementTitle = element.querySelector(".card-title");
+                let elementText = element.querySelector(".card-text");
+                let elementContainer = element.querySelector(".post-container");
+                if (e == elementPreview || e == elementTitle || e == elementText || e == elementContainer) {
+                    element.style.display = "block";
+                }else{
+                    element.style.display = "none";
+                }
             });
         }, false);
     });
@@ -39,10 +48,11 @@ window.addEventListener("load", () => {
         let e = event.target;
         if (main.children[0].contains(e) || footer.contains(e)) return;
         posts.forEach(element => {
+            let toHide = element.querySelector(".post-opened");
             element.style.display = "block";
-            element.children[0].children[0].className = "post_preview";
-            // element.children[0].style.height = "15vh";
-            element.children[0].children[1].style.display = "none";
+            //element.children[0].children[0].className = "post-preview";
+            //toHide.style.height = "15vh";
+            toHide.style.display = "none";
         });
     });
 

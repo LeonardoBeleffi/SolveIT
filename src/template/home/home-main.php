@@ -1,61 +1,58 @@
 <section>
     <ul id="post_list">
-        <div class="container mt-4">
             <?php foreach(getPosts() as $post): ?>
-            <li>
-                <article>
-                    <section class="post_preview">
-                        <!-- Post -->
-                        <div class="card mb-4">
-                            <!-- Post Title -->
-                            <div class="card-header">
+            <li class="list-element">
+            <article class="post-container">
+                        <!-- Post Title -->
+                        <div class="post-preview">
+                            <p class="card-title">
                                 <?php echo getPostTitle($post); ?>
+                            </p>
+                            <!-- Post Text -->
+                            <p class="card-text">
+                                <?php echo getPostText($post); ?>
+                            </p>
+                        </div>
+                        <!-- Post Content -->
+                        <div class="post-opened">
+                            
+                            <!-- Post Tags -->
+                            <div class="tags">Tags: 
+                                <?php foreach(getPostTags($post) as $tag): ?>
+                                <span class="badge bg-secondary">
+                                <?php echo $tag ?>
+                                </span>
+                                <?php endforeach; ?>
                             </div>
-                            <!-- Post Content -->
-                            <div class="card-body">
-                                <!-- Post Text -->
-                                <p class="card-text">
-                                    <?php echo getPostText($post); ?>
-                                </p>
-                                <!-- Post Tags -->
-                                <div class="tags">Tags: 
-                                    <?php foreach(getPostTags($post) as $tag): ?>
-                                    <span class="badge bg-secondary">
-                                    <?php echo $tag ?>
-                                    </span>
+                            <!-- Post Likes -->
+                            <div class="likes">Likes:
+                                <span class="badge bg-primary">
+                                <?php echo count(getPostLikes($post)); ?>
+                                </span>
+                            </div>
+                            <!-- Like button -->
+                            <button type="button" class="like_button">Like</button>
+                            <!-- Post Comments -->
+                            <div class="comment">
+                                <h5>Comments</h5>
+                                <ul class="list-unstyled">
+                                    <?php foreach(getPostComments($post) as $comment): ?>
+                                    <li><?php echo getCommentText($comment) ?> - author:<?php echo getCommentAuthor($comment) ?></li>
                                     <?php endforeach; ?>
-                                </div>
-                                <!-- Post Likes -->
-                                <div class="likes">Likes:
-                                    <span class="badge bg-primary">
-                                    <?php echo count(getPostLikes($post)); ?>
-                                    </span>
-                                </div>
-                                <!-- Like button -->
-                                <button type="button" class="btn btn-outline-primary like-button">Like</button>
-                                <!-- Post Comments -->
-                                <div class="comments mt-3">
-                                    <h5>Comments</h5>
-                                    <ul class="list-unstyled">
-                                        <?php foreach(getPostComments($post) as $comment): ?>
-                                        <li><?php echo getCommentText($comment) ?> - author:<?php echo getCommentAuthor($comment) ?></li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </div>
-                                <div class="attachments mt-3">
-                                    <h5>Attachments : <?php echo count(getPostAttachments($post)); ?></h5>
-                                    <?php loadAttachments($post); ?>
-                                    <div id="fileContainer"></div>
-                                </div>
-                                <!-- Add comment form -->
-                                <form class="mt-3">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Write a comment">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Post Comment</button>
-                                </form>
+                                </ul>
                             </div>
-                    </section>
+                            <div class="attachments">
+                                <h5>Attachments : <?php echo count(getPostAttachments($post)); ?></h5>
+                                <?php loadAttachments($post); ?>
+                                <div id="fileContainer"></div>
+                            </div>
+                            <!-- Add comment form -->
+                            <form class="comment form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Write a comment">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Post Comment</button>
+                                </form>
                 </article>
             </li>
             </div>

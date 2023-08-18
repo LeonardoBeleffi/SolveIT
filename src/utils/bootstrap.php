@@ -7,14 +7,8 @@
     // require database helper for database queries
     require_once "classes/database.php";
 
-<<<<<<< Updated upstream
-    // session variables
-    $_SESSION["ATTACHMENTS_DIRECTORY"] = "./private/attachments";
-    $_SESSION["DEBUG"] = false;
-=======
     // attachments download directory
     $_SESSION["ATTACHMENTS_DIRECTORY"] = "./private/attachments";
->>>>>>> Stashed changes
 
     // silence warning concerning network connections
     error_reporting(E_ERROR | E_PARSE);

@@ -8,12 +8,6 @@
     --footer_img_height:  max(32px, 4.2vh);
 }
 
-<<<<<<< Updated upstream
-.mt-4 {
-    margin-top: 1.5rem!important;
-    margin-bottom: 100px;
-}
-
 .attachments * {
     width: 100%;
 }
@@ -51,8 +45,6 @@ body > main > * {
     margin: 0 auto;
 }
 
-=======
->>>>>>> Stashed changes
 body > main > section {
     height: 92%;
     width: min(95%, 650px);
@@ -69,27 +61,53 @@ body > main > section {
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0px;
     padding: 0;
 }
 
 #post_list > li {
     height: 15vh;
+    display: block;
 }
 
-.post_preview {
-    position: relative;
-    height: 100%;
-    overflow: hidden;
-    font-family: var(--primaryFontFamily);
-    background-color: var(--secondaryColor);
+.post-container{
+    height: 85%;
+    background-color: #999999;
     width: 95%;
     border-radius: 15px;
     margin: auto;
+}
+
+.post-preview {
+    font-family: var(--primaryFontFamily);
+    
     text-overflow: ellipsis;
 }
 
-.post_preview::after {
+.post-opened {
+    display: none;
+    border: 1px solid red;
+}
+
+.card-title{
+    height: 100%;
+}
+
+.card-text{
+    height: 100%;
+}
+
+.post-header{
+    border: 1px solid var(--debugColor);
+
+}
+
+.card-body{
+    border: 1px solid var(--debugColor);
+
+}
+
+/*.post-preview::after {
     position: absolute;
     bottom: 0;  
     height: 100%;
@@ -100,17 +118,9 @@ body > main > section {
         rgba(255,255,255, 1) 0, 
         rgba(255,255,255, 0) 30%
         );*/
-    /* pointer-events: none; */
-}
+    /* pointer-events: none; 
+}*/
 
-.post_preview > h1 {
-    margin-bottom: 0;
-}
-
-article {
-    height: 100%;
-    /* border: 1px solid black; */
-}
 
 body > header > h1 {
     color: var(--primaryTextColor);
@@ -131,10 +141,6 @@ body > footer {
     /*bottom: 0;*/
     height: var(--footer_height);
     background-color: var(--selectionColor);
-}
-
-.post_opened {
-    display: none;
 }
 
 #nav_bar {
