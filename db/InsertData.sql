@@ -41,6 +41,9 @@ INSERT INTO `commento` (`idpost`, `idutente`, `testo`, `timestamp`) VALUES
 (1, 1, 'bel post, caspita un botto utile!', '2023-07-01 21:19:03'),
 (1, 2, 'Lo sapevamo già', '2023-07-01 21:19:03');
 
+INSERT INTO `commento` (`idpost`, `idutente`, `testo`, `timestamp`,`idCommentoPadre`) VALUES
+(1, 2, 'Oh sto commento è annidato, che roba!', '2023-07-01 21:19:03',1);
+
 INSERT INTO `mipiace` (`idpost`, `idutente`) VALUES
 (1, 1),
 (1, 2);

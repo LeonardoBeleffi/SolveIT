@@ -29,20 +29,12 @@
               <button type="button" class="btn btn-outline-primary like-button">Like</button>
               <!-- Post Comments -->
               <div class="comments mt-3">
-                <h5>Comments</h5>
-                <ul class="list-unstyled">
-                <?php foreach(getPostComments($post) as $comment): ?>
-                      <li><?php echo getCommentText($comment) ?> - author:<?php echo getCommentAuthor($comment) ?></li>
-                <?php endforeach; ?>
-                </ul>
+                <h5>Comments : <?php echo count(getPostComments($post)); ?></h5>
+                  <?php loadComments($post); ?>
               </div>
               <div class="attachments mt-3">
-
-              <h5>Attachments : <?php echo count(getPostAttachments($post)); ?></h5>
-
-              <?php loadAttachments($post); ?>
-                <div id="fileContainer"></div>
-                
+                <h5>Attachments : <?php echo count(getPostAttachments($post)); ?></h5>
+                  <?php loadAttachments($post); ?>
               </div>
               <!-- Add comment form -->
               <form class="mt-3">
@@ -55,50 +47,3 @@
     </div>
   <?php endforeach; ?>
   </div>
-
-  <script>
-    function loadFile(file, fileType) {
-      const fileContainer = document.getElementById("fileContainer");
-      fileContainer.innerHTML = ""; // Clear previous content
-      
-      if (fileType.includes("image")) {
-        const img = new Image();
-        img.src = file;
-        img.style.maxWidth = "100%";
-        fileContainer.appendChild(img);
-      } else if (fileType.includes("audio")) {
-        const audio = document.createElement("audio");
-        audio.controls = true;
-        audio.src = file;
-        fileContainer.appendChild(audio);
-      } else if (fileType.includes("video")) {
-        const video = document.createElement("video");
-        video.controls = true;
-        video.style.maxWidth = "100%";
-        video.src = file;
-        fileContainer.appendChild(video);
-      } else if(file.name.endsWith(".pdf")) {
-        const loadingTask = pdfjsLib.getDocument(file);
-        const pdfDocument = await loadingTask.promise;
-
-        for (let pageNum = 1; pageNum <= pdfDocument.numPages; pageNum++) {
-            const page = await pdfDocument.getPage(pageNum);
-            const canvas = document.createElement("canvas");
-            const scale = 1.5;
-            const viewport = page.getViewport({ scale });
-
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-
-            const canvasContext = canvas.getContext("2d");
-            const renderContext = {
-            canvasContext,
-            viewport,
-            };
-
-            await page.render(renderContext);
-            fileContainer.appendChild(canvas);
-        }
-      }
-    }
-  </script>

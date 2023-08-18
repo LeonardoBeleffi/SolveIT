@@ -141,5 +141,39 @@
         return $comment->timestamp;
     }
 
+    function loadComments($post) {
+        echo '<ul class="list-unstyled">';
+        foreach(getPostComments($post) as $comment) {
+            if("" == getCommentParentId($comment)) {
+                echo loadComment($comment,$post);
+            }
+        }
+        echo '</ul>';
+    }
+
+    function loadComment($comment,$post) {
+        return '  <li id="com-'.getCommentId($comment).'" class="comment">
+                    <p>| <strong>'.getCommentAuthor($comment).':</strong> '.getCommentText($comment).'</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your reply">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <div class="replies">
+                    <ul>'.loadCommentChildren($comment,$post).'</ul>
+                    </div>
+                </li>';
+    }
+
+    function loadCommentChildren($comment,$post) {
+        foreach(getPostComments($post) as $children) {
+            if(getCommentParentId($children) == getCommentId($comment)) {
+                return loadComment($children,$post);
+            }
+        }
+    }
+
 ?>
 
