@@ -25,21 +25,20 @@ window.addEventListener("load", () => {
     posts.forEach(post => {
         post.addEventListener("click", (event) => {
             let e = event.target;
-            //post.children[0].style.height = "100%";
-    //post.children[0].children[0].className = "";
-                    
+            console.log(event.currentTarget)
             let toShow = post.querySelector(".post-opened")
             toShow.style.display = "block";
             posts.forEach(element => {
-                let elementPreview = element.querySelector(".post-preview");
-                let elementTitle = element.querySelector(".card-title");
-                let elementText = element.querySelector(".card-text");
-                let elementContainer = element.querySelector(".post-container");
-                if (e == elementPreview || e == elementTitle || e == elementText || e == elementContainer) {
-                    element.style.display = "block";
-                }else{
+                // let elementPreview = element.querySelector(".post-preview");
+                // let elementTitle = element.querySelector(".card-title");
+                // let elementText = element.querySelector(".card-text");
+                // let elementContainer = element.querySelector(".post-container");
+                if (element !== event.currentTarget) {
                     element.style.display = "none";
                 }
+                // }else{
+                //     element.style.display = "none";
+                // }
             });
         }, false);
     });
@@ -50,8 +49,6 @@ window.addEventListener("load", () => {
         posts.forEach(element => {
             let toHide = element.querySelector(".post-opened");
             element.style.display = "block";
-            //element.children[0].children[0].className = "post-preview";
-            //toHide.style.height = "15vh";
             toHide.style.display = "none";
         });
     });

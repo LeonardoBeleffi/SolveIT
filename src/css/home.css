@@ -165,13 +165,11 @@ body > main > section {
     width: 70px;
     font-size: 14pt;
     margin: 0 auto;
-    font-weight: bold;
     color: var(--buttonTextColor);
-    background-color: var(--buttonColor);
-    box-shadow: 1px 1px var(--borderColor);
+    background-color: var(--primaryBackground);
     border-radius: 20px;
     border-color: transparent;
-    border-width: 0;
+    border: 2px solid var(--buttonColor);
 }
 
 .post-preview {
