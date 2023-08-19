@@ -1,66 +1,79 @@
 <section>
     <ul id="post_list">
-            <?php foreach(getPosts() as $post): ?>
-            <li class="list-element">
+        <?php foreach(getPosts() as $post): ?>
+        <li class="list-element">
             <article class="post-container">
-                        <!-- Post Title -->
-                        <div class="post-preview">
-                            <p class="card-title">
-                                <?php echo getPostTitle($post); ?>
-                            </p>
-                            <!-- Post Text -->
-                            <p class="card-text">
-                                <?php echo getPostText($post); ?>
-                            </p>
+                <!-- Post Title -->
+                <div class="post-preview">
+                    <div class = "inline-container">
+                        <div class = "profile-pic">
+                            <p>T</p>
                         </div>
-                        <!-- Post Content -->
-                        <div class="post-opened">
-                            
-                            <!-- Post Tags -->
-                            <div class="tags">Tags: 
-                                <?php foreach(getPostTags($post) as $tag): ?>
-                                <span class="badge bg-secondary">
-                                <?php echo $tag ?>
-                                </span>
-                                <?php endforeach; ?>
-                            </div>
-                            <!-- Post Likes -->
-                            <div class="likes">Likes:
-                                <span class="badge bg-primary">
-                                <?php echo count(getPostLikes($post)); ?>
-                                </span>
-                            </div>
-                            <!-- Like button -->
-                            <button type="button" class="like_button">Like</button>
-                            <!-- Post Comments -->
-                            <div class="comment">
-                                <h5>Comments</h5>
-                                <ul class="list-unstyled">
-                                    <?php foreach(getPostComments($post) as $comment): ?>
-                                    <li><?php echo getCommentText($comment) ?> - author:<?php echo getCommentAuthor($comment) ?></li>
+                        <div class = "cardelement-container">
+                            <div class="card-title">
+                                <h1>
+                                    <?php echo getPostTitle($post); ?>
+                                </h1>
+                            </div>  
+                            <div class = "tags-container">
+                                <!-- Post Tags -->
+                                <div class="tags">
+                                    <?php foreach(getPostTags($post) as $tag): ?>
+                                    <parent class="tag-badge">
+                                    <?php echo $tag ?>
+                                    </span>
                                     <?php endforeach; ?>
-                                </ul>
-                            </div>
-                            <div class="attachments">
-                                <h5>Attachments : <?php echo count(getPostAttachments($post)); ?></h5>
-                                <?php loadAttachments($post); ?>
-                                <div id="fileContainer"></div>
-                            </div>
-                            <!-- Add comment form -->
-                            <form class="comment form">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Write a comment">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Post Comment</button>
-                                </form>
-                </article>
-            </li>
-            </div>
-            <?php endforeach; ?>
+                                <!-- Post Likes -->
+                                <div class="likes">
+                                    <span class="likes-badge">
+                                    <?php echo count(getPostLikes($post)); ?>
+                                    </span>
+                                </div>
+                                <!-- Like button -->
+                                <div class="likeButton">
+                                    <button type="button" class="like-button">Like</button>
+                                </div>
+                                <!-- Post Comments -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Post Text -->
+                    <div class="card-text">
+                        <p>
+                            <?php echo getPostText($post); ?>
+                        </p>
+                    </div>
+                    <!-- Post Content -->
+                    <div class="post-opened">
+                        <div class="comment">
+                            <h5>Comments</h5>
+                            <ul class="list-unstyled">
+                                <?php foreach(getPostComments($post) as $comment): ?>
+                                <li><?php echo getCommentText($comment) ?> - author:<?php echo getCommentAuthor($comment) ?></li>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <div class="attachments">
+                            <h5>Attachments : <?php echo count(getPostAttachments($post)); ?></h5>
+                            <?php loadAttachments($post); ?>
+                            <div id="fileContainer"></div>
+                        </div>
+                        <!-- Add comment form -->
+                        <form class="comment form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Write a comment">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Post Comment</button>
+                        </form>
+            </article>
+        </li>
+        </div>
+        <?php endforeach; ?>
     </ul>
     </div>
 </section>
-  <script>
+<script>
     function loadFile(file, fileType) {
       const fileContainer = document.getElementById("fileContainer");
       fileContainer.innerHTML = ""; // Clear previous content
@@ -84,25 +97,25 @@
       } else if(file.name.endsWith(".pdf")) {
         const loadingTask = pdfjsLib.getDocument(file);
         const pdfDocument = await loadingTask.promise;
-
+        
         for (let pageNum = 1; pageNum <= pdfDocument.numPages; pageNum++) {
-            const page = await pdfDocument.getPage(pageNum);
-            const canvas = document.createElement("canvas");
-            const scale = 1.5;
-            const viewport = page.getViewport({ scale });
-
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
-
-            const canvasContext = canvas.getContext("2d");
-            const renderContext = {
+          const page = await pdfDocument.getPage(pageNum);
+          const canvas = document.createElement("canvas");
+          const scale = 1.5;
+          const viewport = page.getViewport({ scale });
+          
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          
+          const canvasContext = canvas.getContext("2d");
+          const renderContext = {
             canvasContext,
             viewport,
-            };
-
-            await page.render(renderContext);
-            fileContainer.appendChild(canvas);
+          };
+          
+          await page.render(renderContext);
+          fileContainer.appendChild(canvas);
         }
       }
     }
-  </script>
+</script>
