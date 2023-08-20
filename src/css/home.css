@@ -66,12 +66,12 @@ body > main > section {
 }
 
 #post_list > li {
-    height: 20vh;
-    display: block;
+    height: 25vh;
+    display: flex;
 }
 
 .post-container{
-    height: 85%;
+    height: 95%;
     background-color: #999999;
     width: 95%;
     border-radius: 15px;
@@ -122,9 +122,7 @@ body > main > section {
 
 .card-title{
     margin: 0px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    
     color: var(--linkColor);
     font-size: 15pt;
 }
@@ -132,6 +130,9 @@ body > main > section {
     padding: 0;
     margin-top:5px;
     margin-bottom:5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
 }
 
@@ -140,7 +141,17 @@ body > main > section {
     width: 95%;
     margin: auto;
     font-size: 12pt;
+   
 }
+
+ .card-text > p{
+    height: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+ }
 
 .tags{
     height: 100%;
@@ -162,15 +173,46 @@ body > main > section {
     font-family: var(--primaryFontFamily);
 }
 
-.like-button{
-    width: 70px;
+.button{
+    width: fit-content;
     font-size: 14pt;
+    font-weight: bold;
     margin: 0 auto;
     color: var(--buttonTextColor);
-    background-color: var(--primaryBackground);
-    border-radius: 20px;
-    border-color: transparent;
+    background-color: var(--tertiaryBackground);
+    border-radius: 10px;
     border: 2px solid var(--buttonColor);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.button:active {
+    transform: scale(0.92);
+    box-shadow: 2px 2px var(--borderColor);
+    background-color: var(--buttonColor);
+    color: var(--tertiaryBackground);
+    /* transition: all center 100ms linear; */
+}
+
+.form-control{
+    font-size: 14pt;
+    font-weight: bold;
+    margin: 0 auto;
+    color: var(--buttonTextColor);
+    background-color: var(--tertiaryBackground);
+    border-radius: 10px;
+    border: 2px solid var(--primaryBackground);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;  
+}
+
+.form-group{
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 10px;
 }
 
 .post-preview {
@@ -184,17 +226,32 @@ body > main > section {
 }
 
 .post-opened {
+    margin-top: 15px;
     background-color: #999999;
     border-radius: 15px;
     font-family: var(--primaryFontFamily);
     display: none;
 }
 
+.attachments > h5{
+    height: 85%;
+    transform: translateY(7%);
+    width: 95%;
+    margin: auto;
+    font-size: 14pt;
+}
+
+.comments > h5{
+    font-size: 14pt;    
+    width: 95%;
+    margin: auto;
+}
+
 .comments {
     margin-top: 20px;
 }
 .comment {
-    background-color: #f9f9f9;
+    background-color: var(--secondaryBackground);
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;

@@ -27,6 +27,11 @@ window.addEventListener("load", () => {
             let e = event.target;
             let toShow = post.querySelector(".post-opened")
             toShow.style.display = "block";
+            let cardText = post.querySelector(".post-preview").children[1].children[0];
+            // console.log(cardText.textOverflow);
+            // cardText.overflow = "visible";
+            // cardText.whiteSpace = "normal";
+            // cardText.textOverflow = "none";
             posts.forEach(element => {
                 // let elementPreview = element.querySelector(".post-preview");
                 // let elementTitle = element.querySelector(".card-title");
@@ -47,6 +52,9 @@ window.addEventListener("load", () => {
         if (main.children[0].contains(e) || footer.contains(e)) return;
         posts.forEach(element => {
             let toHide = element.querySelector(".post-opened");
+            let cardText = post.querySelector(".post-preview").children[1].children[0];
+            // cardText.overflow = "hidden";
+            // cardText.textoverflow = "ellipsis";
             element.style.display = "block";
             toHide.style.display = "none";
         });
