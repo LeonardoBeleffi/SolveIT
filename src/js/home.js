@@ -25,7 +25,6 @@ window.addEventListener("load", () => {
     posts.forEach(post => {
         post.addEventListener("click", (event) => {
             let e = event.target;
-            console.log(event.currentTarget)
             let toShow = post.querySelector(".post-opened")
             toShow.style.display = "block";
             posts.forEach(element => {

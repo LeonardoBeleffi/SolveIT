@@ -9,7 +9,7 @@
 
     // set post query parameter
     clearPosts();
-    setPostsLimit(10);
+    setPostsLimit(100);
 
     // require post query helper
     require "utils/download.php";
@@ -21,7 +21,7 @@
     setHeader("home/home-header.php");
     setFooter("home/home-footer.php");
     setCSS(["./css/home.css"]);
-    setJS(["./js/home.js"]);
+    setJS(["./js/home.js","./js/posts.js"]);
 
     // require template
     require "template/base.php";

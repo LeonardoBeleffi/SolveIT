@@ -62,6 +62,7 @@ body > main > section {
     display: flex;
     flex-direction: column;
     padding: 0;
+    overflow-y: scroll;
 }
 
 #post_list > li {
@@ -187,6 +188,34 @@ body > main > section {
     border-radius: 15px;
     font-family: var(--primaryFontFamily);
     display: none;
+}
+
+.comments {
+    margin-top: 20px;
+}
+.comment {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+.reply-button {
+    cursor: pointer;
+    color: #007bff;
+}
+.reply-form {
+    display: none;
+    margin-top: 10px;
+}
+.reply {
+    margin-left: 20px;
+}
+
+ul.replies {
+    list-style: none;
+}
+.expanded {
+    display: block;
 }
 
 /* .post-preview > div{

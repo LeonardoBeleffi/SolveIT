@@ -9,7 +9,9 @@ INSERT INTO `utente` ( `email`, `nome`, `username`) VALUES
 ('tizz@blogtw.com', 'Chico Loco', 'tiz');
 
 INSERT INTO `credenziali` ( `password`, `idUtente`) VALUES
-('admin', '1');
+('admin', '1'),
+('sangio', '2'),
+('leo', '3');
 
 
 INSERT INTO `amicizia` (`idSeguace`, `idSeguito`, `timestamp`) VALUES
@@ -45,11 +47,6 @@ INSERT INTO `mipiace` (`idpost`, `idutente`) VALUES
 (1, 1),
 (1, 2);
 
-SELECT p.idPost as postId, u.idUtente as authorId, u.username as authorName, p.titolo as title, p.testo as text, s.nomeSettore as sector, p.timestamp as timestamp
-        FROM post as p, settore as s, pubblicazione as pub, utente as u
-        where p.idPost = 3
-        and p.idPost = pub.idPost and p.idSettore = s.idSettore and pub.idUtente = u.idUtente;
-
 select * from post;
 select * from pubblicazione;
 select * from allegato;
@@ -60,6 +57,7 @@ select * from credenziali;
 select * from tag;
 select * from etichettamento;
 select * from commento;
+select * from mipiace;
 
 # idPost --> idPost, autore, testo, settore, timestamp
 SELECT p.idPost, u.nome as autore, p.testo, s.nomeSettore as settore, p.timestamp

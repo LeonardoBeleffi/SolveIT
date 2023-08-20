@@ -38,7 +38,7 @@
         return $post->authorName;
     }
     
-    function getPostPostId($post) {
+    function getPostId($post) {
         return $post->postId;
     }
     
@@ -139,6 +139,42 @@
 
     function getCommentTimestamp($comment) {
         return $comment->timestamp;
+    }
+
+    function loadComments($post) {
+        echo '<ul class="list-unstyled replies">';
+        foreach(getPostComments($post) as $comment) {
+            if("" == getCommentParentId($comment)) {
+                echo loadComment($comment,$post);
+            }
+        }
+        echo '</ul>';
+    }
+
+    function loadComment($comment,$post) {
+        return '  <li id="com-'.getCommentId($comment).'" class="comment">
+                    <p>| <strong>'.getCommentAuthor($comment).':</strong> '.getCommentText($comment).'</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your reply">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                    <ul class="replies">
+                    '.loadCommentChildren($comment,$post).'
+                    </ul>
+                </li>';
+    }
+
+    function loadCommentChildren($comment,$post) {
+        $ret = "";
+        foreach(getPostComments($post) as $children) {
+            if(getCommentParentId($children) == getCommentId($comment)) {
+                $ret = $ret.loadComment($children,$post);
+            }
+        }
+        return $ret;
     }
 
 ?>

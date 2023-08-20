@@ -15,6 +15,7 @@
         <!-- load CSS -->
         <?php loadCSS()?>
         <!-- load JS -->
+
     </head>
     <body>
         <header>
@@ -31,6 +32,7 @@
             <!-- load footer -->
             <?php require getFooter()?>
         </footer>
+        <script>var _USERNAME = "<?php echo getUsername()?>"</script>
         <?php loadJS()?>
     </body>
 </html>
