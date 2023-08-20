@@ -271,6 +271,19 @@ class DatabaseHelper{
         // }
     }
 
+    // idPost, userId -> 
+    public function insertLike($idPost, $userId){
+        try {
+            $query = "INSERT INTO mipiace (idpost, idutente) VALUES (?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ii',$idPost, $userId);
+            $stmt->execute();
+            return $stmt->insert_id;
+        } catch(Exception $e) {
+            return false;
+        }
+    }
+
     // file, tipo, idPost -> idAllegato
     public function insertAllegato($file, $nome, $tipo, $idPost){
         // try {
@@ -282,7 +295,7 @@ class DatabaseHelper{
             // send file piece by piece
             $fp = fopen($file, "r");
             while (!feof($fp)) {
-                $data = fread($fp, 50);
+                $data = fread($fp, 1000000);
                 $stmt->send_long_data(0, $data);   
             }
             fclose($fp);
@@ -351,6 +364,15 @@ class DatabaseHelper{
     //     $stmt->bind_param('i',$articolo);
     //     return $stmt->execute();
     // }
+
+    // idPost, userId -> \
+    public function deleteLike($idPost, $userId){
+        $query = "DELETE FROM mipiace 
+                    WHERE idUtente = ? and idPost = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$userId, $idPost);
+        return $stmt->execute();
+    }
 
 }
 ?>

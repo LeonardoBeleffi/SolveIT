@@ -33,7 +33,7 @@
             // query post
             $result = $dbh->getPostById($idPost);
             $post->postId = $result[0]["postId"];
-            $post->postId = $result[0]["authorName"];
+            $post->authorName = $result[0]["authorName"];
             $post->title = $result[0]["title"];
             $post->text = $result[0]["text"];
             $post->sector = $result[0]["sector"];

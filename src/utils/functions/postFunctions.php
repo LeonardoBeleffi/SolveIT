@@ -38,7 +38,7 @@
         return $post->authorName;
     }
     
-    function getPostPostId($post) {
+    function getPostId($post) {
         return $post->postId;
     }
     
@@ -142,7 +142,7 @@
     }
 
     function loadComments($post) {
-        echo '<ul class="list-unstyled">';
+        echo '<ul class="list-unstyled replies">';
         foreach(getPostComments($post) as $comment) {
             if("" == getCommentParentId($comment)) {
                 echo loadComment($comment,$post);
