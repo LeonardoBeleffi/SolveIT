@@ -9,7 +9,11 @@
 
     // check files variables -  for $_FILES see "https://www.php.net/manual/en/features.file-upload.multiple.php"
     if(isset($_FILES['attachments']) && isset($_POST['title']) && isset($_POST['text']) && isset($_POST['collabs'])) {
-        echo "error:".$_FILES['attachments']['error'][0]."<br>";
+        $error = $_FILES['attachments']['error'][0];
+        echo "error:".$error."<br>";
+        // handle no file uploaded error
+        $noFileUploaded = $error==4;
+
         foreach ($_FILES['attachments']['name'] as $name) {
             echo $name."<br>";
         }
@@ -25,7 +29,7 @@
         $attachs = array();
         $attachsType = array();
         $attachsName = array();
-        for($i = 0; $i < count($_FILES['attachments']['name']); $i++)
+        for($i = 0; $i < count($_FILES['attachments']['name']) && !$noFileUploaded; $i++)
         {
             array_push($attachs, $_FILES['attachments']['tmp_name'][$i]);
             echo $_FILES['attachments']['type'][$i];

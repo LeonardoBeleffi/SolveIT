@@ -12,7 +12,7 @@ class DatabaseHelper{
     ///POST-RELATED QUERIES -----------------------------------------
     // n --> idPost
     public function getRandomIdPostsByLimit($n){
-        $stmt = $this->db->prepare("SELECT idPost FROM post ORDER BY RAND() LIMIT ?");
+        $stmt = $this->db->prepare("SELECT idPost FROM Post ORDER BY RAND() LIMIT ?");
         $stmt->bind_param('i',$n);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -23,7 +23,7 @@ class DatabaseHelper{
     // idPost --> postId, authorId, authorName, title, text, sector, timestamp
     public function getPostById($idPost){
         $stmt = $this->db->prepare("SELECT p.idPost as postId, u.idUtente as authorId, u.username as authorName, p.titolo as title, p.testo as text, s.nomeSettore as sector, p.timestamp as timestamp
-        FROM post as p, settore as s, pubblicazione as pub, utente as u
+        FROM Post as p, Settore as s, Pubblicazione as pub, Utente as u
         where p.idPost = ? 
         and p.idPost = pub.idPost and p.idSettore = s.idSettore and pub.idUtente = u.idUtente");
         $stmt->bind_param('i',$idPost);
@@ -33,10 +33,23 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // prefix --> postId
+    public function getPostByTitlePrefix($prefix){
+        $stmt = $this->db->prepare("SELECT idPost as postId
+        FROM Post
+        where titolo LIKE '?%'");
+        
+        $stmt->bind_param('s',$prefix);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     // idPost --> tagId, tagName
     public function getTagByPost($idPost){
         $stmt = $this->db->prepare("SELECT t.idTag as tagId, nome as tagName
-        FROM tag as t, etichettamento as e
+        FROM Tag as t, Etichettamento as e
         where e.idPost = ? and e.idTag = t.idTag");
 
         $stmt->bind_param('i',$idPost);
@@ -49,7 +62,7 @@ class DatabaseHelper{
     // idPost --> idAttachment, name, data[bytes], type
     public function getAttachmentByPost($idPost){
         $stmt = $this->db->prepare("SELECT a.idAllegato as idAttachment, nome as name, data, tipo as type
-        FROM allegato as a
+        FROM Allegato as a
         where a.idPost = ?");
 
         $stmt->bind_param('i',$idPost);
@@ -62,7 +75,7 @@ class DatabaseHelper{
     // idPost --> contributorId, contributorName
     public function getContributorsByPost($idPost){
         $stmt = $this->db->prepare("SELECT u.idUtente as contributorId, username as contributorName
-        FROM utente as u, pubblicazione as p
+        FROM Utente as u, Pubblicazione as p
         where p.idPost = ? and p.idUtente = u.idUtente");
 
         $stmt->bind_param('i',$idPost);
@@ -75,7 +88,7 @@ class DatabaseHelper{
     // idPost --> commentId, text, commentAuthorId, commentAuthorName, parentId, timestamp
     public function getCommentsByPost($idPost){
         $stmt = $this->db->prepare("SELECT c.idCommento as commentId, c.testo as text, u.idUtente as commentAuthorId, u.username as commentAuthorName, c.idCommentoPadre as parentId, c.timestamp as timestamp
-        FROM utente as u, post as p, commento as c
+        FROM Utente as u, Post as p, Commento as c
         where p.idPost = ? and c.idUtente = u.idUtente and c.idPost = p.idPost");
 
         $stmt->bind_param('i',$idPost);
@@ -88,7 +101,7 @@ class DatabaseHelper{
     // idPost --> userId, username 
     public function getLikesByPost($idPost){
         $stmt = $this->db->prepare("SELECT u.idUtente as userId, username
-        FROM utente as u, post as p, MiPiace as m
+        FROM Utente as u, Post as p, MiPiace as m
         where p.idPost = ? and m.idPost = p.idPost and m.idUtente = u.idUtente");
 
         $stmt->bind_param('i',$idPost);
@@ -102,7 +115,7 @@ class DatabaseHelper{
 
     public function checkLogin($username, $password){
         $query = "SELECT u.idUtente as idUtente, username, nome 
-        FROM utente as u, credenziali as c 
+        FROM Utente as u, Credenziali as c 
         WHERE u.idUtente = c.idUtente and u.username = ? and c.password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $password);
@@ -112,50 +125,11 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }    
 
-    // prefix --> idUtente, nome, cognome, username, idSettore
-    public function getUsersByPrefix($prefix){
-        $stmt = $this->db->prepare("SELECT idUtente, nome, cognome, username, idSettore
-        FROM utente
-        where username LIKE '?%'");
-        
-        $stmt->bind_param('s',$prefix);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    // idUtente --> idUtente, nome, cognome, username, idSettore, inizioAmicizia
-    public function getFollowersByUser($idUtente){
-        $stmt = $this->db->prepare("SELECT u.idUtente, u.nome, u.cognome, u.username, u.idSettore, a.timestamp as inizioAmicizia
-        FROM utente as u, amicizia as a
-        where u.idUtente = a.idSeguace and a.idSeguito = ?");
-        
-        $stmt->bind_param('i',$idUtente);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-    
-    // idUtente --> idUtente, nome, cognome, username, idSettore, inizioAmicizia
-    public function getFollowingsByUser($idUtente){
-        $stmt = $this->db->prepare("SELECT u.idUtente, u.nome, u.cognome, u.username, u.idSettore, a.timestamp as inizioAmicizia
-        FROM utente as u, amicizia as a
-        where u.idUtente = a.idSeguito and a.idSeguace = ?");
-        
-        $stmt->bind_param('i',$idUtente);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    // idPost --> idUtente, nome, cognome, username, idSettore
+    // idPost --> userId, name, surname, username, sectorId
     public function getUserById($idUtente){
-        $stmt = $this->db->prepare("SELECT idUtente, nome, cognome, username, idSettore
-        FROM utente
-        where idUtente = ?");
+        $stmt = $this->db->prepare("SELECT u.idUtente as userId, u.nome as name, u.cognome as surname, u.username, u.idSettore as sectorId
+        FROM Utente as u
+        where u.idUtente = ?");
         
         $stmt->bind_param('i',$idUtente);
         $stmt->execute();
@@ -164,23 +138,10 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // username --> idUtente, nome, cognome, username, idSettore
-    public function getUserByUsername($username){
-        $stmt = $this->db->prepare("SELECT idUtente, nome, cognome, username, idSettore
-        FROM utente
-        where username = ?");
-        
-        $stmt->bind_param('i',$username);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    // username --> idUtente, nome, cognome, email, username, dataNascita, telefono, idSettore, idImpostazione
+    // username --> userId, name, surname, email, username, birthDate, phoneNumber, sectorId, settingsId
     public function getUserInfoByUsername($username){
-        $stmt = $this->db->prepare("SELECT *
-        FROM utente
+        $stmt = $this->db->prepare("SELECT idUtente as userId, nome as name, cognome as surname, email, username, dataNascita as birthDate, telefono as phoneNumber, idSettore as sectorId, idImpostazione as settingsId
+        FROM Utente
         where username = ?");
         
         $stmt->bind_param('s',$username);
@@ -190,10 +151,62 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // idUtente --> idPubblicazione, idPost, comeCollaboratore
+    // prefix --> userId
+    public function getUsersByPrefix($prefix){
+        $stmt = $this->db->prepare("SELECT idUtente as userId
+        FROM Utente
+        where username LIKE '?%'");
+        
+        $stmt->bind_param('s',$prefix);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // userId --> followerId, friendshipStart
+    public function getFollowersByUser($idUtente){
+        $stmt = $this->db->prepare("SELECT u.idUtente as followerId, a.timestamp as friendshipStart
+        FROM Utente as u, Amicizia as a
+        where u.idUtente = a.idSeguace and a.idSeguito = ?");
+        
+        $stmt->bind_param('i',$idUtente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    // userId --> followingId, friendshipStart
+    public function getFollowingsByUser($idUtente){
+        $stmt = $this->db->prepare("SELECT u.idUtente as followingId, a.timestamp as friendshipStart
+        FROM Utente as u, Amicizia as a
+        where u.idUtente = a.idSeguito and a.idSeguace = ?");
+        
+        $stmt->bind_param('i',$idUtente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // username --> userId
+    public function getUserByUsername($username){
+        $stmt = $this->db->prepare("SELECT idUtente as userId
+        FROM Utente
+        where username = ?");
+        
+        $stmt->bind_param('i',$username);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // idUtente --> publicationId, postId, isCollaborator
     public function getPublicationsByUser($idUtente) {
-        $stmt = $this->db->prepare("SELECT idPubblicazione, idPost, collaboratore as comeCollaboratore
-        FROM pubblicazione as p
+        $stmt = $this->db->prepare("SELECT idPubblicazione as publicationId, idPost as postId, collaboratore as isCollaborator
+        FROM Pubblicazione as p
         where idUtente = ?");
         
         $stmt->bind_param('i',$idUtente);
@@ -204,10 +217,11 @@ class DatabaseHelper{
     }
 
     ///TAG-RELATED QUERIES -----------------------------------------
+
     // nomeTag --> idEtichettamento, idPost, idTag
     public function getEtichettamentoByTagName($nomeTag) {
         $stmt = $this->db->prepare("SELECT *
-        FROM etichettamento as e, tag as t
+        FROM Etichettamento as e, Tag as t
         where t.nome = ? and e.idTag = t.idTag");
         
         $stmt->bind_param('s',$nomeTag);
@@ -217,12 +231,24 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // prefix --> tagId, name
+    public function getTagsByPrefix($prefix){
+        $stmt = $this->db->prepare("SELECT idTag as tagId, nome as name
+        FROM Tag
+        where nome LIKE '?%'");
+        
+        $stmt->bind_param('s',$prefix);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
     /// INSERTSSS-----------
     // Nome, cognome, email, dataNascita, telefono, username -> idUtente
     public function insertUtente($nome, $cognome, $email, $dataNascita, $telefono, $username){
         try {
-            $query = "INSERT INTO utente (nome, cognome, email, dataNascita, telefono, username) VALUES (?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO Utente (nome, cognome, email, dataNascita, telefono, username) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ssssss',$nome, $cognome, $email, $dataNascita, $telefono, $username);
             $stmt->execute();
@@ -236,7 +262,7 @@ class DatabaseHelper{
     // idUtente, password -> idCredenziali
     public function insertCredenziali($idUtente, $password){
         try {
-            $query = "INSERT INTO credenziali (idUtente, password) VALUES (?, ?)";
+            $query = "INSERT INTO Credenziali (idUtente, password) VALUES (?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('is',$idUtente, $password);
             $stmt->execute();
@@ -249,7 +275,7 @@ class DatabaseHelper{
     // idPost, userId, text, timestamp, parentCommentId -> commentId
     public function insertCommento($idPost, $userId, $text, $timestamp, $parentCommentId){
         // try {
-            $query = "INSERT INTO commento (idpost, idutente, testo, timestamp, idCommentoPadre) VALUES (?, ?, ?, ?, ?)";
+            $query = "INSERT INTO Commento (idPost, idUtente, testo, timestamp, idCommentoPadre) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('iissi',$idPost, $userId, $text, $timestamp, $parentCommentId);
             $stmt->execute();
@@ -262,7 +288,7 @@ class DatabaseHelper{
     // idPost, userId -> 
     public function insertLike($idPost, $userId){
         try {
-            $query = "INSERT INTO mipiace (idpost, idutente) VALUES (?, ?)";
+            $query = "INSERT INTO MiPiace (idPost, idUtente) VALUES (?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ii',$idPost, $userId);
             $stmt->execute();
@@ -276,7 +302,7 @@ class DatabaseHelper{
     public function insertAllegato($file, $nome, $tipo, $idPost){
         // try {
             $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
-            $query = "INSERT INTO allegato (data, nome, tipo, idPost) VALUES (?, ?, ?, ?)";
+            $query = "INSERT INTO Allegato (data, nome, tipo, idPost) VALUES (?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $null = NULL;
             $stmt->bind_param('bssi', $null, $nome, $tipo, $idPost);
@@ -298,7 +324,7 @@ class DatabaseHelper{
     public function insertPubblicazione($idUtente, $idPost, $collaboratore){
         try {
             $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
-            $query = "INSERT INTO pubblicazione (idUtente, idPost, collaboratore) VALUES (?, ?, ?)";
+            $query = "INSERT INTO Pubblicazione (idUtente, idPost, collaboratore) VALUES (?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('iii',$idUtente, $idPost, $collaboratore);
             $stmt->execute();
@@ -312,7 +338,7 @@ class DatabaseHelper{
     public function insertPost($titolo, $testo, $timestamp, $idSettore){
         try {
             $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
-            $query = "INSERT INTO post (titolo, testo, timestamp, idSettore) VALUES (?, ?, ?, ?)";
+            $query = "INSERT INTO Post (titolo, testo, timestamp, idSettore) VALUES (?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('sssi',$titolo, $testo, $timestamp, $idSettore);
             $stmt->execute();
@@ -355,7 +381,7 @@ class DatabaseHelper{
 
     // idPost, userId -> \
     public function deleteLike($idPost, $userId){
-        $query = "DELETE FROM mipiace 
+        $query = "DELETE FROM MiPiace 
                     WHERE idUtente = ? and idPost = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii',$userId, $idPost);

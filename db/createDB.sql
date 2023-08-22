@@ -10,7 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema epiz_34305586_solveit
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `epiz_34305586_solveit` ;
+-- DROP SCHEMA IF EXISTS `epiz_34305586_solveit` ;
 
 -- -----------------------------------------------------
 -- Schema epiz_34305586_solveit
