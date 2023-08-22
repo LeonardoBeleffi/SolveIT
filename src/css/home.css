@@ -86,14 +86,12 @@ body > main > section {
     gap: 15px;
 }
 
-
 .like-section {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     gap: 10px;
 }
-
 
 .username {
     color: var(--linkColor);
@@ -195,7 +193,6 @@ body > main > section {
     font-size: 13pt;
 }
 
-
 .button {
     width: fit-content;
     font-size: 14pt;
@@ -231,7 +228,7 @@ body > main > section {
     user-select: none;  
 }
 
-.form-control:focus{
+.form-control:focus {
     outline: solid var(--selectionColor);
 }
 
@@ -305,7 +302,7 @@ ul.replies {
     display: block;
 }
 
-/* .post-preview > div{
+/* .post-preview > div {
     background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
     padding: 20px 0;
@@ -327,7 +324,7 @@ ul.replies {
     /* pointer-events: none; 
 }*/
 
-.card-body{
+.card-body {
     border: 1px solid var(--debugColor);
 
 }
