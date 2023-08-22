@@ -6,17 +6,17 @@
                 <!-- Post Title -->
                 <div class="post-preview">
                 
-                    <div class = "inline-container">
-                    <!-- <div class = "profile-pic"> -->
-                            <span class = "profile-pic"><?php echo strtoupper(substr(getPostAuthor($post),0,1)); ?> </span>
+                    <div class="inline-container">
+                    <!-- <div class="profile-pic"> -->
+                            <span class="profile-pic"><?php echo strtoupper(substr(getPostAuthor($post),0,1)); ?> </span>
                         <!-- </div>         -->
-                        <div class = "cardelement-container">
+                        <div class="cardelement-container">
                             <div class="card-title">
                                 <h1>
                                     <?php echo getPostTitle($post); ?>
                                 </h1>
                             </div>
-                            <div class = "tags-container">
+                            <div class="tags-container">
                                 <!-- Post Tags -->
                                 <div class="tags">
                                     <?php foreach(getPostTags($post) as $tag): ?>
@@ -36,9 +36,9 @@
                             <?php echo getPostText($post); ?>
                         </p>
                     </div>
-                    <div class = "likes-container">
+                    <div class="likes-container">
                         <!-- Like button -->
-                        <div class = "username">
+                        <div class="username">
                             <span>@<?php echo getPostAuthor($post); ?> </span>
                         </div>
                         <div class="like-section">
