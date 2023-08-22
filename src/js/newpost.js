@@ -18,6 +18,25 @@ const fileList = document.querySelector('.file-list');
     box.classList.remove('is-dragover');
 }), false );
 
+window.addEventListener("load", () => {
+    nav_bar_links = Array.from(document.querySelectorAll("#nav_bar")[0].children);
+
+    nav_bar_links.forEach(link => {
+        let url = window.location.pathname;
+        let filename = url.substring(url.lastIndexOf('/')+1);
+        let hrefLocal = link.href.split("/");
+        let hrefFilename = hrefLocal[hrefLocal.length - 1]
+        console.log(link.href, filename, hrefLocal, hrefFilename)
+        if(hrefFilename[hrefFilename.length-1] == "#")
+            hrefFilename = hrefFilename.substring(0, hrefFilename.length-1);
+        if(filename == hrefFilename){
+            link.className = "selected_link";
+        }else
+        link.className = "";
+    });
+});
+
+
 // add drop listener to box
 box.addEventListener('drop', function(e) {
     droppedFiles = e.dataTransfer.files;

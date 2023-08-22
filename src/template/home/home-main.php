@@ -5,10 +5,11 @@
             <article class="post-container post" id="post-<?php echo getPostId($post); ?>">
                 <!-- Post Title -->
                 <div class="post-preview">
+                
                     <div class = "inline-container">
-                        <div class = "profile-pic">
-                            <p>T</p>
-                        </div>
+                    <!-- <div class = "profile-pic"> -->
+                            <span class = "profile-pic"><?php echo strtoupper(substr(getPostAuthor($post),0,1)); ?> </span>
+                        <!-- </div>         -->
                         <div class = "cardelement-container">
                             <div class="card-title">
                                 <h1>
@@ -24,16 +25,6 @@
                                     </span>
                                     <?php endforeach; ?>
                                 </div>
-                                <!-- Like button -->
-                                <div class="likeButton">
-                                    <button type="button" onclick="addLike(event)" class="button">Like</button>
-                                </div>
-                                <!-- Post Likes -->
-                                <div class="likes">
-                                    <span class="likes-count likes-badge">
-                                    liked by <?php echo count(getPostLikes($post)); ?> people
-                                    </span>
-                                </div>
                                 <!-- Post Comments -->
                             </div>
                         </div>
@@ -45,6 +36,24 @@
                             <?php echo getPostText($post); ?>
                         </p>
                     </div>
+                    <div class = "likes-container">
+                        <!-- Like button -->
+                        <div class = "username">
+                            <span>@<?php echo getPostAuthor($post); ?> </span>
+                        </div>
+                        <div class="like-section">
+                        <!-- Like button -->
+                        <div class="like-button">
+                            <button type="button" onclick="addLike(event)" class="button">Like</button>
+                        </div>
+                        <!-- Post Likes -->
+                        <div class="likes">
+                            <span class="likes-count likes-badge">
+                            liked by <?php echo count(getPostLikes($post)); ?>
+                            </span>
+                        </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Post Content -->
                 <div class="post-opened">
@@ -55,7 +64,7 @@
                     </div>
                     <!-- Post Comments -->
                     <div class="comments">
-                        <h5>Comments : <?php echo count(getPostComments($post)); ?></h5>
+                        <h5 class ="comments-count">Comments : <?php echo count(getPostComments($post)); ?></h5>
                         <?php loadComments($post); ?>
                         <!-- Add comment form -->
                         <form onsubmit="addComment(event)" class="root-comment">

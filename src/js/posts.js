@@ -44,6 +44,7 @@ function addComment(event) {
                 if (xhr.status === 200) {
                     const response = JSON.parse(xhr.responseText);
                     const commentId = response.commentId;
+                    const commentNumber = response.commentNumber;
 
                     console.log(xhr.responseText);
 
@@ -54,6 +55,9 @@ function addComment(event) {
                         repliesContainer = getRootReplies(form);
                     }
                     repliesContainer.innerHTML = repliesContainer.innerHTML + generateComment("com-"+commentId,replyText,_USERNAME);
+                    let commentsSection = document.querySelector("#post-"+postId+' .comments-count');
+                    console.log(commentNumber);
+                    commentsSection.innerHTML = "Comments: "+ commentNumber;
                     input.value = '';
                     if(!isRootComment) {
                         form.classList.toggle('expanded');
@@ -101,7 +105,7 @@ function addLike(event) {
                 const likes = response.likes;
 
                 const likesCount = document.querySelector("#post-"+postId+' .likes-count');
-                likesCount.innerHTML = likes;
+                likesCount.innerHTML = "liked by: "+ likes;
             } else {
                 console.error('Failed to add comment reply.');
             }

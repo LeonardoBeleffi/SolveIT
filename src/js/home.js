@@ -13,6 +13,21 @@ window.addEventListener("load", () => {
     body = document.querySelectorAll("body")[0];
     footer = body.children[2];
 
+    nav_bar_links.forEach(link => {
+        let url = window.location.pathname;
+        let filename = url.substring(url.lastIndexOf('/')+1);
+        let hrefLocal = link.href.split("/");
+        let hrefFilename = hrefLocal[hrefLocal.length - 1]
+        console.log(url, filename, hrefLocal, hrefFilename)
+        if(hrefFilename[hrefFilename.length-1] == "#")
+            hrefFilename = hrefFilename.substring(0, hrefFilename.length-1);
+        if(filename == hrefFilename){
+            link.className = "selected_link";
+        }else
+        link.className = "";
+
+    });
+
     nav_bar_links.forEach(event => {
         event.addEventListener("click", (event) => {
             let e = event.target;
@@ -40,9 +55,6 @@ window.addEventListener("load", () => {
                 if (element !== event.currentTarget) {
                     element.style.display = "none";
                 }
-                // }else{
-                //     element.style.display = "none";
-                // }
             });
         }, false);
     });
@@ -52,7 +64,7 @@ window.addEventListener("load", () => {
         if (main.children[0].contains(e) || footer.contains(e)) return;
         posts.forEach(element => {
             let toHide = element.querySelector(".post-opened");
-            let cardText = post.querySelector(".post-preview").children[1].children[0];
+            //let cardText = post.querySelector(".post-preview").children[1].children[0];
             // cardText.overflow = "hidden";
             // cardText.textoverflow = "ellipsis";
             element.style.display = "block";

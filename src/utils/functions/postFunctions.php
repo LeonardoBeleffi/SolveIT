@@ -158,8 +158,8 @@
                     <form onsubmit="addComment(event)" class="reply-form">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Your reply">
+                            <button type="submit" class="button">Submit</button>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                     <ul class="replies">
                     '.loadCommentChildren($comment,$post).'
