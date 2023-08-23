@@ -4,6 +4,7 @@ class DatabaseHelper{
 
     public function __construct($servername, $username, $password, $dbname, $port){
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
+        $this->db->set_charset("utf8");
         if ($this->db->connect_error) {
             die("Connection failed: " . $db->connect_error);
         }        
