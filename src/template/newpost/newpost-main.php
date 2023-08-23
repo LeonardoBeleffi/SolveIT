@@ -7,7 +7,16 @@
                 <div>
                     <label>Title<input type="text" name="title" /></label>
                     <label>Text<input type="text" name="text" /></label>
-                    <label>Collaborators (ToDo)<input type="text" name="collabs" /></label>
+                    <section>
+                        <label>Tags<input class="tag_input" type="text" name="tags_cover" /></label>
+                        <input class="real_input" type="text" name="tags" hidden/>
+                        <ul class="selected-list"></ul>
+                    </section>
+                    <section>
+                        <label>Collaborators<input class="collab_input" type="text" name="collabs_cover" /></label>
+                        <input class="real_input" type="text" name="collabs" hidden/>
+                        <ul class="selected-list"></ul>
+                    </section>
                     <label>Attatachments
                     <div class="upload-area">
                         <p>Drag and drop files here</p>
@@ -16,6 +25,7 @@
                         <input id="fileInput" type="file" multiple>
                     </div></label>
                     <div class="file-list" ></div>
+                    <div class="suggestions"></div>
                 </div>
                 <input type="submit" value="Upload" />
             </div>

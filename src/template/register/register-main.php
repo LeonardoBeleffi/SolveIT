@@ -12,7 +12,9 @@
                     <label>Email<input type="email" id="email" name="email" /></label>
                     <label>Username<input type="text" id="username" name="username" /></label>
                     <label>Password<input type="password" id="password" name="password" /></label>
+                    <label>Sector<input type="text" id="sector" name="sector" /></label>
                 </div>
+                <div class="suggestions"></div>
                 <input type="submit" value="Sign Up" />
             </div>
         </form>

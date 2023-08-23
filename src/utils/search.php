@@ -17,8 +17,15 @@
             // get tags
             array_push($_tags, $tag["name"]);
         }
+        // search sectors
+        $_sectors = [];
+        $sectors = $dbh->getSectorsByPrefix($_POST["text"]);
+        foreach($sectors as $sector) {
+            // get sectors
+            array_push($_sectors, $sector["sectorName"]);
+        }
         // on success
-        $array = ['usernames' => $_usernames,'tags' => $_tags];
+        $array = ['usernames' => $_usernames,'tags' => $_tags,'sectors' => $_sectors];
         echo json_encode($array);
         http_response_code(200);
         exit();   

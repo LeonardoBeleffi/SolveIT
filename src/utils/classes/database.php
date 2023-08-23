@@ -113,8 +113,9 @@ class DatabaseHelper{
 
     ///USER-RELATED QUERIES -----------------------------------------
 
+    // username, password --> userId, username, name, sectorId
     public function checkLogin($username, $password){
-        $query = "SELECT u.idUtente as idUtente, username, nome 
+        $query = "SELECT u.idUtente as userId, username, nome as name, u.idSettore as sectorId 
         FROM Utente as u, Credenziali as c 
         WHERE u.idUtente = c.idUtente and u.username = ? and c.password = ?";
         $stmt = $this->db->prepare($query);
@@ -151,12 +152,13 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // prefix --> userId
+    // prefix --> userId, username
     public function getUsersByPrefix($prefix){
-        $stmt = $this->db->prepare("SELECT idUtente as userId
+        $stmt = $this->db->prepare("SELECT idUtente as userId, username
         FROM Utente
-        where username LIKE '?%'");
+        where username LIKE ?");
         
+        $prefix = $prefix."%";
         $stmt->bind_param('s',$prefix);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -235,9 +237,51 @@ class DatabaseHelper{
     public function getTagsByPrefix($prefix){
         $stmt = $this->db->prepare("SELECT idTag as tagId, nome as name
         FROM Tag
-        where nome LIKE '?%'");
+        where nome LIKE ?");
         
+        $prefix = $prefix."%";
         $stmt->bind_param('s',$prefix);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    // tagName --> tagId, name
+    public function getTagByName($tagName){
+        $stmt = $this->db->prepare("SELECT idTag as tagId, nome as name
+        FROM Tag
+        where nome = ?");
+        
+        $stmt->bind_param('s',$tagName);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    ///SECTOR-RELATED QUERIES -----------------------------------------
+
+    // prefix --> sectorId, sectorName
+    public function getSectorsByPrefix($prefix){
+        $stmt = $this->db->prepare("SELECT idSettore as sectorId, nomeSettore as sectorName
+        FROM Settore
+        where nomeSettore LIKE ?");
+        
+        $prefix = $prefix."%";
+        $stmt->bind_param('s',$prefix);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // prefix --> sectorId, sectorName
+    public function getSectorByName($name){
+        $stmt = $this->db->prepare("SELECT idSettore as sectorId, nomeSettore as sectorName
+        FROM Settore
+        where nomeSettore = ?");
+        
+        $stmt->bind_param('s',$name);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -246,11 +290,11 @@ class DatabaseHelper{
     
     /// INSERTSSS-----------
     // Nome, cognome, email, dataNascita, telefono, username -> idUtente
-    public function insertUtente($nome, $cognome, $email, $dataNascita, $telefono, $username){
+    public function insertUtente($nome, $cognome, $email, $dataNascita, $telefono, $username, $idSettore){
         try {
-            $query = "INSERT INTO Utente (nome, cognome, email, dataNascita, telefono, username) VALUES (?, ?, ?, ?, ?, ?)";
+            $query = "INSERT INTO Utente (nome, cognome, email, dataNascita, telefono, username, idSettore) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('ssssss',$nome, $cognome, $email, $dataNascita, $telefono, $username);
+            $stmt->bind_param('ssssssi',$nome, $cognome, $email, $dataNascita, $telefono, $username, $idSettore);
             $stmt->execute();
             
             return $stmt->insert_id;
@@ -334,6 +378,33 @@ class DatabaseHelper{
         }
     }
 
+    // nomeTag -> idTag
+    public function insertTag($nomeTag){
+        try {
+            $query = "INSERT INTO Tag (nome) VALUES (?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('s',$nomeTag);
+            $stmt->execute();
+            return $stmt->insert_id;
+        } catch(Exception $e) {
+            return false;
+        }
+    }
+
+    // idPost, idTag -> idEtichettamento
+    public function insertEtichettamento($idPost, $idTag){
+        // try {
+            $query = "INSERT INTO Etichettamento (idPost, idTag) VALUES (?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ii',$idPost, $idTag);
+            $stmt->execute();
+            return $stmt->insert_id;
+        // } catch(Exception $e) {
+        //     return false;
+        // }
+    }
+
+
     // titolo, testo, timestamp -> idPost
     public function insertPost($titolo, $testo, $timestamp, $idSettore){
         try {
@@ -350,7 +421,7 @@ class DatabaseHelper{
 
 
     // titolo, testo, timestamp, idSettore, allegati, tipoAllegati, collaboratori, autore -> idPost
-    public function uploadPost($titolo, $testo, $timestamp, $idSettore, $allegati, $nomeAllegati, $tipoAllegati, $collaboratori, $autore) {
+    public function uploadPost($titolo, $testo, $timestamp, $idSettore, $allegati, $nomeAllegati, $tipoAllegati, $collaboratori, $tags, $autore) {
         // insert post
         $idPost = $this->insertPost($titolo, $testo, $timestamp, $idSettore);
         if($idPost === false) {
@@ -361,6 +432,12 @@ class DatabaseHelper{
         // insert collabs
         foreach ($collaboratori as $collaboratore) {
             $this->insertPubblicazione($collaboratore, $idPost, 1);
+        }
+        // insert tags
+        foreach ($tags as $tag) {
+            $this->insertTag($collaboratore, $idPost, 1);
+            $tagId = $this->getTagByName($tag)[0]["tagId"];
+            $this->insertEtichettamento($idPost, $tagId);
         }
         // insert attachments 
         for($i = 0; $i < count($allegati); $i++) {

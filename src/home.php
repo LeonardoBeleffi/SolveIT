@@ -4,8 +4,9 @@
     
     // check login routine
     checkUserLogin();
-    //echo "Username: " . getUsername() . "<br>".
-    //    "idUtente: " . getIdUtente();
+    // echo "Username: " . getUsername() . "<br>".
+    // "idUtente: " . getIdUtente(). "<br>".
+    // "sectorId: " . getUserSectorId();
 
     // set post query parameter
     clearPosts();

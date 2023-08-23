@@ -12,14 +12,16 @@
         !empty($_SESSION['idUtente']) && !empty($_SESSION['username']) ;
     }
 
-    function loginUser($idUtente, $username){
+    function loginUser($idUtente, $username, $sectorId){
         $_SESSION["idUtente"] = $idUtente;
         $_SESSION["username"] = $username;
+        $_SESSION["userSectorId"] = $sectorId;
     }
 
     function logoutUser(){
         unset($_SESSION['idUtente']);
         unset($_SESSION['username']);
+        unset($_SESSION['userSectorId']);
     }
 
     function getUsername() {
@@ -28,6 +30,10 @@
 
     function getIdUtente() {
         return getSessionVar("idUtente");
+    }
+
+    function getUserSectorId() {
+        return getSessionVar("userSectorId");
     }
 ?>
 

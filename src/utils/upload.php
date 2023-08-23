@@ -6,9 +6,9 @@
     checkUserLogin();
 
     setErrorMsg("");
-
+    var_dump($_POST);
     // check files variables -  for $_FILES see "https://www.php.net/manual/en/features.file-upload.multiple.php"
-    if(isset($_FILES['attachments']) && isset($_POST['title']) && isset($_POST['text']) && isset($_POST['collabs'])) {
+    if(isset($_FILES['attachments']) && isset($_POST['title']) && isset($_POST['text']) && isset($_POST['collabs'])  && isset($_POST['tags'])) {
         $error = $_FILES['attachments']['error'][0];
         echo "error:".$error."<br>";
         // handle no file uploaded error
@@ -25,6 +25,8 @@
         foreach ($_FILES['attachments']['tmp_name'] as $tmp_name) {
             echo $tmp_name."<br>";
         }
+        echo "tags:".var_dump(explode(";", $_POST['tags']))."<br>";
+        echo "collabs:".var_dump(explode(";", $_POST['collabs']))."<br>";
         // opnening attachments
         $attachs = array();
         $attachsType = array();
@@ -38,7 +40,7 @@
             array_push($attachsName, $_FILES['attachments']['name'][$i]);
         }
         // uploading post
-        $idPost = $dbh->uploadPost($_POST['title'], $_POST['text'], date("Y-m-d H:i:s"), 1, $attachs, $attachsName, $attachsType, array()/*$_POST['collabs']*/, getIdUtente());
+        $idPost = $dbh->uploadPost($_POST['title'], $_POST['text'], date("Y-m-d H:i:s"), getUserSector(), $attachs, $attachsName, $attachsType, explode(";", $_POST['collabs']), explode(";", $_POST['tags']), getIdUtente());
 
         if($idPost === false) {
             setErrorMsg("Failed uploading Post.");

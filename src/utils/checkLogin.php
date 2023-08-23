@@ -12,7 +12,8 @@
         $result = $dbh->checkLogin($_POST["username"], $_POST["password"]);
 
         if(count($result)!=0){
-            loginUser($result[0]["idUtente"], $result[0]["username"]);
+            echo var_dump($result);
+            loginUser($result[0]["userId"], $result[0]["username"], $result[0]["sectorId"]);
             goToHome();
         }
     }

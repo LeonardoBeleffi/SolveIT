@@ -2,11 +2,17 @@ USE `epiz_34305586_solveit` ;
 
 select * from Utente;
 
-INSERT INTO `Utente` ( `email`, `nome`, `username`) VALUES
-('admin@blogtw.com', 'Admin Nimda', 'admin'),
-('sangio@blogtw.com', 'Gino Pino', 'sangio'),
-('leo@blogtw.com', 'Cippa Lippa', 'leo'),
-('tizz@blogtw.com', 'Chico Loco', 'tiz');
+
+INSERT INTO `Settore` (`nomeSettore`) VALUES
+('officina'),
+('ufficio tecnico'),
+('ufficio amministrazione');
+
+INSERT INTO `Utente` ( `email`, `nome`, `username`, `idSettore`) VALUES
+('admin@blogtw.com', 'Admin Nimda', 'admin',1),
+('sangio@blogtw.com', 'Gino Pino', 'sangio',2),
+('leo@blogtw.com', 'Cippa Lippa', 'leo',2),
+('tizz@blogtw.com', 'Chico Loco', 'tiz',3);
 
 INSERT INTO `Credenziali` ( `password`, `idUtente`) VALUES
 ('admin', '1'),
@@ -18,9 +24,6 @@ INSERT INTO `Amicizia` (`idSeguace`, `idSeguito`, `timestamp`) VALUES
 (1, 2, '2023-07-01 21:19:03'),
 (2, 1, '2023-07-03 13:40:53');
 
-
-INSERT INTO `Settore` (`nomeSettore`) VALUES
-('officina');
 
 
 INSERT INTO `Post` (`idSettore`, `titolo`, `testo`, `timestamp`) VALUES
