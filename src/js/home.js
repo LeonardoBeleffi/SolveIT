@@ -1,5 +1,4 @@
 "use strict";
-
 let nav_bar_links;
 let posts;
 let body;
@@ -13,20 +12,7 @@ window.addEventListener("load", () => {
     body = document.querySelectorAll("body")[0];
     footer = body.children[2];
 
-    nav_bar_links.forEach(link => {
-        let url = window.location.pathname;
-        let filename = url.substring(url.lastIndexOf('/')+1);
-        let hrefLocal = link.href.split("/");
-        let hrefFilename = hrefLocal[hrefLocal.length - 1]
-        console.log(url, filename, hrefLocal, hrefFilename)
-        if(hrefFilename[hrefFilename.length-1] == "#")
-            hrefFilename = hrefFilename.substring(0, hrefFilename.length-1);
-        if(filename == hrefFilename){
-            link.className = "selected_link";
-        }else
-        link.className = "";
-
-    });
+    initializeNavBar(nav_bar_links);
 
     nav_bar_links.forEach(event => {
         event.addEventListener("click", (event) => {

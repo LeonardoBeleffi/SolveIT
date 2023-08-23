@@ -21,7 +21,7 @@
     setHeader("home/home-header.php");
     setFooter("home/home-footer.php");
     setCSS(["./css/home.css"]);
-    setJS(["./js/home.js","./js/posts.js"]);
+    setJS(["./js/home.js","./js/posts.js","./js/shared.js"]);
 
     // require template
     require "template/base.php";

@@ -12,7 +12,7 @@
     setHeader("search/search-header.php");
     setFooter("home/home-footer.php");
     setCSS(["./css/search.css"]);
-    setJS(["./js/search.js"]);
+    setJS(["./js/search.js","./js/shared.js"]);
 
     // require template
     require "template/base.php";

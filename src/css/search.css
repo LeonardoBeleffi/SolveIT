@@ -1,53 +1,33 @@
-.upload-area {
+@import "./home.css";
+
+
+/* .upload-area {
     border: 2px dashed #ccc;
     padding: 20px;
     text-align: center;
     background-color: #ffffff;
-  }
+  } */
   
-  .suggestions {
-    margin-top: 10px;
-    max-height: 150px;
-    overflow-y: auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-}
-.suggestion {
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 5px;
-    transition: background-color 0.2s;
-}
-.suggestion:hover {
-    background-color: #f0f0f0;
-}
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
 .container {
-    max-width: 800px;
+    height: min(100px, 15vh);
     margin: auto;
     padding: 20px;
 }
+
 .search-section {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    padding: 20px;
+    height: 100%;
     border-radius: 5px;
     margin-bottom: 20px;
 }
+
 .search-input {
     width: 100%;
-    padding: 10px;
     font-size: 16px;
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
+
 .suggestions {
     margin-top: 10px;
     max-height: 150px;
@@ -56,12 +36,14 @@ body {
     border-radius: 5px;
     padding: 10px;
 }
+
 .suggestion {
     cursor: pointer;
     padding: 5px;
     border-radius: 5px;
     transition: background-color 0.2s;
 }
+
 .suggestion:hover {
     background-color: #f0f0f0;
 }

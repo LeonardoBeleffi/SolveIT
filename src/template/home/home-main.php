@@ -69,7 +69,7 @@
                         <!-- Add comment form -->
                         <form onsubmit="addComment(event)" class="root-comment">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Write a comment">
+                                <input type="text" class="form-input" placeholder="Write a comment">
                                 <button type="submit" class="btn button">Post Comment</button>
                             </div>
                         </form>
