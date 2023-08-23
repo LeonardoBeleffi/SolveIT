@@ -8,7 +8,11 @@
                 
                     <div class="inline-container">
                     <!-- <div class="profile-pic"> -->
-                            <span class="profile-pic"><?php echo strtoupper(substr(getPostAuthor($post),0,1)); ?> </span>
+                            <span class="profile-pic"><?php 
+                            if(getPostAuthor($post))
+                                echo strtoupper(substr(getPostAuthor($post),0,1));
+                            echo ""
+                            ?> </span>
                         <!-- </div>         -->
                         <div class="cardelement-container">
                             <div class="card-title">

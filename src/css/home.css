@@ -49,8 +49,9 @@ body > main > section {
     height: 92%;
     width: min(95%, 650px);
     background-color: var(--tertiaryBackground);
-    border: 1pt solid var(--borderColor);
-    box-shadow: 0 2px 0 0 var(--disabledTextColor);
+    border:none;  
+    box-shadow: 0 0 5px rgba(0,0,0, 0.3);
+    /* border: 1pt solid var(--borderColor); */
     border-radius: 15px;
     overflow: hidden;
 }
@@ -60,8 +61,8 @@ body > main > section {
     height: 100%;
     margin: 0;
     display: block;
-    padding: 0;
-    overflow-y: scroll;
+    padding: 10px 0;
+    overflow-y: auto;
 }
 
 #post_list > li {
@@ -70,7 +71,9 @@ body > main > section {
 
 .post-container {
     height: min(135px, 20vh);
-    background-color: #999999;
+    background-color: var(--secondaryColor);
+    border:none;
+    box-shadow: 0 0 5px rgba(0,0,0, 0.3);
     width: 95%;
     border-radius: 15px;
     margin: auto;
@@ -228,8 +231,8 @@ body > main > section {
     user-select: none;  
 }
 
-.form-control:focus {
-    outline: solid var(--selectionColor);
+:focus {
+    outline: 2px solid var(--buttonColor);
 }
 
 .form-group {
@@ -347,7 +350,7 @@ body > footer {
     width: 100%;
     /*bottom: 0;*/
     height: var(--footer_height);
-    background-color: var(--selectionColor);
+    background-color: var(--buttonColor);
 }
 
 #nav_bar {
@@ -373,7 +376,7 @@ body > footer {
 
 .selected_link {
     display: block;
-    background-color: var(--selectionColor);
+    background-color: var(--buttonColor);
     bottom: 0;
     border-radius: 25% 25% 0 0;
 }

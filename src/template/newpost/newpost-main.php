@@ -17,7 +17,7 @@
                         <input class="real_input" type="text" name="collabs" hidden/>
                         <ul class="selected-list"></ul>
                     </section>
-                    <label>Attatachments
+                    <label>Attachments
                     <div class="upload-area">
                         <p>Drag and drop files here</p>
                         <br> or<br>

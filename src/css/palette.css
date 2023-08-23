@@ -10,14 +10,15 @@
     --primaryTextColor: #0F0F0F;
     --secondaryTextColor: #292929;
     --disabledTextColor: #474747;
+    --placeholderColor: #A3A3A3;
     --linkColor: #322E9D;
-    --selectionColor: #13F6A3;
+    --selectionColor: #07C57F;
     --debugColor: #ff0000;
     --primaryFontFamily: "Trebuchet MS";
 }
 
 ::selection {
     color: #0F0F0F;
-    background: #13F6A3;
+    background: #07C57F;
 }
 

@@ -37,7 +37,7 @@ function search(event) {
 
 function displayTag(tag) {
     const suggestionsContainer = document.querySelector('.suggestions');
-    const suggestionElement = document.createElement('div');
+    const suggestionElement = document.createElement('span');
     suggestionElement.classList.add('suggestion');
     suggestionElement.textContent = "# "+tag;
     // suggestionElement.addEventListener('click', () => {
@@ -49,7 +49,7 @@ function displayTag(tag) {
 
 function displayUsername(username) {
     const suggestionsContainer = document.querySelector('.suggestions');
-    const suggestionElement = document.createElement('div');
+    const suggestionElement = document.createElement('span');
     suggestionElement.classList.add('suggestion');
     suggestionElement.textContent = "/°\\ "+ username;
     // suggestionElement.addEventListener('click', () => {

@@ -12,16 +12,7 @@ window.addEventListener("load", () => {
     body = document.querySelectorAll("body")[0];
     footer = body.children[2];
 
-    initializeNavBar(nav_bar_links);
-
-    nav_bar_links.forEach(event => {
-        event.addEventListener("click", (event) => {
-            let e = event.target;
-            if (e.className === "selected_link")  return;
-            nav_bar_links.forEach(element => element.className = "");
-            e.className = "selected_link";
-        });
-    });
+    initializeNavBar(nav_bar_links);    
 
     posts.forEach(post => {
         post.addEventListener("click", (event) => {
