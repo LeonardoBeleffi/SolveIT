@@ -89,13 +89,13 @@
 
     function loadAttachment($attach, $attachName, $attachType) {
        if(str_contains($attachType, "image")) {
-            echo "<img src=\"". $attach ."\" download=\"".$attachName."\">";
+            echo "<img class=\"img-attachment\" src=\"". $attach ."\" download=\"".$attachName."\">";
        } else if(str_contains($attachType, "audio")) {
-        echo "<audio controls=\"\" src=\"". $attach ."\" download=\"".$attachName."\"></audio>";
+        echo "<audio class=\"audio-attachment\" controls=\"\" src=\"". $attach ."\" download=\"".$attachName."\"></audio>";
         } else if(str_contains($attachType, "video")) {
-            echo "<video controls=\"\" src=\"".$attach."\" download=\"".$attachName."\"></video>";        
+            echo "<video class=\"video-attachment\" controls=\"\" src=\"".$attach."\" download=\"".$attachName."\"></video>";        
         } else {
-            echo "<a href=\"".$attach."\" download=\"".$attachName."\">\"".$attachName."\"</a>";
+            echo "<a class=\"other-attachment\" href=\"".$attach."\" download=\"".$attachName."\">\"".$attachName."\"</a>";
        }
     }
 

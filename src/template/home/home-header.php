@@ -26,5 +26,12 @@
       </div>
     </div>
   </nav>-->
-
-  <h1>Home</h1>
+<div class="header-container">
+  <div class="logo-container">
+    <img class="icon" src="/resources/icons/logo.svg" alt="logo" />
+    <span class = "header-title"> SolveIT </span>
+  </div>
+  <div class="notifications-container">
+    <img  class="icon" src="/resources/icons/bell-solid.svg" alt="notifications" />
+  </div>
+</div>
