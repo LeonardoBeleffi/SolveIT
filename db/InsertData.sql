@@ -19,7 +19,6 @@ INSERT INTO `Credenziali` ( `password`, `idUtente`) VALUES
 ('sangio', '2'),
 ('leo', '3');
 
-
 INSERT INTO `Amicizia` (`idSeguace`, `idSeguito`, `timestamp`) VALUES
 (1, 2, '2023-07-01 21:19:03'),
 (2, 1, '2023-07-03 13:40:53');
@@ -50,6 +49,13 @@ INSERT INTO `MiPiace` (`idPost`, `idUtente`) VALUES
 (1, 1),
 (1, 2);
 
+INSERT INTO `Notifica` (`idNotificatore`, `idNotificato`, `idPost`, `tipo`, `letta`, `timestamp`) VALUES
+(2, 1, 1, 0, 0, '2023-07-01 21:19:03'),
+(3, 1, 1, 1, 0, '2023-07-01 21:19:03'),
+(2, 1, 1, 2, 0, '2023-07-01 21:19:03'),
+(3, 1, 1, 3, 0, '2023-07-01 21:19:03'),
+(2, 1, 1, 4, 0, '2023-07-01 21:19:03');
+
 select * from Post;
 select * from Pubblicazione;
 select * from Allegato;
@@ -61,13 +67,15 @@ select * from Tag;
 select * from Etichettamento;
 select * from Commento;
 select * from MiPiace;
+select * from Notifica;
+SELECT idNotifica as notificationId, idNotificatore as notifacatorId, letta as isRead, tipo as type, idPost as postId, timestamp
+        FROM Notifica
+        where idNotificato = 1 and letta = 0;
 
-# idPost --> idPost, autore, testo, Settore, timestamp
-SELECT p.idPost, u.nome as autore, p.testo, s.nomeSettore as Settore, p.timestamp
+SELECT p.idPost as postId, u.idUtente as authorId, u.username as authorName, p.titolo as title, p.testo as text, s.nomeSettore as sector, p.timestamp as timestamp
         FROM Post as p, Settore as s, Pubblicazione as pub, Utente as u
         where p.idPost = 1
-        and p.idPost = pub.idPost and p.idSettore = s.idSettore and pub.idUtente = u.idUtente;
-
+        and p.idPost = pub.idPost and p.idSettore = s.idSettore and pub.idUtente = u.idUtente and pub.collaboratore = 0;
 # idPost --> idTag, Tag
 SELECT t.idTag, nome as Tag
 		FROM Tag as t, Etichettamento as e

@@ -34,6 +34,13 @@ window.addEventListener("load", () => {
         close_post();
     });
 
+    const notificationButton = document.querySelector('.notification-button');
+
+    notificationButton.addEventListener('click', () => {
+        // Redirect to notification.php
+        window.location.href = 'notification.php';
+    });
+
 }, false);
 
 function open_post(post) {

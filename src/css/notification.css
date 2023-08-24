@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+.notification {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.notification-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+.notification-icon {
+  color: #3498db;
+  font-size: 24px;
+  margin-right: 10px;
+}
+.notification-content {
+  margin-left: 34px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.notification-content a {
+  align-self: center;
+}
+
+.post-link {
+  color: #3498db;
+  text-decoration: none;
+}
+.post-link:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}

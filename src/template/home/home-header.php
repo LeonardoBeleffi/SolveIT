@@ -32,7 +32,8 @@
     <span class = "header-title"> SolveIT </span>
   </div>
   <div class="notifications-container">
-    <img  class="icon" src="/resources/icons/bell-solid.svg" alt="notifications" />
+    <img  class="icon notification-button" src="/resources/icons/bell-solid.svg" alt="notifications" />
+    <?php echo count(getNewNotifications()); ?>
   </div>
 </div>
 

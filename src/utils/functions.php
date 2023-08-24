@@ -5,6 +5,7 @@
     require_once 'functions/loginFunctions.php';
     require_once 'functions/templateFunctions.php';
     require_once 'functions/postFunctions.php';
+    require_once 'functions/notificationFunctions.php';
 
     function getSessionVar($var) {
         return isset($_SESSION[$var]) ? $_SESSION[$var] : "";

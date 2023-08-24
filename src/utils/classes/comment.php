@@ -11,7 +11,7 @@ class Comment {
         $this->$commentId = "";
         $this->$author = "";
         $this->$text = [];
-        $this->$timestamp = [];
+        $this->$timestamp = "";
         $this->$parentId = [];
     }
 

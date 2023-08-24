@@ -12,6 +12,9 @@
     clearPosts();
     setPostsLimit(100);
 
+    // clear notifications
+    clearNotifications();
+
     // require post query helper
     require "utils/download.php";
 
