@@ -46,6 +46,9 @@ body > header {
     color: var(--tertiaryBackground);
     font-weight: bold;
     text-shadow: 4px 2px 0 var(--linkColor);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
   
 .logo-container {
@@ -71,6 +74,9 @@ body > header {
 .icon{
     width: 25px;
     height: auto;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 body > header > img {
@@ -108,12 +114,13 @@ body > main > section {
     margin: 0;
     display: block;
     padding: 10px 0;
+    align-items: center;
     overflow-y: auto;
 }
 
 /* TODO */
 #post-list > li {
-    height: min(150px, 20vh);
+    height: min(200px, 20vh);
 }
 
 .post-opened {
@@ -126,12 +133,15 @@ body > main > section {
 /* END TODO */
 
 .post-container {
-    height: min(135px, 20vh);
-    background-color: var(--secondaryColor);
-    border:none;
-    box-shadow: 0 0 5px rgba(0,0,0, 0.3);
+    height: min(170px, 20vh);
+    background-color: var(--secondaryBackground);
+    border: 1px solid var(--linkColor);
+    box-shadow: 0 0 5px rgba(0,0,0, 0.5);
     width: 95%;
     border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     margin: auto;
 }
 
@@ -154,6 +164,7 @@ body > main > section {
 
 .username {
     color: var(--linkColor);
+    font-size: min(14pt, 4vh);
 }
 
 .likes {
@@ -171,7 +182,7 @@ body > main > section {
 
 .tags-container {
     width: 100%;
-    height: 30px;
+    height: min(30px, 5vh);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -190,6 +201,7 @@ body > main > section {
     width: 50px;
     height: 50px;
     background-color: var(--buttonColor);
+    border: 3px solid var(--tertiaryTextColor);
     border-radius: 50%;
     padding: 0;
     margin: 0;
@@ -204,13 +216,14 @@ body > main > section {
 .card-title {
     margin: 0px;
     
-    color: var(--linkColor);
-    font-size: 15pt;
+    
 }
 .card-title > h1 {
     padding: 0;
     margin-top:5px;
     margin-bottom:5px;
+    color: var(--linkColor);
+    font-size: 15pt;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -237,9 +250,9 @@ body > main > section {
  }
 
 .tags {
-    height: 100%;
+    padding: 7px;
     background-color: var(--secondaryColor);
-    border-radius: 20px;
+    border-radius: 15px;
     display: block;
 }
 
@@ -252,15 +265,40 @@ body > main > section {
     font-size: 13pt;
 }
 
+.like-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 16pt;
+    background-image: url('../../resources/icons/thumbs-up-regular.svg');
+    background-size: 25px 25px; /* Set the dimensions of the SVG */
+    background-repeat: no-repeat;
+    background-position: 8px;
+}
+
+.comment-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 16pt;
+    background-image: url('../../resources/icons/reply-solid.svg');
+    background-size: 25px 25px; /* Set the dimensions of the SVG */
+    background-repeat: no-repeat;
+    background-position: 8px;
+}
+
+
 .button {
     width: fit-content;
     font-size: 14pt;
     font-weight: bold;
-    margin: 0 auto;
     color: var(--buttonTextColor);
     background-color: var(--tertiaryBackground);
-    border-radius: 10px;
-    border: 2px solid var(--buttonColor);
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 2px rgba(0,0,0, 0.3);
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -268,7 +306,7 @@ body > main > section {
 
 .button:active {
     transform: scale(0.92);
-    box-shadow: 2px 2px var(--borderColor);
+    box-shadow: 1px 1px var(--borderColor);
     background-color: var(--buttonColor);
     color: var(--tertiaryBackground);
     /* transition: all center 100ms linear; */
@@ -292,8 +330,9 @@ body > main > section {
 }
 
 .form-group {
+    height: min(50px, 8vh);
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 5px;
     padding: 10px;
 }
@@ -304,7 +343,7 @@ body > main > section {
     display: flex;
     flex-direction: column;
     /*justify-content: space-between;*/
-    gap: 10px;
+    gap: 20px;
     width: 100%;
 }
 
@@ -318,7 +357,9 @@ body > main > section {
 
 .post-opened > * > .post-body {
     margin-top: 15px;
-    background-color: #999999;
+    background-color: var(--secondaryBackground);
+    border: 1px solid var(--linkColor);
+    box-shadow: 0 0 5px rgba(0,0,0, 0.5);
     border-radius: 15px;
     font-family: var(--primaryFontFamily);
     display: block;
@@ -327,13 +368,44 @@ body > main > section {
 .attachments > h5 {
     height: 85%;
     transform: translateY(7%);
+    padding: 10px 0;
+    color: var(--secondaryTextColor);
     width: 95%;
     margin: auto;
-    font-size: 14pt;
+    font-size: min(14pt, 4vh);
 }
 
+/* .img-attachment{
+
+
+}
+
+.video-attachment{
+    
+}*/
+
+.audio-attachment{
+    width: 95%;
+    margin: auto;
+}
+
+.other-attachment{
+    width: fit-content;
+    margin-left: 20px;
+    padding: 5px;
+    color: var(--tertiaryBackground);
+    background-color: var(--secondaryColor);
+    border-radius: 10px;
+} 
+
+.other-attachment:hover{
+    background-color: var(--primaryColor);
+} 
+
 .comments > h5 {
-    font-size: 14pt;    
+    font-size: min(14pt, 4vh);
+    padding: 10px 0;
+    color: var(--secondaryTextColor);    
     width: 95%;
     margin: auto;
 }
@@ -343,7 +415,7 @@ body > main > section {
 }
 
 .comment {
-    background-color: var(--secondaryBackground);
+    background-color: var(--primaryBackground);
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
@@ -351,7 +423,11 @@ body > main > section {
 
 .reply-button {
     cursor: pointer;
-    color: var(--primaryColor);
+    color: var(--linkColor);
+    font-weight: bold;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .reply-form {

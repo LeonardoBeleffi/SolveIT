@@ -61,7 +61,7 @@ function displayUsername(username) {
 }
 
 window.addEventListener("load", () => {
-    nav_bar_links = Array.from(document.querySelectorAll("#nav_bar")[0].children);
+    nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
 
     initializeNavBar(nav_bar_links);
 });
