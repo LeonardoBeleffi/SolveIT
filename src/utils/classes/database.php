@@ -518,6 +518,17 @@ class DatabaseHelper{
     }
 
 
+    /// UPDATEs-----------
+
+    // notificationId, isRead -> \
+    public function updateNotifica($notificationId, $isRead) {
+        $query = "UPDATE Notifica SET letta = ?
+                WHERE idNotifica = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$isRead, $notificationId);
+        
+        return $stmt->execute();
+    }    
     
     /// DELETEs-----------
     // public function deleteCategoriesOfArticle($articolo){

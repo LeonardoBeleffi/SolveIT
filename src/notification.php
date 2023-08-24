@@ -15,6 +15,10 @@
     // require post query helper
     require "utils/download.php";
 
+    // mark all notifications as read
+    foreach(getNotifications() as $not) {
+        $dbh->updateNotifica(getNotificationId($not), 1);
+    }
 
     // set template elements
     clearTemplate();
