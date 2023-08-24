@@ -35,3 +35,4 @@
     <img  class="icon" src="/resources/icons/bell-solid.svg" alt="notifications" />
   </div>
 </div>
+

@@ -1,5 +1,5 @@
 <section>
-    <ul id="post_list">
+    <ul id="post-list">
         <?php foreach(getPosts() as $post): ?>
         <li class="list-element">
             <article class="post-container post" id="post-<?php echo getPostId($post); ?>">
@@ -80,3 +80,4 @@
         <?php endforeach; ?>
     </ul>
 </section>
+

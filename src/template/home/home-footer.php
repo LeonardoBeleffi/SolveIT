@@ -1,4 +1,4 @@
-<nav id="nav_bar">
+<nav id="nav-bar">
     <a href="./home.php">
         <img class="icon" src="/resources/icons/house-solid.svg" alt="home" /></a>
     <a href="./search.php">
@@ -15,3 +15,4 @@
     </a>
     <!-- <a href="utils/logout.php">Logout</a> -->
 </nav>
+
