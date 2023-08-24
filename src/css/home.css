@@ -56,7 +56,7 @@ body > main > section {
     overflow: hidden;
 }
 
-#post_list {
+#post-list {
     list-style-type: none;
     height: 100%;
     margin: 0;
@@ -65,9 +65,19 @@ body > main > section {
     overflow-y: auto;
 }
 
-#post_list > li {
-    height: 20vh;
+/* TODO */
+#post-list > li {
+    height: min(150px, 20vh);
 }
+
+.post-opened {
+    height: 100%;
+}
+
+.post-opened > * {
+    height: 100%;
+}
+/* END TODO */
 
 .post-container {
     height: min(135px, 20vh);
@@ -169,7 +179,7 @@ body > main > section {
    
 }
 
- .card-text > p {
+.card-text > p {
     height: min(20px, 10vh);
     
     margin-top: 0;
@@ -252,12 +262,20 @@ body > main > section {
     width: 100%;
 }
 
-.post-opened {
+.post-body {
+    display: none;
+}
+
+.post-closed {
+    display: none;
+}
+
+.post-opened > * > .post-body {
     margin-top: 15px;
     background-color: #999999;
     border-radius: 15px;
     font-family: var(--primaryFontFamily);
-    display: none;
+    display: block;
 }
 
 .attachments > h5 {
@@ -277,20 +295,24 @@ body > main > section {
 .comments {
     margin-top: 20px;
 }
+
 .comment {
     background-color: var(--secondaryBackground);
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
 }
+
 .reply-button {
     cursor: pointer;
     color: var(--primaryColor);
 }
+
 .reply-form {
     display: none;
     margin-top: 10px;
 }
+
 .reply {
     margin-left: 20px;
 }
@@ -301,6 +323,7 @@ ul.replies {
     padding: 0;
     list-style: none;
 }
+
 .expanded {
     display: block;
 }
@@ -353,7 +376,7 @@ body > footer {
     background-color: var(--buttonColor);
 }
 
-#nav_bar {
+#nav-bar {
     height: 85%;
     position: absolute;
     top: 0;
@@ -363,7 +386,7 @@ body > footer {
     background-color: var(--secondaryBackground);
 }
 
-#nav_bar a {
+#nav-bar a {
     height: 100%;
     width: calc(100vw / 5);
     display: flex;
@@ -374,7 +397,7 @@ body > footer {
     font-weight: bold;
 }
 
-.selected_link {
+.selected-link {
     display: block;
     background-color: var(--buttonColor);
     bottom: 0;
