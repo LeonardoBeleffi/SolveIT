@@ -57,7 +57,7 @@ function addComment(event) {
                     repliesContainer.innerHTML = repliesContainer.innerHTML + generateComment("com-"+commentId,replyText,_USERNAME);
                     let commentsSection = document.querySelector("#post-"+postId+' .comments-count');
                     console.log(commentNumber);
-                    commentsSection.innerHTML = "Comments: "+ commentNumber;
+                    commentsSection.innerHTML = commentNumber+" comments";
                     input.value = '';
                     if(!isRootComment) {
                         form.classList.toggle('expanded');
@@ -79,9 +79,9 @@ function generateComment(id, text, author) {
                 <span onclick="toggleReply(event)" class="reply-button">Reply</span>
                 <form onsubmit="addComment(event)" class="reply-form">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your reply">
+                        <input type="text" class="form-input"" placeholder="Your reply">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="comment-button"></button>
                 </form>
                 <ul class="replies">
                 </ul>

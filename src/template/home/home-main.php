@@ -45,7 +45,7 @@
                         <span class="username">@<?php echo getPostAuthor($post); ?> </span>
                         <div class="like-section">
                             <!-- Like button -->
-                            <button type="button" onclick="addLike(event)" class="button like-button"">Like</button>
+                            <button type="button" onclick="addLike(event)" class="button like-button"></button>
                             <!-- Post Likes -->
                             <div class="likes">
                                 <span class="likes-count likes-badge">
@@ -58,19 +58,19 @@
                 <!-- Post Content -->
                 <div class="post-body">
                     <div class="attachments">
-                        <h5>Attachments : <?php echo count(getPostAttachments($post)); ?></h5>
+                        <h5><?php echo count(getPostAttachments($post)); ?> attachments </h5>
                         <?php loadAttachments($post); ?>
                         <div id="fileContainer"></div>
                     </div>
                     <!-- Post Comments -->
                     <div class="comments">
-                        <h5 class="comments-count">Comments : <?php echo count(getPostComments($post)); ?></h5>
+                        <h5 class="comments-count"><?php echo count(getPostComments($post)); ?> comments</h5>
                         <?php loadComments($post); ?>
                         <!-- Add comment form -->
                         <form onsubmit="addComment(event)" class="root-comment">
                             <div class="form-group">
                                 <input type="text" class="form-input" placeholder="Write a comment">
-                                <button type="submit" class="btn button">Post Comment</button>
+                                <button type="submit" class="button comment-button"></button>
                             </div>
                         </form>
                     </div>

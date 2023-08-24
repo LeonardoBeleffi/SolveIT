@@ -8,20 +8,20 @@ function initializeNavBar(navBarElements){
         if(hrefFilename[hrefFilename.length-1] == "#")
             hrefFilename = hrefFilename.substring(0, hrefFilename.length-1);
         if(filename == hrefFilename) {
-            link.className = "selected_link";
+            link.className = "selected-link";
         } else {
             link.className = "";
         }
 
         link.addEventListener("click", (event) => {
             let e = event.target;
-            if (e.className === "selected_link"){
+            if (e.className === "selected-link"){
                 event.preventDefault();
                 event.stopPropagation();
                 return;
             }  
             navBarElements.forEach(element => element.className = "");
-            e.className = "selected_link";
+            e.className = "selected-link";
         });
     });
 }
