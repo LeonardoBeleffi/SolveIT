@@ -40,7 +40,7 @@
             array_push($attachsName, $_FILES['attachments']['name'][$i]);
         }
         // uploading post
-        $idPost = $dbh->uploadPost($_POST['title'], $_POST['text'], date("Y-m-d H:i:s"), getUserSector(), $attachs, $attachsName, $attachsType, explode(";", $_POST['collabs']), explode(";", $_POST['tags']), getIdUtente());
+        $idPost = $dbh->uploadPost($_POST['title'], $_POST['text'], date("Y-m-d H:i:s"), getUserSectorId(), $attachs, $attachsName, $attachsType, explode(";", $_POST['collabs']), explode(";", $_POST['tags']), getIdUtente());
 
         if($idPost === false) {
             setErrorMsg("Failed uploading Post.");

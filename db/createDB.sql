@@ -15,7 +15,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema epiz_34305586_solveit
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `epiz_34305586_solveit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE SCHEMA IF NOT EXISTS `epiz_34305586_solveit` DEFAULT CHARACTER SET utf8 ;
 -- -----------------------------------------------------
 -- Schema new_schema1
 -- -----------------------------------------------------
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Settore` (
     REFERENCES `epiz_34305586_solveit`.`Settore` (`idSettore`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Impostazione` (
   `tema` VARCHAR(50) NOT NULL,
   `filtroDaltonici` VARCHAR(45) NULL,
   PRIMARY KEY (`idImpostazione`))
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Utente` (
     REFERENCES `epiz_34305586_solveit`.`Impostazione` (`idImpostazione`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Post` (
     REFERENCES `epiz_34305586_solveit`.`Settore` (`idSettore`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -116,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Allegato` (
     REFERENCES `epiz_34305586_solveit`.`Post` (`idPost`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Tag` (
   `nome` VARCHAR(45) NULL,
   PRIMARY KEY (`idTag`),
   UNIQUE INDEX `nome_UNIQUE` (`nome` ASC) )
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Etichettamento` (
     REFERENCES `epiz_34305586_solveit`.`Tag` (`idTag`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Notifica` (
     REFERENCES `epiz_34305586_solveit`.`Utente` (`idUtente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -192,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Pubblicazione` (
     REFERENCES `epiz_34305586_solveit`.`Post` (`idPost`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -214,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Salvataggio` (
     REFERENCES `epiz_34305586_solveit`.`Post` (`idPost`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -237,7 +237,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Amicizia` (
     REFERENCES `epiz_34305586_solveit`.`Utente` (`idUtente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -253,7 +253,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Credenziali` (
     REFERENCES `epiz_34305586_solveit`.`Utente` (`idUtente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -285,7 +285,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Commento` (
     REFERENCES `epiz_34305586_solveit`.`Commento` (`idCommento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -309,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`MiPiace` (
     REFERENCES `epiz_34305586_solveit`.`Post` (`idPost`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
