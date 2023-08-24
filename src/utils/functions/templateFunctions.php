@@ -3,6 +3,7 @@
     // ----------------- TEMPLATE functions
     function clearTemplate(){
         unset($_SESSION["CSS"]);
+        unset($_SESSION["RemoteCSS"]);
         unset($_SESSION["JS"]);
         unset($_SESSION["title"]);
         unset($_SESSION["header"]);
@@ -23,6 +24,24 @@
         if(!empty(getCSS())) : 
             foreach(getCSS() as $css):
                 echo "<link rel=\"stylesheet\" type=\"text/css\" href=". $css ." />";
+            endforeach;
+        endif;
+    }
+
+
+    //RemoteCSS
+    function setRemoteCSS($RemoteCSS){
+        $_SESSION["RemoteCSS"] = $RemoteCSS;
+    }
+
+    function getRemoteCSS(){
+        return getSessionVar("RemoteCSS");
+    }
+
+    function loadRemoteCSS(){
+        if(!empty(getRemoteCSS())) : 
+            foreach(getRemoteCSS() as $css):
+                echo "<link rel=\"stylesheet\" href=". $css ." />";
             endforeach;
         endif;
     }

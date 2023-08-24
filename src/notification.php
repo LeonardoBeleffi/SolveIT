@@ -22,7 +22,8 @@
     setHeader("notification/notification-header.php");
     setMain("notification/notification-main.php");
     setFooter("home/home-footer.php");
-    setCSS(["./css/notification.css", "./css/home.css", "./css/fontawesome-free-6.4.2-web/css/all.min.css"]);
+    setCSS(["./css/notification.css", "./css/home.css"]);
+    setRemoteCSS(["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"]);
 
     // require template
     require "template/base.php";

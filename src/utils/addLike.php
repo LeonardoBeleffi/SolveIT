@@ -7,6 +7,9 @@
         $likeId = $dbh->insertLike($_POST["postId"], getIdUtente());
         if($likeId) {
             $likes = $dbh->getLikesByPost($_POST["postId"]);
+            // Add notifications
+            require "addNotification.php";
+            // send response
             $array = ['likes' => count($likes)];
             echo json_encode($array);
             http_response_code(200);
