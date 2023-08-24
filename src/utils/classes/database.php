@@ -6,7 +6,8 @@ class DatabaseHelper{
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
         if ($this->db->connect_error) {
             die("Connection failed: " . $db->connect_error);
-        }        
+        }
+        $this->db->set_charset("utf8");
     }
 
     ///POST-RELATED QUERIES -----------------------------------------
