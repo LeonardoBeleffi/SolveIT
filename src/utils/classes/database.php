@@ -26,7 +26,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT p.idPost as postId, u.idUtente as authorId, u.username as authorName, p.titolo as title, p.testo as text, s.nomeSettore as sector, p.timestamp as timestamp
         FROM Post as p, Settore as s, Pubblicazione as pub, Utente as u
         where p.idPost = ? 
-        and p.idPost = pub.idPost and p.idSettore = s.idSettore and pub.idUtente = u.idUtente");
+        and p.idPost = pub.idPost and p.idSettore = s.idSettore and pub.idUtente = u.idUtente and pub.collaboratore = 0");
         $stmt->bind_param('i',$idPost);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -77,7 +77,7 @@ class DatabaseHelper{
     public function getContributorsByPost($idPost){
         $stmt = $this->db->prepare("SELECT u.idUtente as contributorId, username as contributorName
         FROM Utente as u, Pubblicazione as p
-        where p.idPost = ? and p.idUtente = u.idUtente");
+        where p.idPost = ? and p.idUtente = u.idUtente and p.collaboratore = 1");
 
         $stmt->bind_param('i',$idPost);
         $stmt->execute();
@@ -219,6 +219,33 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // commentId --> userId, username
+    public function getUserByComment($commentId){
+        $stmt = $this->db->prepare("SELECT u.idUtente as userId, u.username as username
+        FROM Commento as c, Utente as u
+        where c.idUtente = u.idUtente and c.idCommento = ?");
+        
+        $stmt->bind_param('i',$commentId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // postId --> userId, username
+    public function getAuthorByPost($postId){
+        $stmt = $this->db->prepare("SELECT u.idUtente as userId, u.username as username
+        FROM Pubblicazione as p, Utente as u
+        where p.idUtente = u.idUtente and p.idPost = ? and p.collaboratore = 0");
+        
+        $stmt->bind_param('i',$postId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+
     ///TAG-RELATED QUERIES -----------------------------------------
 
     // nomeTag --> idEtichettamento, idPost, idTag
@@ -288,7 +315,35 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
+
+
+    ///NOTIFICATION-RELATED QUERIES -----------------------------------------
+    // userId --> notificationId, notificatorId, isRead, type, postId, timestamp
+    public function getNotifications($userId){
+        $stmt = $this->db->prepare("SELECT idNotifica as notificationId, idNotificatore as notificatorId, letta as isRead, tipo as type, idPost as postId, timestamp
+        FROM Notifica
+        where idNotificato = ? and letta = 0");
+        
+        $stmt->bind_param('i',$userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // userId --> notificationId, notificatorId, isRead, type, postId, timestamp
+    public function getAllNotifications($userId){
+        $stmt = $this->db->prepare("SELECT idNotifica as notificationId, idNotificatore as notificatorId, letta as isRead, tipo as type, idPost as postId, timestamp
+        FROM Notifica as n
+        where idNotificato = ?");
+        
+        $stmt->bind_param('i',$userId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     /// INSERTSSS-----------
     // Nome, cognome, email, dataNascita, telefono, username -> idUtente
     public function insertUtente($nome, $cognome, $email, $dataNascita, $telefono, $username, $idSettore){
@@ -398,6 +453,21 @@ class DatabaseHelper{
             $query = "INSERT INTO Etichettamento (idPost, idTag) VALUES (?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ii',$idPost, $idTag);
+            $stmt->execute();
+            return $stmt->insert_id;
+        // } catch(Exception $e) {
+        //     return false;
+        // }
+    }
+
+
+    // notifierId, notifiedId, postId type, read, timestamp -> notificationId
+    public function insertNotifica($notifierId, $notifiedId, $postId, $type, $read, $timestamp){
+        // try {
+            $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
+            $query = "INSERT INTO Notifica (idNotificatore, idNotificato, idPost, tipo, letta, timestamp) VALUES (?, ?, ?, ?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iiiiis',$notifierId, $notifiedId, $postId, $type, $read, $timestamp);
             $stmt->execute();
             return $stmt->insert_id;
         // } catch(Exception $e) {

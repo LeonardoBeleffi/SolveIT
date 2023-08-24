@@ -2,6 +2,7 @@
     // require defaults PHPs
     require_once 'bootstrap.php';
     require_once 'classes/post.php';
+    require_once 'classes/notification.php';
     require_once 'classes/comment.php';
 
     // check login routine
@@ -90,6 +91,30 @@
         }
     
     }
+
+    // download new notifications
+    {
+        // query notifications
+        $result = $dbh->getAllNotifications(getIdUtente());
+        if(count($result)==0){
+            setErrorMsg("Failed downloading notifications.");
+            exit();
+        }
+        $idNotifications = [];
+        foreach($result as $res) {
+            $not = new Notification();
+            $not->notificationId = $res["notificationId"];
+            $not->notificator = $dbh->getUserById($res["notificatorId"])[0]["username"];
+            $not->read = $res["isRead"];
+            $not->type = $res["type"];
+            $not->postId = $res["postId"];
+            $not->timestamp = $res["timestamp"];
+            addNotification($not);
+            if(!$not->read)
+                addNewNotification($not);
+        }
+    }
+
     // header("Location: /src/test.php");
     // exit();
 ?>
