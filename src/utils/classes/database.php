@@ -506,7 +506,7 @@ class DatabaseHelper{
         }
         // insert tags
         foreach ($tags as $tag) {
-            $this->insertTag($collaboratore, $idPost, 1);
+            $this->insertTag($tag);
             $tagId = $this->getTagByName($tag)[0]["tagId"];
             $this->insertEtichettamento($idPost, $tagId);
         }
