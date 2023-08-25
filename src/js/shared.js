@@ -33,6 +33,9 @@ function refreshNotifications() {
 
     const notification_count = document.querySelector('.notificaiton-count');
 
+    if(!notification_count) {
+        return;
+    }
     // Send AJAX request to refresh notifications
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'utils/refresh.php', true);
@@ -41,7 +44,6 @@ function refreshNotifications() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     // parse response
-                    console.log(xhr.responseText);
                     const response = JSON.parse(xhr.responseText);
                     const notifications = response.notifications;
                     notification_count.innerHTML = notifications;
