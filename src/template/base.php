@@ -37,5 +37,4 @@
         <?php loadJS()?>
     </body>
 </html>
-<!-- missing php -->
 

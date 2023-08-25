@@ -68,6 +68,8 @@ select * from Etichettamento;
 select * from Commento;
 select * from MiPiace;
 select * from Notifica;
+
+
 SELECT idNotifica as notificationId, idNotificatore as notifacatorId, letta as isRead, tipo as type, idPost as postId, timestamp
         FROM Notifica
         where idNotificato = 1 and letta = 0;

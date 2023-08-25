@@ -1,251 +1,398 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta charset="UTF-8">
-    <meta name="application-name" content="SolveIT">
-    <meta name="description" content="UNIBO Web Project">
-    <meta name="author" content="Beleffi Leonardo, Sangiorgi Marco, Vuksan Tiziano">
-    <meta name="keywords" content="Solveit, Solvit, Solveet, Slovit, Solveti, Bug, Solution, Solve, Fix, StackOverflow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - SolveIT</title>
-    <!-- load CSS -->
-    <link rel="stylesheet" type="text/css" href="./css/home.css">        <!-- load JS -->
 
-    <link href="data:text/css,%5Bid*%3D'google_ads_iframe'%5D%2C%5Bid*%3D'taboola-'%5D%2C.taboolaHeight%2C.taboola-placeholder%2C%23credential_picker_container%2C%23credentials-picker-container%2C%23credential_picker_iframe%2C%5Bid*%3D'google-one-tap-iframe'%5D%2C%23google-one-tap-popup-container%2C.google-one-tap-modal-div%2C%23amp_floatingAdDiv%2C%23ez-content-blocker-container%2C%23notify-adblock%7Bdisplay%3Anone!important%3Bmin-height%3A0!important%3Bheight%3A0!important%3B%7D" rel="stylesheet" type="text/css"></head>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="application-name" content="SolveIT" />
+        <meta name="description" content="UNIBO Web Project" />
+        <meta name="author" content="Beleffi Leonardo, Sangiorgi Marco, Vuksan Tiziano" />
+        <meta name="keywords" content="Solveit, Solvit, Solveet, Slovit, Solveti, Bug, Solution, Solve, Fix, StackOverflow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home - SolveIT</title>
+        <!-- load CSS -->
+        <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css />        <link rel="stylesheet" type="text/css" href=./css/home.css />        <!-- load JS -->
+
+    </head>
     <body>
         <header>
             <!-- load header -->
             <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<div class="container">
-<a class="navbar-brand" href="#">Social Network</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNav">
-<ul class="navbar-nav">
-<li class="nav-item">
-<a class="nav-link" href="#">Profile</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Search</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="#">Settings</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="newpost.php">Create Post</a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="utils/logout.php">Logout</a>
-</li>
-</ul>
+    <div class="container">
+      <a class="navbar-brand" href="#">Social Network</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Settings</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="newpost.php">Create Post</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="utils/logout.php">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>-->
+<div class="header-container">
+  <div class="logo-container">
+    <i class="fa-regular fa-lightbulb" alt="logo"></i>
+    <!-- <img class="icon" src="/resources/icons/logo.svg" alt="logo" /> -->
+    <span class = "header-title"> SolveIT </span>
+  </div>
+  <div class="notifications-container">
+    <img  class="icon notification-button" src="/resources/icons/bell-solid.svg" alt="notifications" />
+    <span class="notification-badge">
+        0    </span>
+  </div>
 </div>
-</div>
-</nav>-->
 
-            <h1>Home</h1>        </header>
+        </header>
 
         <main>
             <!-- load main -->
             <section>
-                <ul id="post-list">
-                    <li class="list-element">
-                        <article class="post-container post" id="post-1">
-                            <!-- Post Title -->
-                            <div class="post-preview">
+    <ul id="post-list">
+                <li class="list-element">
+            <article class="post-container post" id="post-2">
+                <!-- Post Title -->
+                <div class="post-preview">
 
-                                <div class="inline-container">
-                                    <!-- <div class="profile-pic"> -->
-                                    <span class="profile-pic">S </span>
-                                    <!-- </div>         -->
-                                    <div class="cardelement-container">
-                                        <div class="card-title">
-                                            <h1>
-                                                Il mio Post su SolveIt!                                </h1>
-                                        </div>
-                                        <div class="tags-container">
-                                            <!-- Post Tags -->
-                                            <div class="tags">
-                                                <parent class="tag-badge">
-                                                    Back-end                                    
-                                                </parent></div>
-                                            <!-- Post Comments -->
-                                        </div>
-                                    </div>
-                                    <!-- Post Text -->
-                                </div>
-
-                                <div class="card-text">
-                                    <p>
-                                        Se vi capita questo allora fate quest'altro e
-                                        via track track tutto funziona!                        </p>
-                                </div>
-                                <div class="likes-container">
-                                    <!-- Like button -->
-                                    <span class="username">@sangio </span>
-                                    <div class="like-section">
-                                        <!-- Like button -->
-                                        <button type="button" onclick="addLike(event)" class="button like-button">Like</button>
-                                        <!-- Post Likes -->
-                                        <div class="likes">
-                                            <span class="likes-count likes-badge">
-                                                liked by 2                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="post-header">
+                        <!-- <div class="profile-pic"> -->
+                        <span class="profile-pic">A </span>
+                        <!-- </div>         -->
+                        <div class="cardelement-container">
+                            <div class="card-title">
+                                <h1>
+                                    TITOLO LUNGOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO                                </h1>
                             </div>
-                            <!-- Post Content -->
-                            <div class="post-body">
-                                <div class="attachments">
-                                    <h5>Attachments : 0</h5>
-                                    <div id="fileContainer"></div>
-                                </div>
-                                <!-- Post Comments -->
-                                <div class="comments">
-                                    <h5 class="comments-count">Comments : 2</h5>
-                                    <ul class="list-unstyled replies">  <li id="com-1" class="comment">
-                                        <p>| <strong>admin:</strong> bel Post, caspita un botto utile!</p>
-                                        <span onclick="toggleReply(event)" class="reply-button">Reply</span>
-                                        <form onsubmit="addComment(event)" class="reply-form">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Your reply">
-                                                <button type="submit" class="button">Submit</button>
-                                            </div>
-                                        </form>
-                                        <ul class="replies">
+                            <div class="tags-container">
+                                <!-- Post Tags -->
+                                                                <span class="tag-badge">
+                                                                    </span>
+                                                            </div>
+                        </div>
+                    </div>
 
-                                        </ul>
-                                    </li>  <li id="com-2" class="comment">
-                                            <p>| <strong>sangio:</strong> Lo sapevamo già</p>
-                                            <span onclick="toggleReply(event)" class="reply-button">Reply</span>
-                                            <form onsubmit="addComment(event)" class="reply-form">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Your reply">
-                                                    <button type="submit" class="button">Submit</button>
-                                                </div>
-                                            </form>
-                                            <ul class="replies">
-
-                                            </ul>
-                                        </li></ul>                        <!-- Add comment form -->
-                                    <form onsubmit="addComment(event)" class="root-comment">
-                                        <div class="form-group">
-                                            <input type="text" class="form-input" placeholder="Write a comment">
-                                            <button type="submit" class="btn button">Post Comment</button>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="card-text">
+                        <p>
+                            TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TESTO TEST                        </p>
+                    </div>
+                    <div class="likes-container">
+                        <!-- Like button -->
+                        <span class="username">@admin </span>
+                        <div class="like-section">
+                            <!-- Like button -->
+                            <button type="button" onclick="addLike(event)" class="button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                            </button>
+                            <!-- Post Likes -->
+                            <div class="likes">
+                                <span class="likes-count likes-badge">
+                                    liked by 0                                </span>
                             </div>
-                        </article>
-                    </li>
-                    <li class="list-element">
-                        <article class="post-container post" id="post-2">
-                            <!-- Post Title -->
-                            <div class="post-preview">
-
-                                <div class="inline-container">
-                                    <!-- <div class="profile-pic"> -->
-                                    <span class="profile-pic">S </span>
-                                    <!-- </div>         -->
-                                    <div class="cardelement-container">
-                                        <div class="card-title">
-                                            <h1>
-                                                Il nostro Post su SolveIt!                                </h1>
-                                        </div>
-                                        <div class="tags-container">
-                                            <!-- Post Tags -->
-                                            <div class="tags">
-                                                <parent class="tag-badge">
-                                                    Back-end                                    
-                                                </parent></div>
-                                            <!-- Post Comments -->
-                                        </div>
-                                    </div>
-                                    <!-- Post Text -->
-                                </div>
-
-                                <div class="card-text">
-                                    <p>
-                                        Se vi capita questo allora fate quest'altro e
-                                        via track track tutto funziona!                        </p>
-                                </div>
-                                <div class="likes-container">
-                                    <!-- Like button -->
-                                    <span class="username">@sangio </span>
-                                    <div class="like-section">
-                                        <!-- Like button -->
-                                        <button type="button" onclick="addLike(event)" class="button like-button">Like</button>
-                                        <!-- Post Likes -->
-                                        <div class="likes">
-                                            <span class="likes-count likes-badge">
-                                                liked by 2                            </span>
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Post Content -->
+                <div class="post-body">
+                    <div class="separator"></div>
+                    <div class="attachments">
+                        <h1>0 attachments </h1>
+                                                <div id="fileContainer"></div>
+                    </div>
+                    <!-- Post Comments -->
+                    <div class="comments">
+                        <h1 class="comments-count">0 comments</h1>
+                        <ul class="list-unstyled replies"></ul>                        <!-- Add comment form -->
+                        <form onsubmit="addComment(event)" class="root-comment">
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Write a comment">
+                                <button type="submit" class="button comment-button">
+                                    <i class="fa-solid fa-reply"></i>
+                                </button>
                             </div>
-                            <!-- Post Content -->
-                            <div class="post-body">
-                                <div class="attachments">
-                                    <h5>Attachments : 0</h5>
-                                    <div id="fileContainer"></div>
-                                </div>
-                                <!-- Post Comments -->
-                                <div class="comments">
-                                    <h5 class="comments-count">Comments : 2</h5>
-                                    <ul class="list-unstyled replies">  <li id="com-1" class="comment">
-                                        <p>| <strong>admin:</strong> bel Post, caspita un botto utile!</p>
-                                        <span onclick="toggleReply(event)" class="reply-button">Reply</span>
-                                        <form onsubmit="addComment(event)" class="reply-form">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Your reply">
-                                                <button type="submit" class="button">Submit</button>
-                                            </div>
-                                        </form>
-                                        <ul class="replies">
+                        </form>
+                    </div>
+                </div>
+            </article>
+        </li>
+                <li class="list-element">
+            <article class="post-container post" id="post-1">
+                <!-- Post Title -->
+                <div class="post-preview">
 
-                                        </ul>
-                                    </li>  <li id="com-2" class="comment">
-                                            <p>| <strong>sangio:</strong> Lo sapevamo già</p>
-                                            <span onclick="toggleReply(event)" class="reply-button">Reply</span>
-                                            <form onsubmit="addComment(event)" class="reply-form">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Your reply">
-                                                    <button type="submit" class="button">Submit</button>
-                                                </div>
-                                            </form>
-                                            <ul class="replies">
-
-                                            </ul>
-                                        </li></ul>                        <!-- Add comment form -->
-                                    <form onsubmit="addComment(event)" class="root-comment">
-                                        <div class="form-group">
-                                            <input type="text" class="form-input" placeholder="Write a comment">
-                                            <button type="submit" class="btn button">Post Comment</button>
-                                        </div>
-                                    </form>
-                                </div>
+                    <div class="post-header">
+                        <!-- <div class="profile-pic"> -->
+                        <span class="profile-pic">S </span>
+                        <!-- </div>         -->
+                        <div class="cardelement-container">
+                            <div class="card-title">
+                                <h1>
+                                    Il mio Post su SolveIt!                                </h1>
                             </div>
-                        </article>
-                    </li>
-                </ul>
-            </section>
+                            <div class="tags-container">
+                                <!-- Post Tags -->
+                                                                <span class="tag-badge">
+                                    Back-end                                </span>
+                                                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-text">
+                        <p>
+                            Se vi capita questo allora fate quest'altro e via track track tutto funziona!                        </p>
+                    </div>
+                    <div class="likes-container">
+                        <!-- Like button -->
+                        <span class="username">@sangio </span>
+                        <div class="like-section">
+                            <!-- Like button -->
+                            <button type="button" onclick="addLike(event)" class="button like-button">
+                                <i class="fa-regular fa-thumbs-up"></i>
+                            </button>
+                            <!-- Post Likes -->
+                            <div class="likes">
+                                <span class="likes-count likes-badge">
+                                    liked by 2                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Post Content -->
+                <div class="post-body">
+                    <div class="separator"></div>
+                    <div class="attachments">
+                        <h1>0 attachments </h1>
+                                                <div id="fileContainer"></div>
+                    </div>
+                    <!-- Post Comments -->
+                    <div class="comments">
+                        <h1 class="comments-count">12 comments</h1>
+                        <ul class="list-unstyled replies">  <li id="com-1" class="comment">
+                    <p>| <strong>admin:</strong> bel Post, caspita un botto utile!</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                      <li id="com-4" class="comment">
+                    <p>| <strong>admin:</strong> Oioi</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                      <li id="com-5" class="comment">
+                    <p>| <strong>admin:</strong> Che bel commento</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                      <li id="com-6" class="comment">
+                    <p>| <strong>admin:</strong> Csdfkas</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                      <li id="com-7" class="comment">
+                    <p>| <strong>admin:</strong> sadfa</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                      <li id="com-8" class="comment">
+                    <p>| <strong>admin:</strong> sdfasfsafd</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                      <li id="com-9" class="comment">
+                    <p>| <strong>admin:</strong> sdasdfasdfaf</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                      <li id="com-10" class="comment">
+                    <p>| <strong>admin:</strong> sdfasdfadasf</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                      <li id="com-11" class="comment">
+                    <p>| <strong>admin:</strong> sdfasdfasdfasdfasd</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                      <li id="com-12" class="comment">
+                    <p>| <strong>admin:</strong> oioioi</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                    
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>
+                    </ul>
+                </li>  <li id="com-3" class="comment">
+                    <p>| <strong>admin:</strong> fgdgd</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @admin">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                    
+                    </ul>
+                </li>  <li id="com-2" class="comment">
+                    <p>| <strong>sangio:</strong> Lo sapevamo già</p>
+                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @sangio">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                    
+                    </ul>
+                </li></ul>                        <!-- Add comment form -->
+                        <form onsubmit="addComment(event)" class="root-comment">
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Write a comment">
+                                <button type="submit" class="button comment-button">
+                                    <i class="fa-solid fa-reply"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </article>
+        </li>
+            </ul>
+</section>
+
         </main>
 
         <footer>
             <!-- load footer -->
             <nav id="nav-bar">
-                <a href="http://www.solveit.rf.gd/src/home.php" class="selected-link">Home</a>
-                <a href="http://www.solveit.rf.gd/src/search.php" class="">Search</a>
-                <a href="http://www.solveit.rf.gd/src/newpost.php" class="">Create</a>
-                <a href="http://www.solveit.rf.gd/src/settings.php" class="">Settings</a>
-                <a href="http://www.solveit.rf.gd/src/utils/logout.php" class="">Profile</a>
-                <!-- <a href="utils/logout.php">Logout</a> -->
-            </nav>        </footer>
+    <a href="./home.php">
+        <img class="icon" src="/resources/icons/house-solid.svg" alt="home" /></a>
+    <a href="./search.php">
+        <img class="icon" src="/resources/icons/magnifying-glass-solid.svg" alt="search" />
+    </a>
+    <a href="./newpost.php">
+        <img class="icon" src="/resources/icons/plus-solid.svg" alt="create" />
+    </a>
+    <a href="./settings.php">
+        <img class="icon" src="/resources/icons/gear-solid.svg" alt="settings" />
+    </a>
+    <a href="./utils/logout.php">
+        <img class="icon" src="/resources/icons/user-solid.svg" alt="profile" />
+    </a>
+    <!-- <a href="utils/logout.php">Logout</a> -->
+</nav>
+
+        </footer>
         <script>var _USERNAME = "admin"</script>
-        <script src="./js/home.js"></script><script src="./js/posts.js"></script><script src="./js/shared.js"></script>    
+        <script src="./js/home.js" ></script><script src="./js/posts.js" ></script><script src="./js/shared.js" ></script>    </body>
+</html>
 
-
-
-    </body></html>
-<!-- missing php -->

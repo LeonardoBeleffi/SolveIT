@@ -18,6 +18,7 @@ body {
     min-width: 275px;
     background-color: var(--primaryBackground);
     margin: 0;
+    overflow: hidden;
 }
 
 body > header {
@@ -40,7 +41,7 @@ body > header {
     justify-content: space-between;
 }
 
-.header-title{
+.header-title {
     font-family: var(--primaryFontFamily);
     font-size: max(20pt, 5vh);;
     color: var(--tertiaryBackground);
@@ -50,7 +51,7 @@ body > header {
     -ms-user-select: none;
     user-select: none;
 }
-  
+
 .logo-container {
     width: 50%;
     height: 100%;
@@ -60,10 +61,6 @@ body > header {
     gap: 20px;
     padding-left: 20px;
 }
-
-/* .logo-container .fa-lightbulb{
-    color: var(--borderColor);
-} */
 
 .notifications-container {
     width: 50%;
@@ -84,7 +81,8 @@ body > header {
     color: azure;
     font-family: var(--primaryFontFamily);
 }
-.icon{
+
+.icon {
     width: 25px;
     height: auto;
     cursor: pointer;
@@ -124,21 +122,23 @@ body > main > section {
 
 #post-list {
     list-style-type: none;
-    height: inherit;
+    height: calc(100% - 2*10px);
     margin: 0;
     display: block;
     padding: 10px 0;
     align-items: center;
-    overflow-y: auto;
+    overflow: hidden auto;
 }
 
 /* TODO */
 #post-list > li {
     height: min(200px, 20vh);
+    padding: 5px 0;
 }
 
 .post-opened {
     height:  fit-content !important;
+    padding: 0 !important;
 }
 
 /* .post-opened > * {
@@ -218,9 +218,8 @@ body > main > section {
 
 .card-title {
     margin: 0px;
-    
-    
 }
+
 .card-title > h1 {
     padding: 0;
     margin-top:5px;
@@ -231,7 +230,11 @@ body > main > section {
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 20ch;
+}
 
+.post-opened .card-title > h1 {
+    white-space: normal;
+    word-break: break-all;
 }
 
 .card-text {
@@ -243,22 +246,29 @@ body > main > section {
 
 .card-text > p {
     height: min(20px, 10vh);
-    
     margin-top: 0;
     margin-bottom: 0;
-    /* white-space: nowrap;
+    white-space: nowrap;
     inline-size: 235px;
     overflow: hidden;
-    overflow-wrap: break-word; */
- }
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
 
- .post-opened .tags-container {
+.post-opened .card-text > p {
+    height: fit-content;
+    word-break: break-all;
+    white-space: normal;
+    overflow: visible;
+}
+
+.post-opened .tags-container {
     flex-wrap: wrap;
     overflow: visible;
     height: fit-content;
- }
+}
 
- .tags-container {
+.tags-container {
     width: 80vw;
     flex-wrap: nowrap;
     overflow: hidden;
@@ -280,7 +290,7 @@ body > main > section {
     font-size: 13pt;
 }
 
-.like-button{
+.like-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,7 +302,7 @@ body > main > section {
     background-position: 8px; */
 }
 
-.comment-button{
+.comment-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -351,6 +361,11 @@ body > main > section {
     padding: 10px;
 }
 
+.post-opened .post-preview {
+    height: fit-content;
+    gap: 10px;
+}
+
 .post-preview {
     height: min(200px, 20vh);
     font-family: var(--primaryFontFamily);
@@ -381,11 +396,11 @@ body > main > section {
     display: block;
 }
 
-.separator{
+.separator {
     height: 1px;
     border-top: 1px dashed var(--placeholderColor) ;
     width: 95%;
-    margin: 0 auto;
+    margin: 15px auto 0 auto;
     box-sizing: border-box;
 }
 
@@ -399,32 +414,32 @@ body > main > section {
     font-size: min(14pt, 4vh);
 }
 
-/* .img-attachment{
+/* .img-attachment {
 
 
 }
 
-.video-attachment{
+.video-attachment {
     
 }*/
 
-.audio-attachment{
+.audio-attachment {
     width: 95%;
     margin: auto;
 }
 
-.other-attachment{
+.other-attachment {
     width: fit-content;
     margin-left: 20px;
     padding: 5px;
     color: var(--tertiaryBackground);
     background-color: var(--secondaryColor);
     border-radius: 10px;
-} 
+}
 
-.other-attachment:hover{
+.other-attachment:hover {
     background-color: var(--primaryColor);
-} 
+}
 
 .comments > h1 {
     font-size: min(14pt, 4vh);
@@ -451,9 +466,27 @@ body > main > section {
     
 }
 
+.comment emph {    
+    font-weight: bold;
+}
+
+.deleted-comment {
+    color: gray;
+    font-style: italic;
+}
+
 .reply-button {
     cursor: pointer;
     color: var(--linkColor);
+    font-weight: bold;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.delete-button {
+    cursor: pointer;
+    color: red;
     font-weight: bold;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -482,7 +515,6 @@ ul.replies {
 
 .card-body {
     border: 1px solid var(--debugColor);
-
 }
 
 body > header > h1 {

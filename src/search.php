@@ -19,9 +19,8 @@
             setPostsId($idPosts);
             // set graphics component
             $mainPhp = "home/home-main.php";
-            array_push($CSSs, "./css/home.css");
-            array_push($JSs, "./js/home.js");
-            array_push($JSs, "./js/posts.js");
+            $CSSs = ["./css/home.css"];
+            $JSs = ["./js/shared.js","./js/home.js","./js/posts.js"];
         }
     }
 
@@ -35,6 +34,7 @@
     setHeader("home/home-header.php");
     setFooter("home/home-footer.php");
     setCSS($CSSs);
+    setRemoteCSS(["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"]);
     setJS($JSs);
 
     // require template
