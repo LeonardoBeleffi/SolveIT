@@ -28,12 +28,15 @@
   </nav>-->
 <div class="header-container">
   <div class="logo-container">
-    <img class="icon" src="/resources/icons/logo.svg" alt="logo" />
+    <i class="fa-regular fa-lightbulb" alt="logo"></i>
+    <!-- <img class="icon" src="/resources/icons/logo.svg" alt="logo" /> -->
     <span class = "header-title"> SolveIT </span>
   </div>
   <div class="notifications-container">
     <img  class="icon notification-button" src="/resources/icons/bell-solid.svg" alt="notifications" />
-    <?php echo count(getNewNotifications()); ?>
+    <span class="notification-badge">
+        <?php echo count(getNewNotifications()); ?>
+    </span>
   </div>
 </div>
 

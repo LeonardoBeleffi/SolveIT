@@ -78,10 +78,12 @@ function generateComment(id, text, author) {
                 <p>| <strong>`+author+`:</strong> `+text+`</p>
                 <span onclick="toggleReply(event)" class="reply-button">Reply</span>
                 <form onsubmit="addComment(event)" class="reply-form">
-                    <div class="form-group">
-                        <input type="text" class="form-input"" placeholder="Your reply">
+                    <div class="form-input">
+                        <input type="text" class="form-input"" placeholder="Reply">
                     </div>
-                    <button type="submit" class="comment-button"></button>
+                    <button type="submit" class="comment-button">
+                        <i class="fa-solid fa-reply"></i>
+                    </button>
                 </form>
                 <ul class="replies">
                 </ul>

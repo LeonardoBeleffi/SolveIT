@@ -157,8 +157,10 @@
                     <span onclick="toggleReply(event)" class="reply-button">Reply</span>
                     <form onsubmit="addComment(event)" class="reply-form">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your reply">
-                            <button type="submit" class="button">Submit</button>
+                            <input type="text" class="form-input" placeholder="replying to @'.getCommentAuthor($comment).'">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
                         </div>
                     </form>
                     <ul class="replies">

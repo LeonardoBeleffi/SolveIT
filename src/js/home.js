@@ -68,9 +68,9 @@ function get_post_preview_from_click(target) {
 }
 
 function click_to_be_ignored(target) {
-    if (target.className.includes("profile-pic") ||
+    return target.className.includes("profile-pic") ||
         target.className.includes("tag-badge") ||
         target.className.includes("username") ||
-        target.className.includes("like-button")) return true;
+        target.className.includes("like-button");
 }
 

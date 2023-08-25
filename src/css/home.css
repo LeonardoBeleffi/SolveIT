@@ -61,6 +61,9 @@ body > header {
     padding-left: 20px;
 }
 
+/* .logo-container .fa-lightbulb{
+    color: var(--borderColor);
+} */
 
 .notifications-container {
     width: 50%;
@@ -71,9 +74,20 @@ body > header {
     padding-right: 20px;
 }
 
+.notification-badge {
+    position: relative;
+    top: -5px;
+    right: 10px;
+    padding: 3px 8px;
+    border-radius: 50%;
+    background: var(--buttonColor);
+    color: azure;
+    font-family: var(--primaryFontFamily);
+}
 .icon{
     width: 25px;
     height: auto;
+    cursor: pointer;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -110,7 +124,7 @@ body > main > section {
 
 #post-list {
     list-style-type: none;
-    height: 100%;
+    height: inherit;
     margin: 0;
     display: block;
     padding: 10px 0;
@@ -124,12 +138,12 @@ body > main > section {
 }
 
 .post-opened {
-    height: 100%;
+    height:  fit-content !important;
 }
 
-.post-opened > * {
+/* .post-opened > * {
     height: 100%;
-}
+} */
 /* END TODO */
 
 .post-container {
@@ -141,7 +155,6 @@ body > main > section {
     border-radius: 15px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
     margin: auto;
 }
 
@@ -269,24 +282,24 @@ body > main > section {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 20px;
+    padding: 6px 10px;
     font-size: 16pt;
-    background-image: url('../../resources/icons/thumbs-up-regular.svg');
-    background-size: 25px 25px; /* Set the dimensions of the SVG */
+    /* background-image: url('../../resources/icons/thumbs-up-regular.svg');
+    background-size: 25px 25px; 
     background-repeat: no-repeat;
-    background-position: 8px;
+    background-position: 8px; */
 }
 
 .comment-button{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 20px;
+    padding: 6px 20px;
     font-size: 16pt;
-    background-image: url('../../resources/icons/reply-solid.svg');
-    background-size: 25px 25px; /* Set the dimensions of the SVG */
+    /* background-image: url('../../resources/icons/reply-solid.svg');
+    background-size: 25px 25px;
     background-repeat: no-repeat;
-    background-position: 8px;
+    background-position: 8px; */
 }
 
 
@@ -309,16 +322,15 @@ body > main > section {
     box-shadow: 1px 1px var(--borderColor);
     background-color: var(--buttonColor);
     color: var(--tertiaryBackground);
-    /* transition: all center 100ms linear; */
 }
 
 .form-input {
-    font-size: 14pt;
-    font-weight: bold;
+    font-size: min(12pt, 4vh);
     width: 100%;
     color: var(--buttonTextColor);
     background-color: var(--tertiaryBackground);
     border-radius: 10px;
+    padding-left: 10px;
     border: 1px solid var(--primaryBackground);
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -338,12 +350,10 @@ body > main > section {
 }
 
 .post-preview {
+    height: min(200px, 20vh);
     font-family: var(--primaryFontFamily);
-    /*text-overflow: ellipsis;*/
     display: flex;
     flex-direction: column;
-    /*justify-content: space-between;*/
-    gap: 20px;
     width: 100%;
 }
 
@@ -355,14 +365,26 @@ body > main > section {
     display: none;
 }
 
-.post-opened > * > .post-body {
-    margin-top: 15px;
-    background-color: var(--secondaryBackground);
-    border: 1px solid var(--linkColor);
+.post-opened > article {
+    height: fit-content;
+}
+
+.post-opened > article > .post-body {
+    height: fit-content;
+    /* background-color: var(--secondaryBackground);
+    border: 1px solid var(--linkColor); 
     box-shadow: 0 0 5px rgba(0,0,0, 0.5);
-    border-radius: 15px;
+    border-radius: 15px; */
     font-family: var(--primaryFontFamily);
     display: block;
+}
+
+.separator{
+    height: 1px;
+    border-top: 1px dashed var(--placeholderColor) ;
+    width: 95%;
+    margin: 0 auto;
+    box-sizing: border-box;
 }
 
 .attachments > h5 {
@@ -416,9 +438,15 @@ body > main > section {
 
 .comment {
     background-color: var(--primaryBackground);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
     padding: 10px;
     margin: 10px 0;
     border-radius: 10px;
+}
+
+.comment .comment {
+    box-shadow: none;
+    
 }
 
 .reply-button {
