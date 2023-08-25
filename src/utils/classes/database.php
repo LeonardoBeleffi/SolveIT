@@ -46,9 +46,36 @@ class DatabaseHelper{
     public function getPostByTitlePrefix($prefix){
         $stmt = $this->db->prepare("SELECT idPost as postId
         FROM Post
-        where titolo LIKE '?%'");
+        where titolo LIKE ?");
         
+        $prefix = $prefix."%";
         $stmt->bind_param('s',$prefix);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // tagName --> postId
+    public function getPostByTag($tagName){
+        $stmt = $this->db->prepare("SELECT p.idPost as postId
+        FROM Post as p, Etichettamento as e, Tag as t
+        where t.nome = ? and e.idTag = t.idTag and e.idPost = p.idPost");
+        
+        $stmt->bind_param('s',$tagName);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // username --> postId
+    public function getPostByUser($username){
+        $stmt = $this->db->prepare("SELECT p.idPost as postId
+        FROM Post as p, Pubblicazione as pub, Utente as u
+        where u.username = ? and pub.idUtente = u.idUtente and pub.idPost = p.idPost");
+        
+        $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
 

@@ -9,12 +9,13 @@
   } */
   
 .container {
-    width: max(250px, 70vw);
+    /* width: max(250px, 70vw); */
     height: min(600px, 75vh);
-    margin: auto;
+    /* margin: auto; */
     display: flex;
     padding: 20px 0;
     align-items: flex-start;
+    flex-direction: column;
 }
 
 .search-section {
@@ -58,7 +59,7 @@
 .suggestions {
     margin-top: 10px;
     width: 90%;
-    height: min(450px,70vh);
+    /* height: min(450px,70vh); */
     overflow-y: auto;
     padding: 10px;
 }

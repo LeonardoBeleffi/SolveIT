@@ -1,10 +1,17 @@
 
 // SEARCH
+let isQuering = false;
+
 function search(event) {
+    if(isQuering) {
+        return;
+    }
     event.preventDefault();
     const input = event.target;
     const searchText = input.value;
     const suggestionsContainer = document.querySelector('.suggestions');
+
+
 
     if (searchText.trim() !== '') {
         suggestionsContainer.innerHTML = '';
@@ -15,6 +22,7 @@ function search(event) {
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
+                    suggestionsContainer.innerHTML = '';
                     // parse response
                     const response = JSON.parse(xhr.responseText);
                     const usernames = response.usernames;
@@ -24,6 +32,7 @@ function search(event) {
                     usernames.forEach((username) => displayUsername(username));
                     // foreach tag
                     tags.forEach((tag) => displayTag(tag));
+                    isQuering = false;
 
                 } else {
                     console.error('Failed to search.');
@@ -31,6 +40,7 @@ function search(event) {
             }
         };
         // send parentId and text
+        isQuering=true;
         xhr.send(`text=${searchText}`);
     }
 }
@@ -40,10 +50,9 @@ function displayTag(tag) {
     const suggestionElement = document.createElement('span');
     suggestionElement.classList.add('suggestion');
     suggestionElement.textContent = "# "+tag;
-    // suggestionElement.addEventListener('click', () => {
-    //     searchInput.value = suggestion;
-    //     suggestionsContainer.style.display = 'none';
-    // });
+    suggestionElement.addEventListener('click', () => {
+        window.location.href = './search.php?user='+tag;
+    });
     suggestionsContainer.appendChild(suggestionElement);
 }
 
@@ -51,11 +60,10 @@ function displayUsername(username) {
     const suggestionsContainer = document.querySelector('.suggestions');
     const suggestionElement = document.createElement('span');
     suggestionElement.classList.add('suggestion');
-    suggestionElement.textContent = "/°\\ "+ username;
-    // suggestionElement.addEventListener('click', () => {
-    //     searchInput.value = suggestion;
-    //     suggestionsContainer.style.display = 'none';
-    // });
+    suggestionElement.textContent = "(°-°) "+ username;
+    suggestionElement.addEventListener('click', () => {
+        window.location.href = './search.php?user='+username;
+    });
     suggestionsContainer.appendChild(suggestionElement);
     
 }

@@ -15,19 +15,33 @@
 
     // get specific posts
     if(isset($_SESSION['postsId'])) {
-        // ToDo
         foreach($_SESSION['postsId']as $session_idPost) {
             array_push($idPosts, $session_idPost);
         }
     }
+
+    // get specific posts by tag
+    if(isset($_SESSION['postTag'])) {
+        $result = $dbh->getPostByTag($_SESSION['postTag']);
+        foreach($result as $res) {
+            array_push($idPosts, $res["postId"]);
+        }
+    }
+
+    // get specific posts by user
+    if(isset($_SESSION['postUser'])) {
+        $result = $dbh->getPostByUser($_SESSION['postUser']);
+        foreach($result as $res) {
+            array_push($idPosts, $res["postId"]);
+        }
+    }
     
-    // get random posts by limit
+    // get posts by limit
     if(isset($_SESSION['postsLimit'])) {
-        // query random posts
         $result = $dbh->getLastPostsByLimit($_SESSION['postsLimit']);
         if(count($result)==0){
             setErrorMsg("Failed downloading Posts.");
-            exit();
+            return -1;
         }
         foreach($result as $res) {
             array_push($idPosts,$res["idPost"]);
