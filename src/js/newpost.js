@@ -211,9 +211,12 @@ function suggest(event, type) {
                         });
                     });
                     
-
-                    // dispaly suggestions container
-                    setSuggestionPositionOn(input);
+                    if(suggestions.length != 0) {
+                        // dispaly suggestions container
+                        setSuggestionPositionOn(input);
+                    } else {
+                        suggestionsContainer.style.display = 'none';
+                    }
                     inputSuggestionType = type;
                     isQuering = false;
                 } else {
