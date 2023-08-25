@@ -18,6 +18,7 @@ body {
     min-width: 275px;
     background-color: var(--primaryBackground);
     margin: 0;
+    overflow: hidden;
 }
 
 body > header {
@@ -215,8 +216,6 @@ body > main > section {
 
 .card-title {
     margin: 0px;
-    
-    
 }
 
 .card-title > h1 {
@@ -229,7 +228,10 @@ body > main > section {
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 20ch;
+}
 
+.post-opened .card-title > h1 {
+    white-space: normal;
 }
 
 .card-text {
@@ -241,7 +243,6 @@ body > main > section {
 
 .card-text > p {
     height: min(20px, 10vh);
-    
     margin-top: 0;
     margin-bottom: 0;
     /* white-space: nowrap;
