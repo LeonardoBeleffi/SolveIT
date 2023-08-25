@@ -31,7 +31,7 @@
     clearTemplate();
     setTitle("Search - SolveIT");
     setMain($mainPhp);
-    setHeader("search/search-header.php");
+    setHeader("home/home-header.php");
     setFooter("home/home-footer.php");
     setCSS($CSSs);
     setRemoteCSS(["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"]);

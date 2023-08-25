@@ -1,32 +1,50 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+body > *{
+    font-family: var(--primaryFontFamily);
 }
-.container {
-  max-width: 800px;
+
+.notifications-list {
   margin: auto;
+  height: inherit;
   padding: 20px;
+  align-items: center;
+  overflow-y: scroll;
 }
+
 .notification {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 20px;
-  border-radius: 5px;
-  margin-bottom: 20px;
+  height: min(125px, 15vh);
+  background-color: var(--tertiaryColor);
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
+
+.timestamp{
+
+}
+
 .notification-header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 10px;
 }
+
 .notification-icon {
-  color: #3498db;
+  color: var(--buttonColor);
   font-size: 24px;
   margin-right: 10px;
 }
+
+.notificator {
+    font-size: min(12pt, 4vh);
+    font-weight: bold;
+    color: var(--linkColor);
+}
+
 .notification-content {
   margin-left: 34px;
   display: flex;
@@ -39,11 +57,15 @@ body {
 }
 
 .post-link {
-  color: #3498db;
+  padding: 5px;
+  color: var(--linkColor);
+  border-radius: 10px;
   text-decoration: none;
 }
+
 .post-link:hover {
-  text-decoration: underline;
+    background-color: var(--primaryColor);
+    color: var(--tertiaryBackground);
 }
 
 ul {
