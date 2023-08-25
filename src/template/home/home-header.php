@@ -34,9 +34,13 @@
   </div>
   <div class="notifications-container">
     <img  class="icon notification-button" src="/resources/icons/bell-solid.svg" alt="notifications" />
+<<<<<<< HEAD
     <span class="notification-badge">
         <?php echo count(getNewNotifications()); ?>
     </span>
+=======
+    <p class="notificaiton-count"><?php echo count(getNewNotifications()); ?></p>
+>>>>>>> a43533826196e6c6c2ca74897d2ccafa68829e6d
   </div>
 </div>
 

@@ -27,6 +27,16 @@
         array_push($_SESSION['newNotifications'],$not);
     }
 
+    function getNewNotificationsFrom($notifications) {
+        $newNotifications = [];
+        foreach($notifications as $not) {
+            if(!$not->read) {
+                array_push($newNotifications, $not);
+            }
+        }
+        return $newNotifications;
+    }
+
     // TYPE of Notification
     function getCommentToPostNotificationType() {
         return 0;
@@ -62,7 +72,7 @@
         return $not->type;
     }
     function getNotificationTimestamp($not) {
-        return $not->timestamp;
+        return timeDifferenceToText($not->timestamp, date("Y-m-d H:i:s"));
     }
 
     // NOTIFICATION generation

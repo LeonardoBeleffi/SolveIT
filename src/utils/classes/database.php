@@ -20,6 +20,14 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    public function getLastPostsByLimit($n){
+        $stmt = $this->db->prepare("SELECT idPost FROM Post ORDER BY idPost DESC LIMIT ?");
+        $stmt->bind_param('i',$n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     // idPost --> postId, authorId, authorName, title, text, sector, timestamp
     public function getPostById($idPost){
@@ -322,7 +330,8 @@ class DatabaseHelper{
     public function getNotifications($userId){
         $stmt = $this->db->prepare("SELECT idNotifica as notificationId, idNotificatore as notificatorId, letta as isRead, tipo as type, idPost as postId, timestamp
         FROM Notifica
-        where idNotificato = ? and letta = 0");
+        where idNotificato = ? and letta = 0
+        ORDER BY idNotifica DESC");
         
         $stmt->bind_param('i',$userId);
         $stmt->execute();
@@ -335,7 +344,8 @@ class DatabaseHelper{
     public function getAllNotifications($userId){
         $stmt = $this->db->prepare("SELECT idNotifica as notificationId, idNotificatore as notificatorId, letta as isRead, tipo as type, idPost as postId, timestamp
         FROM Notifica as n
-        where idNotificato = ?");
+        where idNotificato = ?
+        ORDER BY idNotifica DESC");
         
         $stmt->bind_param('i',$userId);
         $stmt->execute();
@@ -506,7 +516,7 @@ class DatabaseHelper{
         }
         // insert tags
         foreach ($tags as $tag) {
-            $this->insertTag($collaboratore, $idPost, 1);
+            $this->insertTag($tag);
             $tagId = $this->getTagByName($tag)[0]["tagId"];
             $this->insertEtichettamento($idPost, $tagId);
         }

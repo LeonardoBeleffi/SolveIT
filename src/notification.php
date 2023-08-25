@@ -26,7 +26,7 @@
     setHeader("notification/notification-header.php");
     setMain("notification/notification-main.php");
     setFooter("home/home-footer.php");
-    setCSS(["./css/notification.css", "./css/home.css"]);
+    setCSS(["./css/register.css", "./css/notification.css", "./css/home.css"]);
     setRemoteCSS(["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"]);
 
     // require template

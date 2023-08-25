@@ -23,8 +23,20 @@ window.addEventListener("load", () => {
     
     initializeNavBar(nav_bar_links);
 
+    form = document.querySelector("#newpost_form");
+    form.addEventListener('keydown', (event) => {
+        // Prevent form submission on Enter key press
+        if (event.keyCode === 13 && event.target.tagName == 'INPUT') {
+            event.preventDefault();
+        }
+    });
+
+    divMain = document.querySelector(".main_content");
+    divMain.addEventListener("scroll", () => moveSuggestionOnScroll());
+
     tag_inputs = Array.from(document.querySelectorAll(".tag_input"));
     tag_inputs.forEach(tag_input => tag_input.addEventListener("input", (event) => suggestTags(event)));
+    tag_inputs.forEach(tag_input => tag_input.addEventListener("keydown", (event) => createTag(event)));
 
     collab_inputs = Array.from(document.querySelectorAll(".collab_input"));
     collab_inputs.forEach(collab_input => collab_input.addEventListener("input", (event) => suggestUsernames(event)));
@@ -66,10 +78,67 @@ function formatSize(size) {
     }
 }
 
+
+
 // SUGGESTIONs LOGIC -------
  
 let postData = {};
+let isQuering = false;
+let inputSuggestionType = 0;
 
+
+// TAG creation
+function createTag(event) {
+    const input = event.target;
+    const searchText = input.value;
+    const selected_list = input.closest("section").querySelector(".selected-list");
+    const realInput = input.closest("section").querySelector(".real_input");
+    
+    // perform only on enter key
+    if(event.keyCode != 13) {
+        return;
+    }
+    // add name in dictionary
+    if(!postData.hasOwnProperty(realInput.name)) {
+        postData[realInput.name] = [];
+        console.log(postData);
+    }
+    if (searchText.trim() !== '') {
+        input.value = "";
+        if (!postData[realInput.name].includes(searchText)) {
+            input.value = "";
+            postData[realInput.name].push(searchText);
+            realInput.value = postData[realInput.name].join(";");
+            selected_list.innerHTML = selected_list.innerHTML + generateSelecetedElement(searchText,1);
+        }
+    }
+
+}
+
+function moveSuggestionOnScroll() {
+    const suggestionsContainer = document.querySelector('.suggestions');
+    if(suggestionsContainer.style.display == "none") {
+        return;
+    }
+    let input;
+    if(inputSuggestionType==0) {
+        input = document.querySelector('.collab_input');
+    } else {
+        input = document.querySelector('.tag_input');
+    }
+    setSuggestionPositionOn(input);
+}
+
+function setSuggestionPositionOn(input) {
+    const suggestionsContainer = document.querySelector('.suggestions');
+    let rect = input.getBoundingClientRect();
+    suggestionsContainer.style.position = "absolute";
+    suggestionsContainer.style.left = (rect.left + window.scrollX)+"px";
+    suggestionsContainer.style.top = (rect.bottom + window.scrollY - 10)+"px";
+    suggestionsContainer.style.width = rect.width+"px";
+    suggestionsContainer.style.display = "flex";
+    suggestionsContainer.style.paddingTop = 10 + "px";
+}
 
 function suggestUsernames(event) {
     suggest(event,0);
@@ -84,6 +153,9 @@ function suggestTags(event) {
 const symbols = ["(°-°)","#"]; // user, tags symbols
 
 function suggest(event, type) {
+    if(isQuering) {
+        return;
+    }
     event.preventDefault();
     const input = event.target;
     const searchText = input.value;
@@ -94,7 +166,6 @@ function suggest(event, type) {
     // add name in dictionary
     if(!postData.hasOwnProperty(realInput.name)) {
         postData[realInput.name] = [];
-        console.log(postData);
     }
 
     if (searchText.trim() !== '') {
@@ -132,6 +203,7 @@ function suggest(event, type) {
                             input.value = "";
                             if (!postData[realInput.name].includes(sugg)) {
                                 postData[realInput.name].push(sugg);
+                                console.log(postData);
                                 realInput.value = postData[realInput.name].join(";");
                                 selected_list.innerHTML = selected_list.innerHTML + generateSelecetedElement(sugg,type);
                             }
@@ -139,23 +211,21 @@ function suggest(event, type) {
                         });
                     });
                     
-
-                    // dispaly suggestions container
-                    let rect = input.getBoundingClientRect();
-                    suggestionsContainer.style.position = "absolute";
-                    suggestionsContainer.style.left = (rect.left + window.scrollX)+"px";
-                    suggestionsContainer.style.top = (rect.bottom + window.scrollY - 10)+"px";
-                    suggestionsContainer.style.width = rect.width+"px";
-                    suggestionsContainer.style.display = "flex";
-                    suggestionsContainer.style.paddingTop = 10 + "px";
-
-
+                    if(suggestions.length != 0) {
+                        // dispaly suggestions container
+                        setSuggestionPositionOn(input);
+                    } else {
+                        suggestionsContainer.style.display = 'none';
+                    }
+                    inputSuggestionType = type;
+                    isQuering = false;
                 } else {
                     console.error('Failed to search.');
                 }
             }
         };
         // send parentId and text
+        isQuering=true;
         xhr.send(`text=${searchText}`);
     }
 }
