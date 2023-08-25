@@ -75,7 +75,7 @@
     }
 
     function getPostTimestamp($post) {
-        return timeDifferenceToText($post->timestamp, date("Y-m-d H:i:s"));
+        return $post->timestamp;
     }
 
 

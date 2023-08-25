@@ -22,17 +22,13 @@
                             </div>
                             <div class="tags-container">
                                 <!-- Post Tags -->
-                                <div class="tags">
-                                    <?php foreach(getPostTags($post) as $tag): ?>
-                                    <parent class="tag-badge">
-                                        <?php echo $tag ?>
-                                        </span>
-                                    <?php endforeach; ?>
-                                </div>
-                                <!-- Post Comments -->
+                                <?php foreach(getPostTags($post) as $tag): ?>
+                                <span class="tag-badge">
+                                    <?php echo $tag ?>
+                                </span>
+                                <?php endforeach; ?>
                             </div>
                         </div>
-                        <!-- Post Text -->
                     </div>
 
                     <div class="card-text">
@@ -61,13 +57,13 @@
                 <div class="post-body">
                     <div class="separator"></div>
                     <div class="attachments">
-                        <h5><?php echo count(getPostAttachments($post)); ?> attachments </h5>
+                        <h1><?php echo count(getPostAttachments($post)); ?> attachments </h1>
                         <?php loadAttachments($post); ?>
                         <div id="fileContainer"></div>
                     </div>
                     <!-- Post Comments -->
                     <div class="comments">
-                        <h5 class="comments-count"><?php echo count(getPostComments($post)); ?> comments</h5>
+                        <h1 class="comments-count"><?php echo count(getPostComments($post)); ?> comments</h1>
                         <?php loadComments($post); ?>
                         <!-- Add comment form -->
                         <form onsubmit="addComment(event)" class="root-comment">

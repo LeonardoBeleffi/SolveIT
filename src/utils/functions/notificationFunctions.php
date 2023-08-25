@@ -93,11 +93,11 @@
                 break;
             }
             case getLikeNotificationType(): {
-                $notificationText = 'likes your post';
+                $notificationText = 'liked your post';
                 break;
             }
             case getFollowNotificationType(): {
-                $notificationText = 'starts following you';
+                $notificationText = 'started following you';
                 break;
             }
         }

@@ -193,16 +193,6 @@ body > main > section {
     gap: 15px;
 }
 
-.tags-container {
-    width: 100%;
-    height: min(30px, 5vh);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin: auto;
-    gap: 15px;
-}
-
 .cardelement-container {
     width: calc(100% - 50px);
     display: flex;
@@ -262,19 +252,31 @@ body > main > section {
     overflow-wrap: break-word; */
  }
 
-.tags {
-    padding: 7px;
-    background-color: var(--secondaryColor);
-    border-radius: 15px;
-    display: block;
+ .post-opened .tags-container {
+    flex-wrap: wrap;
+    overflow: visible;
+    height: fit-content;
+ }
+
+ .tags-container {
+    width: 80vw;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    height: min(30px, 5vh); 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
 .tag-badge {
-    text-align: center;
-    vertical-align: middle;
-    top:50%;
-    margin: auto;
-    height: 100%;
+    padding: 0 8px;
+    background-color: var(--secondaryColor);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    height: min(30px, 5vh);
     font-size: 13pt;
 }
 
@@ -387,7 +389,7 @@ body > main > section {
     box-sizing: border-box;
 }
 
-.attachments > h5 {
+.attachments > h1 {
     height: 85%;
     transform: translateY(7%);
     padding: 10px 0;
@@ -424,7 +426,7 @@ body > main > section {
     background-color: var(--primaryColor);
 } 
 
-.comments > h5 {
+.comments > h1 {
     font-size: min(14pt, 4vh);
     padding: 10px 0;
     color: var(--secondaryTextColor);    
