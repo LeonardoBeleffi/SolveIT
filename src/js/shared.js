@@ -56,3 +56,11 @@ function refreshNotifications() {
         // send parentId and text
         xhr.send();
 }
+
+function addNotficationButton(){
+    const notificationButton = document.querySelector('.notification-button');
+
+    notificationButton.addEventListener('click', () => {
+        window.location.href = 'notification.php';
+    });
+}

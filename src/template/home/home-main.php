@@ -12,7 +12,8 @@
                             if(getPostAuthor($post))
                             echo strtoupper(substr(getPostAuthor($post),0,1));
                             echo ""
-                            ?> </span>
+                            ?>
+                         </span>
                         <!-- </div>         -->
                         <div class="cardelement-container">
                             <div class="card-title">

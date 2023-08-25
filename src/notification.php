@@ -22,7 +22,7 @@
 
     // set template elements
     clearTemplate();
-    setTitle("Post - SolveIT");
+    setTitle("Notifications - SolveIT");
     setHeader("notification/notification-header.php");
     setMain("notification/notification-main.php");
     setFooter("home/home-footer.php");
