@@ -40,7 +40,7 @@ body > header {
     justify-content: space-between;
 }
 
-.header-title{
+.header-title {
     font-family: var(--primaryFontFamily);
     font-size: max(20pt, 5vh);;
     color: var(--tertiaryBackground);
@@ -50,7 +50,7 @@ body > header {
     -ms-user-select: none;
     user-select: none;
 }
-  
+
 .logo-container {
     width: 50%;
     height: 100%;
@@ -60,10 +60,6 @@ body > header {
     gap: 20px;
     padding-left: 20px;
 }
-
-/* .logo-container .fa-lightbulb{
-    color: var(--borderColor);
-} */
 
 .notifications-container {
     width: 50%;
@@ -84,7 +80,8 @@ body > header {
     color: azure;
     font-family: var(--primaryFontFamily);
 }
-.icon{
+
+.icon {
     width: 25px;
     height: auto;
     cursor: pointer;
@@ -124,12 +121,12 @@ body > main > section {
 
 #post-list {
     list-style-type: none;
-    height: inherit;
+    height: calc(100% - 2*10px);
     margin: 0;
     display: block;
     padding: 10px 0;
     align-items: center;
-    overflow-y: auto;
+    overflow: hidden auto;
 }
 
 /* TODO */
@@ -221,6 +218,7 @@ body > main > section {
     
     
 }
+
 .card-title > h1 {
     padding: 0;
     margin-top:5px;
@@ -280,7 +278,7 @@ body > main > section {
     font-size: 13pt;
 }
 
-.like-button{
+.like-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -292,7 +290,7 @@ body > main > section {
     background-position: 8px; */
 }
 
-.comment-button{
+.comment-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -381,7 +379,7 @@ body > main > section {
     display: block;
 }
 
-.separator{
+.separator {
     height: 1px;
     border-top: 1px dashed var(--placeholderColor) ;
     width: 95%;
@@ -399,32 +397,32 @@ body > main > section {
     font-size: min(14pt, 4vh);
 }
 
-/* .img-attachment{
+/* .img-attachment {
 
 
 }
 
-.video-attachment{
+.video-attachment {
     
 }*/
 
-.audio-attachment{
+.audio-attachment {
     width: 95%;
     margin: auto;
 }
 
-.other-attachment{
+.other-attachment {
     width: fit-content;
     margin-left: 20px;
     padding: 5px;
     color: var(--tertiaryBackground);
     background-color: var(--secondaryColor);
     border-radius: 10px;
-} 
+}
 
-.other-attachment:hover{
+.other-attachment:hover {
     background-color: var(--primaryColor);
-} 
+}
 
 .comments > h1 {
     font-size: min(14pt, 4vh);
@@ -482,7 +480,6 @@ ul.replies {
 
 .card-body {
     border: 1px solid var(--debugColor);
-
 }
 
 body > header > h1 {
