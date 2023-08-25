@@ -26,3 +26,31 @@ function initializeNavBar(navBarElements){
     });
 }
 
+// refresh loop
+setInterval(() => refreshNotifications(), 2000);
+
+function refreshNotifications() {
+
+    const notification_count = document.querySelector('.notificaiton-count');
+
+    // Send AJAX request to refresh notifications
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'utils/refresh.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    // parse response
+                    console.log(xhr.responseText);
+                    const response = JSON.parse(xhr.responseText);
+                    const notifications = response.notifications;
+                    notification_count.innerHTML = notifications;
+                            
+                } else {
+                    console.error('Failed to refresh Notifications.');
+                }
+            }
+        };
+        // send parentId and text
+        xhr.send();
+}

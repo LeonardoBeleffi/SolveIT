@@ -33,7 +33,7 @@
   </div>
   <div class="notifications-container">
     <img  class="icon notification-button" src="/resources/icons/bell-solid.svg" alt="notifications" />
-    <?php echo count(getNewNotifications()); ?>
+    <p class="notificaiton-count"><?php echo count(getNewNotifications()); ?></p>
   </div>
 </div>
 

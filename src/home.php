@@ -16,7 +16,7 @@
     clearNotifications();
 
     // require post query helper
-    require "utils/download.php";
+    include "utils/download.php";
 
     // set template elements
     clearTemplate();
