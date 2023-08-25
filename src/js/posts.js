@@ -18,6 +18,55 @@ function getClosestReplies(target) {
 }
 
 // COMMENTs
+function deleteComment(event) {
+    event.preventDefault();
+    const delete_button = event.target;
+    const comment = delete_button.closest(".comment");
+    const commentId = comment.id.split("-")[1];
+    const commentText = comment.querySelector('.comment-text');
+
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'utils/deleteComment.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                delete_button.style.display.visible = "none";
+                comment.removeChild(delete_button);
+                
+                commentText.innerHTML = "This comment has been deleted.";
+                commentText.classList.add('deleted-comment');
+                // const response = JSON.parse(xhr.responseText);
+                // const commentId = response.commentId;
+                // const commentNumber = response.commentNumber;
+
+                // console.log(xhr.responseText);
+
+                // let repliesContainer;
+                // if(!isRootComment) {
+                //     repliesContainer = getClosestReplies(form);
+                // } else {
+                //     repliesContainer = getRootReplies(form);
+                // }
+                // repliesContainer.innerHTML = repliesContainer.innerHTML + generateComment("com-"+commentId,replyText,_USERNAME);
+                // let commentsSection = document.querySelector("#post-"+postId+' .comments-count');
+                // console.log(commentNumber);
+                // commentsSection.innerHTML = commentNumber+" comments";
+                // input.value = '';
+                // if(!isRootComment) {
+                //     form.classList.toggle('expanded');
+                // }
+            } else {
+                console.error('Failed to add comment reply.');
+            }
+        }
+    };
+    // send parentId and text
+    xhr.send(`commentId=${commentId}`);
+
+}
+
 function addComment(event) {
     event.preventDefault();
     let form = event.target;
@@ -75,8 +124,9 @@ function addComment(event) {
 function generateComment(id, text, author) {
     // TODO with query to php
     return `<li id="`+id+`" class="comment">
-                <p>| <strong>`+author+`:</strong> `+text+`</p>
+                <p>| <emph>`+author+`:</emph> <span class="comment-text">`+text+`</span></p>
                 <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                `+(_USERNAME == author ? '<span onclick="deleteComment(event)" class="delete-button">Delete</span>' : '')+`
                 <form onsubmit="addComment(event)" class="reply-form">
                     <div class="form-group">
                         <input type="text" class="form-input" placeholder="replying to @'.getCommentAuthor($comment).'">

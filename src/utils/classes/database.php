@@ -94,9 +94,9 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // idPost --> commentId, text, commentAuthorId, commentAuthorName, parentId, timestamp
+    // idPost --> commentId, text, commentAuthorId, commentAuthorName, parentId, timestamp, deleted
     public function getCommentsByPost($idPost){
-        $stmt = $this->db->prepare("SELECT c.idCommento as commentId, c.testo as text, u.idUtente as commentAuthorId, u.username as commentAuthorName, c.idCommentoPadre as parentId, c.timestamp as timestamp
+        $stmt = $this->db->prepare("SELECT c.idCommento as commentId, c.testo as text, u.idUtente as commentAuthorId, u.username as commentAuthorName, c.idCommentoPadre as parentId, c.timestamp as timestamp, c.cancellato as deleted
         FROM Utente as u, Post as p, Commento as c
         where p.idPost = ? and c.idUtente = u.idUtente and c.idPost = p.idPost");
 
@@ -536,6 +536,15 @@ class DatabaseHelper{
                 WHERE idNotifica = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii',$isRead, $notificationId);
+        
+        return $stmt->execute();
+    }    
+    // commentId, deleted, userId -> \
+    public function updateCommento($commentId, $deleted, $userId) {
+        $query = "UPDATE Commento SET cancellato = ?
+                WHERE idCommento = ? and idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('iii',$deleted, $commentId, $userId);
         
         return $stmt->execute();
     }    

@@ -6,6 +6,7 @@ class Comment {
     private $text;
     private $timestamp;
     private $parentId;
+    private $deleted;
 
     public function Comment(){
         $this->$commentId = "";
@@ -13,6 +14,7 @@ class Comment {
         $this->$text = [];
         $this->$timestamp = "";
         $this->$parentId = [];
+        $this->$deleted = 0;
     }
 
     // overloading functions - see "https://www.php.net/manual/en/language.oop5.overloading.php"
