@@ -1,5 +1,5 @@
 <section>
-    <ul class="container">
+    <ul class="notifications-list">
         <?php foreach(getNotifications() as $not): ?>
             <?php   
                     $iconName = "";
@@ -12,7 +12,7 @@
                     }
             ?>
         <li class="notification">
-            <p><?php echo getNotificationTimestamp($not); ?></p>
+            <span class="timestamp"><?php echo getNotificationTimestamp($not); ?></span>
             <div class="notification-header">
                 <i class="fas <?php echo $iconName ?> notification-icon"></i>
                 <span class="notification-content">
@@ -23,4 +23,4 @@
         </li>
         <?php endforeach; ?>
     </ul>
-</section>
+    </section>

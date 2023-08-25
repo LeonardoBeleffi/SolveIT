@@ -32,7 +32,7 @@
     clearTemplate();
     setTitle("Search - SolveIT");
     setMain($mainPhp);
-    setHeader("search/search-header.php");
+    setHeader("home/home-header.php");
     setFooter("home/home-footer.php");
     setCSS($CSSs);
     setJS($JSs);
