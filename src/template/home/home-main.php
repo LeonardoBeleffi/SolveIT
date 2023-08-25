@@ -6,7 +6,7 @@
                 <!-- Post Title -->
                 <div class="post-preview">
 
-                    <div class="inline-container">
+                    <div class="post-header">
                         <!-- <div class="profile-pic"> -->
                         <span class="profile-pic"><?php 
                             if(getPostAuthor($post))

@@ -184,7 +184,7 @@ body > main > section {
     font-family: var(--primaryFontFamily);
 }
 
-.inline-container {
+.post-header {
     width: 95%;
     display: flex;
     flex-direction: row;
