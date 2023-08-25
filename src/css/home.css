@@ -451,9 +451,27 @@ body > main > section {
     
 }
 
+.comment emph {    
+    font-weight: bold;
+}
+
+.deleted-comment {
+    color: gray;
+    font-style: italic;
+}
+
 .reply-button {
     cursor: pointer;
     color: var(--linkColor);
+    font-weight: bold;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.delete-button {
+    cursor: pointer;
+    color: red;
     font-weight: bold;
     -webkit-user-select: none;
     -ms-user-select: none;

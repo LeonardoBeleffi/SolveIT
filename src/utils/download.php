@@ -87,6 +87,7 @@
             $comment->author = $comm["commentAuthorName"];
             $comment->parentId = $comm["parentId"];
             $comment->timestamp = $comm["timestamp"];
+            $comment->deleted = $comm["deleted"];
             array_push($_comments, $comment);
         }
         $post->comments = $_comments;

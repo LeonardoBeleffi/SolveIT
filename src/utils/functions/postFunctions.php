@@ -130,7 +130,9 @@
     }
 
     function getCommentText($comment) {
-        return $comment->text;
+        return ($comment->deleted)
+            ? "This comment has been deleted."
+            : $comment->text;
     }
 
     function getCommentParentId($comment) {
@@ -139,6 +141,10 @@
 
     function getCommentTimestamp($comment) {
         return $comment->timestamp;
+    }
+
+    function isCommentDeleted($comment) {
+        return $comment->deleted;
     }
 
     function loadComments($post) {
@@ -153,8 +159,9 @@
 
     function loadComment($comment,$post) {
         return '  <li id="com-'.getCommentId($comment).'" class="comment">
-                    <p>| <strong>'.getCommentAuthor($comment).':</strong> '.getCommentText($comment).'</p>
+                    <p>| <emph>'.getCommentAuthor($comment).':</emph> <span class="comment-text '.(isCommentDeleted($comment)? 'deleted-comment' : '').'">'.getCommentText($comment).'</span></p>
                     <span onclick="toggleReply(event)" class="reply-button">Reply</span>
+                    '.(getCommentAuthor($comment) == getUsername() and !isCommentDeleted($comment) ? '<span onclick="deleteComment(event)" class="delete-button">Delete</span>' : '' ).'
                     <form onsubmit="addComment(event)" class="reply-form">
                         <div class="form-group">
                             <input type="text" class="form-input" placeholder="replying to @'.getCommentAuthor($comment).'">
