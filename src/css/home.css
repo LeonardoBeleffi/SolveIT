@@ -133,10 +133,12 @@ body > main > section {
 /* TODO */
 #post-list > li {
     height: min(200px, 20vh);
+    padding: 5px 0;
 }
 
 .post-opened {
     height:  fit-content !important;
+    padding: 0 !important;
 }
 
 /* .post-opened > * {
@@ -232,6 +234,7 @@ body > main > section {
 
 .post-opened .card-title > h1 {
     white-space: normal;
+    word-break: break-all;
 }
 
 .card-text {
@@ -245,19 +248,27 @@ body > main > section {
     height: min(20px, 10vh);
     margin-top: 0;
     margin-bottom: 0;
-    /* white-space: nowrap;
+    white-space: nowrap;
     inline-size: 235px;
     overflow: hidden;
-    overflow-wrap: break-word; */
- }
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+}
 
- .post-opened .tags-container {
+.post-opened .card-text > p {
+    height: fit-content;
+    word-break: break-all;
+    white-space: normal;
+    overflow: visible;
+}
+
+.post-opened .tags-container {
     flex-wrap: wrap;
     overflow: visible;
     height: fit-content;
- }
+}
 
- .tags-container {
+.tags-container {
     width: 80vw;
     flex-wrap: nowrap;
     overflow: hidden;
@@ -350,6 +361,11 @@ body > main > section {
     padding: 10px;
 }
 
+.post-opened .post-preview {
+    height: fit-content;
+    gap: 10px;
+}
+
 .post-preview {
     height: min(200px, 20vh);
     font-family: var(--primaryFontFamily);
@@ -384,7 +400,7 @@ body > main > section {
     height: 1px;
     border-top: 1px dashed var(--placeholderColor) ;
     width: 95%;
-    margin: 0 auto;
+    margin: 15px auto 0 auto;
     box-sizing: border-box;
 }
 
