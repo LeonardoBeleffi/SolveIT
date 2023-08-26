@@ -19,8 +19,8 @@ window.addEventListener("load", () => {
         post_preview.addEventListener("click", event => {
             let post_preview_clicked = get_post_preview_from_click(event.target);
 
+            if (click_to_be_ignored(event.target)) return;
             if (post_preview_clicked.parentNode.parentNode.className.includes("post-opened")) {
-                if (click_to_be_ignored(event.target)) return;
                 close_post();
             } else {
                 open_post(post_preview_clicked.parentNode.parentNode);
