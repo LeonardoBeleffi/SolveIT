@@ -419,7 +419,7 @@ body > main > section {
     color: var(--secondaryTextColor);
     width: 95%;
     margin: auto;
-    font-size: min(14pt, 4vh);
+    font-size: min(19px, 2.5vh);
 }
 
 /* .img-attachment {
@@ -450,7 +450,7 @@ body > main > section {
 }
 
 .comments > h1 {
-    font-size: min(14pt, 4vh);
+    font-size: min(19px, 2.5vh);
     padding: 10px 0;
     color: var(--secondaryTextColor);    
     width: 95%;
