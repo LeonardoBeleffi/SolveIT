@@ -19,10 +19,7 @@ window.addEventListener("load", () => {
         post_preview.addEventListener("click", event => {
             let post_preview_clicked = get_post_preview_from_click(event.target);
 
-            if (click_to_be_ignored(event)){
-
-                return
-            } 
+            if (filter_clicks(event)) return;
             if (post_preview_clicked.parentNode.parentNode.className.includes("post-opened")) {
                 close_post();
             } else {
@@ -65,29 +62,29 @@ function get_post_preview_from_click(target) {
     return target;
 }
 
-function click_to_be_ignored(event) {
+function filter_clicks(event) {
 
     let target = event.target;
 
-    if(Array.from(document.querySelectorAll(".profile-pic")).find(e => e.contains(target)) ||
-    Array.from(document.querySelectorAll(".username")).find(e => e.contains(target))){
-        //apri utente
+    //Array.from(document.querySelectorAll(".profile-pic")).find(e => e.contains(target))
+
+    if(Array.from(document.querySelectorAll(".username")).find(e => e.contains(target))){
+        let username = event.target.innerHTML.trim();
+        username = username.substring(1,username.length);
+        window.location.href = "./profile.php?user="+username;
         return true;
     }
 
     if(Array.from(document.querySelectorAll(".tag-badge")).find(e => e.contains(target))){
-        //ritorna post con quel tag
+        window.location.href = "./search.php?tag="+event.target.innerHTML.trim();
         return true;
     }
 
     if(Array.from(document.querySelectorAll(".like-button")).find(e => e.contains(target))){
         toggleLike(event);
+        return true;
     }
 
-
-    return Array.from(document.querySelectorAll(".profile-pic")).find(e => e.contains(target)) ||
-        Array.from(document.querySelectorAll(".username")).find(e => e.contains(target)) ||
-        Array.from(document.querySelectorAll(".tag-badge")).find(e => e.contains(target)) ||
-        Array.from(document.querySelectorAll(".like-button")).find(e => e.contains(target));
+    return false;
 }
 

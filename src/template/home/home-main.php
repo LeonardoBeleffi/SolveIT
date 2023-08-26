@@ -42,10 +42,10 @@
                         <span class="username">@<?php echo getPostAuthor($post); ?> </span>
                         <div class="like-section">
                             <!-- Like button -->
-                            <button type="button" class="button like-button">
-                                <i class="fa-regular fa-thumbs-up <?php
+                            <button type="button" class="button like-button <?php
                                 echo isLikedByCurrentUser($post) ? "liked" : "";
-                                ?>"></i>
+                                ?>">
+                                <i class="fa-regular fa-thumbs-up"></i>
                             </button>
                             <!-- Post Likes -->
                             <div class="likes">

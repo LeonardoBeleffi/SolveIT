@@ -194,7 +194,7 @@ class DatabaseHelper{
         FROM Utente
         where username LIKE ?");
         
-        $prefix = $prefix."%";
+        $prefix = "%".$prefix."%";
         $stmt->bind_param('s',$prefix);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -302,7 +302,7 @@ class DatabaseHelper{
         FROM Tag
         where nome LIKE ?");
         
-        $prefix = $prefix."%";
+        $prefix = "%".$prefix."%";
         $stmt->bind_param('s',$prefix);
         $stmt->execute();
         $result = $stmt->get_result();

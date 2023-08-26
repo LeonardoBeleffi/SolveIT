@@ -51,7 +51,7 @@ function displayTag(tag) {
     suggestionElement.classList.add('suggestion');
     suggestionElement.textContent = "# "+tag;
     suggestionElement.addEventListener('click', () => {
-        window.location.href = './search.php?user='+tag;
+        window.location.href = './search.php?tag='+tag;
     });
     suggestionsContainer.appendChild(suggestionElement);
 }
@@ -69,9 +69,9 @@ function displayUsername(username) {
 }
 
 window.addEventListener("load", () => {
-    nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
+    // nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
 
-    initializeNavBar(nav_bar_links);
-    addNotificationButton()
+    // initializeNavBar(nav_bar_links);
+    // addNotificationButton()
 });
 
