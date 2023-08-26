@@ -63,9 +63,9 @@ function get_post_preview_from_click(target) {
 }
 
 function click_to_be_ignored(target) {
-    return target.className.includes("profile-pic") ||
-        target.className.includes("tag-badge") ||
-        target.className.includes("username") ||
-        target.className.includes("like-button");
+    return Array.from(document.querySelectorAll(".profile-pic")).find(e => e.contains(target)) ||
+        Array.from(document.querySelectorAll(".username")).find(e => e.contains(target)) ||
+        Array.from(document.querySelectorAll(".tag-badge")).find(e => e.contains(target)) ||
+        Array.from(document.querySelectorAll(".like-button")).find(e => e.contains(target));
 }
 
