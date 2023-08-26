@@ -11,7 +11,8 @@
     setHeader("newpost/newpost-header.php");
     setMain("newpost/newpost-main.php");
     setFooter("home/home-footer.php");
-    setCSS(["./css/register.css", "./css/newpost.css", "./css/home.css"]);
+    setCSS(["./css/newpost.css", "./css/home.css"]);
+    setRemoteCSS(["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"]);
     setJS(["./js/newpost.js","./js/shared.js"]);
 
     // require template

@@ -35,9 +35,9 @@
     setMain("search/search-main.php");
     setHeader("home/home-header.php");
     setFooter("home/home-footer.php");
-    setCSS(["./css/search.css", "./css/home.css"]);
+    setCSS(["./css/search.css"]);
     setRemoteCSS(["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"]);
-    setJS(["./js/shared.js","./js/home.js","./js/posts.js","./js/search.js"]);
+    setJS(["./js/shared.js","./js/posts.js","./js/search.js"]);
 
     // require template
     require "template/base.php";

@@ -129,7 +129,7 @@ function generateComment(id, text, author) {
                 `+(_USERNAME == author ? '<span onclick="deleteComment(event)" class="delete-button">Delete</span>' : '')+`
                 <form onsubmit="addComment(event)" class="reply-form">
                     <div class="form-group">
-                        <input type="text" class="form-input" placeholder="replying to @'.getCommentAuthor($comment).'">
+                        <input type="text" class="form-input" placeholder="replying to @`+author+`">
                         <button type="submit" class="button">
                             <i class="fa-solid fa-reply"></i>
                         </button>

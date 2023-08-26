@@ -83,8 +83,8 @@ body > header {
 }
 
 .icon {
-    width: 25px;
-    height: auto;
+    font-size: 20pt;
+    color: var(--borderColor);
     cursor: pointer;
     -webkit-user-select: none;
     -ms-user-select: none;

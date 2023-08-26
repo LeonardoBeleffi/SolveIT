@@ -57,8 +57,8 @@ function refreshNotifications() {
         xhr.send();
 }
 
-function addNotficationButton(){
-    const notificationButton = document.querySelector('.notification-button');
+function addNotificationButton(){
+    const notificationButton = document.querySelector('.notifications-container');
 
     notificationButton.addEventListener('click', () => {
         window.location.href = 'notification.php';

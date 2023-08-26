@@ -1,17 +1,18 @@
 <nav id="nav-bar">
     <a href="./home.php">
-        <img class="icon" src="/resources/icons/house-solid.svg" alt="home" /></a>
+        <i class="fa-solid fa-house icon"></i>
+    </a>
     <a href="./search.php">
-        <img class="icon" src="/resources/icons/magnifying-glass-solid.svg" alt="search" />
+        <i class="fa-solid fa-magnifying-glass icon"></i>
     </a>
     <a href="./newpost.php">
-        <img class="icon" src="/resources/icons/plus-solid.svg" alt="create" />
+        <i class="fa-solid fa-plus icon"></i>
     </a>
     <a href="./settings.php">
-        <img class="icon" src="/resources/icons/gear-solid.svg" alt="settings" />
+        <i class="fa-solid fa-gear icon"></i>
     </a>
-    <a href="./utils/logout.php">
-        <img class="icon" src="/resources/icons/user-solid.svg" alt="profile" />
+    <a href="./profile.php">
+        <i class="fa-solid fa-user icon"></i>
     </a>
     <!-- <a href="utils/logout.php">Logout</a> -->
 </nav>

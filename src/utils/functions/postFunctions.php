@@ -168,8 +168,8 @@
     function loadComment($comment,$post) {
         return '  <li id="com-'.getCommentId($comment).'" class="comment">
                     <p>| <emph>'.getCommentAuthor($comment).':</emph> <span class="comment-text '.(isCommentDeleted($comment)? 'deleted-comment' : '').'">'.getCommentText($comment).'</span></p>
-                    <span onclick="toggleReply(event)" class="reply-button">Reply</span>
-                    '.(getCommentAuthor($comment) == getUsername() and !isCommentDeleted($comment) ? '<span onclick="deleteComment(event)" class="delete-button">Delete</span>' : '' ).'
+                    '.(!isCommentDeleted($comment) ? '<span onclick="toggleReply(event)" class="reply-button">Reply</span>' : '' ).'
+                    '.(getCommentAuthor($comment) == getUsername() && !isCommentDeleted($comment) ? '<span onclick="deleteComment(event)" class="delete-button">Delete</span>' : '' ).'
                     <form onsubmit="addComment(event)" class="reply-form">
                         <div class="form-group">
                             <input type="text" class="form-input" placeholder="replying to @'.getCommentAuthor($comment).'">
