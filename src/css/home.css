@@ -161,6 +161,10 @@ body > main > section {
     margin: auto;
 }
 
+.post-opened .post-container {
+    padding-top: 5px;
+}
+
 .likes-container {
     width: 95%;
     display: flex;
@@ -214,7 +218,6 @@ body > main > section {
     font-size: 30pt;
     font-weight: bold;
     color: var(--primaryTextColor);
-    margin: 0 auto;
     align-self: center;
     text-align: center;
 }
@@ -228,7 +231,7 @@ body > main > section {
     margin-top:5px;
     margin-bottom:5px;
     color: var(--linkColor);
-    font-size: 15pt;
+    font-size: max(15pt, 3vh);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -243,12 +246,11 @@ body > main > section {
 .card-text {
     width: 95%;
     margin: auto;
-    font-size: 12pt;
-   
+    font-size: max(19px, 2.5vh);
 }
 
 .card-text > p {
-    height: min(20px, 10vh);
+    /* height: min(20px, 10vh); */
     width: 100%;
     margin-top: 0;
     margin-bottom: 0;
@@ -275,7 +277,7 @@ body > main > section {
     width: 100%;
     flex-wrap: nowrap;
     overflow: hidden;
-    height: min(30px, 5vh); 
+    /* height: min(30px, 5vh);  */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -289,8 +291,8 @@ body > main > section {
     border-radius: 10px;
     display: flex;
     align-items: center;
-    height: min(30px, 5vh);
-    font-size: 13pt;
+    /* height: min(30px, 5vh); */
+    font-size: max(13pt, 2.5vh);
 }
 
 .like-button {
