@@ -159,6 +159,7 @@ body > main > section {
     display: flex;
     flex-direction: column;
     margin: auto;
+    padding: 0;
 }
 
 .post-opened .post-container {
@@ -184,11 +185,12 @@ body > main > section {
 
 .username {
     color: var(--linkColor);
-    font-size: max(19px, 2.5vh);
+    font-size: max(15px, 2vh);
 }
 
 .likes {
     font-family: var(--primaryFontFamily);
+    font-size: max(14px, 1.75vh);
 }
 
 .post-header {
@@ -231,7 +233,7 @@ body > main > section {
     margin-top:5px;
     margin-bottom:5px;
     color: var(--linkColor);
-    font-size: max(15pt, 3vh);
+    font-size: max(19px, 2.5vh);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -246,7 +248,7 @@ body > main > section {
 .card-text {
     width: 95%;
     margin: auto;
-    font-size: max(19px, 2.5vh);
+    font-size: max(15px, 2vh);
 }
 
 .card-text > p {
@@ -292,7 +294,7 @@ body > main > section {
     display: flex;
     align-items: center;
     /* height: min(30px, 5vh); */
-    font-size: max(13pt, 2.5vh);
+    font-size: max(15px, 2vh);
 }
 
 .like-button {
@@ -572,7 +574,7 @@ body > footer {
     display: block;
     background-color: var(--buttonColor);
     bottom: 0;
-    border-radius: 25% 25% 0 0;
+    border-radius: 25px 25px 0 0;
 }
 
 @media only screen and (min-width: 700px) {
