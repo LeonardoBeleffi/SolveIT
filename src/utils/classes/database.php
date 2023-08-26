@@ -423,13 +423,33 @@ class DatabaseHelper{
     }
 
     // idPost, userId -> 
-    public function insertLike($idPost, $userId){
+    public function toggleLike($idPost, $userId){
         try {
             $query = "INSERT INTO MiPiace (idPost, idUtente) VALUES (?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ii',$idPost, $userId);
             $stmt->execute();
             return $stmt->insert_id;
+        } catch(Exception $e) {
+            try {
+                $query = "DELETE FROM MiPiace WHERE (idPost, idUtente) = (?, ?)";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('ii',$idPost, $userId);
+                $stmt->execute();
+                return $stmt->insert_id;
+            } catch(Exception $e) {
+                return false;
+            }
+        }
+    }
+
+    public function isLikedBy($idPost, $userId){
+        try {
+            $query = "SELECT FROM MiPiace WHERE (idPost, idUtente) = (?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ii',$idPost, $userId);
+            $stmt->execute();
+            return true;
         } catch(Exception $e) {
             return false;
         }
@@ -588,13 +608,13 @@ class DatabaseHelper{
     // }
 
     // idPost, userId -> \
-    public function deleteLike($idPost, $userId){
-        $query = "DELETE FROM MiPiace 
-                    WHERE idUtente = ? and idPost = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ii',$userId, $idPost);
-        return $stmt->execute();
-    }
+    // public function deleteLike($idPost, $userId){
+    //     $query = "DELETE FROM MiPiace 
+    //                 WHERE idUtente = ? and idPost = ?";
+    //     $stmt = $this->db->prepare($query);
+    //     $stmt->bind_param('ii',$userId, $idPost);
+    //     return $stmt->execute();
+    // }
 
 }
 ?>

@@ -141,25 +141,39 @@ function generateComment(id, text, author) {
 }
 
 // LIKEs
-function addLike(event) {
+function toggleLike(event) {
+    
     event.preventDefault();
     let likeBut = event.target;
     let postId = likeBut.closest(".post").id.split("-")[1];
+
+    let temp = likeBut;
     
+    if(likeBut.classList.contains("like-button")){
+        likeBut = likeBut.children[0];
+    }
+    if(likeBut.className.includes("liked")){
+        likeBut.classList.remove("liked");
+    }else{
+        likeBut.classList.add("liked");
+    }
+
+    likeBut = temp;
+
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'utils/addLike.php', true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                console.log(xhr.responseText);
+                //console.log(xhr.responseText);
                 const response = JSON.parse(xhr.responseText);
                 const likes = response.likes;
 
                 const likesCount = document.querySelector("#post-"+postId+' .likes-count');
-                likesCount.innerHTML = "liked by: "+ likes;
+                likesCount.innerHTML = "liked by "+ likes;
             } else {
-                console.error('Failed to add comment reply.');
+                console.error('Failed to add like.');
             }
         }
     };

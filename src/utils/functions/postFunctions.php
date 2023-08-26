@@ -23,7 +23,7 @@
     }
 
     function addPost($post) {
-        if(!isset($_SESSION["posts"])) {
+        if(!isset($_SESSIgetPostAuthorON["posts"])) {
             $_SESSION["posts"] = [];
         }
         array_push($_SESSION["posts"], $post);
@@ -84,6 +84,14 @@
 
     function getPostTimestamp($post) {
         return $post->timestamp;
+    }
+
+    function isLikedByCurrentUser($post){
+        foreach (getPostLikes($post) as $like){
+            if($like == getUsername())
+                return true;
+        }
+        return false;
     }
 
 
