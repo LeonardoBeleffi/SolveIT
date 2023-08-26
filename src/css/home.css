@@ -21,6 +21,10 @@ body {
     overflow: hidden;
 }
 
+body > * {
+    overflow: auto;
+}
+
 body > header {
     height: var(--header_height);
     display: flex;
@@ -30,12 +34,10 @@ body > header {
 
 .header-container {
     display: flex;
-    height: var(--header_height);
+    height: calc(var(--header_height) - 10px);
     width: 95%;
     border-radius: 10px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto 0 auto;
     box-shadow: 0 0 5px rgba(0,0,0,0.7);
     background-color: var(--primaryColor);
     justify-content: space-between;
@@ -43,7 +45,7 @@ body > header {
 
 .header-title {
     font-family: var(--primaryFontFamily);
-    font-size: max(20pt, 5vh);;
+    font-size: max(38px, 5vh);;
     color: var(--tertiaryBackground);
     font-weight: bold;
     text-shadow: 4px 2px 0 var(--linkColor);
@@ -132,7 +134,7 @@ body > main > section {
 
 /* TODO */
 #post-list > li {
-    height: min(200px, 20vh);
+    height: max(150px, 20vh);
     padding: 5px 0;
 }
 
@@ -147,7 +149,8 @@ body > main > section {
 /* END TODO */
 
 .post-container {
-    height: min(170px, 20vh);
+    /* height: min(170px, 20vh); */
+    height: 100%;
     background-color: var(--secondaryBackground);
     border: 1px solid var(--linkColor);
     box-shadow: 0 0 5px rgba(0,0,0, 0.5);
@@ -177,7 +180,7 @@ body > main > section {
 
 .username {
     color: var(--linkColor);
-    font-size: min(14pt, 4vh);
+    font-size: max(19px, 2.5vh);
 }
 
 .likes {
@@ -250,7 +253,6 @@ body > main > section {
     margin-top: 0;
     margin-bottom: 0;
     white-space: nowrap;
-    inline-size: 235px;
     overflow: hidden;
     overflow-wrap: break-word;
     text-overflow: ellipsis;
@@ -270,7 +272,7 @@ body > main > section {
 }
 
 .tags-container {
-    width: 80vw;
+    width: 100%;
     flex-wrap: nowrap;
     overflow: hidden;
     height: min(30px, 5vh); 
@@ -368,7 +370,8 @@ body > main > section {
 }
 
 .post-preview {
-    height: min(200px, 20vh);
+    /* height: min(200px, 20vh); */
+    height: 100%;
     font-family: var(--primaryFontFamily);
     display: flex;
     flex-direction: column;
@@ -535,12 +538,15 @@ body > footer {
     position: fixed;
     width: 100%;
     /*bottom: 0;*/
+    justify-content: flex-start;
+    overflow: scroll;
     height: var(--footer_height);
     background-color: var(--buttonColor);
 }
 
 #nav-bar {
     height: 85%;
+    width: max(275px, 100%);
     position: absolute;
     top: 0;
     display: flex;
@@ -551,7 +557,7 @@ body > footer {
 
 #nav-bar a {
     height: 100%;
-    width: calc(100vw / 5);
+    width: max(55px, calc(100vw / 5));
     display: flex;
     align-items: center;
     justify-content: center;
