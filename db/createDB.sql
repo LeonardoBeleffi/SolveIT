@@ -59,6 +59,7 @@ CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Utente` (
   `cognome` VARCHAR(128) NULL,
   `email` VARCHAR(128) NULL,
   `username` VARCHAR(128) NULL,
+  `bio` VARCHAR(256) NULL,
   `dataNascita` DATE NULL,
   `telefono` VARCHAR(45) NULL,
   `idSettore` INT NULL,

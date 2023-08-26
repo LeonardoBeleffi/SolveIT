@@ -543,6 +543,9 @@ class DatabaseHelper{
         }
         // insert tags
         foreach ($tags as $tag) {
+            if(trim($tag)=="") {
+                continue;
+            }
             $this->insertTag($tag);
             $tagId = $this->getTagByName($tag)[0]["tagId"];
             $this->insertEtichettamento($idPost, $tagId);

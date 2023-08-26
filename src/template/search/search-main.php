@@ -1,5 +1,4 @@
 <section>
-    <h1>Search</h1>
     <div class="container">
         <div class="search-section">
             <input oninput="search(event)" type="text" class="form-input" placeholder="Search users or tags">

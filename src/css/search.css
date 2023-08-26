@@ -28,7 +28,7 @@
 
 .form-input {
     font-size: min(12pt,4vh);
-    width: max(220px, 68vw);
+    width: max(220px, 90vw);
     margin: 0 auto;
     height: min(50px, 15vh);
     color: var(--buttonTextColor);

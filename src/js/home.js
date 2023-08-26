@@ -34,7 +34,7 @@ window.addEventListener("load", () => {
         close_post();
     });
 
-    addNotficationButton();
+    addNotificationButton();
 
 }, false);
 
