@@ -220,7 +220,7 @@ body > main > section {
     font-size: 30pt;
     font-weight: bold;
     color: var(--primaryTextColor);
-    disply: flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
