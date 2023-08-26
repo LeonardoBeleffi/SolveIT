@@ -250,7 +250,6 @@ body > main > section {
     margin-top: 0;
     margin-bottom: 0;
     white-space: nowrap;
-    inline-size: 235px;
     overflow: hidden;
     overflow-wrap: break-word;
     text-overflow: ellipsis;
