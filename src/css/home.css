@@ -312,11 +312,6 @@ body > main > section {
     background-position: 8px; */
 }
 
-.liked {
-    color: var(--buttonColor);
-}
-
-
 .comment-button {
     display: flex;
     align-items: center;
@@ -342,6 +337,10 @@ body > main > section {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.liked {
+    color: var(--buttonColor);
 }
 
 .button:active {

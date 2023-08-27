@@ -436,10 +436,10 @@ class DatabaseHelper{
                 $stmt = $this->db->prepare($query);
                 $stmt->bind_param('ii',$idPost, $userId);
                 $stmt->execute();
-                return $stmt->insert_id;
             } catch(Exception $e) {
                 return false;
             }
+            return false;
         }
     }
 

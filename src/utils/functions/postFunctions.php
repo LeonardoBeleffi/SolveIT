@@ -23,7 +23,7 @@
     }
 
     function addPost($post) {
-        if(!isset($_SESSIgetPostAuthorON["posts"])) {
+        if(!isset($_SESSION["posts"])) {
             $_SESSION["posts"] = [];
         }
         array_push($_SESSION["posts"], $post);

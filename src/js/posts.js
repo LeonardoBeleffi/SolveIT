@@ -37,26 +37,6 @@ function deleteComment(event) {
                 
                 commentText.innerHTML = "This comment has been deleted.";
                 commentText.classList.add('deleted-comment');
-                // const response = JSON.parse(xhr.responseText);
-                // const commentId = response.commentId;
-                // const commentNumber = response.commentNumber;
-
-                // console.log(xhr.responseText);
-
-                // let repliesContainer;
-                // if(!isRootComment) {
-                //     repliesContainer = getClosestReplies(form);
-                // } else {
-                //     repliesContainer = getRootReplies(form);
-                // }
-                // repliesContainer.innerHTML = repliesContainer.innerHTML + generateComment("com-"+commentId,replyText,_USERNAME);
-                // let commentsSection = document.querySelector("#post-"+postId+' .comments-count');
-                // console.log(commentNumber);
-                // commentsSection.innerHTML = commentNumber+" comments";
-                // input.value = '';
-                // if(!isRootComment) {
-                //     form.classList.toggle('expanded');
-                // }
             } else {
                 console.error('Failed to add comment reply.');
             }
@@ -144,21 +124,8 @@ function generateComment(id, text, author) {
 function toggleLike(event) {
     
     event.preventDefault();
-    let likeBut = event.target;
-    let postId = likeBut.closest(".post").id.split("-")[1];
-
-    let temp = likeBut;
-    
-    if(likeBut.classList.contains("like-button")){
-        likeBut = likeBut.children[0];
-    }
-    if(likeBut.className.includes("liked")){
-        likeBut.classList.remove("liked");
-    }else{
-        likeBut.classList.add("liked");
-    }
-
-    likeBut = temp;
+    const likeBut = event.target;
+    const postId = likeBut.closest(".post").id.split("-")[1];
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'utils/addLike.php', true);
@@ -166,9 +133,12 @@ function toggleLike(event) {
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                //console.log(xhr.responseText);
+                // console.log(xhr.responseText);
                 const response = JSON.parse(xhr.responseText);
                 const likes = response.likes;
+                const isLiked = response.isLiked;
+                if(isLiked) likeBut.classList.add('liked');
+                else likeBut.classList.remove('liked');
 
                 const likesCount = document.querySelector("#post-"+postId+' .likes-count');
                 likesCount.innerHTML = "liked by "+ likes;
