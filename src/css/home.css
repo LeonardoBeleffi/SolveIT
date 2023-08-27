@@ -214,7 +214,7 @@ h1{
 }
 
 .cardelement-container {
-    width: calc(100% - 50px);
+    width: calc(100% - 50px - 15px);
     display: flex;
     flex-direction: column;
     margin: auto;
@@ -231,8 +231,10 @@ h1{
     font-size: 30pt;
     font-weight: bold;
     color: var(--primaryTextColor);
-    align-self: center;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .card-title {
@@ -442,7 +444,7 @@ h1{
     color: var(--secondaryTextColor);
     width: 95%;
     margin: auto;
-    font-size: min(19px, 2.5vh);
+    font-size: max(19px, 2.5vh);
 }
 
 /* .img-attachment {
@@ -472,8 +474,13 @@ h1{
     background-color: var(--primaryColor);
 }
 
+<<<<<<< HEAD
 .comments > h2 {
     font-size: min(19px, 2.5vh);
+=======
+.comments > h1 {
+    font-size: max(19px, 2.5vh);
+>>>>>>> 809a100236a69afe3e755c6133fdf7ec9b7caa15
     padding: 10px 0;
     color: var(--secondaryTextColor);    
     width: 95%;
