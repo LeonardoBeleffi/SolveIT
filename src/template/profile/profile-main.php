@@ -14,7 +14,6 @@
             <p><emph>Name:</emph> <?php echo getProfileName()?></p>
             <p><emph>Surname:</emph> <?php echo getProfileSurname();?></p>
             <p><emph>Email:</emph> <?php echo getProfileEmail();?></p>
-
         </div>
         <?php require "./template/home/home-main.php" ?>
     </div>

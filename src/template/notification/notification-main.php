@@ -14,7 +14,8 @@
         <li class="notification">
             <span class="timestamp"><?php echo getNotificationTimestamp($not); ?></span>
             <div class="notification-header">
-                <i class="fas <?php echo $iconName ?> notification-icon"></i>
+                <span class="fas <?php echo $iconName ?> notification-icon" aria-hidden="true" title="notification type icon"></span>
+                <span class="sr-only">notification type icon</span>
                 <span class="notification-content">
                     <p><?php echo getNotificationText($not); ?></p>
                     <?php if(!isFollowNotification($not)): ?>

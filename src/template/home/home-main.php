@@ -1,4 +1,5 @@
 <section>
+    <h1>Posts</h1>
     <ul id="post-list">
         <?php foreach(getPosts() as $post): ?>
         <li class="list-element">
@@ -17,9 +18,9 @@
                         <!-- </div>         -->
                         <div class="cardelement-container">
                             <div class="card-title">
-                                <h1>
+                                <h2>
                                     <?php echo getPostTitle($post); ?>
-                                </h1>
+                                </h2>
                             </div>
                             <div class="tags-container">
                                 <!-- Post Tags -->
@@ -45,7 +46,8 @@
                             <button type="button" class="button like-button <?php
                                 echo isLikedByCurrentUser($post) ? "liked" : "";
                                 ?>">
-                                <i class="fa-regular fa-thumbs-up"></i>
+                                <span class="fa-regular fa-thumbs-up" title="Like icon"></span>
+                                <span class="sr-only">Like icon</span>
                             </button>
                             <!-- Post Likes -->
                             <div class="likes">
@@ -60,20 +62,21 @@
                 <div class="post-body">
                     <div class="separator"></div>
                     <div class="attachments">
-                        <h1><?php echo count(getPostAttachments($post)); ?> attachments </h1>
+                        <h2><?php echo count(getPostAttachments($post)); ?> attachments </h2>
                         <?php loadAttachments($post); ?>
-                        <div id="fileContainer"></div>
+                        <!-- <div id="fileContainer"></div> -->
                     </div>
                     <!-- Post Comments -->
                     <div class="comments">
-                        <h1 class="comments-count"><?php echo count(getPostComments($post)); ?> comments</h1>
+                        <h2 class="comments-count"><?php echo count(getPostComments($post)); ?> comments</h2>
                         <?php loadComments($post); ?>
                         <!-- Add comment form -->
                         <form onsubmit="addComment(event)" class="root-comment">
                             <div class="form-group">
-                                <input type="text" class="form-input" placeholder="Write a comment">
+                                <input title="Comment" type="text" class="form-input" placeholder="Write a comment" />
                                 <button type="submit" class="button comment-button">
-                                    <i class="fa-solid fa-reply"></i>
+                                    <span class="fa-solid fa-reply" title="Reply button"></span>
+                                    <span class="sr-only">Reply button</span>
                                 </button>
                             </div>
                         </form>

@@ -1,7 +1,7 @@
 <section>
     <div class="main_content">
         <form id="newpost_form" action="/src/utils/upload.php" method="post" enctype="multipart/form-data">
-            <h1>Create Post</h1>
+            <h2>Create Post</h2>
             <?php loadErrorMsg(); ?>
             <div>
                 <div>

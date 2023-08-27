@@ -72,7 +72,7 @@ body > main > section > div > form * {
     width: 100%;
 }
 
-body > main > section > div > form > h1 {
+body > main > section > div > form > h2 {
     color: var(--primaryTextColor);
     font-family: var(--primaryFontFamily);
     font-size: max(30px, 4vh);

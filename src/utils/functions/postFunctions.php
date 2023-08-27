@@ -109,11 +109,12 @@
 
     function loadAttachment($attach, $attachName, $attachType) {
        if(str_contains($attachType, "image")) {
-            echo "<img class=\"img-attachment\" src=\"". $attach ."\" download=\"".$attachName."\">";
+            echo "<img class=\"img-attachment\" src=\"". $attach ."\" alt=\"image-attachment_".$attachName."\">";
        } else if(str_contains($attachType, "audio")) {
         echo "<audio class=\"audio-attachment\" controls=\"\" src=\"". $attach ."\" download=\"".$attachName."\"></audio>";
         } else if(str_contains($attachType, "video")) {
-            echo "<video class=\"video-attachment\" controls=\"\" src=\"".$attach."\" download=\"".$attachName."\"></video>";        
+            echo "<video class=\"video-attachment\" controls=\"\" src=\"".$attach."\"></video>";        
+            // download=\"".$attachName."\"
         } else {
             echo "<a class=\"other-attachment\" href=\"".$attach."\" download=\"".$attachName."\">\"".$attachName."\"</a>";
        }
@@ -198,14 +199,15 @@
 
     function generateComment($commentId, $commentAuthor, $commentText, $isDeleted, $childrenComments) {
         return '  <li id="com-'.$commentId.'" class="comment">
-                    <p>| <emph>'.$commentAuthor.':</emph> <span class="comment-text '.($isDeleted? 'deleted-comment' : '').'">'.$commentText.'</span></p>
+                    <p>| <em>'.$commentAuthor.':</em> <span class="comment-text '.($isDeleted? 'deleted-comment' : '').'">'.$commentText.'</span></p>
                     '.(!$isDeleted ? '<span onclick="toggleReply(event)" class="reply-button">Reply</span>' : '' ).'
                     '.($commentAuthor == getUsername() && !$isDeleted ? '<span onclick="deleteComment(event)" class="delete-button">Delete</span>' : '' ).'
                     <form onsubmit="addComment(event)" class="reply-form">
                         <div class="form-group">
-                            <input type="text" class="form-input" placeholder="replying to @'.$commentAuthor.'">
+                            <input title="Reply to @'.$commentAuthor.'" type="text" class="form-input" placeholder="replying to @'.$commentAuthor.'">
                             <button type="submit" class="button">
-                                <i class="fa-solid fa-reply"></i>
+                                <span class="fa-solid fa-reply" aria-hidden="true" title="reply button"></span>
+                                <span class="sr-only">reply button</span>
                             </button>
                         </div>
                     </form>
