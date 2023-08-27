@@ -7,6 +7,7 @@
         unset($_SESSION["postsId"]);
         unset($_SESSION["postTag"]);
         unset($_SESSION["postUser"]);
+        unset($_SESSION["profilesId"]);
     }
 
     function setPostsLimit($n){
@@ -20,6 +21,9 @@
     }
     function setPostUser($postUser){
         $_SESSION["postUser"] = $postUser;
+    }
+    function setUserProfileId($userProfileId){
+        $_SESSION["profilesId"] = $userProfileId;
     }
 
     function addPost($post) {

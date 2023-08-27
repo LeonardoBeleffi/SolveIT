@@ -19,7 +19,7 @@
     // like notification
     if(isset($_POST['postId'])) {
         // notify post author
-        $dbh->insertNotifica(getIdUtente(), $dbh->getAuthorByPost($_POST["postId"])[0]["userId"], $_POST["postId"],getLikeNotificationType(), 0, date("Y-m-d H:i:s"));
+        $dbh->insertNotifica(getIdUtente(), $dbh->getAuthorByPost($_POST["postId"])[0]["userId"], $_POST["postId"], getLikeNotificationType(), 0, date("Y-m-d H:i:s"));
         // notify post contributors 
         foreach($dbh->getContributorsByPost($_POST["postId"]) as $contrib) {
             $dbh->insertNotifica(getIdUtente(), $contrib["contributorId"], $_POST["postId"], getLikeNotificationType(), 0, date("Y-m-d H:i:s"));
@@ -27,5 +27,9 @@
     }
 
     // follow notification
+    if(isset($_POST['username'])) {
+        // notify user
+        $dbh->insertNotifica(getIdUtente(), $dbh->getUserByUsername($_POST["username"])[0]["userId"], NULL, getFollowNotificationType(), 0, date("Y-m-d H:i:s"));
+    }
 
 ?>

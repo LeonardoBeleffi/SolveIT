@@ -9,11 +9,8 @@
     // "sectorId: " . getUserSectorId();
 
     // set post query parameter
-    clearPosts();
+    clearDownloads();
     setPostsLimit(100);
-
-    // clear notifications
-    clearNotifications();
 
     // require post query helper
     include "utils/download.php";

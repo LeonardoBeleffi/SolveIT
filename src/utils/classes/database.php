@@ -175,9 +175,9 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // username --> userId, name, surname, email, username, birthDate, phoneNumber, sectorId, settingsId
+    // username --> userId, name, surname, email, username, birthDate, phoneNumber, bio, sectorId, settingsId
     public function getUserInfoByUsername($username){
-        $stmt = $this->db->prepare("SELECT idUtente as userId, nome as name, cognome as surname, email, username, dataNascita as birthDate, telefono as phoneNumber, idSettore as sectorId, idImpostazione as settingsId
+        $stmt = $this->db->prepare("SELECT idUtente as userId, nome as name, cognome as surname, email, username, dataNascita as birthDate, telefono as phoneNumber, bio, idSettore as sectorId, idImpostazione as settingsId
         FROM Utente
         where username = ?");
         
@@ -202,9 +202,9 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // userId --> followerId, friendshipStart
+    // userId --> followerId, followerUsername, friendshipStart
     public function getFollowersByUser($idUtente){
-        $stmt = $this->db->prepare("SELECT u.idUtente as followerId, a.timestamp as friendshipStart
+        $stmt = $this->db->prepare("SELECT u.idUtente as followerId, u.username as followerUsername, a.timestamp as friendshipStart
         FROM Utente as u, Amicizia as a
         where u.idUtente = a.idSeguace and a.idSeguito = ?");
         
@@ -215,9 +215,9 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     
-    // userId --> followingId, friendshipStart
+    // userId --> followingId, followingUsername, friendshipStart
     public function getFollowingsByUser($idUtente){
-        $stmt = $this->db->prepare("SELECT u.idUtente as followingId, a.timestamp as friendshipStart
+        $stmt = $this->db->prepare("SELECT u.idUtente as followingId, u.username as followingUsername,  a.timestamp as friendshipStart
         FROM Utente as u, Amicizia as a
         where u.idUtente = a.idSeguito and a.idSeguace = ?");
         
@@ -411,15 +411,15 @@ class DatabaseHelper{
 
     // idPost, userId, text, timestamp, parentCommentId -> commentId
     public function insertCommento($idPost, $userId, $text, $timestamp, $parentCommentId){
-        // try {
+        try {
             $query = "INSERT INTO Commento (idPost, idUtente, testo, timestamp, idCommentoPadre) VALUES (?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('iissi',$idPost, $userId, $text, $timestamp, $parentCommentId);
             $stmt->execute();
             return $stmt->insert_id;
-        // } catch(Exception $e) {
-        //     return false;
-        // }
+        } catch(Exception $e) {
+            return false;
+        }
     }
 
     // idPost, userId -> 
@@ -457,7 +457,7 @@ class DatabaseHelper{
 
     // file, tipo, idPost -> idAllegato
     public function insertAllegato($file, $nome, $tipo, $idPost){
-        // try {
+        try {
             $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
             $query = "INSERT INTO Allegato (data, nome, tipo, idPost) VALUES (?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
@@ -472,9 +472,9 @@ class DatabaseHelper{
             fclose($fp);
             $stmt->execute();
             return $stmt->insert_id;
-        // } catch(Exception $e) {
-        //     return false;
-        // }
+        } catch(Exception $e) {
+            return false;
+        }
     }
 
     // idUtente, idPost, collaboratore -> idPubblicazione
@@ -506,30 +506,50 @@ class DatabaseHelper{
 
     // idPost, idTag -> idEtichettamento
     public function insertEtichettamento($idPost, $idTag){
-        // try {
+        try {
             $query = "INSERT INTO Etichettamento (idPost, idTag) VALUES (?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ii',$idPost, $idTag);
             $stmt->execute();
             return $stmt->insert_id;
-        // } catch(Exception $e) {
-        //     return false;
-        // }
+        } catch(Exception $e) {
+            return false;
+        }
     }
 
+    // idPost, idTag -> idEtichettamento
+    public function toggleAmicizia($followerId, $followedId, $timestamp){
+        try {
+            $query = "INSERT INTO Amicizia (idSeguace, idSeguito, timestamp) VALUES (?, ?, ?)";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('iis',$followerId, $followedId, $timestamp);
+            $stmt->execute();
+            return $stmt->insert_id;
+        } catch(Exception $e) {
+            // try {
+                $query = "DELETE FROM Amicizia WHERE idSeguace=? and idSeguito=?";
+                $stmt = $this->db->prepare($query);
+                $stmt->bind_param('ii',$followerId, $followedId);
+                $stmt->execute();
+            // } catch(Exception $e) {
+            //     return false;
+            // }
+            return false;
+        }
+    }
 
     // notifierId, notifiedId, postId type, read, timestamp -> notificationId
     public function insertNotifica($notifierId, $notifiedId, $postId, $type, $read, $timestamp){
-        // try {
+        try {
             $this->db->query("SET GLOBAL max_allowed_packet=1073741824;");
             $query = "INSERT INTO Notifica (idNotificatore, idNotificato, idPost, tipo, letta, timestamp) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('iiiiis',$notifierId, $notifiedId, $postId, $type, $read, $timestamp);
             $stmt->execute();
             return $stmt->insert_id;
-        // } catch(Exception $e) {
-        //     return false;
-        // }
+        } catch(Exception $e) {
+            return false;
+        }
     }
 
 

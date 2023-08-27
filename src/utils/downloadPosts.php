@@ -2,16 +2,12 @@
     // require defaults PHPs
     require_once 'bootstrap.php';
     require_once 'classes/post.php';
-    require_once 'classes/notification.php';
     require_once 'classes/comment.php';
-    require_once 'classes/user.php';
-
-    // check login routine
-    checkUserLogin();
 
     // prepare attachments directory
     clearAttachmentsDirecory();
 
+    $posts = [];    
     $idPosts = [];
 
     // get specific posts
@@ -113,56 +109,8 @@
             array_push($_likes, $like["username"]);
         }
         $post->likes = $_likes;
-        addPost($post);
+        array_push($posts, $post);
     }
 
-    // get profile info
-    if(isset($_SESSION['addProfileInfo']) && isset($_SESSION['postUser']) && $_SESSION['addProfileInfo']) {
-        $profile = new User();
-        // query post
-        $result = $dbh->getUserInfoByUsername($_SESSION['postUser']);
-        if(count($result)==0) {
-            setErrorMsg("Failed downloading profile.");
-        }
-        $profile->userId = $result[0]["userId"];
-        $profile->name = $result[0]["name"];
-        $profile->surname = $result[0]["surname"];
-        $profile->bio = $result[0]["bio"];
-        $profile->email = $result[0]["email"];
-        $profile->username = $result[0]["username"];
-        $profile->birthDate = $result[0]["birthDate"];
-        $profile->phoneNumber = $result[0]["phoneNumber"];
-        // query followers
-        $_followers = [];
-        $followers = $dbh->getFollowersByUser($profile->userId);
-        foreach($followers as $follower) {
-            array_push($_followers, $follower["followerUsername"]);
-        }
-        $profile->followers = $_followers;
-        // query followings
-        $_followings = [];
-        $followings = $dbh->getFollowingsByUser($profile->userId);
-        foreach($followings as $following) {
-            array_push($_followings, $following["followingUsername"]);
-        }
-        $profile->followings = $_followings;
-        // get user posts
-        $profile->posts = getPosts();
-        addProfileInfo($profile);
-    }
-
-
-    // download new notifications
-    {
-        // query all notifications
-        $notifications = require "downloadNotifications.php"; 
-        foreach($notifications as $not) {
-            addNotification($not);
-        }
-        // get new notifications
-        $newNotifications = getNewNotificationsFrom($notifications);
-        foreach($newNotifications as $not) {
-            addNewNotification($not);
-        }
-    }
+    return $posts;
 ?>

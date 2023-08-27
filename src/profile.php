@@ -6,11 +6,16 @@
     checkUserLogin();
 
     // set post query parameter
-    clearPosts();
-    setPostsLimit(100);
-
-    // clear notifications
-    clearNotifications();
+    clearDownloads();
+    $username = getUsername();
+    if(isset($_SERVER["QUERY_STRING"])) {
+        // post view
+        if(str_starts_with($_SERVER["QUERY_STRING"],"user")) {
+            $username = explode("=",$_SERVER["QUERY_STRING"],2)[1];
+        }
+    }
+    setPostUser($username);
+    enableProfileInfo();
 
     // require post query helper
     include "utils/download.php";
@@ -23,7 +28,7 @@
     setFooter("home/home-footer.php");
     setCSS(["./css/profile.css", "./css/home.css"]);
     setRemoteCSS(["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"]);
-    setJS(["./js/shared.js"]);
+    setJS(["./js/shared.js","./js/home.js","./js/posts.js","./js/profile.js"]);
 
     // require template
     require "template/base.php";

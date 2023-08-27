@@ -6,7 +6,7 @@
     checkUserLogin();
 
     // set post query parameter
-    clearPosts();
+    clearDownloads();
     if(isset($_SERVER["QUERY_STRING"])) {
         // post view
         if(str_starts_with($_SERVER["QUERY_STRING"],"id")) {

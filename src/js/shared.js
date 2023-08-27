@@ -31,7 +31,7 @@ setInterval(() => refreshNotifications(), 2000);
 
 function refreshNotifications() {
 
-    const notification_count = document.querySelector('.notificaiton-count');
+    const notification_count = document.querySelector('.notification-badge');
 
     if(!notification_count) {
         return;
