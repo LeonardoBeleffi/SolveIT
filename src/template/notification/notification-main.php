@@ -18,7 +18,9 @@
                 <span class="sr-only">notification type icon</span>
                 <span class="notification-content">
                     <p><?php echo getNotificationText($not); ?></p>
-                    <a href="./search.php?id=<?php echo getNotificationPostId($not)?>" class="post-link">View Post</a>
+                    <?php if(!isFollowNotification($not)): ?>
+                        <a href="./search.php?id=<?php echo getNotificationPostId($not)?>" class="post-link">View Post</a>
+                    <?php endif; ?>
                 </span>
             </div>
         </li>

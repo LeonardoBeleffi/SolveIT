@@ -8,11 +8,11 @@ INSERT INTO `Settore` (`nomeSettore`) VALUES
 ('ufficio tecnico'),
 ('ufficio amministrazione');
 
-INSERT INTO `Utente` ( `email`, `nome`, `username`, `idSettore`) VALUES
-('admin@blogtw.com', 'Admin Nimda', 'admin',1),
-('sangio@blogtw.com', 'Gino Pino', 'sangio',2),
-('leo@blogtw.com', 'Cippa Lippa', 'leo',2),
-('tizz@blogtw.com', 'Chico Loco', 'tiz',3);
+INSERT INTO `Utente` ( `email`, `nome`, `username`, `idSettore`, `bio`) VALUES
+('admin@blogtw.com', 'Admin Nimda', 'admin',1, 'Ingenere informatico senior'),
+('sangio@blogtw.com', 'Gino Pino', 'sangio',2, 'Ingegnere informatico junior'),
+('leo@blogtw.com', 'Cippa Lippa', 'leo',2, 'Full-stack developer'),
+('tizz@blogtw.com', 'Chico Loco', 'tiz',3, 'Front-end soldier');
 
 INSERT INTO `Credenziali` ( `password`, `idUtente`) VALUES
 ('admin', '1'),
@@ -68,6 +68,7 @@ select * from Etichettamento;
 select * from Commento;
 select * from MiPiace;
 select * from Notifica;
+select * from Amicizia;
 
 
 SELECT idNotifica as notificationId, idNotificatore as notifacatorId, letta as isRead, tipo as type, idPost as postId, timestamp
