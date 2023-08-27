@@ -14,15 +14,18 @@
 
 body {
     height: 100vh;
-    min-height: 750px;
+    /* min-height: 750px; */
+    min-height: 100vh;
     min-width: 275px;
     background-color: var(--primaryBackground);
     margin: 0;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 body > * {
-    overflow: auto;
+    /* overflow: auto; */
     font-family: var(--primaryFontFamily);
 }
 
@@ -31,6 +34,7 @@ body > header {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .header-container {
@@ -46,7 +50,8 @@ body > header {
 
 .header-title {
     font-family: var(--primaryFontFamily);
-    font-size: max(38px, 5vh);;
+    /* TODO FIX */
+    font-size: max(38px, 4vh);;
     color: var(--tertiaryBackground);
     font-weight: bold;
     text-shadow: 4px 2px 0 var(--linkColor);
@@ -56,7 +61,7 @@ body > header {
 }
 
 .logo-container {
-    width: 50%;
+    width: calc(100% - 20% - 20px);
     height: 100%;
     display: flex;
     align-items: center;
@@ -66,12 +71,12 @@ body > header {
 }
 
 .notifications-container {
-    width: 50%;
+    width: 20%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding-right: 20px;
+    /* padding-right: 20px; */
 }
 
 .notification-badge {
@@ -86,7 +91,7 @@ body > header {
 }
 
 .icon {
-    font-size: 20pt;
+    font-size: max(27px, 3.6vh);
     color: var(--borderColor);
     cursor: pointer;
     -webkit-user-select: none;
@@ -566,20 +571,20 @@ body > main > section > div > form > div > div > label {
 }
 
 body > footer {
-    position: fixed;
+    /* position: fixed; */
+    position: static;
     width: 100%;
     /*bottom: 0;*/
     justify-content: flex-start;
-    overflow: scroll;
+    flex-shrink: 0;
+    /* overflow: scroll; */
     height: var(--footer_height);
     background-color: var(--buttonColor);
 }
 
 #nav-bar {
-    height: 85%;
+    height: 100%;
     width: max(275px, 100%);
-    position: absolute;
-    top: 0;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
