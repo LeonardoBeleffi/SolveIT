@@ -1,7 +1,7 @@
 <section>
     <div>
         <form action="/src/utils/checkLogin.php" method="post">
-            <h1>Sign In</h1>
+            <h2>Sign In</h2>
             <?php loadErrorMsg(); ?>
             <div>
                 <div>

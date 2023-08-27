@@ -1,7 +1,7 @@
 <section>
     <div>
         <form action="/src/utils/register.php" method="post">
-            <h1>Sign Up</h1>
+            <h2>Sign Up</h2>
             <?php loadErrorMsg(); ?>
             <div>
                 <div>

@@ -80,7 +80,7 @@ body > header {
     right: 10px;
     padding: 3px 8px;
     border-radius: 50%;
-    background: var(--buttonColor);
+    background: var(--deleteObjectColor);
     color: azure;
     font-family: var(--primaryFontFamily);
 }
@@ -123,6 +123,7 @@ body > main > section {
     overflow: hidden;
 }
 
+
 #post-list {
     list-style-type: none;
     height: calc(100% - 2*10px);
@@ -137,6 +138,14 @@ body > main > section {
 #post-list > li {
     height: max(150px, 20vh);
     padding: 5px 0;
+}
+
+h1{
+    display: none;
+}
+
+.sr-only{
+    display: none;
 }
 
 .post-opened {
@@ -230,7 +239,7 @@ body > main > section {
     margin: 0px;
 }
 
-.card-title > h1 {
+.card-title > h2 {
     padding: 0;
     margin-top:5px;
     margin-bottom:5px;
@@ -241,7 +250,7 @@ body > main > section {
     text-overflow: ellipsis;
 }
 
-.post-opened .card-title > h1 {
+.post-opened .card-title > h2 {
     width: 100%;
     white-space: normal;
     word-break: break-all;
@@ -350,7 +359,14 @@ body > main > section {
     color: var(--tertiaryBackground);
 }
 
+/* label{
+    display: none;
+    visibility: hidden;
+} */
+
+
 .form-input {
+    /* visibility: visible; */
     font-size: min(12pt, 4vh);
     width: 100%;
     color: var(--buttonTextColor);
@@ -419,7 +435,7 @@ body > main > section {
     box-sizing: border-box;
 }
 
-.attachments > h1 {
+.attachments > h2 {
     height: 85%;
     transform: translateY(7%);
     padding: 10px 0;
@@ -456,7 +472,7 @@ body > main > section {
     background-color: var(--primaryColor);
 }
 
-.comments > h1 {
+.comments > h2 {
     font-size: min(19px, 2.5vh);
     padding: 10px 0;
     color: var(--secondaryTextColor);    
@@ -477,12 +493,14 @@ body > main > section {
 }
 
 .comment .comment {
-    box-shadow: none;
-    
+    box-shadow: none; 
 }
 
-.comment emph {    
+
+
+em {    
     font-weight: bold;
+    font-style: normal;
 }
 
 .deleted-comment {
@@ -501,7 +519,7 @@ body > main > section {
 
 .delete-button {
     cursor: pointer;
-    color: red;
+    color: var(--deleteObjectColor);
     font-weight: bold;
     -webkit-user-select: none;
     -ms-user-select: none;
@@ -532,7 +550,7 @@ ul.replies {
     border: 1px solid var(--debugColor);
 }
 
-body > header > h1 {
+body > header > h2 {
     color: var(--primaryTextColor);
     font-family: var(--primaryFontFamily);
     font-size: max(30px, 4vh);

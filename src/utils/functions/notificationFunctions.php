@@ -101,7 +101,7 @@
                 break;
             }
         }
-        return '<emph class="notificator">@'.getNotificator($not).'</emph> '.$notificationText.'.';
+        return '<em class="notificator">@'.getNotificator($not).'</em> '.$notificationText.'.';
     }
 
     function isCommentNotification($not) {
