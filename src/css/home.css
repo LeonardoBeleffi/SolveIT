@@ -474,13 +474,8 @@ h1{
     background-color: var(--primaryColor);
 }
 
-<<<<<<< HEAD
 .comments > h2 {
-    font-size: min(19px, 2.5vh);
-=======
-.comments > h1 {
     font-size: max(19px, 2.5vh);
->>>>>>> 809a100236a69afe3e755c6133fdf7ec9b7caa15
     padding: 10px 0;
     color: var(--secondaryTextColor);    
     width: 95%;
