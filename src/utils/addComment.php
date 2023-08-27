@@ -8,10 +8,11 @@
         }
         $commentId = $dbh->insertCommento($_POST["postId"], getIdUtente(), $_POST["text"], date("Y-m-d H:i:s"), $_POST["parentCommentId"]);
         $comments = $dbh->getCommentsByPost($_POST["postId"]);
+        $commentElement = generateComment($commentId, getUsername(), $_POST["text"], 0, "");
         // Add notifications
         require "addNotification.php";
         // send response
-        $array = ['commentId' => $commentId, 'commentNumber' => count($comments)];
+        $array = ['commentId' => $commentId, 'commentNumber' => count($comments), 'commentElement' => $commentElement];
         echo json_encode($array);
         http_response_code(200);
         exit();

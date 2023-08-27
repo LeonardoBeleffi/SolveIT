@@ -24,6 +24,7 @@ function deleteComment(event) {
     const comment = delete_button.closest(".comment");
     const commentId = comment.id.split("-")[1];
     const commentText = comment.querySelector('.comment-text');
+    const reply_button = comment.querySelector('.reply-button');
 
 
     const xhr = new XMLHttpRequest();
@@ -34,6 +35,7 @@ function deleteComment(event) {
             if (xhr.status === 200) {
                 delete_button.style.display.visible = "none";
                 comment.removeChild(delete_button);
+                comment.removeChild(reply_button);
                 
                 commentText.innerHTML = "This comment has been deleted.";
                 commentText.classList.add('deleted-comment');
@@ -74,6 +76,7 @@ function addComment(event) {
                     const response = JSON.parse(xhr.responseText);
                     const commentId = response.commentId;
                     const commentNumber = response.commentNumber;
+                    const commentElement = response.commentElement;
 
                     console.log(xhr.responseText);
 
@@ -83,7 +86,7 @@ function addComment(event) {
                     } else {
                         repliesContainer = getRootReplies(form);
                     }
-                    repliesContainer.innerHTML = repliesContainer.innerHTML + generateComment("com-"+commentId,replyText,_USERNAME);
+                    repliesContainer.innerHTML = repliesContainer.innerHTML + commentElement;
                     let commentsSection = document.querySelector("#post-"+postId+' .comments-count');
                     console.log(commentNumber);
                     commentsSection.innerHTML = commentNumber+" comments";
@@ -99,25 +102,6 @@ function addComment(event) {
         // send parentId and text
         xhr.send(`parentCommentId=${parentCommentId}&postId=${postId}&text=${replyText}`);
     }
-}
-
-function generateComment(id, text, author) {
-    // TODO with query to php
-    return `<li id="`+id+`" class="comment">
-                <p>| <emph>`+author+`:</emph> <span class="comment-text">`+text+`</span></p>
-                <span onclick="toggleReply(event)" class="reply-button">Reply</span>
-                `+(_USERNAME == author ? '<span onclick="deleteComment(event)" class="delete-button">Delete</span>' : '')+`
-                <form onsubmit="addComment(event)" class="reply-form">
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="replying to @`+author+`">
-                        <button type="submit" class="button">
-                            <i class="fa-solid fa-reply"></i>
-                        </button>
-                     </div>
-                </form>
-                <ul class="replies">
-                </ul>
-            </li>`;
 }
 
 // LIKEs

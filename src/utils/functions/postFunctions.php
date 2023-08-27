@@ -174,22 +174,12 @@
     }
 
     function loadComment($comment,$post) {
-        return '  <li id="com-'.getCommentId($comment).'" class="comment">
-                    <p>| <emph>'.getCommentAuthor($comment).':</emph> <span class="comment-text '.(isCommentDeleted($comment)? 'deleted-comment' : '').'">'.getCommentText($comment).'</span></p>
-                    '.(!isCommentDeleted($comment) ? '<span onclick="toggleReply(event)" class="reply-button">Reply</span>' : '' ).'
-                    '.(getCommentAuthor($comment) == getUsername() && !isCommentDeleted($comment) ? '<span onclick="deleteComment(event)" class="delete-button">Delete</span>' : '' ).'
-                    <form onsubmit="addComment(event)" class="reply-form">
-                        <div class="form-group">
-                            <input type="text" class="form-input" placeholder="replying to @'.getCommentAuthor($comment).'">
-                            <button type="submit" class="button">
-                                <i class="fa-solid fa-reply"></i>
-                            </button>
-                        </div>
-                    </form>
-                    <ul class="replies">
-                    '.loadCommentChildren($comment,$post).'
-                    </ul>
-                </li>';
+        $commentId = getCommentId($comment);
+        $commentAuthor = getCommentAuthor($comment);
+        $commentText = getCommentText($comment);
+        $isDeleted = isCommentDeleted($comment);
+        $childrenComments = loadCommentChildren($comment,$post);
+        return generateComment($commentId, $commentAuthor, $commentText, $isDeleted, $childrenComments);
     }
 
     function loadCommentChildren($comment,$post) {
@@ -200,6 +190,25 @@
             }
         }
         return $ret;
+    }
+
+    function generateComment($commentId, $commentAuthor, $commentText, $isDeleted, $childrenComments) {
+        return '  <li id="com-'.$commentId.'" class="comment">
+                    <p>| <emph>'.$commentAuthor.':</emph> <span class="comment-text '.($isDeleted? 'deleted-comment' : '').'">'.$commentText.'</span></p>
+                    '.(!$isDeleted ? '<span onclick="toggleReply(event)" class="reply-button">Reply</span>' : '' ).'
+                    '.($commentAuthor == getUsername() && !$isDeleted ? '<span onclick="deleteComment(event)" class="delete-button">Delete</span>' : '' ).'
+                    <form onsubmit="addComment(event)" class="reply-form">
+                        <div class="form-group">
+                            <input type="text" class="form-input" placeholder="replying to @'.$commentAuthor.'">
+                            <button type="submit" class="button">
+                                <i class="fa-solid fa-reply"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <ul class="replies">
+                    '.$childrenComments.'
+                    </ul>
+                </li>';
     }
 
 ?>
