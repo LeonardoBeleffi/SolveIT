@@ -1,15 +1,21 @@
 <section>
     <div class="profile-container">
         <img src="your_profile_picture.jpg" alt="Profile Picture" class="profile-picture">
-        <h1 class="profile-heading"><?php echo getUsername();?></h1>
-        <h2 class="profile-heading"><?php echo getUsername();?></h2>
-        <p class="profile-bio">A brief description about yourself and your interests.</p>
+        <h1 class="profile-heading"><?php echo getProfileUsername()?></h1>
+        <p class="profile-bio"><?php echo getProfileBio();?></p>
         <div class="profile-details">
-            <p><emph>Location:</emph> City, Country</p>
-            <p><emph>Occupation:</emph> Your Occupation</p>
-            <p><emph>Email:</emph> your.email@example.com</p>
-            <p><emph>Website:</emph> <a href="https://www.yourwebsite.com">yourwebsite.com</a></p>
-            <p><emph>LinkedIn:</emph> <a href="https://www.linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a></p>
+        <?php if(getProfileUsername() != getUsername()) {
+            echo '<button onclick="follow(event)" class="button follow-button">Follow</button>';
+        }
+        ?>
+            <p><emph>Solutions(posts):</emph> <?php echo count(getProfilePosts())?></p>
+            <p><emph>Followers:</emph> <?php echo count(getProfileFollowers())?></p>
+            <p><emph>Following:</emph> <?php echo count(getProfileFollowings())?></p>
+            <p><emph>Name:</emph> <?php echo getProfileName()?></p>
+            <p><emph>Surname:</emph> <?php echo getProfileSurname();?></p>
+            <p><emph>Email:</emph> <?php echo getProfileEmail();?></p>
+
         </div>
+        <?php require "./template/home/home-main.php" ?>
     </div>
 </section>

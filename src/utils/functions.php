@@ -5,6 +5,7 @@
     require_once 'functions/loginFunctions.php';
     require_once 'functions/templateFunctions.php';
     require_once 'functions/postFunctions.php';
+    require_once 'functions/profileFunctions.php';
     require_once 'functions/notificationFunctions.php';
 
     function getSessionVar($var) {
@@ -32,6 +33,12 @@
                         "ERROR:" . $msg .
                     "</p>" .
                 "</div>";
+    }
+
+    function clearDownloads(){
+        clearPosts();
+        clearNotifications();
+        clearProfileInfo();
     }
 
     function timeDifferenceToText($startTimeStr, $endTimeStr) {

@@ -6,11 +6,7 @@
     checkUserLogin();
     
     // query all 
-    clearPosts();
-    setPostsLimit(100);
-
-    // clear notifications
-    clearNotifications();
+    clearDownloads();
 
     // require post query helper
     require "utils/download.php";
