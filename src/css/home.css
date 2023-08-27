@@ -222,8 +222,10 @@ body > main > section {
     font-size: 30pt;
     font-weight: bold;
     color: var(--primaryTextColor);
-    align-self: center;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .card-title {
@@ -426,7 +428,7 @@ body > main > section {
     color: var(--secondaryTextColor);
     width: 95%;
     margin: auto;
-    font-size: min(19px, 2.5vh);
+    font-size: max(19px, 2.5vh);
 }
 
 /* .img-attachment {
@@ -457,7 +459,7 @@ body > main > section {
 }
 
 .comments > h1 {
-    font-size: min(19px, 2.5vh);
+    font-size: max(19px, 2.5vh);
     padding: 10px 0;
     color: var(--secondaryTextColor);    
     width: 95%;
