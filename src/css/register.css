@@ -104,6 +104,22 @@ body > main > section > div > form > div input {
     border-color: var(--borderColor);
 }
 
+body > main > section > div > form > div textarea {
+    resize: vertical;
+    width: 100%;
+    min-height: 60px;
+    max-height: 200px; 
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: var(--primaryBackground);
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 1px 1px var(--borderColor);;
+    border-color: var(--borderColor);
+}
+
 body > main > section > div > form > div > div {
     display: flex;
     padding: max(30px, 4vh) 0;

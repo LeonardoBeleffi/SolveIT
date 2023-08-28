@@ -47,13 +47,15 @@
             </div>
         </div>
         
-        <div class="profile-details">
-            <div class="follow-container">
+        <div class="follow-container">
                 <?php if(getProfileUsername() != getUsername()) {
                     echo '<button onclick="follow(event)" class="button follow-button">Follow</button>';
                 }
                 ?>
             </div>
+            
+        <div class="profile-details">
+            
             <div class="post-number">
                 <em>Posts </em> <?php echo count(getProfilePosts())?>
             </div>
