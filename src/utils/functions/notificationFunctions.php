@@ -101,7 +101,8 @@
                 break;
             }
         }
-        return '<em class="notificator">@'.getNotificator($not).'</em> '.$notificationText.'.';
+        return '<a href="./profile.php?user='.getNotificator($not).'" aria-label="Go to notificator profile" class="notificator">@'
+                .getNotificator($not).' <span class="sr-only">Go to notificator profile</span></a> '.$notificationText.'.';
     }
 
     function isCommentNotification($not) {
