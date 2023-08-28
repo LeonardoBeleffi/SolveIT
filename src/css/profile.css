@@ -125,6 +125,10 @@ section {
     margin: 5px auto;
 }
 
+.follow-container{
+    margin: 10px auto;
+}
+
 .profile-details {
     width: 95%;
     margin: 0 auto;
@@ -138,4 +142,5 @@ section {
 
 .profile-details > div{
     width: 20%;
+    text-align: center;
 }
