@@ -21,7 +21,8 @@ window.addEventListener("load", () => {
 
             if (filter_clicks(event)) return;
             if (post_preview_clicked.parentNode.parentNode.className.includes("post-opened")) {
-                close_post();
+                if(close_post_button_clicked(event.target))
+                    close_post();
             } else {
                 open_post(post_preview_clicked.parentNode.parentNode);
             }
@@ -60,6 +61,11 @@ function get_post_preview_from_click(target) {
         target = target.parentNode;
     }
     return target;
+}
+
+function close_post_button_clicked(target) {
+    return target.className.includes("close-post-button") ||
+        target.parentNode.className.includes("close-post-button");
 }
 
 function filter_clicks(event) {
