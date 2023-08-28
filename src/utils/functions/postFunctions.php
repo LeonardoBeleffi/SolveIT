@@ -111,9 +111,9 @@
        if(str_contains($attachType, "image")) {
             echo "<img class=\"img-attachment\" src=\"". $attach ."\" alt=\"image-attachment_".$attachName."\">";
        } else if(str_contains($attachType, "audio")) {
-        echo "<audio class=\"audio-attachment\" controls=\"\" src=\"". $attach ."\" download=\"".$attachName."\"></audio>";
+        echo "<audio class=\"audio-attachment\" controls=\"\" src=\"". $attach ."\" download=\"".$attachName."\">Your browser does not support this file type</audio>";
         } else if(str_contains($attachType, "video")) {
-            echo "<video class=\"video-attachment\" controls=\"\" src=\"".$attach."\"></video>";        
+            echo "<video class=\"video-attachment\" controls=\"\" src=\"".$attach."\">Your browser does not support this file type</video>";        
             // download=\"".$attachName."\"
         } else {
             echo "<a class=\"other-attachment\" href=\"".$attach."\" download=\"".$attachName."\">\"".$attachName."\"</a>";

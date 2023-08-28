@@ -7,8 +7,8 @@
 
     // set template elements
     clearTemplate();
-    setTitle("Post - SolveIT");
-    setHeader("newpost/newpost-header.php");
+    setTitle("New Post - SolveIT");
+    setHeader("home/home-header.php");
     setMain("newpost/newpost-main.php");
     setFooter("home/home-footer.php");
     setCSS(["./css/newpost.css", "./css/home.css"]);

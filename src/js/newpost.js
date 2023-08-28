@@ -23,11 +23,11 @@ const fileList = document.querySelector('.file-list');
 window.addEventListener("load", () => {
     fix_heights();
 
-    nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
+    let nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
     
     initializeNavBar(nav_bar_links);
 
-    form = document.querySelector("#newpost_form");
+    let form = document.querySelector("#newpost_form");
     form.addEventListener('keydown', (event) => {
         // Prevent form submission on Enter key press
         if (event.keyCode === 13 && event.target.tagName == 'INPUT') {
@@ -35,14 +35,14 @@ window.addEventListener("load", () => {
         }
     });
 
-    divMain = document.querySelector(".main_content");
-    divMain.addEventListener("scroll", () => moveSuggestionOnScroll());
+    // let divMain = document.querySelector(".main_content");
+    // divMain.addEventListener("scroll", () => moveSuggestionOnScroll());
 
-    tag_inputs = Array.from(document.querySelectorAll(".tag_input"));
+    let tag_inputs = Array.from(document.querySelectorAll(".tag_input"));
     tag_inputs.forEach(tag_input => tag_input.addEventListener("input", (event) => suggestTags(event)));
     tag_inputs.forEach(tag_input => tag_input.addEventListener("keydown", (event) => createTag(event)));
 
-    collab_inputs = Array.from(document.querySelectorAll(".collab_input"));
+    let collab_inputs = Array.from(document.querySelectorAll(".collab_input"));
     collab_inputs.forEach(collab_input => collab_input.addEventListener("input", (event) => suggestUsernames(event)));
 
 });
@@ -95,7 +95,7 @@ let inputSuggestionType = 0;
 function createTag(event) {
     const input = event.target;
     const searchText = input.value;
-    const selected_list = input.closest("section").querySelector(".selected-list");
+    const selected_list = input.closest("section").querySelector(".selected-tags");
     const realInput = input.closest("section").querySelector(".real_input");
     
     // perform only on enter key
@@ -119,30 +119,31 @@ function createTag(event) {
 
 }
 
-function moveSuggestionOnScroll() {
-    const suggestionsContainer = document.querySelector('.suggestions');
-    if(suggestionsContainer.style.display == "none") {
-        return;
-    }
-    let input;
-    if(inputSuggestionType==0) {
-        input = document.querySelector('.collab_input');
-    } else {
-        input = document.querySelector('.tag_input');
-    }
-    setSuggestionPositionOn(input);
-}
+// function moveSuggestionOnScroll() {
+//     const suggestionsContainer = document.querySelector('.suggestions');
+//     if(suggestionsContainer.style.display == "none") {
+//         return;
+//     }
+//     let input;
+//     if(inputSuggestionType==0) {
+//         input = document.querySelector('.collab_input');
+//     } else {
+//         input = document.querySelector('.tag_input');
+//     }
+//     setSuggestionPositionOn(input);
+// }
 
-function setSuggestionPositionOn(input) {
-    const suggestionsContainer = document.querySelector('.suggestions');
-    let rect = input.getBoundingClientRect();
-    suggestionsContainer.style.position = "absolute";
-    suggestionsContainer.style.left = (rect.left + window.scrollX)+"px";
-    suggestionsContainer.style.top = (rect.bottom + window.scrollY - 10)+"px";
-    suggestionsContainer.style.width = rect.width+"px";
-    suggestionsContainer.style.display = "flex";
-    suggestionsContainer.style.paddingTop = 10 + "px";
-}
+// function setSuggestionPositionOn(input) {
+//     const suggestionsContainer = document.querySelector('.suggestions');
+
+//     let rect = input.getBoundingClientRect();
+//     suggestionsContainer.style.position = "absolute";
+//     suggestionsContainer.style.left = (rect.left + window.scrollX)+"px";
+//     suggestionsContainer.style.top = (rect.bottom + window.scrollY - 10)+"px";
+//     suggestionsContainer.style.width = rect.width+"px";
+//     suggestionsContainer.style.display = "flex";
+//     suggestionsContainer.style.paddingTop = 10 + "px";
+// }
 
 function suggestUsernames(event) {
     suggest(event,0);
@@ -154,7 +155,7 @@ function suggestTags(event) {
 // SUGGESTIONS
 // type = 0 -> suggest users
 // type = 1 -> suggest tags
-const symbols = ["(°-°)","#"]; // user, tags symbols
+const symbols = ["@","#"]; // user, tags symbols
 
 function suggest(event, type) {
     if(isQuering) {
@@ -163,8 +164,12 @@ function suggest(event, type) {
     event.preventDefault();
     const input = event.target;
     const searchText = input.value;
-    const suggestionsContainer = document.querySelector('.suggestions');
-    const selected_list = input.closest("section").querySelector(".selected-list");
+    const suggestionsContainerTags = document.querySelector('.suggestions-tags');
+    const suggestionsContainerCollabs = document.querySelector('.suggestions-collabs');
+    const selected_tags = input.closest("section").querySelector(".selected-tags");
+    const selected_collabs = input.closest("section").querySelector(".selected-collabs");
+    let suggestionsContainer;
+    let selected_list;
     const realInput = input.closest("section").querySelector(".real_input");
 
     // add name in dictionary
@@ -173,7 +178,7 @@ function suggest(event, type) {
     }
 
     if (searchText.trim() !== '') {
-        suggestionsContainer.innerHTML = '';
+        
         // Send AJAX request to add comment reply
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'utils/search.php', true);
@@ -192,12 +197,19 @@ function suggest(event, type) {
                         case 0:
                             // foreach user
                             suggestions = _usernames;
+                            suggestionsContainer = suggestionsContainerCollabs;
+                            selected_list = selected_collabs;
                             break;
                         case 1:
                             // foreach tag
                             suggestions = _tags;
+                            suggestionsContainer = suggestionsContainerTags;
+                            selected_list = selected_tags;
                             break;
                     }
+
+                    suggestionsContainer.innerHTML = '';
+
                     // display suggestion
                     suggestions.forEach((sugg) => {
                         let suggestionElement = generateSuggestionElement(sugg,type);
@@ -215,9 +227,12 @@ function suggest(event, type) {
                         });
                     });
                     
+                    
+
                     if(suggestions.length != 0) {
                         // dispaly suggestions container
-                        setSuggestionPositionOn(input);
+                        //setSuggestionPositionOn(input);
+                        suggestionsContainer.style.display = 'flex';
                     } else {
                         suggestionsContainer.style.display = 'none';
                     }
@@ -248,4 +263,13 @@ function generateSelecetedElement(sugg,type) {
             </li>`;
     
 }
+
+
+
+window.addEventListener("load", () => {
+     fix_heights();
+     nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children)
+     initializeNavBar(nav_bar_links);
+     addNotificationButton();
+});
 
