@@ -89,6 +89,7 @@ body > header {
     background: var(--deleteObjectColor);
     color: azure;
     font-family: var(--primaryFontFamily);
+    cursor: pointer;
 }
 
 .icon {
