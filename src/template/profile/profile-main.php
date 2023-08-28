@@ -36,17 +36,17 @@
                 <h3 class="profile-fullname" title="<?php echo getProfileName()." ".getProfileSurname()?>">
                     <?php
                         echo getProfileName()." ".getProfileSurname()
-                    ?>  
+                    ?>
                 </h3>
             </div>
 
             <div class="profile-bio">
                 <p>
-                   <?php echo getProfileBio();?> 
+                   <?php echo getProfileBio();?>
                 </p>
             </div>
         </div>
-        
+
         <div class="follow-container">
                 <?php 	if(getProfileUsername() != getUsername()) {
 							if(!in_array(getUsername(), getProfileFollowers())) {
@@ -57,9 +57,9 @@
 						}
                 ?>
             </div>
-            
+
         <div class="profile-details">
-            
+
             <div class="post-number">
                 <em>Posts </em> <?php echo count(getProfilePosts())?>
             </div>
@@ -76,3 +76,4 @@
         <?php require "./template/home/home-post-list.php" ?>
     </div>
 </section>
+
