@@ -1,7 +1,6 @@
 <?php
     // require defaults PHPs
     require_once 'bootstrap.php';
-    
 
     if(isset($_POST["postId"])) {
         $likeId = $dbh->toggleLike($_POST["postId"], getIdUtente());
@@ -29,3 +28,4 @@
     exit();
     
 ?>
+
