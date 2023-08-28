@@ -7,7 +7,7 @@
 
     // set post query parameter
     clearDownloads();
-    if(isset($_SERVER["QUERY_STRING"])) {
+    if(isset($_SERVER["QUERY_STRING"]) && $_SERVER["QUERY_STRING"] !== "") {
         // post view
         if(str_starts_with($_SERVER["QUERY_STRING"],"id")) {
             $idPosts = [];
@@ -42,3 +42,4 @@
     // require template
     require "template/base.php";
 ?>
+
