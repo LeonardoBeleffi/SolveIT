@@ -83,6 +83,7 @@ section {
     justify-content: center;
     padding: 4px 8px;
     font-size: 20pt;
+    cursor: pointer;
 }
 
 .profile-id {

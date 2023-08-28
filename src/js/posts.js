@@ -34,7 +34,7 @@ function deleteComment(event) {
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
-                delete_button.style.display.visible = "none";
+                delete_button.style.display = "none";
                 comment.removeChild(delete_button);
                 comment.removeChild(reply_button);
                 

@@ -4,7 +4,7 @@
 
     if(isset($_POST["postId"])) {
         $likeId = $dbh->toggleLike($_POST["postId"], getIdUtente());
-        if($likeId) {
+		if($likeId) {
             // Add notifications
             require "addNotification.php";
         }
