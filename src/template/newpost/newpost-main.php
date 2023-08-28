@@ -5,8 +5,8 @@
             <?php loadErrorMsg(); ?>
             <div>
                 <div>
-                    <label>Title<input type="text" name="title" /></label>
-                    <label>Text<textarea name="text" form="newpost_form" contentEditable></textarea></label>
+                    <label>Title<input type="text" name="title" maxlength="128" required/></label>
+                    <label>Text<textarea name="text" form="newpost_form" contentEditable maxlength="256" required></textarea></label>
                     <label>Tags<input class="tag_input" type="text" name="tags_cover" /></label>
                     <input class="real_input" type="search" name="tags" hidden/>
                     <div class="suggestions-tags"></div>
