@@ -1,20 +1,21 @@
 <section>
+    <h1>Profile</h1>
     <div class="profile-container">
-        <img src="your_profile_picture.jpg" alt="Profile Picture" class="profile-picture">
-        <h1 class="profile-heading"><?php echo getProfileUsername()?></h1>
-        <p class="profile-bio"><?php echo getProfileBio();?></p>
-        <div class="profile-details">
-        <?php if(getProfileUsername() != getUsername()) {
-            echo '<button onclick="follow(event)" class="button follow-button">Follow</button>';
-        }
-        ?>
-            <p><emph>Solutions(posts):</emph> <?php echo count(getProfilePosts())?></p>
-            <p><emph>Followers:</emph> <?php echo count(getProfileFollowers())?></p>
-            <p><emph>Following:</emph> <?php echo count(getProfileFollowings())?></p>
-            <p><emph>Name:</emph> <?php echo getProfileName()?></p>
-            <p><emph>Surname:</emph> <?php echo getProfileSurname();?></p>
-            <p><emph>Email:</emph> <?php echo getProfileEmail();?></p>
+        <div class ="profile-header">
+            <img src="your_profile_picture.jpg" alt="Profile Picture" class="profile-picture">
+            <h2 class="profile-username"><?php echo getProfileUsername()?></h2>
+            <span class="profile-bio"><?php echo getProfileBio();?></span>
         </div>
-        <?php require "./template/home/home-main.php" ?>
+        <div class="profile-details">
+            <?php if(getProfileUsername() != getUsername()) {
+                echo '<button onclick="follow(event)" class="button follow-button">Follow</button>';
+            }
+            ?>
+            <em>Solutions(posts):</em> <?php echo count(getProfilePosts())?>
+            <em>Followers:</em> <?php echo count(getProfileFollowers())?>
+            <em>Following:</em> <?php echo count(getProfileFollowings())?>
+            <em>Email:</em> <?php echo getProfileEmail();?>
+        </div>
+        <?php require "./template/home/home-post-list.php" ?>
     </div>
 </section>

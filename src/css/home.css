@@ -2,7 +2,7 @@
 @import "login.css";
 
 :root {
-    --header_height: max(50px, 5vh);
+    --header_height: max(60px, 8vh);
     --footer_height: max(53px, 7vh);
     --footer_img_width: max(32px, 4.2vh);
     --footer_img_height:  max(32px, 4.2vh);
