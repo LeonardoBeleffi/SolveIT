@@ -7,8 +7,8 @@
                 <div>
                     <label>Username<input type="text" id="username" name="username" /></label>
                     <label>Password<input type="password" id="password" name="password" /></label>
-                    <a href="./forgotPassword.php">Forgot your password?</a>
-                    <a href="./forgotUsername.php">Forgot your username?</a>
+                    <!-- <a href="./forgotPassword.php">Forgot your password?</a>
+                    <a href="./forgotUsername.php">Forgot your username?</a> -->
                 </div>
                 <input type="submit" value="Sign In" />
             </div>
