@@ -303,6 +303,26 @@ h1{
     cursor: pointer;
 }
 
+.close-post-button {
+    display: none;
+}
+
+.post-opened .close-post-button {
+    color: var(--buttonColor);
+    border-radius: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    font-size: 25pt;
+    transform: translate(3vw, -10px);
+    padding: 5px
+}
+
+.post-opened .close-post-button:active {
+    transform: translate(3vw, -10px);
+}
+
 .like-button {
     display: flex;
     align-items: center;
