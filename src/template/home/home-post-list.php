@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <button type="button" class="button close-post-button">
-                        <span title="Close post" class="fa-solid fa-x"></span>
+                        <span title="Close post" class="fa-solid fa-angle-up"></span>
                         <span class="sr-only">Close post</span>
                     </button>
                 </div>
