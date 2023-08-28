@@ -14,6 +14,7 @@
     setMain("login/login-main.php");
     setFooter("login/login-footer.php");
     setCSS(["./css/login.css"]);
+    setJS(["./js/login.js","./js/shared.js"]);
 
     // require template
     require "template/base.php";
