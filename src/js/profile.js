@@ -38,5 +38,6 @@ window.addEventListener("load", () => {
 			window.location.replace("./utils/logout.php");
 		});
 	}
-    
+
 });
+
