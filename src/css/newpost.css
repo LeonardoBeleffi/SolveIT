@@ -1,34 +1,73 @@
+body > main > section > div > form > div textarea {
+    resize: vertical;
+    width: 100%;
+    min-height: 100px;
+    max-height: 200px; 
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: var(--primaryBackground);
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 1px 1px var(--borderColor);;
+    border-color: var(--borderColor);
+}
+
 .upload-area {
-    border: 2px dashed #ccc;
+    border: 2px dashed var(--placeholderColor);
+    width: 100%;
+    box-sizing: border-box;
     padding: 20px;
     text-align: center;
-    background-color: #ffffff;
+    background-color: whitesmoke;
 }
+
+
+/* #file-upload-button{
+    width: max(150px, 20vh);
+    font-size: max(15px, 2vh);
+    margin: 0 auto;
+    font-weight: bold;
+    color: var(--buttonTextColor);
+    background-color: var(--buttonColor);
+    box-shadow: 1px 1px var(--borderColor);
+    border-color: transparent;
+    border-width: 0;
+} */
   
-.suggestions {
-  max-height: 150px;
-  overflow-y: auto;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-top: 0;
-  padding-top: 10px;
-  display: none;
+.suggestions-tags, .suggestions-collabs {
+    height: fit-content;
+    overflow-y: auto;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: 0;
+    padding-top: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 }
+
 .suggestion {
   cursor: pointer;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  box-sizing: border-box;
   width: 100%;
   border-radius: 5px;
   transition: background-color 0.2s;
 }
+
 .suggestion:hover {
-    background-color: #f0f0f0;
+    background-color: var(--selectionColor);
 }
 
 .selected-list {
+  padding: 10px 0;
   list-style: none;
 }

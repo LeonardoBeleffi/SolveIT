@@ -17,7 +17,7 @@ function suggestSector(event) {
 // type = 0 -> suggest users
 // type = 1 -> suggest tags
 // type = 2 -> suggest sector
-const symbols = ["(°-°)","#","@"]; // user, tag, sector symbols
+const symbols = ["@","#","&"]; // user, tag, sector symbols
 
 function suggest(event, type) {
     event.preventDefault();

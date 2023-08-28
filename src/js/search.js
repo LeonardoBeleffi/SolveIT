@@ -61,7 +61,7 @@ function displayUsername(username) {
     const suggestionsContainer = document.querySelector('.suggestions');
     const suggestionElement = document.createElement('span');
     suggestionElement.classList.add('suggestion');
-    suggestionElement.textContent = "(°-°) "+ username;
+    suggestionElement.textContent = "@ "+ username;
     suggestionElement.addEventListener('click', () => {
         window.location.href = './search.php?user='+username;
     });
@@ -69,11 +69,10 @@ function displayUsername(username) {
     
 }
 
-window.addEventListener("load", () => {
-    fix_heights();
-    nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
-
-    initializeNavBar(nav_bar_links);
-    addNotificationButton()
-});
+// window.addEventListener("load", () => {
+//      fix_heights();
+//      nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children)
+//      initializeNavBar(nav_bar_links);
+//      addNotificationButton()
+// });
 
