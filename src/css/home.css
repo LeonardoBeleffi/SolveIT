@@ -129,6 +129,7 @@ body > main > section {
 #post-list {
     list-style-type: none;
     height: calc(100% - 2*10px);
+    width: 100%;
     margin: 0;
     display: block;
     padding: 10px 0;

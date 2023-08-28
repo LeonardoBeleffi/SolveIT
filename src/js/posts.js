@@ -125,8 +125,8 @@ function toggleLike(event) {
                 if(isLiked) likeBut.classList.add('liked');
                 else likeBut.classList.remove('liked');
 
-                const likesCount = document.querySelector("#post-"+postId+' .likes-count');
-                likesCount.innerHTML = "liked by "+ likes;
+                const likesCount = document.querySelector("#post-" + postId + ' .likes-count');
+                likesCount.innerHTML = "liked by " + likes;
             } else {
                 console.error('Failed to add like.');
             }

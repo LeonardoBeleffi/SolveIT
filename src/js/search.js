@@ -28,7 +28,7 @@ function search(event) {
                     const response = JSON.parse(xhr.responseText);
                     const usernames = response.usernames;
                     const tags = response.tags;
-                    console.log(xhr.responseText);
+                    // console.log(xhr.responseText);
                     // foreach user
                     usernames.forEach((username) => displayUsername(username));
                     // foreach tag

@@ -9,13 +9,14 @@
   } */
   
 .container {
-    /* width: max(250px, 70vw); */
-    height: min(600px, 75vh);
-    /* margin: auto; */
+    height: 100%;
+    width: 100%;
+    padding: 0;
     display: flex;
-    padding: 20px 0;
     align-items: flex-start;
+    justify-content: space-between;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .search-section {
@@ -74,3 +75,4 @@
 .suggestion:hover {
     background-color: var(--secondaryColor);
 }
+
