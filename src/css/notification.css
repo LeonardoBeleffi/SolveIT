@@ -3,23 +3,23 @@ body > *{
 }
 
 .notifications-list {
-  margin: auto;
-  height: inherit;
-  padding: 20px;
-  align-items: center;
-  overflow-y: scroll;
+    margin: auto;
+    height: inherit;
+    padding: 20px;
+    align-items: center;
+    overflow-y: scroll;
 }
 
 .notification {
-  height: min(125px, 15vh);
-  background-color: var(--tertiaryColor);
-  box-shadow: 0 0 3px rgba(0,0,0,0.3);
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+    height: min(125px, 15vh);
+    background-color: var(--tertiaryColor);
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .timestamp{
@@ -27,16 +27,16 @@ body > *{
 }
 
 .notification-header {
-  display: flex; 
-  align-items: center;
-  justify-content: flex-start;
-  margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
 }
 
 .notification-icon {
-  color: var(--buttonColor);
-  font-size: 24px;
-  margin-right: 10px;
+    color: var(--buttonColor);
+    font-size: 24px;
+    margin-right: 10px;
 }
 
 .notificator {
@@ -46,21 +46,21 @@ body > *{
 }
 
 .notification-content {
-  margin-left: 34px;
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
+    margin-left: 34px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .notification-content a {
-  align-self: center;
+    align-self: center;
 }
 
 .post-link {
-  padding: 5px;
-  color: var(--linkColor);
-  border-radius: 10px;
-  text-decoration: none;
+    padding: 5px;
+    color: var(--linkColor);
+    border-radius: 10px;
+    text-decoration: none;
 }
 
 .post-link:hover {
@@ -69,5 +69,5 @@ body > *{
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
