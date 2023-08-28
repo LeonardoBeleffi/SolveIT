@@ -1,3 +1,5 @@
+"use strict";
+
 function initializeNavBar(navBarElements){
     navBarElements.forEach(link => {
         let url = window.location.pathname;
@@ -64,3 +66,16 @@ function addNotificationButton(){
         window.location.href = 'notification.php';
     });
 }
+
+function fix_heights() {
+    const body = document.querySelectorAll("body")[0];
+
+    body.style.height = "100%";
+    body.style.minHeight = "100%";
+
+    window.addEventListener("resize", event => {
+        body.style.height = window.innerHeight+"px";
+        body.style.minHeight = window.innerHeight+"px";
+    });
+}
+

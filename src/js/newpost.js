@@ -1,3 +1,5 @@
+"use strict";
+
 // retrieve HTML objects
 const box = document.querySelector('.upload-area');
 const attachmentsInput = document.getElementById('attachmentsInput');
@@ -19,6 +21,8 @@ const fileList = document.querySelector('.file-list');
 }), false );
 
 window.addEventListener("load", () => {
+    fix_heights();
+
     nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
     
     initializeNavBar(nav_bar_links);

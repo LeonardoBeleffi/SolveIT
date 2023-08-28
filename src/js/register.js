@@ -1,5 +1,7 @@
+"use strict";
 
 window.addEventListener("load", () => {
+    fix_heights();
     sector_inputs = Array.from(document.querySelectorAll("#sector"));
     sector_inputs.forEach(sector_input => sector_input.addEventListener("input", (event) => suggestSector(event)));
 });

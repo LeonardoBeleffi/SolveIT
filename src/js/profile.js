@@ -1,3 +1,4 @@
+"use strict";
 
 // FOLLOW
 
@@ -18,3 +19,8 @@ function follow(event) {
     };
     xhr.send(`username=${_USERNAME}`);
 }
+
+window.addEventListener("load", () => {
+    fix_heights();
+});
+

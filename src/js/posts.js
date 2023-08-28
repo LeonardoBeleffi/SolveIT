@@ -1,3 +1,4 @@
+"use strict";
 
 function toggleReply(event){
     getClosestReplyForm(event.target).classList.toggle('expanded');
