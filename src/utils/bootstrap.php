@@ -15,12 +15,12 @@
 
     // try connecting to remote/local database
     try{
-		 $dbh = new DatabaseHelper("localhost", "root", "", "epiz_34305586_solveit", 3306);
-         } catch(Exception $e) {
+        $dbh = new DatabaseHelper("sql202.infinityfree.com", "epiz_34305586", "PsLXCJjQlcI", "epiz_34305586_solveit", 3306);
+    } catch(Exception $e) {
         setErrorMsg("Cannot connect to remote Database!");
         try{
-            $dbh = new DatabaseHelper("sql202.infinityfree.com", "epiz_34305586", "PsLXCJjQlcI", "epiz_34305586_solveit", 3306);
-   setErrorMsg("");
+            $dbh = new DatabaseHelper("localhost", "root", "", "epiz_34305586_solveit", 3306);
+            setErrorMsg("");
         } catch(Exception $e) {
             setErrorMsg("Cannot connect to local Database!");
         }
