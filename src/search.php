@@ -8,20 +8,24 @@
     // set post query parameter
     clearDownloads();
     if(isset($_SERVER["QUERY_STRING"]) && $_SERVER["QUERY_STRING"] !== "") {
+        $query = $_SERVER["QUERY_STRING"];
+        $str = "id";
         // post view
-        if(str_starts_with($_SERVER["QUERY_STRING"],"id")) {
+        if (strncmp($query, $str, strlen($str)) === 0) {
             $idPosts = [];
-            array_push($idPosts, explode("=",$_SERVER["QUERY_STRING"],2)[1]);
+            array_push($idPosts, explode("=",$query,2)[1]);
             setPostsId($idPosts);
         }
         // post view
-        if(str_starts_with($_SERVER["QUERY_STRING"],"tag")) {
-            $postTag = explode("=",$_SERVER["QUERY_STRING"],2)[1];
+        $str = "tag";
+        if (strncmp($query, $str, strlen($str)) === 0) {
+            $postTag = explode("=",$query,2)[1];
             setPostTag($postTag);
         }
         // post view
-        if(str_starts_with($_SERVER["QUERY_STRING"],"user")) {
-            $postTag = explode("=",$_SERVER["QUERY_STRING"],2)[1];
+        $str = "user";
+        if (strncmp($query, $str, strlen($str)) === 0) {
+            $postTag = explode("=",$query,2)[1];
             setPostUser($postTag);
         }
     }
