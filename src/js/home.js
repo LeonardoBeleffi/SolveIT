@@ -32,6 +32,12 @@ window.addEventListener("load", () => {
         }, false);
     });
 
+    Array.from(document.querySelectorAll(".like-button")).forEach(button => {
+        button.addEventListener("click", event => {
+            toggleLike(event);
+        });
+    });
+
     body.addEventListener("click", (event) => {
         let e = event.target;
         if (main.children[0].contains(e) || footer.contains(e)) return;
@@ -90,7 +96,6 @@ function filter_clicks(event) {
     }
 
     if(Array.from(document.querySelectorAll(".like-button")).find(e => e.contains(target))){
-        toggleLike(event);
         return true;
     }
 

@@ -109,7 +109,7 @@ function addComment(event) {
 function toggleLike(event) {
     
     event.preventDefault();
-    const likeBut = event.target;
+    const likeBut = event.currentTarget;
     const postId = likeBut.closest(".post").id.split("-")[1];
 
     const xhr = new XMLHttpRequest();
