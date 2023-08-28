@@ -1,3 +1,4 @@
+"use strict";
 
 // SEARCH
 let isQuering = false;
@@ -69,9 +70,10 @@ function displayUsername(username) {
 }
 
 window.addEventListener("load", () => {
-    // nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
+    fix_heights();
+    nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
 
-    // initializeNavBar(nav_bar_links);
-    // addNotificationButton()
+    initializeNavBar(nav_bar_links);
+    addNotificationButton()
 });
 

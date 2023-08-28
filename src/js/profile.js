@@ -1,3 +1,4 @@
+"use strict";
 
 // FOLLOW
 
@@ -19,12 +20,11 @@ function follow(event) {
     xhr.send(`username=${_USERNAME}`);
 }
 
-
 window.addEventListener("load", () => {
+    fix_heights()
     let logoutButton = document.querySelectorAll("#logout-button")[0];
 
     logoutButton.addEventListener("click", event =>{
         window.location.replace("./utils/logout.php");
     });
-
 });
