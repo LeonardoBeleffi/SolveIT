@@ -1,5 +1,5 @@
 <?php
-
+    global $currentUsername;
     // ----------------- TEMPLATE functions
     function clearTemplate(){
         unset($_SESSION["CSS"]);
@@ -61,6 +61,10 @@
                 echo "<script src=\"". $js ."\" ></script>";
             endforeach;
         endif;
+    }
+
+    function setUsername($username){
+       $currentUsername = $username;
     }
 
     //Title

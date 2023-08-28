@@ -21,5 +21,5 @@
     </div>
 </section>
 <footer>
-    <p>Already an accout? <a href="./login.php">Log in here!</a></p>
+    <p>Already have an accout? <a href="./login.php">Log in here!</a></p>
 </footer>
