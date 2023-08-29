@@ -1,13 +1,14 @@
-window.addEventListener("load", () => {
-     fix_heights();
-     let nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children)
-     let changeThemeButton = document.querySelectorAll(".change-theme")[0];
+// "use strict";
 
-     initializeNavBar(nav_bar_links);
-     addNotificationButton();
+// window.addEventListener("load", () => {
+//     fix_heights()
+//     let logoutButton = document.querySelectorAll("#logout-button")[0];
 
-     changeThemeButton.addEventListener("click", event =>{
-        //toggleSiteTheme();
-     });
+// 	if(logoutButton) {
+// 		logoutButton.addEventListener("click", event =>{
+// 			window.location.replace("./utils/logout.php");
+// 		});
+// 	}
 
-});
+// });
+
