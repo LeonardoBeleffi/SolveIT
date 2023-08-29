@@ -23,7 +23,7 @@
     function loadCSS(){
         if(!empty(getCSS())) : 
             foreach(getCSS() as $css):
-                echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $css . " \" />";
+                echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $css . " \"/>";
             endforeach;
         endif;
     }
@@ -41,7 +41,7 @@
     function loadRemoteCSS(){
         if(!empty(getRemoteCSS())) : 
             foreach(getRemoteCSS() as $css):
-                echo "<link rel=\"stylesheet\" href=\"" . $css . "\" />";
+                echo "<link rel=\"stylesheet\" href=\"" . $css . "\"/>";
             endforeach;
         endif;
     }
