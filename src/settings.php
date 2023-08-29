@@ -7,15 +7,15 @@
 
     // set post query parameter
     // clearDownloads();
-    // $username = getUsername();
+    $username = getUsername();
     // if(isset($_SERVER["QUERY_STRING"]) && $_SERVER["QUERY_STRING"] !== "") {
     //     // post view
     //     if (strncmp($_SERVER["QUERY_STRING"],"user",4) === 0) {
     //         $username = explode("=",$_SERVER["QUERY_STRING"],2)[1];
     //     }
     // }
-    // setPostUser($username);
-    // enableProfileInfo();
+    setPostUser($username);
+    enableProfileInfo();
 
     // require post query helper
     include "utils/download.php";
