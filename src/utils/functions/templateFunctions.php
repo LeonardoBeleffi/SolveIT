@@ -22,7 +22,7 @@
     }
 
     function loadPaletteCSS(){
-        if (issset($_SESSION["PaletteCSS"])) {
+        if (isset($_SESSION["PaletteCSS"])) {
             echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $_SESSION["PaletteCSS"] . " \"/>";
         }
     }
