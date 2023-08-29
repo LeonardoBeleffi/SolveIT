@@ -118,7 +118,7 @@ section {
     width: 95%;
     font-size: min(18px,4vh);
     font-weight: normal;
-    text-align: left;
+    text-align: center;
     max-width: 256ch;
 }
 .profile-bio > p {
