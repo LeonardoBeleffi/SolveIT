@@ -44,8 +44,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `epiz_34305586_solveit`.`Impostazione` (
   `idImpostazione` INT NOT NULL AUTO_INCREMENT,
-  `tema` VARCHAR(50) NOT NULL,
-  `filtroDaltonici` VARCHAR(45) NULL,
+  `tema` VARCHAR(50) NOT NULl DEFAULT 'light',
+  `filtroDaltonici` VARCHAR(45) NOT NULL DEFAULT 'standard',
   PRIMARY KEY (`idImpostazione`))
 ENGINE = InnoDB;
 

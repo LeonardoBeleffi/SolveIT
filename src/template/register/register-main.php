@@ -7,8 +7,8 @@
                 <div>
                     <label>Name<input type="text" id="name" name="name" maxlength="128"required/></label>
                     <label>Surname<input type="text" id="surname" name="surname" maxlength="128" required/></label>
-                    <label>Date of birth<input type="date" id="birth_date" name="birth_date"/></label>
-                    <label>Phone number<input type="number" id="phone_number" name="phone_number" maxlength="45"/></label>
+                    <label>Date of birth<input type="date" id="birth_date" name="birth_date" /></label>
+                    <label>Phone number<input type="text" id="phone_number" name="phone_number" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"/></label>
                     <label>Email<input type="email" id="email" name="email" maxlength="128" required/></label>
                     <label>Bio<textarea name="bio" form="registration-form" contentEditable maxlength="256">Your bio</textarea></label>
                     <label>Username<input type="text" id="username" name="username" maxlength="128" required/></label>
