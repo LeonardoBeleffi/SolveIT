@@ -1,6 +1,6 @@
 <section>
     <h1>Profile</h1>
-    <div class="profile-container">
+    <div id="profile-<?php echo getProfileUsername();?>" class="profile-container">
         <div class ="profile-header">
             <div class="profile-picture">
                 <?php echo strtoupper(substr(getProfileUsername(),0,1));?>
@@ -36,34 +36,38 @@
                 <h3 class="profile-fullname" title="<?php echo getProfileName()." ".getProfileSurname()?>">
                     <?php
                         echo getProfileName()." ".getProfileSurname()
-                    ?>  
+                    ?>
                 </h3>
             </div>
 
             <div class="profile-bio">
                 <p>
-                   <?php echo getProfileBio();?> 
+                   <?php echo getProfileBio();?>
                 </p>
             </div>
         </div>
-        
+
         <div class="follow-container">
-                <?php if(getProfileUsername() != getUsername()) {
-                    echo '<button onclick="follow(event)" class="button follow-button">Follow</button>';
-                }
+                <?php 	if(getProfileUsername() != getUsername()) {
+							if(!in_array(getUsername(), getProfileFollowers())) {
+								echo '<button onclick="toggleFollow(event)" class="button follow-button">Follow</button>';
+							} else {
+								echo '<button onclick="toggleFollow(event)" class="button follow-button">Unfollow</button>';
+							}	
+						}
                 ?>
             </div>
-            
+
         <div class="profile-details">
-            
+
             <div class="post-number">
                 <em>Posts </em> <?php echo count(getProfilePosts())?>
             </div>
             <div class="followers">
-                <em>Followers </em> <?php echo count(getProfileFollowers())?>
+                <em>Followers </em> <span class="followers-count"><?php echo count(getProfileFollowers())?></span>
             </div>
             <div class="following">
-                <em>Following </em> <?php echo count(getProfileFollowings())?>
+                <em>Following </em> <span class="followings-count"><?php echo count(getProfileFollowings())?></span>
             </div>
             <!-- <div class="email">
                 <em>Email:</em> <?php echo getProfileEmail();?>
@@ -72,3 +76,4 @@
         <?php require "./template/home/home-post-list.php" ?>
     </div>
 </section>
+

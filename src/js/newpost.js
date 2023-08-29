@@ -24,7 +24,6 @@ window.addEventListener("load", () => {
     fix_heights();
 
     let nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
-    
     initializeNavBar(nav_bar_links);
 
     let form = document.querySelector("#newpost_form");
@@ -45,12 +44,14 @@ window.addEventListener("load", () => {
     let collab_inputs = Array.from(document.querySelectorAll(".collab_input"));
     collab_inputs.forEach(collab_input => collab_input.addEventListener("input", (event) => suggestUsernames(event)));
 
+    addNotificationButton();
+
 });
 
 
 // add drop listener to box
 box.addEventListener('drop', function(e) {
-    droppedFiles = e.dataTransfer.files;
+    let droppedFiles = e.dataTransfer.files;
     attachmentsInput.files = droppedFiles;
     updateFileList();
 }, false );
@@ -75,17 +76,17 @@ function updateFileList() {
 function formatSize(size) {
     const kbSize = size / 1024;
     if (kbSize < 1024) {
-    return kbSize.toFixed(2) + ' KB';
+        return kbSize.toFixed(2) + ' KB';
     } else {
-    const mbSize = kbSize / 1024;
-    return mbSize.toFixed(2) + ' MB';
+        const mbSize = kbSize / 1024;
+        return mbSize.toFixed(2) + ' MB';
     }
 }
 
 
 
 // SUGGESTIONs LOGIC -------
- 
+
 let postData = {};
 let isQuering = false;
 let inputSuggestionType = 0;
@@ -97,7 +98,7 @@ function createTag(event) {
     const searchText = input.value;
     const selected_list = input.closest("section").querySelector(".selected-tags");
     const realInput = input.closest("section").querySelector(".real_input");
-    
+
     // perform only on enter key
     if(event.keyCode != 13) {
         return;
@@ -155,7 +156,7 @@ function suggestTags(event) {
 // SUGGESTIONS
 // type = 0 -> suggest users
 // type = 1 -> suggest tags
-const symbols = ["@","#"]; // user, tags symbols
+const symbols = ["@","#"]; // user, tags
 
 function suggest(event, type) {
     if(isQuering) {
@@ -178,7 +179,7 @@ function suggest(event, type) {
     }
 
     if (searchText.trim() !== '') {
-        
+
         // Send AJAX request to add comment reply
         const xhr = new XMLHttpRequest();
         xhr.open('POST', 'utils/search.php', true);
@@ -226,8 +227,8 @@ function suggest(event, type) {
                             suggestionsContainer.style.display = 'none';
                         });
                     });
-                    
-                    
+
+
 
                     if(suggestions.length != 0) {
                         // dispaly suggestions container
@@ -259,17 +260,8 @@ function generateSuggestionElement(sugg,type) {
 
 function generateSelecetedElement(sugg,type) {
     return `<li>
-                <p>`+symbols[type]+" "+sugg+`</p>
-            </li>`;
-    
+<p>`+symbols[type]+" "+sugg+`</p>
+</li>`;
+
 }
-
-
-
-window.addEventListener("load", () => {
-     fix_heights();
-     nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children)
-     initializeNavBar(nav_bar_links);
-     addNotificationButton();
-});
 

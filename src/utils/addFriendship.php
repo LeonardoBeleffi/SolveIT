@@ -9,7 +9,18 @@
             // Add notifications
             require "addNotification.php";
         }
+		// check if in followers
+		$userId = $dbh->getUserInfoByUsername($_SESSION['postUser'])[0]["userId"];
+		$followers = $dbh->getFollowersByUser($userId);
+		$inFollowers = 0;
+        foreach($followers as $follower) {
+            if(getUsername() == $follower["followerUsername"]) {
+				$inFollowers = 1;
+			}
+        }
         // send response
+        $array = ['followers' => count($followers), 'inFollowers' => $inFollowers];
+        echo json_encode($array);
         http_response_code(200);
         exit();
     }

@@ -3,6 +3,7 @@
     // ----------------- TEMPLATE functions
     function clearTemplate(){
         unset($_SESSION["CSS"]);
+        unset($_SESSION["PaletteCSS"]);
         unset($_SESSION["RemoteCSS"]);
         unset($_SESSION["JS"]);
         unset($_SESSION["title"]);
@@ -11,7 +12,7 @@
         unset($_SESSION["footer"]);
     }
 
-    //CSS
+    // CSS
     function setCSS($CSS){
         $_SESSION["CSS"] = $CSS;
     }
@@ -20,10 +21,16 @@
         return getSessionVar("CSS");
     }
 
+    function loadPaletteCSS(){
+        if (issset($_SESSION["PaletteCSS"])) {
+            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $_SESSION["PaletteCSS"] . " \"/>";
+        }
+    }
+
     function loadCSS(){
         if(!empty(getCSS())) : 
             foreach(getCSS() as $css):
-                echo "<link rel=\"stylesheet\" type=\"text/css\" href=". $css ." />";
+                echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $css . " \"/>";
             endforeach;
         endif;
     }
@@ -41,7 +48,7 @@
     function loadRemoteCSS(){
         if(!empty(getRemoteCSS())) : 
             foreach(getRemoteCSS() as $css):
-                echo "<link rel=\"stylesheet\" href=". $css ." />";
+                echo "<link rel=\"stylesheet\" href=\"" . $css . "\"/>";
             endforeach;
         endif;
     }

@@ -5,12 +5,12 @@
             <?php loadErrorMsg(); ?>
             <div>
                 <div>
-                    <label>Username<input type="text" id="username" name="username" /></label>
-                    <label>Password<input type="password" id="password" name="password" /></label>
-                    <a href="./forgotPassword.php">Forgot your password?</a>
-                    <a href="./forgotUsername.php">Forgot your username?</a>
+                    <label>Username<input type="text" id="username" name="username" maxlength="128"/></label>
+                    <label>Password<input type="password" id="password" name="password" maxlength="128" required/></label>
+                    <!-- <a href="./forgotPassword.php">Forgot your password?</a>
+                    <a href="./forgotUsername.php">Forgot your username?</a> -->
                 </div>
-                <input type="submit" value="Sign In" />
+                <input type="submit" value="Sign In"/>
             </div>
         </form>
     </div>

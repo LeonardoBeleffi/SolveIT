@@ -5,15 +5,17 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="application-name" content="SolveIT" />
-        <meta name="description" content="UNIBO Web Project" />
-        <meta name="author" content="Beleffi Leonardo, Sangiorgi Marco, Vuksan Tiziano" />
-        <meta name="keywords" content="Solveit, Solvit, Solveet, Slovit, Solveti, Bug, Solution, Solve, Fix, StackOverflow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8"/>
+        <meta name="application-name" content="SolveIT"/>
+        <meta name="description" content="UNIBO Web Project"/>
+        <meta name="author" content="Beleffi Leonardo, Sangiorgi Marco, Vuksan Tiziano"/>
+        <meta name="keywords" content="Solveit, Solvit, Solveet, Slovit, Solveti, Bug, Solution, Solve, Fix, StackOverflow"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title><?php echo getTitle() ?></title>
+        <link rel="icon" type="image/x-icon" href="../resources/icons/logo-white.svg"/>
         <!-- load CSS -->
         <?php loadRemoteCSS()?>
+        <?php loadPaletteCSS()?>
         <?php loadCSS()?>
         <!-- load JS -->
 

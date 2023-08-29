@@ -17,19 +17,27 @@ window.addEventListener("load", () => {
 
     initializeNavBar(nav_bar_links);    
 
-    posts.forEach(post_li => {
-        let post_preview = post_li.children[0].children[0];
-        post_preview.addEventListener("click", event => {
-            let post_preview_clicked = get_post_preview_from_click(event.target);
+    if(posts){
+        posts.forEach(post_li => {
+            let post_preview = post_li.children[0].children[0];
+            post_preview.addEventListener("click", event => {
+                let post_preview_clicked = get_post_preview_from_click(event.target);
 
-            if (filter_clicks(event)) return;
-            if (post_preview_clicked.parentNode.parentNode.className.includes("post-opened")) {
-                if(close_post_button_clicked(event.target))
-                    close_post();
-            } else {
-                open_post(post_preview_clicked.parentNode.parentNode);
-            }
-        }, false);
+                if (filter_clicks(event)) return;
+                if (post_preview_clicked.parentNode.parentNode.className.includes("post-opened")) {
+                    if(close_post_button_clicked(event.target))
+                        close_post();
+                } else {
+                    open_post(post_preview_clicked.parentNode.parentNode);
+                }
+            }, false);
+        });
+    }
+
+    Array.from(document.querySelectorAll(".like-button")).forEach(button => {
+        button.addEventListener("click", event => {
+            toggleLike(event);
+        });
     });
 
     body.addEventListener("click", (event) => {
@@ -90,7 +98,6 @@ function filter_clicks(event) {
     }
 
     if(Array.from(document.querySelectorAll(".like-button")).find(e => e.contains(target))){
-        toggleLike(event);
         return true;
     }
 

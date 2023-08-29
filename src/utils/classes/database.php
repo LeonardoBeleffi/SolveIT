@@ -234,7 +234,7 @@ class DatabaseHelper{
         FROM Utente
         where username = ?");
         
-        $stmt->bind_param('i',$username);
+        $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -429,10 +429,13 @@ class DatabaseHelper{
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ii',$idPost, $userId);
             $stmt->execute();
+			if(!$stmt->insert_id) {
+				throw new Exception('Like not inserted');
+			}
             return $stmt->insert_id;
         } catch(Exception $e) {
             try {
-                $query = "DELETE FROM MiPiace WHERE (idPost, idUtente) = (?, ?)";
+                $query = "DELETE FROM MiPiace WHERE idPost=? and idUtente=?";
                 $stmt = $this->db->prepare($query);
                 $stmt->bind_param('ii',$idPost, $userId);
                 $stmt->execute();
@@ -524,16 +527,19 @@ class DatabaseHelper{
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('iis',$followerId, $followedId, $timestamp);
             $stmt->execute();
+			if(!$stmt->insert_id) {
+				throw new Exception('Follow not inserted');
+			}
             return $stmt->insert_id;
         } catch(Exception $e) {
-            // try {
+            try {
                 $query = "DELETE FROM Amicizia WHERE idSeguace=? and idSeguito=?";
                 $stmt = $this->db->prepare($query);
                 $stmt->bind_param('ii',$followerId, $followedId);
                 $stmt->execute();
-            // } catch(Exception $e) {
-            //     return false;
-            // }
+            } catch(Exception $e) {
+                return false;
+            }
             return false;
         }
     }
