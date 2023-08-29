@@ -15,5 +15,11 @@
         header("Location: /src/register.php");
         exit();
     }
+
+    function goToSettings(){
+        header("Location: /src/settings.php");
+        exit();
+    }
+
 ?>
 

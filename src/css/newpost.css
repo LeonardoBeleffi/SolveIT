@@ -39,6 +39,7 @@ body > main > section > div > form > div textarea {
 
 .suggestions-tags, .suggestions-collabs {
     height: fit-content;
+    max-height: 220px;
     overflow-y: auto;
     width: 100%;
     box-shadow: 0 0 5px rgba(0,0,0,0.3);
@@ -64,7 +65,7 @@ body > main > section > div > form > div textarea {
     width: fit-content;
 }
 
-.delete-suggestion {
+.delete-tag-suggestion, .delete-collab-suggestion {
     cursor: pointer;
     display: inline;
     width: fit-content;
