@@ -35,10 +35,10 @@ INSERT INTO `Utente` (`email`, `nome`, `cognome`, `dataNascita`, `telefono`, `us
 ('sophia.green@example.com', 'Sophia', 'Green', '1995-03-15', '3456789012', 'sophiagreen', 'UI/UX designer with a passion for creating visually stunning and intuitive user interfaces.',1);
 
 INSERT INTO `Credenziali` ( `password`, `idUtente`) VALUES
-('admin', '1'),
-('sangio', '2'),
-('leo', '3'),
-('tiz', '4');
+('$2y$10$hV3iN5Skc/lyNvZWgV30uuCoZ.bZm1jP/TwtwEU7mecR.uk8fB2DO', '1'),
+('$2y$10$Y/nDqvZeeHVXicrJPsTEkO1WITlUxQ2ecGzRe2OItTnGcPDCfUJke', '2'),
+('$2y$10$OiXV8QgnF5ot0KTRrX7BU.XeyOArmXzSx/5pni843ZPMrrWp3YOiC', '3'),
+('$2y$10$w/Nc0uCS0XvrINqdhw2KA.OVMyoDKL60R1g97DNQhDUEScTwWEYUa', '4');
 
 INSERT INTO `Amicizia` (`idSeguace`, `idSeguito`, `timestamp`)
 VALUES

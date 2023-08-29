@@ -149,18 +149,20 @@ class DatabaseHelper{
 
     ///USER-RELATED QUERIES -----------------------------------------
 
-    // username, password --> userId, username, name, sectorId
+    // username, password --> userId, username, name, theme
     public function checkLogin($username, $password){
-        $query = "SELECT u.idUtente as userId, username, nome as name, u.idSettore as sectorId
-        FROM Utente as u, Credenziali as c
-        WHERE u.idUtente = c.idUtente and u.username = ? and c.password = ?";
+        $query = "SELECT u.idUtente as userId, username, nome as name, u.tema as theme, c.password as password
+        FROM Utente as u, Credenziali as c 
+        WHERE u.idUtente = c.idUtente and u.username = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$username, $password);
+        $stmt->bind_param('s',$username);
         $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+		if(count($result) != 0 && !password_verify($password, $result[0]["password"])) {
+			return [];
+		}
+        return $result;
+    }    
 
     // idPost --> userId, name, surname, username, sectorId
     public function getUserById($idUtente){
@@ -399,6 +401,7 @@ class DatabaseHelper{
     // idUtente, password -> idCredenziali
     public function insertCredenziali($idUtente, $password){
         try {
+			$password = password_hash($password, PASSWORD_DEFAULT);
             $query = "INSERT INTO Credenziali (idUtente, password) VALUES (?, ?)";
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('is',$idUtente, $password);

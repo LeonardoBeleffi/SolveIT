@@ -1,6 +1,7 @@
 <?php
     // require defaults PHPs
     require_once 'utils/bootstrap.php';
+	
     // check login routine
     checkUserLogin();
     // echo "Username: " . getUsername() . "<br>".
