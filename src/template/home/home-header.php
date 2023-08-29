@@ -37,7 +37,7 @@
     <span class="fa-solid fa-bell icon" aria-hidden="true" title="Notifications icon"></span>
     <span class="sr-only">Notifications icon</span>
     <span class="notification-badge">
-        <?php echo count(getNewNotifications()); ?>
+        <?php echo count(getNewNotifications()) > 99 ? "99+" : count(getNewNotifications()); ?>
     </span>
   </div>
 </div>

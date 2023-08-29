@@ -405,7 +405,7 @@ h1{
     outline: 2px solid var(--buttonColor);
 }
 
-.button:focus{
+.button:focus, a:focus {
     outline: none;
 }
 
