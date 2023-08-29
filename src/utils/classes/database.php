@@ -389,11 +389,25 @@ class DatabaseHelper{
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ssssssi',$nome, $cognome, $email, $dataNascita, $telefono, $username, $idSettore);
             $stmt->execute();
-            
+            $this->createSetting($stmt->insert_id);
             return $stmt->insert_id;
         } catch(Exception $e) {
             return false;
         }
+    }
+
+    public function createSetting($userId){
+        $query = "INSERT INTO Impostazione () VALUES()";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        
+        $idSetting = $stmt->insert_id;
+
+        $query = "UPDATE Utente SET idImpostazione = ?
+                WHERE idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ii',$idSetting, $userId);
+        return $stmt->execute();
     }
 
     // idUtente, password -> idCredenziali
@@ -444,6 +458,15 @@ class DatabaseHelper{
             }
             return false;
         }
+    }
+
+
+    public function toggleUserTheme($settingId, $themeValue){
+        $query = "UPDATE Impostazione SET tema = ?
+                WHERE idImpostazione = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si',$themeValue, $settingId);
+        return $stmt->execute();
     }
 
     public function isLikedBy($idPost, $userId){

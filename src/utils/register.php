@@ -22,6 +22,8 @@
             setErrorMsg("Wrong User registration, username or email  may already exists.");
             goToRegister();
         }
+
+        echo "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
         // insert credentials
         $idCred = $dbh->insertCredenziali($idUtente, $_POST["password"]);
         if($idCred==false){

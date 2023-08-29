@@ -1,5 +1,14 @@
 "use strict";
 
+const Themes = {
+    Dark: "dark",
+    Light: "light"
+}
+
+const rootObject = document.querySelector(':root');
+const rootStyle = getComputedStyle(rootObject);
+let currentTheme = Themes.Light;
+
 function initializeNavBar(navBarElements){
     navBarElements.forEach(link => {
         let url = window.location.pathname;
@@ -79,3 +88,16 @@ function fix_heights() {
     });
 }
 
+function toggleSiteTheme(){
+    if(currentTheme == Themes.Light){
+        currentTheme = Themes.Dark;
+        rootObject.style.setProperty('--primaryBackground','#000000')
+        localStorage.setItem('primaryBackground', '#000000'); 
+
+
+    }else if(currentTheme == Themes.Dark){
+        currentTheme = Themes.Light;
+        rootObject.style.setProperty('--primaryBackground','#C2C2C2')
+        localStorage.setItem('primaryBackground', '#C2C2C2'); 
+    }
+}
