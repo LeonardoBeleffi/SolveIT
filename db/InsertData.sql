@@ -6,11 +6,11 @@ select * from Utente;
 INSERT INTO `Settore` (`nomeSettore`) VALUES
 ('azienda');
 
-INSERT INTO `Utente` ( `email`, `nome`, `username`, `idSettore`, `bio`) VALUES
-('admin@blogtw.com', 'Admin Nimda', 'admin',1, 'Ingenere informatico senior'),
-('sangio@blogtw.com', 'Gino Pino', 'sangio',1, 'Ingegnere informatico junior'),
-('leo@blogtw.com', 'Cippa Lippa', 'leo',1, 'Full-stack developer'),
-('tizz@blogtw.com', 'Chico Loco', 'tiz',1, 'Front-end soldier');
+INSERT INTO `Utente` ( `email`, `nome`, `cognome`, `username`, `idSettore`, `bio`) VALUES
+('admin@blogtw.com', 'Admin', 'Nimda', 'admin',1, 'Ingenere informatico senior'),
+('sangio@blogtw.com', 'Gino', 'Pino', 'sangio',1, 'Ingegnere informatico junior'),
+('leo@blogtw.com', 'Cippa', 'Lippa', 'leo',1, 'Full-stack developer'),
+('tizz@blogtw.com', 'Chico', 'Loco', 'tiz',1, 'Front-end soldier');
 
 INSERT INTO `Utente` (`email`, `nome`, `cognome`, `dataNascita`, `telefono`, `username`, `bio`, `idSettore`) VALUES 
 ('john.doe@example.com', 'John', 'Doe', '1990-05-15', '1234567890', 'johndoe', 'Experienced software engineer with a passion for creating innovative solutions.',1),
