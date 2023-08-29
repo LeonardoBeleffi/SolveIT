@@ -1,0 +1,42 @@
+* {
+    font-family: var(--primaryFontFamily);
+
+}
+
+
+h1 {
+    display: none;
+}
+
+.section{
+    width: 95%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.header-title {
+    border-radius: 10px;
+    padding: 0px 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.header-title:hover {
+    background-color: rgba(235,235,235,0.5);
+}
+
+p{
+    width: 95%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    align-items: center;
+
+}
