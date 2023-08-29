@@ -3,19 +3,17 @@
     require_once 'utils/bootstrap.php';
 
     // check login
-    if(isUserLoggedIn()) {
-        goToHome();
-    }
+    //checkUserLogin();
 
     // set template elements
     clearTemplate();
-    setTitle("Sign In - SolveIT");
+    setTitle("About - SolveIT");
     setHeader("login/login-header.php");
-    setMain("login/login-main.php");
-    setFooter("login/login-footer.php");
-    setCSS(["./css/login.css"]);
+    setMain("about/about-main.php");
+    setFooter("about/about-footer.php");
+    setCSS(["./css/about.css","css/login.css"]);
     setRemoteCSS(["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"]);
-    setJS(["./js/login.js","./js/shared.js"]);
+    setJS(["./js/about.js"]);
 
     // require template
     require "template/base.php";

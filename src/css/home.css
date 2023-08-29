@@ -103,6 +103,12 @@ body > header {
     user-select: none;
 }
 
+ .fa-lightbulb {
+    color: var(--tertiaryBackground);
+    text-shadow: 4px 2px 0 var(--linkColor);
+} 
+
+
 .fa-bell:hover{
     background-color: rgba(235,235,235,0.3);/*var(--tertiaryBackground); */
 }
@@ -212,7 +218,7 @@ h1{
 .username {
     color: var(--linkColor);
     font-size: max(15px, 2vh);
-    max-width: max(100px,38vw);
+    max-width: max(100px,40vw);
     width: fit-content;
     cursor: pointer;
     border-radius: 5px;
