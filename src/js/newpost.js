@@ -51,7 +51,7 @@ window.addEventListener("load", () => {
 
 // add drop listener to box
 box.addEventListener('drop', function(e) {
-    droppedFiles = e.dataTransfer.files;
+    let droppedFiles = e.dataTransfer.files;
     attachmentsInput.files = droppedFiles;
     updateFileList();
 }, false );
@@ -156,7 +156,7 @@ function suggestTags(event) {
 // SUGGESTIONS
 // type = 0 -> suggest users
 // type = 1 -> suggest tags
-const symbols = ["@","#"]; // user, tags symbols
+const symbols = ["@","#"]; // user, tags
 
 function suggest(event, type) {
     if(isQuering) {

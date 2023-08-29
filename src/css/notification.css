@@ -22,10 +22,6 @@ body > *{
     justify-content: space-around;
 }
 
-.timestamp{
-
-}
-
 .notification-header {
     display: flex;
     align-items: center;
@@ -69,13 +65,17 @@ body > *{
 
 .post-link {
     padding: 5px;
-    color: var(--linkColor);
     border-radius: 10px;
     text-decoration: none;
 }
 
+.post-link > span{
+    color: var(--borderColor);
+    font-size: 25px;
+}
+
 .post-link:hover {
-    background-color: var(--primaryColor);
+    background-color: var(--secondaryColor);
     color: var(--tertiaryBackground);
 }
 

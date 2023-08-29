@@ -46,7 +46,7 @@ body > main > section {
     width: min(80%, 650px);
     background-color: var(--tertiaryBackground);
     border: none;
-    box-shadow: 0 0 5px rgba(black, 0.3);
+    box-shadow: 0px 0px 5px rgba(black, 0.3);
     border-radius: 15px;
     overflow: hidden;
 }
@@ -55,6 +55,7 @@ body > main > section > div {
     height: calc(100% - 2*15px);
     padding: 15px 0;
     overflow-y: auto;
+    box-shadow: 2px 2px 0px rgba(0,0,0, 0.7);
 }
 
 body > main > section > div > form {
@@ -99,10 +100,11 @@ body > main > section > div > form > div input {
     box-sizing: border-box;
     background-color: var(--primaryBackground);
     border-radius: 15px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 1px 1px var(--borderColor);;
-    border-color: var(--borderColor);
+    border:none;
+    /* border-style: solid;
+    border-width: 1px; */
+    box-shadow: 2px 2px 0 rgba(0,0,0, 0.3);
+    /* border-color: var(--borderColor); */
 }
 
 body > main > section > div > form > div > div {

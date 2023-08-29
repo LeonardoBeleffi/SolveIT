@@ -87,7 +87,7 @@ body > header {
     padding: 3px 8px;
     border-radius: 50%;
     background: var(--deleteObjectColor);
-    color: azure;
+    color: var(--tertiaryBackground);
     font-family: var(--primaryFontFamily);
     cursor: pointer;
 }
@@ -96,9 +96,16 @@ body > header {
     font-size: max(27px, 3.6vh);
     color: var(--borderColor);
     cursor: pointer;
+    border-radius: 5px;
+    padding: 3px;
+    transition: background-color 0.3s;
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.fa-bell:hover{
+    background-color: rgba(235,235,235,0.3);/*var(--tertiaryBackground); */   
 }
 
 
@@ -199,6 +206,13 @@ h1{
     color: var(--linkColor);
     font-size: max(15px, 2vh);
     cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background-color 0.3s;
+}
+
+.username:hover {
+    background-color: var(--secondaryColor);
 }
 
 .likes {
@@ -315,7 +329,8 @@ h1{
 }
 
 .post-opened .close-post-button {
-    color: var(--buttonColor);
+    color: var(--borderColor);
+    border: 1px outset var(--borderColor);
     border-radius: 20%;
     display: flex;
     align-items: center;
@@ -327,6 +342,7 @@ h1{
 }
 
 .post-opened .close-post-button:active {
+    border: none;
     transform: translate(3vw, -10px);
 }
 
@@ -387,6 +403,10 @@ h1{
 
 :focus {
     outline: 2px solid var(--buttonColor);
+}
+
+.button:focus{
+    outline: none;
 }
 
 .form-group {
@@ -591,13 +611,23 @@ body > footer {
     color: var(--primaryTextColor);
     font-family: var(--primaryFontFamily);
     font-weight: bold;
+    transition: background-color 0.3s, scale 0.2s;
+    border-radius: 25px 25px 0 0;
+}
+
+#nav-bar a:hover{
+    background-color: rgba(6,178,115,0.8);
+}
+
+#nav-bar a:active{
+    scale: 1.2;
 }
 
 .selected-link {
     display: block;
     background-color: var(--buttonColor);
     bottom: 0;
-    border-radius: 25px 25px 0 0;
+    /* border-radius: 25px 25px 0 0; */
 }
 
 @media only screen and (min-width: 700px) {

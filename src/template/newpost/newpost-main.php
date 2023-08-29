@@ -6,7 +6,8 @@
             <div>
                 <div>
                     <label>Title<input type="text" name="title" maxlength="128" required title="post title"/></label>
-                    <label>Text<textarea name="text" form="newpost_form" contentEditable maxlength="256" required title="post text"></textarea></label>
+                    <label>Text<textarea name="text" form="newpost_form" contentEditable  required title="post text"></textarea></label> 
+                    <!-- maxlength="256" -->
                     <label>Tags<input class="tag_input" type="text" name="tags_cover" title="post tags"/></label>
                     <input class="real_input" type="search" name="tags" hidden title="search tags"/>
                     <div class="suggestions-tags"></div>
