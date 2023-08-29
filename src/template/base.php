@@ -14,8 +14,8 @@
         <title><?php echo getTitle() ?></title>
         <link rel="icon" type="image/x-icon" href="../resources/icons/logo-white.svg"/>
         <!-- load CSS -->
-        <?php loadRemoteCSS()?>
         <?php loadPaletteCSS()?>
+        <?php loadRemoteCSS()?>
         <?php loadCSS()?>
         <!-- load JS -->
 
