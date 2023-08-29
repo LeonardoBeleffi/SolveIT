@@ -10,7 +10,7 @@
                     <!-- <a href="./forgotPassword.php">Forgot your password?</a>
                     <a href="./forgotUsername.php">Forgot your username?</a> -->
                 </div>
-                <input type="submit" value="Sign In" />
+                <input type="submit" value="Sign In"/>
             </div>
         </form>
     </div>

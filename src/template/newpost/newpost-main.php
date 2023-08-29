@@ -24,7 +24,7 @@
                     </div>
                     <div class="file-list" ></div>
                 </div>
-                <input type="submit" value="Upload" />
+                <input type="submit" value="Upload"/>
             </div>
         </form>
     </div>

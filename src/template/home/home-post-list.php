@@ -75,7 +75,7 @@
                     <!-- Add comment form -->
                     <form onsubmit="addComment(event)" class="root-comment">
                         <div class="form-group">
-                            <input title="Comment" type="text" class="form-input" placeholder="Write a comment" />
+                            <input title="Comment" type="text" class="form-input" placeholder="Write a comment"/>
                             <button type="submit" class="button comment-button">
                                 <span class="fa-solid fa-reply" title="Reply button"></span>
                                 <span class="sr-only">Reply button</span>

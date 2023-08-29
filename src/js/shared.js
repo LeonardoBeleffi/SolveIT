@@ -55,10 +55,11 @@ function refreshNotifications() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
                     // parse response
-                    const response = JSON.parse(xhr.responseText);
-                    const notifications = response.notifications;
-                    notification_count.innerHTML = notifications;
-                            
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        const notifications = response.notifications;
+                        notification_count.innerHTML = notifications > 99 ? "99+" : notifications;
+                    } catch (error) {}
                 } else {
                     console.error('Failed to refresh Notifications.');
                 }

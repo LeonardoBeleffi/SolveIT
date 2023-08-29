@@ -15,7 +15,7 @@
                     <label>Password<input type="password" id="password" name="password" maxlength="128" required/></label>
                 </div>
                 <div class="suggestions"></div>
-                <input type="submit" value="Sign Up" />
+                <input type="submit" value="Sign Up"/>
             </div>
         </form>
     </div>
