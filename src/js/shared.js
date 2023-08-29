@@ -48,7 +48,7 @@ function refreshNotifications() {
                     // parse response
                     const response = JSON.parse(xhr.responseText);
                     const notifications = response.notifications;
-                    notification_count.innerHTML = notifications;
+                    notification_count.innerHTML = notifications > 99 ? "99+" : notifications;
                             
                 } else {
                     console.error('Failed to refresh Notifications.');
