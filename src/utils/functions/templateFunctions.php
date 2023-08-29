@@ -24,6 +24,7 @@
         if (0 === getUserTheme()) {
             echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/white_theme.css\"/>";
             return;
+        }
         if (1 === getUserTheme()) {
             echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/dark_theme.css\"/>";
             return;
