@@ -7,11 +7,16 @@
     text-align: center;
     background-color: #ffffff;
   } */
+
+main * {
+    box-sizing: border-box;
+    width: 100%;
+}
   
 .container {
     height: 100%;
     width: 100%;
-    padding: 0;
+    padding: 3vh 0;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -20,6 +25,7 @@
 }
 
 .search-section {
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,9 +35,10 @@
 
 .form-input {
     font-size: min(12pt,4vh);
-    width: max(220px, 90vw);
+    height: max(60px, 8vh);
+    font-size: max(23px, 3vh);
     margin: 0 auto;
-    height: min(50px, 15vh);
+    padding: 0 2vw;
     color: var(--buttonTextColor);
     background-color: var(--tertiaryBackground);
     border-radius: 10px;
@@ -59,7 +66,6 @@
 
 .suggestions {
     margin-top: 10px;
-    width: 90%;
     /* height: min(450px,70vh); */
     overflow-y: auto;
     padding: 10px;
