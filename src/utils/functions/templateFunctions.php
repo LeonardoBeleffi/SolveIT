@@ -21,13 +21,13 @@
     }
 
     function loadPaletteCSS(){
-        if (0 === getUserTheme()) {
-            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/white_theme.css\"/>";
-            return;
-        }
-        if (1 === getUserTheme()) {
-            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/dark_theme.css\"/>";
-            return;
+        switch (getUserTheme()) {
+            case 1:
+                echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/dark_theme.css\"/>";
+                break;
+            default:
+                echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/white_theme.css\"/>";
+                break;
         }
     }
 
