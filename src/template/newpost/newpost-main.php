@@ -8,11 +8,11 @@
                     <label>Title<input type="text" name="title" maxlength="128" required title="post title"/></label>
                     <label>Text<textarea name="text" form="newpost_form" contentEditable  required title="post text" maxlength="2048"></textarea></label>
                     <label>Tags<input class="tag_input" type="text" name="tags_cover" title="post tags"/></label>
-                    <input class="real_input" type="search" name="tags" hidden title="search tags"/>
+                    <input id="real_input_tags" type="search" name="tags" hidden title="search tags"/>
                     <div class="suggestions-tags"></div>
                     <ul class="selected-tags selected-list"></ul>
                     <label>Collaborators<input class="collab_input" type="text" name="collabs_cover" title="post collaborators"/></label>
-                    <input class="real_input" type="search" name="collabs" hidden  title="search collaborators"/>
+                    <input id="real_input_collabs" type="search" name="collabs" hidden  title="search collaborators"/>
                     <div class="suggestions-collabs"></div>
                     <ul class="selected-collabs selected-list"></ul>
                     <div class="upload-area">

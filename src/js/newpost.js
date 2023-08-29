@@ -1,3 +1,4 @@
+
 "use strict";
 
 // retrieve HTML objects
@@ -49,8 +50,9 @@ document.addEventListener("click", (event) =>{
         console.log(event.target.classList);
 
         let toDelete = event.target.innerHTML.slice(1,0);
-        console.log(toDelete);
+        //console.log(toDelete);
         postData["tags"].pop(toDelete);
+        console.log("delete",postData["tags"]);
         event.target.parentNode.remove();
     }
 });
@@ -69,16 +71,6 @@ window.addEventListener("load", () => {
             event.preventDefault();
         }
     });
-
-    // let divMain = document.querySelector(".main_content");
-    // divMain.addEventListener("scroll", () => moveSuggestionOnScroll());
-
-    // let tag_inputs = Array.from(document.querySelectorAll(".tag_input"));
-    // tag_inputs.forEach(tag_input => tag_input.addEventListener("input", (event) => suggestTags(event)));
-    // tag_inputs.forEach(tag_input => tag_input.addEventListener("keydown", (event) => createTag(event)));
-
-    // let collab_inputs = Array.from(document.querySelectorAll(".collab_input"));
-    // collab_inputs.forEach(collab_input => collab_input.addEventListener("input", (event) => suggestUsernames(event)));
 
     addNotificationButton();
 
@@ -133,7 +125,8 @@ function createTag(event) {
     const input = event.target;
     const searchText = input.value;
     const selected_list = input.closest("section").querySelector(".selected-tags");
-    const realInput = input.closest("section").querySelector(".real_input");
+    const realInput = document.querySelector("#real_input_tags");
+    //const realInputCollabs = document.querySelector("#real_input_collabs");
 
     // perform only on enter key
     if(event.keyCode != 13) {
@@ -156,32 +149,6 @@ function createTag(event) {
 
 }
 
-// function moveSuggestionOnScroll() {
-//     const suggestionsContainer = document.querySelector('.suggestions');
-//     if(suggestionsContainer.style.display == "none") {
-//         return;
-//     }
-//     let input;
-//     if(inputSuggestionType==0) {
-//         input = document.querySelector('.collab_input');
-//     } else {
-//         input = document.querySelector('.tag_input');
-//     }
-//     setSuggestionPositionOn(input);
-// }
-
-// function setSuggestionPositionOn(input) {
-//     const suggestionsContainer = document.querySelector('.suggestions');
-
-//     let rect = input.getBoundingClientRect();
-//     suggestionsContainer.style.position = "absolute";
-//     suggestionsContainer.style.left = (rect.left + window.scrollX)+"px";
-//     suggestionsContainer.style.top = (rect.bottom + window.scrollY - 10)+"px";
-//     suggestionsContainer.style.width = rect.width+"px";
-//     suggestionsContainer.style.display = "flex";
-//     suggestionsContainer.style.paddingTop = 10 + "px";
-// }
-
 function suggestUsernames(event) {
     suggest(event,0);
 }
@@ -203,16 +170,11 @@ function suggest(event, type) {
     const searchText = input.value;
     const suggestionsContainerTags = document.querySelector('.suggestions-tags');
     const suggestionsContainerCollabs = document.querySelector('.suggestions-collabs');
-    const selected_tags = input.closest("section").querySelector(".selected-tags");
-    const selected_collabs = input.closest("section").querySelector(".selected-collabs");
+    const selected_tags = document.querySelector(".selected-tags");
+    const selected_collabs = document.querySelector(".selected-collabs");
     let suggestionsContainer;
     let selected_list;
-    const realInput = input.closest("section").querySelector(".real_input");
-
-    // add name in dictionary
-    if(!postData.hasOwnProperty(realInput.name)) {
-        postData[realInput.name] = [];
-    }
+    let realInput;
 
     if (searchText.trim() !== '') {
 
@@ -230,19 +192,29 @@ function suggest(event, type) {
                     console.log(xhr.responseText);
                     // parse suggestions
                     let suggestions = [];
+                    let typeString;
                     switch (type) {
                         case 0:
                             // foreach user
+                            typeString = "tags";
+                            realInput = document.querySelector("#real_input_tags");
                             suggestions = _usernames;
                             suggestionsContainer = suggestionsContainerCollabs;
                             selected_list = selected_collabs;
                             break;
                         case 1:
                             // foreach tag
+                            typeString = "collabs";
+                            realInput = document.querySelector("#real_input_collabs");
                             suggestions = _tags;
                             suggestionsContainer = suggestionsContainerTags;
                             selected_list = selected_tags;
                             break;
+                    }
+
+                    // add name in dictionary
+                    if(!postData.hasOwnProperty(realInput.name)) {
+                        postData[realInput.name] = [];
                     }
 
                     suggestionsContainer.innerHTML = '';
@@ -254,16 +226,10 @@ function suggest(event, type) {
                         // add suggestion listener on clicked
                         suggestionElement.addEventListener('click', () => {
                             input.value = "";
-                            if (!postData[realInput.name].includes(sugg)) {
-                                postData[realInput.name].push(sugg);
-                                console.log(postData);
-                                realInput.value = postData[realInput.name].join(";");
-                                selected_list.innerHTML = selected_list.innerHTML + generateSelectedElement(sugg,type);
-                            }
+                            insertSuggestion(realInput, sugg, typeString, selected_list);
                             suggestionsContainer.style.display = 'none';
                         });
                     });
-
 
 
                     if(suggestions.length != 0) {
@@ -283,6 +249,15 @@ function suggest(event, type) {
         // send parentId and text
         isQuering=true;
         xhr.send(`text=${searchText}`);
+    }
+}
+
+function insertSuggestion(realInput, sugg, type, selected_list){
+    if (!postData[type].includes(sugg)) {
+        postData[type].push(sugg);
+        console.log("create",postData);
+        realInput.value = postData[type].join(";");
+        selected_list.innerHTML = selected_list.innerHTML + generateSelectedElement(sugg,type);
     }
 }
 

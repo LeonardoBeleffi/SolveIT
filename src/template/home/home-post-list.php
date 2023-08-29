@@ -42,7 +42,15 @@
                 </div>
                 <div class="likes-container">
                     <!-- Like button -->
-                    <span class="username">@<?php echo getPostAuthor($post); ?> </span>
+                    <div class="username-section">
+                        <span>
+                            <?php echo getPostTimestamp($post); ?> 
+                        </span>
+
+                        <span class="username">
+                            @<?php echo getPostAuthor($post); ?>
+                        </span>
+                    </div>
                     <div class="like-section">
                         <!-- Like button -->
                         <button type="button" class="button like-button <?php

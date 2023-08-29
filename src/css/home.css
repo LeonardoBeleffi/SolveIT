@@ -191,7 +191,7 @@ h1{
     justify-content: space-between;
     align-items: center;
     margin: auto;
-    gap: 15px;
+    /* gap: 15px; */
 }
 
 .like-section {
@@ -201,13 +201,26 @@ h1{
     gap: 10px;
 }
 
+.username-section {
+    display: flex;
+    justify-content: flex-start;
+    flex-shrink: 2;
+    align-items: center;
+    gap: 10px;
+}
+
 .username {
     color: var(--linkColor);
     font-size: max(15px, 2vh);
+    max-width: max(100px,38vw);
+    width: fit-content;
     cursor: pointer;
     border-radius: 5px;
     padding: 5px;
     transition: background-color 0.3s;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .username:hover {
@@ -254,6 +267,11 @@ h1{
 
 .card-title {
     margin: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .card-title > h2 {
@@ -265,6 +283,12 @@ h1{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.card-title > span {
+    padding: 0;
+    margin: 5px;
+    font-size: max(16px, 2vh);
 }
 
 .post-opened .card-title > h2 {
@@ -315,12 +339,14 @@ h1{
 
 .tag-badge {
     padding: 0 8px;
+    width: fit-content;
     background-color: var(--secondaryColor);
     border-radius: 10px;
     display: flex;
     align-items: center;
     font-size: max(15px, 2vh);
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .close-post-button {
@@ -338,6 +364,10 @@ h1{
     font-size: 25pt;
     transform: translate(3vw, -10px);
     padding: 5px
+}
+
+.post-opened .card-title > span {
+    transform: translate(3vw, -10px);
 }
 
 .post-opened .close-post-button:active {

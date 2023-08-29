@@ -87,7 +87,7 @@
     }
 
     function getPostTimestamp($post) {
-        return $post->timestamp;
+        return timeDifferenceToText($post->timestamp, date("Y-m-d H:i:s"));
     }
 
     function isLikedByCurrentUser($post){
