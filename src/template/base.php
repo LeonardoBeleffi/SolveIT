@@ -12,6 +12,7 @@
         <meta name="keywords" content="Solveit, Solvit, Solveet, Slovit, Solveti, Bug, Solution, Solve, Fix, StackOverflow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><?php echo getTitle() ?></title>
+        <link rel="icon" type="image/x-icon" href="../resources/icons/logo-while.svg" />
         <!-- load CSS -->
         <?php loadRemoteCSS()?>
         <?php loadCSS()?>
