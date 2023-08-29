@@ -3,7 +3,6 @@
     // ----------------- TEMPLATE functions
     function clearTemplate(){
         unset($_SESSION["CSS"]);
-        unset($_SESSION["PaletteCSS"]);
         unset($_SESSION["RemoteCSS"]);
         unset($_SESSION["JS"]);
         unset($_SESSION["title"]);
@@ -22,12 +21,13 @@
     }
 
     function loadPaletteCSS(){
-        if (isset($_SESSION["PaletteCSS"])) {
-            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $_SESSION["PaletteCSS"] . " \"/>";
-        } else {
+        if (0 === getUserTheme()) {
             echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/white_theme.css\"/>";
+            return;
+        if (1 === getUserTheme()) {
+            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/dark_theme.css\"/>";
+            return;
         }
-
     }
 
     function loadCSS(){
