@@ -8,19 +8,11 @@ INSERT INTO `Settore` (`nomeSettore`) VALUES
 ('ufficio tecnico'),
 ('ufficio amministrazione');
 
-
-INSERT INTO `Impostazione` (`tema`) VALUES
-(1,'light'),
-(2,'light'),
-(3,'light'),
-(4,'light');
-
-
-INSERT INTO `Utente` ( `email`, `nome`, `username`,`idImpostazione`,`idSettore`, `bio`) VALUES
-('admin@blogtw.com', 'Admin Nimda', 'admin',1,1, 'Ingenere informatico senior'),
-('sangio@blogtw.com', 'Gino Pino', 'sangio',2,2, 'Ingegnere informatico junior'),
-('leo@blogtw.com', 'Cippa Lippa', 'leo',3,2, 'Full-stack developer'),
-('tizz@blogtw.com', 'Chico Loco', 'tiz',4,3, 'Front-end soldier');
+INSERT INTO `Utente` ( `email`, `nome`, `username`, `idSettore`, `bio`) VALUES
+('admin@blogtw.com', 'Admin Nimda', 'admin',1, 'Ingenere informatico senior'),
+('sangio@blogtw.com', 'Gino Pino', 'sangio',2, 'Ingegnere informatico junior'),
+('leo@blogtw.com', 'Cippa Lippa', 'leo',2, 'Full-stack developer'),
+('tizz@blogtw.com', 'Chico Loco', 'tiz',3, 'Front-end soldier');
 
 INSERT INTO `Credenziali` ( `password`, `idUtente`) VALUES
 ('admin', '1'),
