@@ -30,7 +30,7 @@ body > *{
 }
 
 .notification-icon {
-    color: var(--buttonColor);
+    color: var(--primaryColor);
     font-size: 24px;
     margin-right: 10px;
 }

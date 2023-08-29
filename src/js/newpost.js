@@ -20,6 +20,42 @@ const fileList = document.querySelector('.file-list');
     box.classList.remove('is-dragover');
 }), false );
 
+document.addEventListener("keydown", (event) =>{
+    if(event.target.classList.contains("tag_input")){ 
+        createTag(event);
+    }
+});
+
+
+document.addEventListener("input", (event) =>{
+
+    
+
+    if(event.target.classList.contains("tag_input")){ 
+        event.stopPropagation();
+        suggestTags(event)
+    }
+    if(event.target.classList.contains("collab_input")){ 
+        event.stopPropagation();
+        suggestUsernames(event);
+    }
+
+});
+
+
+document.addEventListener("click", (event) =>{   
+    
+    if(event.target.classList.contains("delete-suggestion")){ 
+        console.log(event.target.classList);
+
+        let toDelete = event.target.innerHTML.slice(1,0);
+        console.log(toDelete);
+        postData["tags"].pop(toDelete);       
+        event.target.parentNode.remove();
+    }
+});
+
+
 window.addEventListener("load", () => {
     fix_heights();
 
@@ -37,12 +73,12 @@ window.addEventListener("load", () => {
     // let divMain = document.querySelector(".main_content");
     // divMain.addEventListener("scroll", () => moveSuggestionOnScroll());
 
-    let tag_inputs = Array.from(document.querySelectorAll(".tag_input"));
-    tag_inputs.forEach(tag_input => tag_input.addEventListener("input", (event) => suggestTags(event)));
-    tag_inputs.forEach(tag_input => tag_input.addEventListener("keydown", (event) => createTag(event)));
+    // let tag_inputs = Array.from(document.querySelectorAll(".tag_input"));
+    // tag_inputs.forEach(tag_input => tag_input.addEventListener("input", (event) => suggestTags(event)));
+    // tag_inputs.forEach(tag_input => tag_input.addEventListener("keydown", (event) => createTag(event)));
 
-    let collab_inputs = Array.from(document.querySelectorAll(".collab_input"));
-    collab_inputs.forEach(collab_input => collab_input.addEventListener("input", (event) => suggestUsernames(event)));
+    // let collab_inputs = Array.from(document.querySelectorAll(".collab_input"));
+    // collab_inputs.forEach(collab_input => collab_input.addEventListener("input", (event) => suggestUsernames(event)));
 
     addNotificationButton();
 
@@ -114,7 +150,7 @@ function createTag(event) {
             input.value = "";
             postData[realInput.name].push(searchText);
             realInput.value = postData[realInput.name].join(";");
-            selected_list.innerHTML = selected_list.innerHTML + generateSelecetedElement(searchText,1);
+            selected_list.innerHTML = selected_list.innerHTML + generateSelectedElement(searchText,1);
         }
     }
 
@@ -222,7 +258,7 @@ function suggest(event, type) {
                                 postData[realInput.name].push(sugg);
                                 console.log(postData);
                                 realInput.value = postData[realInput.name].join(";");
-                                selected_list.innerHTML = selected_list.innerHTML + generateSelecetedElement(sugg,type);
+                                selected_list.innerHTML = selected_list.innerHTML + generateSelectedElement(sugg,type);
                             }
                             suggestionsContainer.style.display = 'none';
                         });
@@ -258,10 +294,12 @@ function generateSuggestionElement(sugg,type) {
     return suggestionElement;
 }
 
-function generateSelecetedElement(sugg,type) {
-    return `<li>
-<p>`+symbols[type]+" "+sugg+`</p>
-</li>`;
+function generateSelectedElement(sugg,type) {
+    return `<li class="selected-suggestion">
+                <span class="sugg-text">`+symbols[type]+" "+sugg+`</span>
+                <span class="fa-regular fa-trash-can delete-suggestion" aria-hidden="true" title="Delete suggestion"></span>
+                <span class="sr-only">Delete suggestion</span>
+            </li>`;
 
 }
 

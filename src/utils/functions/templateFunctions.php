@@ -25,7 +25,7 @@
         if (isset($_SESSION["PaletteCSS"])) {
             echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $_SESSION["PaletteCSS"] . " \"/>";
         } else {
-            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"palette.css\"/>";
+            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/palette.css\"/>";
         }
 
     }

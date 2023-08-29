@@ -4,9 +4,15 @@ document.addEventListener("click", (event) =>{
     if(event.target.classList.contains("reply-button")){ 
         toggleReply(event);
     }
+
     if(event.target.classList.contains("delete-button")){ 
         closeReplyOnDelete(event);
         deleteComment(event);
+    }
+
+    if(event.target.classList.contains("comment-author")){ 
+        console.log(event.target.innerHTML);
+        window.location.href = "./profile.php?user="+event.target.innerHTML.slice(0,-1);
     }
 });
 

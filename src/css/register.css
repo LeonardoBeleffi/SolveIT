@@ -206,7 +206,7 @@ a {
 .suggestions {
     max-height: 150px;
     overflow-y: auto;
-    border: 1px solid #ddd;
+    border: 1px solid var(--tertiaryBackground);
     border-radius: 5px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -224,7 +224,7 @@ a {
     transition: background-color 0.2s;
   }
   .suggestion:hover {
-      background-color: #f0f0f0;
+      background-color: whitesmoke;
   }
   
   .selected-list {

@@ -53,6 +53,37 @@ body > main > section > div > form > div textarea {
     justify-content: flex-start;
 }
 
+.selected-suggestion {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  
+    gap: 10px;
+}
+
+.sugg-text {
+    width: fit-content;
+}
+
+.delete-suggestion {
+    cursor: pointer;
+    display: inline;
+    width: fit-content;
+    font-size: max(19px, 2.5vh);
+    color: var(--deleteObjectColor);
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.delete-suggestion:hover {
+    background-color: var(--deleteObjectColor);
+    color: var(--tertiaryBackground);
+}
+
 .suggestion {
   cursor: pointer;
   padding: 5px;

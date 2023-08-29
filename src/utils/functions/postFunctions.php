@@ -199,7 +199,7 @@
 
     function generateComment($commentId, $commentAuthor, $commentText, $isDeleted, $childrenComments) {
         return '  <li id="com-'.$commentId.'" class="comment">
-                    <p>| <em>'.$commentAuthor.':</em> <span class="comment-text '.($isDeleted? 'deleted-comment' : '').'">'.$commentText.'</span></p>
+                    <p>| <em class="comment-author">'.$commentAuthor.':</em> <span class="comment-text '.($isDeleted? 'deleted-comment' : '').'">'.$commentText.'</span></p>
                     '.(!$isDeleted ? '<span class="reply-button">Reply</span>' : '' ).'
                     '.($commentAuthor == getUsername() && !$isDeleted ? '<span class="delete-button">Delete</span>' : '' ).'
                     <form onsubmit="addComment(event)" class="reply-form">
