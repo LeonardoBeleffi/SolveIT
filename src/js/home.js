@@ -3,6 +3,8 @@
 let nav_bar_links;
 let posts;
 let body;
+let replybtns;
+let deletebtns;
 let main;
 let footer;
 
@@ -11,6 +13,8 @@ window.addEventListener("load", () => {
 
     nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
     posts = Array.from(document.querySelectorAll("#post-list")[0].children);
+    replybtns = Array.from(document.querySelectorAll(".reply-button"));
+    deletebtns = Array.from(document.querySelectorAll(".delete-button"));
     main = document.querySelectorAll("main")[0];
     body = document.querySelectorAll("body")[0];
     footer = body.children[2];
@@ -33,6 +37,23 @@ window.addEventListener("load", () => {
             }, false);
         });
     }
+
+    // if(replybtns){
+    //     replybtns.forEach(button => {
+    //         button.addEventListener("click", event => {
+    //             toggleReply(event);
+    //         }, false);
+    //     });
+    // }
+
+    if(deletebtns){
+        deletebtns.forEach(button => {
+            button.addEventListener("click", event => {
+                deleteComment(event);
+            }, false);
+        });
+    }
+
 
     Array.from(document.querySelectorAll(".like-button")).forEach(button => {
         button.addEventListener("click", event => {

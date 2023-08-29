@@ -50,9 +50,9 @@
         <div class="follow-container">
                 <?php 	if(getProfileUsername() != getUsername()) {
 							if(!in_array(getUsername(), getProfileFollowers())) {
-								echo '<button onclick="toggleFollow(event)" class="button follow-button">Follow</button>';
+								echo '<button class="button follow-button">Follow</button>';
 							} else {
-								echo '<button onclick="toggleFollow(event)" class="button follow-button">Unfollow</button>';
+								echo '<button class="button follow-button">Unfollow</button>';
 							}	
 						}
                 ?>

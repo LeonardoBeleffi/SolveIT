@@ -1,7 +1,23 @@
 "use strict";
 
+document.addEventListener("click", (event) =>{
+    if(event.target.classList.contains("reply-button")){ 
+        toggleReply(event);
+    }
+    if(event.target.classList.contains("delete-button")){ 
+        closeReplyOnDelete(event);
+        deleteComment(event);
+    }
+});
+
 function toggleReply(event){
     getClosestReplyForm(event.target).classList.toggle('expanded');
+}
+
+function closeReplyOnDelete(event){
+    if(getClosestReplyForm(event.target).classList.contains('expanded'))
+        getClosestReplyForm(event.target).classList.remove('expanded');
+    return 
 }
 
 function getClosestReplyForm(target) {
@@ -88,6 +104,7 @@ function addComment(event) {
                         repliesContainer = getRootReplies(form);
                     }
                     repliesContainer.innerHTML = repliesContainer.innerHTML + commentElement;
+                    // repliesContainer.querySelector(".comment")[]
                     let commentsSection = document.querySelector("#post-"+postId+' .comments-count');
                     console.log(commentNumber);
                     commentsSection.innerHTML = commentNumber+" comments";

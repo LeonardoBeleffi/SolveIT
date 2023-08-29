@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
      addNotificationButton();
 
      changeThemeButton.addEventListener("click", event =>{
-        toggleSiteTheme();
+        //toggleSiteTheme();
      });
 
 });

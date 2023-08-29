@@ -5,19 +5,20 @@ body > main > section > div > form > div textarea {
     max-height: 200px; 
     overflow: auto;
     box-sizing: border-box;
+    font-style: normal;
+    font-weight: normal;
     padding: 8px;
     background-color: var(--primaryBackground);
     border-radius: 15px;
-    border-style: solid;
-    border-width: 1px;
-    box-shadow: 1px 1px var(--borderColor);;
-    border-color: var(--borderColor);
+    border:none;
+    box-shadow: 2px 2px 0 rgba(0,0,0, 0.3);
 }
 
 .upload-area {
     border: 2px dashed var(--placeholderColor);
     width: 100%;
     box-sizing: border-box;
+    border-radius: 15px;
     padding: 20px;
     text-align: center;
     background-color: whitesmoke;
