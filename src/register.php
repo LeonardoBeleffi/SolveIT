@@ -14,7 +14,7 @@
     setMain("register/register-main.php");
     setFooter("register/register-footer.php");
     setCSS(["./css/register.css"]);
-    setJS(["./js/register.js"],["./js/shared.js"]);
+    setJS(["./js/register.js"]);
 
     // require template
     require "template/base.php";
