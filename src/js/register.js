@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
 
 
 // SUGGESTIONs LOGIC -------
- 
+
 function suggestSector(event) {
     suggest(event,2);
 }
@@ -63,7 +63,7 @@ function suggest(event, type) {
                             suggestionsContainer.style.display = 'none';
                         });
                     });
-                    
+
 
                     // dispaly suggestions container
                     let rect = input.getBoundingClientRect();
@@ -97,6 +97,6 @@ function generateSelecetedElement(sugg,type) {
     return `<li>
                 <p>`+symbols[type]+" "+sugg+`</p>
             </li>`;
-    
+
 }
 

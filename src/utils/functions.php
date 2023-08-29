@@ -44,10 +44,10 @@
     function timeDifferenceToText($startTimeStr, $endTimeStr) {
         $startTime = strtotime($startTimeStr);
         $endTime = strtotime($endTimeStr);
-    
+
         $timeDifferenceInSeconds = $endTime - $startTime;
         $ret = "";
-        
+
         if ($timeDifferenceInSeconds >= 31536000) {
             // Difference is greater than or equal to 1 year
             $years = floor($timeDifferenceInSeconds / 31536000);

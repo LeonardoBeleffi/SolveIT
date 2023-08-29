@@ -76,7 +76,7 @@
     }
 
     // NOTIFICATION generation
-    
+
     function getNotificationText($not) {
         $notificationText = "";
         switch(getNotificationType($not)) {

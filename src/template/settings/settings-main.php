@@ -1,7 +1,7 @@
 <section>
     <h1>Settings page</h1>
     <div class="main-container">
-        <div class="change-theme-container"> 
+        <div class="change-theme-container">
             <!-- <label class="switch">
                 Change theme
                 <input type="checkbox"></input>
@@ -11,7 +11,7 @@
             <!-- <input type="checkbox"
                id="switch"
                class="checkbox" />
-                
+
             <label for="switch"
                 class="toggle">
                 <p>
@@ -24,5 +24,5 @@
                 <span class="sr-only">Change theme</span>
             </button>
         </div>
-    </div>    
+    </div>
 </section>

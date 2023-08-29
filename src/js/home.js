@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
     body = document.querySelectorAll("body")[0];
     footer = body.children[2];
 
-    initializeNavBar(nav_bar_links);    
+    initializeNavBar(nav_bar_links);
 
     if(posts){
         posts.forEach(post_li => {

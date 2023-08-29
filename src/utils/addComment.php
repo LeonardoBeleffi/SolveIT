@@ -1,7 +1,7 @@
 <?php
     // require defaults PHPs
     require_once 'bootstrap.php';
-    
+
     if(isset($_POST["parentCommentId"]) && isset($_POST["postId"]) && isset($_POST["text"])) {
         if($_POST["parentCommentId"]=="null") {
             $_POST["parentCommentId"]=null;
@@ -20,5 +20,5 @@
     setErrorMsg("Failed uploading Comment.");
     http_response_code(500);
     exit();
-    
+
 ?>

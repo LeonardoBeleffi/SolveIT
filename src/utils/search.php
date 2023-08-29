@@ -1,7 +1,7 @@
 <?php
     // require defaults PHPs
     require_once 'bootstrap.php';
-    
+
     if(isset($_POST["text"])) {
         // search usernames
         $_usernames = [];
@@ -28,7 +28,7 @@
         $array = ['usernames' => $_usernames,'tags' => $_tags,'sectors' => $_sectors];
         echo json_encode($array);
         http_response_code(200);
-        exit();   
+        exit();
     }
     // search posts
 
@@ -36,5 +36,5 @@
     setErrorMsg("Failed uploading Comment.");
     http_response_code(500);
     exit();
-    
+
 ?>

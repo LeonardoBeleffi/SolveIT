@@ -21,7 +21,7 @@ function initializeNavBar(navBarElements){
                 event.preventDefault();
                 event.stopPropagation();
                 return;
-            }  
+            }
             navBarElements.forEach(element => element.className = "");
             e.className = "selected-link";
         });

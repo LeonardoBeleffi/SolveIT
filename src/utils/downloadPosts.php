@@ -7,7 +7,7 @@
     // prepare attachments directory
     clearAttachmentsDirecory();
 
-    $posts = [];    
+    $posts = [];
     $idPosts = [];
 
     // get specific posts
@@ -32,7 +32,7 @@
             array_push($idPosts, $res["postId"]);
         }
     }
-    
+
     // get posts by limit
     if(isset($_SESSION['postsLimit'])) {
         $result = $dbh->getLastPostsByLimit($_SESSION['postsLimit']);

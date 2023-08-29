@@ -7,7 +7,7 @@
     }
 
     function isUserLoggedIn(){
-        return 
+        return
         isset($_SESSION['idUtente']) &&  isset($_SESSION['username']) &&
         !empty($_SESSION['idUtente']) && !empty($_SESSION['username']) ;
     }

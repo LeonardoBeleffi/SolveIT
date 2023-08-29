@@ -7,7 +7,7 @@
 
                 <div class="post-header">
                     <!-- <div class="profile-pic"> -->
-                    <span class="profile-pic"><?php 
+                    <span class="profile-pic"><?php
                         if(getPostAuthor($post))
                         echo strtoupper(substr(getPostAuthor($post),0,1));
                         echo ""

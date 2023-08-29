@@ -25,6 +25,6 @@
             setErrorMsg("Cannot connect to local Database!");
         }
     }
-    // restore warnings 
+    // restore warnings
     error_reporting(-1);
 ?>

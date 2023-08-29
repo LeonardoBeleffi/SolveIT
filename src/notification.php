@@ -1,11 +1,11 @@
-<?php 
+<?php
     // require defaults PHPs
     require_once 'utils/bootstrap.php';
 
     // check login routine
     checkUserLogin();
-    
-    // query all 
+
+    // query all
     clearDownloads();
 
     // require post query helper
