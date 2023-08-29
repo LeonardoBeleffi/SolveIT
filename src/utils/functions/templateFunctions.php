@@ -22,9 +22,12 @@
     }
 
     function loadPaletteCSS(){
-        if (isset($_SESSION["PaletteCSS"])) {
+        if (isset($_SESSION["PaletteCSS"]) && $_SESSION["PaletteCSS"] !== "") {
             echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $_SESSION["PaletteCSS"] . " \"/>";
+        } else {
+            echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"palette.css\"/>";
         }
+
     }
 
     function loadCSS(){
