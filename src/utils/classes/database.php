@@ -618,12 +618,22 @@ class DatabaseHelper{
 
         return $stmt->execute();
     }
+
     // commentId, deleted, userId -> \
     public function updateCommento($commentId, $deleted, $userId) {
         $query = "UPDATE Commento SET cancellato = ?
                 WHERE idCommento = ? and idUtente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('iii',$deleted, $commentId, $userId);
+
+        return $stmt->execute();
+    }
+
+    public function updateUserTheme($userId) {
+        $query = "UPDATE Utente SET tema = IF(tema=0, 1, 0)
+                WHERE idUtente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $userId);
 
         return $stmt->execute();
     }
@@ -647,3 +657,4 @@ class DatabaseHelper{
 
 }
 ?>
+
