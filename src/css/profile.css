@@ -144,4 +144,7 @@ section {
 .profile-details > div{
     width: 20%;
     text-align: center;
+    background-color: var(--secondaryColor);
+    border-radius: 5px;
+    padding: 5px;
 }

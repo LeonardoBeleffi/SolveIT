@@ -13,7 +13,7 @@
 
         if(count($result)!=0){
             echo var_dump($result);
-            loginUser($result[0]["userId"], $result[0]["username"], $result[0]["theme"]);
+            loginUser($result[0]["userId"], $result[0]["username"], $result[0]["sectorId"], $result[0]["theme"]);
             goToHome();
         }
     }

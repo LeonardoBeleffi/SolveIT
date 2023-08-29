@@ -149,9 +149,9 @@ class DatabaseHelper{
 
     ///USER-RELATED QUERIES -----------------------------------------
 
-    // username, password --> userId, username, name, theme
+    // username, password --> userId, username, name, sectorId, theme
     public function checkLogin($username, $password){
-        $query = "SELECT u.idUtente as userId, username, nome as name, u.tema as theme, c.password as password
+        $query = "SELECT u.idUtente as userId, username, nome as name, u.tema as theme, u.idSettore as sectorId, c.password as password
         FROM Utente as u, Credenziali as c 
         WHERE u.idUtente = c.idUtente and u.username = ?";
         $stmt = $this->db->prepare($query);
@@ -588,6 +588,9 @@ class DatabaseHelper{
         $idPubblicazione = $this->insertPubblicazione($autore, $idPost, 0);
         // insert collabs
         foreach ($collaboratori as $collaboratore) {
+            if(trim($collaboratore)=="") {
+                continue;
+            }
             $this->insertPubblicazione($collaboratore, $idPost, 1);
         }
         // insert tags

@@ -26,6 +26,66 @@ body > header > img {
     object-fit: contain;
 }
 
+.fa-lightbulb {
+    color: var(--tertiaryBackground);
+    text-shadow: 4px 2px 0 var(--linkColor);
+    font-size: max(27px, 7vh);
+}
+
+.fa-info {
+    color: var(--buttonTextColor);
+    font-size: max(20px, 4.5vh);
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s
+;}
+
+.fa-info:hover {
+    color: var(--buttonTextColor);
+    background-color: var(--secondaryColor);
+}
+
+.icon:focus {
+    border-color: none;
+}
+
+.main-container {
+    display: flex;
+    height: 50%;
+    width: min(80%, 650px);
+    border-radius: 10px;
+    margin: 10px auto 0 auto;
+    box-shadow: 0 0 5px rgba(0,0,0,0.7);
+    background-color: var(--primaryColor);
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+
+.header-title {
+    font-family: var(--primaryFontFamily);
+    font-size: max(38px, 8vh);
+    color: var(--tertiaryBackground);
+    font-weight: bold;
+    text-shadow: 4px 2px 0 var(--linkColor);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.logo-container {
+    width: calc(100% - 20% - 20px - 5px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding-left: 20px;
+}
+
 body > main {
     height: calc(100% - var(--header_height) - var(--footer_height));
     background-color: var(--primaryBackground);
@@ -176,6 +236,10 @@ a {
     color: var(--linkColor);
     text-decoration: none;
     font-family: var(--primaryFontFamily);
+}
+
+.sr-only{
+    display: none;
 }
 
 .errorDiv {
