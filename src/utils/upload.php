@@ -35,7 +35,7 @@
         {
             array_push($attachs, $_FILES['attachments']['tmp_name'][$i]);
             echo $_FILES['attachments']['type'][$i];
-            
+
             array_push($attachsType, $_FILES['attachments']['type'][$i]);
             array_push($attachsName, $_FILES['attachments']['name'][$i]);
         }
@@ -47,7 +47,7 @@
             echo "Fail uploading post";
         }
         echo "upload succesful";
-    
+
     }
     goToHome();
 ?>

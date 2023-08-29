@@ -1,4 +1,4 @@
-<?php 
+<?php
     // require defaults PHPs
     require_once 'utils/bootstrap.php';
 ?>

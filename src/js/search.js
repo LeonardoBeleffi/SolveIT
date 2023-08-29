@@ -66,6 +66,6 @@ function displayUsername(username) {
         window.location.href = './profile.php?user='+username;
     });
     suggestionsContainer.appendChild(suggestionElement);
-    
+
 }
 

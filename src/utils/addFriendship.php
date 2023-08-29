@@ -1,7 +1,7 @@
 <?php
     // require defaults PHPs
     require_once 'bootstrap.php';
-    
+
 
     if(isset($_POST["username"])) {
         $fsId = $dbh->toggleAmicizia(getIdUtente(), $dbh->getUserByUsername($_POST["username"])[0]["userId"], date("Y-m-d H:i:s"));
@@ -28,5 +28,5 @@
     setErrorMsg("Failed following user.");
     http_response_code(500);
     exit();
-    
+
 ?>

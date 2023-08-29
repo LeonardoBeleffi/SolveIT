@@ -1,16 +1,16 @@
 "use strict";
 
 document.addEventListener("click", (event) =>{
-    if(event.target.classList.contains("reply-button")){ 
+    if(event.target.classList.contains("reply-button")){
         toggleReply(event);
     }
 
-    if(event.target.classList.contains("delete-button")){ 
+    if(event.target.classList.contains("delete-button")){
         closeReplyOnDelete(event);
         deleteComment(event);
     }
 
-    if(event.target.classList.contains("comment-author")){ 
+    if(event.target.classList.contains("comment-author")){
         console.log(event.target.innerHTML);
         window.location.href = "./profile.php?user="+event.target.innerHTML.slice(0,-1);
     }
@@ -23,7 +23,7 @@ function toggleReply(event){
 function closeReplyOnDelete(event){
     if(getClosestReplyForm(event.target).classList.contains('expanded'))
         getClosestReplyForm(event.target).classList.remove('expanded');
-    return 
+    return
 }
 
 function getClosestReplyForm(target) {
@@ -59,7 +59,7 @@ function deleteComment(event) {
                 delete_button.style.display = "none";
                 comment.removeChild(delete_button);
                 comment.removeChild(reply_button);
-                
+
                 commentText.innerHTML = "This comment has been deleted.";
                 commentText.classList.add('deleted-comment');
             } else {
@@ -82,12 +82,12 @@ function addComment(event) {
         let parentCommentId = null;
         let postId = form.closest(".post").id.split("-")[1];
         const isRootComment = form.classList.contains("root-comment");
-        
+
         if(!isRootComment) {
             // get parent commentId
             parentCommentId = form.closest(".comment").id.split("-")[1];
         }
-        
+
         console.log("parentCommentId:"+parentCommentId);
         // Send AJAX request to add comment reply
         const xhr = new XMLHttpRequest();
@@ -130,7 +130,7 @@ function addComment(event) {
 
 // LIKEs
 function toggleLike(event) {
-    
+
     event.preventDefault();
     const likeBut = event.currentTarget;
     const postId = likeBut.closest(".post").id.split("-")[1];

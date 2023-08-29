@@ -1,7 +1,7 @@
 <section>
     <ul class="notifications-list">
         <?php foreach(getNotifications() as $not): ?>
-            <?php   
+            <?php
                     $iconName = "";
                     if(isLikeNotification($not)) {
                         $iconName = "fa-thumbs-up";

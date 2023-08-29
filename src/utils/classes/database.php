@@ -33,7 +33,7 @@ class DatabaseHelper{
     public function getPostById($idPost){
         $stmt = $this->db->prepare("SELECT p.idPost as postId, u.idUtente as authorId, u.username as authorName, p.titolo as title, p.testo as text, s.nomeSettore as sector, p.timestamp as timestamp
         FROM Post as p, Settore as s, Pubblicazione as pub, Utente as u
-        where p.idPost = ? 
+        where p.idPost = ?
         and p.idPost = pub.idPost and p.idSettore = s.idSettore and pub.idUtente = u.idUtente and pub.collaboratore = 0");
         $stmt->bind_param('i',$idPost);
         $stmt->execute();
@@ -47,7 +47,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idPost as postId
         FROM Post
         where titolo LIKE ?");
-        
+
         $prefix = $prefix."%";
         $stmt->bind_param('s',$prefix);
         $stmt->execute();
@@ -61,7 +61,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT p.idPost as postId
         FROM Post as p, Etichettamento as e, Tag as t
         where t.nome = ? and e.idTag = t.idTag and e.idPost = p.idPost");
-        
+
         $stmt->bind_param('s',$tagName);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -74,7 +74,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT p.idPost as postId
         FROM Post as p, Pubblicazione as pub, Utente as u
         where u.username = ? and pub.idUtente = u.idUtente and pub.idPost = p.idPost");
-        
+
         $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -94,7 +94,7 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
+
     // idPost --> idAttachment, name, data[bytes], type
     public function getAttachmentByPost($idPost){
         $stmt = $this->db->prepare("SELECT a.idAllegato as idAttachment, nome as name, data, tipo as type
@@ -134,7 +134,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // idPost --> userId, username 
+    // idPost --> userId, username
     public function getLikesByPost($idPost){
         $stmt = $this->db->prepare("SELECT u.idUtente as userId, username
         FROM Utente as u, Post as p, MiPiace as m
@@ -151,8 +151,8 @@ class DatabaseHelper{
 
     // username, password --> userId, username, name, sectorId
     public function checkLogin($username, $password){
-        $query = "SELECT u.idUtente as userId, username, nome as name, u.idSettore as sectorId 
-        FROM Utente as u, Credenziali as c 
+        $query = "SELECT u.idUtente as userId, username, nome as name, u.idSettore as sectorId
+        FROM Utente as u, Credenziali as c
         WHERE u.idUtente = c.idUtente and u.username = ? and c.password = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss',$username, $password);
@@ -160,14 +160,14 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    }    
+    }
 
     // idPost --> userId, name, surname, username, sectorId
     public function getUserById($idUtente){
         $stmt = $this->db->prepare("SELECT u.idUtente as userId, u.nome as name, u.cognome as surname, u.username, u.idSettore as sectorId
         FROM Utente as u
         where u.idUtente = ?");
-        
+
         $stmt->bind_param('i',$idUtente);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -180,7 +180,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idUtente as userId, nome as name, cognome as surname, email, username, dataNascita as birthDate, telefono as phoneNumber, bio, idSettore as sectorId, idImpostazione as settingsId
         FROM Utente
         where username = ?");
-        
+
         $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -193,7 +193,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idUtente as userId, username
         FROM Utente
         where username LIKE ?");
-        
+
         $prefix = "%".$prefix."%";
         $stmt->bind_param('s',$prefix);
         $stmt->execute();
@@ -207,20 +207,20 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT u.idUtente as followerId, u.username as followerUsername, a.timestamp as friendshipStart
         FROM Utente as u, Amicizia as a
         where u.idUtente = a.idSeguace and a.idSeguito = ?");
-        
+
         $stmt->bind_param('i',$idUtente);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    
+
     // userId --> followingId, followingUsername, friendshipStart
     public function getFollowingsByUser($idUtente){
         $stmt = $this->db->prepare("SELECT u.idUtente as followingId, u.username as followingUsername,  a.timestamp as friendshipStart
         FROM Utente as u, Amicizia as a
         where u.idUtente = a.idSeguito and a.idSeguace = ?");
-        
+
         $stmt->bind_param('i',$idUtente);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -233,7 +233,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idUtente as userId
         FROM Utente
         where username = ?");
-        
+
         $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -246,7 +246,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idPubblicazione as publicationId, idPost as postId, collaboratore as isCollaborator
         FROM Pubblicazione as p
         where idUtente = ?");
-        
+
         $stmt->bind_param('i',$idUtente);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -259,7 +259,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT u.idUtente as userId, u.username as username
         FROM Commento as c, Utente as u
         where c.idUtente = u.idUtente and c.idCommento = ?");
-        
+
         $stmt->bind_param('i',$commentId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -272,7 +272,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT u.idUtente as userId, u.username as username
         FROM Pubblicazione as p, Utente as u
         where p.idUtente = u.idUtente and p.idPost = ? and p.collaboratore = 0");
-        
+
         $stmt->bind_param('i',$postId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -288,7 +288,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT *
         FROM Etichettamento as e, Tag as t
         where t.nome = ? and e.idTag = t.idTag");
-        
+
         $stmt->bind_param('s',$nomeTag);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -301,7 +301,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idTag as tagId, nome as name
         FROM Tag
         where nome LIKE ?");
-        
+
         $prefix = "%".$prefix."%";
         $stmt->bind_param('s',$prefix);
         $stmt->execute();
@@ -314,7 +314,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idTag as tagId, nome as name
         FROM Tag
         where nome = ?");
-        
+
         $stmt->bind_param('s',$tagName);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -329,7 +329,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idSettore as sectorId, nomeSettore as sectorName
         FROM Settore
         where nomeSettore LIKE ?");
-        
+
         $prefix = $prefix."%";
         $stmt->bind_param('s',$prefix);
         $stmt->execute();
@@ -343,7 +343,7 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("SELECT idSettore as sectorId, nomeSettore as sectorName
         FROM Settore
         where nomeSettore = ?");
-        
+
         $stmt->bind_param('s',$name);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -359,7 +359,7 @@ class DatabaseHelper{
         FROM Notifica
         where idNotificato = ? and letta = 0
         ORDER BY idNotifica DESC");
-        
+
         $stmt->bind_param('i',$userId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -373,7 +373,7 @@ class DatabaseHelper{
         FROM Notifica as n
         where idNotificato = ?
         ORDER BY idNotifica DESC");
-        
+
         $stmt->bind_param('i',$userId);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -389,7 +389,7 @@ class DatabaseHelper{
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('ssssssi',$nome, $cognome, $email, $dataNascita, $telefono, $username, $idSettore);
             $stmt->execute();
-            
+
             return $stmt->insert_id;
         } catch(Exception $e) {
             return false;
@@ -422,7 +422,7 @@ class DatabaseHelper{
         }
     }
 
-    // idPost, userId -> 
+    // idPost, userId ->
     public function toggleLike($idPost, $userId){
         try {
             $query = "INSERT INTO MiPiace (idPost, idUtente) VALUES (?, ?)";
@@ -470,7 +470,7 @@ class DatabaseHelper{
             $fp = fopen($file, "r");
             while (!feof($fp)) {
                 $data = fread($fp, 1000000);
-                $stmt->send_long_data(0, $data);   
+                $stmt->send_long_data(0, $data);
             }
             fclose($fp);
             $stmt->execute();
@@ -596,7 +596,7 @@ class DatabaseHelper{
             $tagId = $this->getTagByName($tag)[0]["tagId"];
             $this->insertEtichettamento($idPost, $tagId);
         }
-        // insert attachments 
+        // insert attachments
         for($i = 0; $i < count($allegati); $i++) {
             $this->insertAllegato($allegati[$i], $nomeAllegati[$i], $tipoAllegati[$i], $idPost);
         }
@@ -612,19 +612,19 @@ class DatabaseHelper{
                 WHERE idNotifica = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ii',$isRead, $notificationId);
-        
+
         return $stmt->execute();
-    }    
+    }
     // commentId, deleted, userId -> \
     public function updateCommento($commentId, $deleted, $userId) {
         $query = "UPDATE Commento SET cancellato = ?
                 WHERE idCommento = ? and idUtente = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('iii',$deleted, $commentId, $userId);
-        
+
         return $stmt->execute();
-    }    
-    
+    }
+
     /// DELETEs-----------
     // public function deleteCategoriesOfArticle($articolo){
     //     $query = "DELETE FROM articolo_ha_categoria WHERE articolo = ?";
@@ -635,7 +635,7 @@ class DatabaseHelper{
 
     // idPost, userId -> \
     // public function deleteLike($idPost, $userId){
-    //     $query = "DELETE FROM MiPiace 
+    //     $query = "DELETE FROM MiPiace
     //                 WHERE idUtente = ? and idPost = ?";
     //     $stmt = $this->db->prepare($query);
     //     $stmt->bind_param('ii',$userId, $idPost);

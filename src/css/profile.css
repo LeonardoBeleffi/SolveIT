@@ -30,7 +30,7 @@ section {
     align-items: center;
     margin: auto;
     gap: 10px;
-    
+
 }
 
 /* .profile-picture{
@@ -38,7 +38,7 @@ section {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .profile-initial {

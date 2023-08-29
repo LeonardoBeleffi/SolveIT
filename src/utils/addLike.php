@@ -26,6 +26,6 @@
     setErrorMsg("Failed inserting like.");
     http_response_code(500);
     exit();
-    
+
 ?>
 

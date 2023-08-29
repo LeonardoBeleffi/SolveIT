@@ -104,7 +104,7 @@ body > header {
 }
 
 .fa-bell:hover{
-    background-color: rgba(235,235,235,0.3);/*var(--tertiaryBackground); */   
+    background-color: rgba(235,235,235,0.3);/*var(--tertiaryBackground); */
 }
 
 

@@ -2,7 +2,7 @@ body > main > section > div > form > div textarea {
     resize: vertical;
     width: 100%;
     min-height: 100px;
-    max-height: 200px; 
+    max-height: 200px;
     overflow: auto;
     box-sizing: border-box;
     font-style: normal;
@@ -36,7 +36,7 @@ body > main > section > div > form > div textarea {
     border-color: transparent;
     border-width: 0;
 }
-  
+
 .suggestions-tags, .suggestions-collabs {
     height: fit-content;
     overflow-y: auto;
@@ -56,7 +56,7 @@ body > main > section > div > form > div textarea {
 .selected-suggestion {
     display: flex;
     align-items: center;
-    justify-content: flex-start;  
+    justify-content: flex-start;
     gap: 10px;
 }
 

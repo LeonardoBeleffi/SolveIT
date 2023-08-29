@@ -10,20 +10,20 @@
         if($_POST["parentCommentId"]!=null) {
             $dbh->insertNotifica(getIdUtente(), $dbh->getUserByComment($_POST["parentCommentId"])[0]["userId"], $_POST["postId"], getCommentToCommentNotificationType(), 0, date("Y-m-d H:i:s"));
         }
-        // notify post contributors 
+        // notify post contributors
         foreach($dbh->getContributorsByPost($_POST["postId"]) as $contrib) {
             $dbh->insertNotifica(getIdUtente(), $contrib["contributorId"], $_POST["postId"], getCommentToContributedPostNotificationType(), 0, date("Y-m-d H:i:s"));
-        }    
+        }
     }
 
     // like notification
     if(isset($_POST['postId'])) {
         // notify post author
         $dbh->insertNotifica(getIdUtente(), $dbh->getAuthorByPost($_POST["postId"])[0]["userId"], $_POST["postId"], getLikeNotificationType(), 0, date("Y-m-d H:i:s"));
-        // notify post contributors 
+        // notify post contributors
         foreach($dbh->getContributorsByPost($_POST["postId"]) as $contrib) {
             $dbh->insertNotifica(getIdUtente(), $contrib["contributorId"], $_POST["postId"], getLikeNotificationType(), 0, date("Y-m-d H:i:s"));
-        }    
+        }
     }
 
     // follow notification

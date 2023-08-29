@@ -31,7 +31,7 @@
     }
 
     function loadCSS(){
-        if(!empty(getCSS())) : 
+        if(!empty(getCSS())) :
             foreach(getCSS() as $css):
                 echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"" . $css . " \"/>";
             endforeach;
@@ -49,7 +49,7 @@
     }
 
     function loadRemoteCSS(){
-        if(!empty(getRemoteCSS())) : 
+        if(!empty(getRemoteCSS())) :
             foreach(getRemoteCSS() as $css):
                 echo "<link rel=\"stylesheet\" href=\"" . $css . "\"/>";
             endforeach;
@@ -66,7 +66,7 @@
     }
 
     function loadJS(){
-        if(!empty(getJS())) : 
+        if(!empty(getJS())) :
             foreach(getJS() as $js):
                 echo "<script src=\"". $js ."\" ></script>";
             endforeach;

@@ -36,7 +36,7 @@
             array_push($idPosts, $res["postId"]);
         }
     }
-    
+
     // get posts by limit
     if(isset($_SESSION['postsLimit'])) {
         $result = $dbh->getLastPostsByLimit($_SESSION['postsLimit']);
@@ -155,7 +155,7 @@
     // download new notifications
     {
         // query all notifications
-        $notifications = require "downloadNotifications.php"; 
+        $notifications = require "downloadNotifications.php";
         foreach($notifications as $not) {
             addNotification($not);
         }

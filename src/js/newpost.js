@@ -21,7 +21,7 @@ const fileList = document.querySelector('.file-list');
 }), false );
 
 document.addEventListener("keydown", (event) =>{
-    if(event.target.classList.contains("tag_input")){ 
+    if(event.target.classList.contains("tag_input")){
         createTag(event);
     }
 });
@@ -29,13 +29,13 @@ document.addEventListener("keydown", (event) =>{
 
 document.addEventListener("input", (event) =>{
 
-    
 
-    if(event.target.classList.contains("tag_input")){ 
+
+    if(event.target.classList.contains("tag_input")){
         event.stopPropagation();
         suggestTags(event)
     }
-    if(event.target.classList.contains("collab_input")){ 
+    if(event.target.classList.contains("collab_input")){
         event.stopPropagation();
         suggestUsernames(event);
     }
@@ -43,14 +43,14 @@ document.addEventListener("input", (event) =>{
 });
 
 
-document.addEventListener("click", (event) =>{   
-    
-    if(event.target.classList.contains("delete-suggestion")){ 
+document.addEventListener("click", (event) =>{
+
+    if(event.target.classList.contains("delete-suggestion")){
         console.log(event.target.classList);
 
         let toDelete = event.target.innerHTML.slice(1,0);
         console.log(toDelete);
-        postData["tags"].pop(toDelete);       
+        postData["tags"].pop(toDelete);
         event.target.parentNode.remove();
     }
 });
