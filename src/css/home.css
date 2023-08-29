@@ -385,10 +385,6 @@ h1{
     user-select: none;
 }
 
-:focus {
-    outline: 2px solid var(--buttonColor);
-}
-
 .form-group {
     height: min(50px, 8vh);
     display: flex;
