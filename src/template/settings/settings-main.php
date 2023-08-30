@@ -1,6 +1,6 @@
 <section>
     <h1>Settings page</h1>
-    <div class="main-container">
+    <div class="settings-container">
         <div class="change-theme-container"> 
             <!-- <label class="switch">
                 Change theme

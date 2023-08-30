@@ -1,31 +1,23 @@
 @import "./home.css";
 
-
-/* .upload-area {
-    border: 2px dashed #ccc;
-    padding: 20px;
-    text-align: center;
-    background-color: #ffffff;
-  } */
-
 main * {
     box-sizing: border-box;
-    width: 100%;
 }
 
 .container {
     height: 100%;
     width: 100%;
     padding: 3vh 0;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    flex-direction: column;
-    overflow: hidden;
+    display: block;
+    overflow: auto;
+}
+
+#post-list {
+    height:fit-content;
 }
 
 .search-section {
-    width: 70%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -66,8 +58,8 @@ main * {
 
 .suggestions {
     margin-top: 10px;
-    /* height: min(450px,70vh); */
-    max-height: 50%;
+    /* height: min(150px,30vh); */
+    /* max-height: 50%; */
     overflow-y: auto;
     padding: 10px;
 }

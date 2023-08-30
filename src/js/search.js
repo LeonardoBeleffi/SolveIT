@@ -1,12 +1,8 @@
 "use strict";
 
 // SEARCH
-let isQuering = false;
 
 function search(event) {
-    if(isQuering) {
-        return;
-    }
     event.preventDefault();
     const input = event.target;
     const searchText = input.value;
@@ -25,15 +21,14 @@ function search(event) {
                 if (xhr.status === 200) {
                     suggestionsContainer.innerHTML = '';
                     // parse response
+                    console.log(xhr.responseText);
                     const response = JSON.parse(xhr.responseText);
                     const usernames = response.usernames;
                     const tags = response.tags;
-                    // console.log(xhr.responseText);
                     // foreach user
                     usernames.forEach((username) => displayUsername(username));
                     // foreach tag
                     tags.forEach((tag) => displayTag(tag));
-                    isQuering = false;
 
                 } else {
                     console.error('Failed to search.');
@@ -41,7 +36,6 @@ function search(event) {
             }
         };
         // send parentId and text
-        isQuering=true;
         xhr.send(`text=${searchText}`);
     }
 }
