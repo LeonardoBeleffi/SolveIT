@@ -5,6 +5,15 @@ let body;
 let main;
 let footer;
 
+window.addEventListener("click", event => {
+    if (event.target === document.querySelector("#home-redirect-logo")) {
+        if (window.location.href.split("/").pop() === "home.php") 
+            return;
+        window.location.href = "/src/home.php";
+        return;
+    }
+});
+
 window.addEventListener("load", () => {
     fix_heights();
 

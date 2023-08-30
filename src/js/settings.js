@@ -1,7 +1,7 @@
 "use strict";
 
 window.addEventListener("load", () => {
-    fix_heights()
+    fix_heights();
 
     initializeNavBar();
     // let change = document.querySelectorAll("#logout-button")[0];

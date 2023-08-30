@@ -1,6 +1,6 @@
 <div class="header-container">
   <div class="logo-container">
-    <span class="fa-regular fa-lightbulb icon" aria-hidden="true" title="Logo"></span>
+    <span id="home-redirect-logo" class="fa-regular fa-lightbulb icon" title="Logo"></span>
     <span class="sr-only">Logo icon</span>
     <span class = "header-title"> SolveIT </span>
   </div>
