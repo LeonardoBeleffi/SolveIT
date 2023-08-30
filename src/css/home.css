@@ -51,9 +51,9 @@ body > header {
 .header-title {
     font-family: var(--primaryFontFamily);
     font-size: max(38px, 4vh);;
-    color: var(--tertiaryBackground);
+    color: #EBEBEB; /*fixed, for both themes*/
     font-weight: bold;
-    text-shadow: 4px 2px 0 var(--linkColor);
+    text-shadow: 4px 2px 0 #322E9D; /*fixed, for both themes*/
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -163,8 +163,8 @@ body > header {
 }
 
  .fa-lightbulb {
-    color: var(--tertiaryBackground);
-    text-shadow: 4px 2px 0 var(--linkColor);
+    color: #EBEBEB;/*fixed for both themes*/
+    text-shadow: 4px 2px 0 #322E9D; /*fixed for both themes*/
 } 
 
 
@@ -327,7 +327,7 @@ h1{
     height: 50px;
     background-color: var(--primaryColor);
     border: 2px solid var(--tertiaryTextColor);
-    color: var(--tertiaryBackground);
+    color: var(--secondaryTextColor);
     border-radius: 50%;
     padding: 0;
     margin: 0;
@@ -518,7 +518,6 @@ h1{
 }
 
 .form-group {
-    height: min(50px, 8vh);
     display: flex;
     justify-content: flex-start;
     gap: 5px;
@@ -575,7 +574,6 @@ h1{
 }
 
 /* .img-attachment {
-
 
 }
 

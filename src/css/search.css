@@ -67,11 +67,13 @@ main * {
     cursor: pointer;
     display: block;
     font-family: var(--primaryFontFamily);
+    color: var(--secondaryTextColor);
     padding: 5px;
     border-radius: 10px;
 }
 
 .suggestion:hover {
-    background-color: var(--secondaryColor);
+    background-color: var(--selectionColor);
+    color: var(--tertiaryBackground);
 }
 
