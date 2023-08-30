@@ -27,8 +27,7 @@ main * {
 
 .form-input {
     font-size: min(12pt,4vh);
-    height: max(60px, 8vh);
-    font-size: max(23px, 3vh);
+    height: max(40px, 4vh);
     margin: 0 auto;
     padding: 0 2vw;
     color: var(--buttonTextColor);
@@ -44,7 +43,7 @@ main * {
 .form-input::placeholder{
     color: var(--placeholderColor);
     font-size: 13pt;
-    opacity: 1; /* Firefox */
+    opacity: 1;
 
 }
 

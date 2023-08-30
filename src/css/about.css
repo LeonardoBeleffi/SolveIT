@@ -38,5 +38,20 @@ p{
     text-align: center;
     display: flex;
     align-items: center;
+    font-weight: bold;
+    font-size: 20pt;
+}
 
+ul {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul > li {
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20pt;
 }

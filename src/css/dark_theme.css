@@ -4,13 +4,13 @@
     --tertiaryBackground: #271F30; /*#474747*/
     --primaryColor: #5D5AC9;
     --secondaryColor: #A4A2E2;
-    --buttonColor: #06B273;
-    --secondaryButtonColor: #068959;
+    --buttonColor: #07C57F;
+    --secondaryButtonColor: #06B273;
     --buttonTextColor: #f2f2f2;
     --borderColor: #e2e2e2;
     --primaryTextColor: #f0f0f0;
     --secondaryTextColor: #d6d6d6;
-    --tertiaryTextColor: #2E2A65;
+    --tertiaryTextColor: #E0E0E0;
     --disabledTextColor: #474747;
     --placeholderColor: #A3A3A3;
     --linkColor: #fafaef;
@@ -21,7 +21,28 @@
 }
 
 ::selection {
-    color: #f0f0f0;
-    background: #07C57F;
+    color: #141019;
+    background: #f0f0f0;
 }
+
+::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--primaryBackground);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    cursor: grab;
+    background: var(--secondaryColor);
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primaryColor);
+  }
 

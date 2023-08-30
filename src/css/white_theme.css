@@ -25,3 +25,24 @@
     background: #07C57F;
 }
 
+::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--primaryBackground);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    cursor: grab;
+    background: var(--secondaryColor);
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primaryColor);
+  }
+
