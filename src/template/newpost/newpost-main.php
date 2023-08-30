@@ -17,7 +17,7 @@
                     <ul class="selected-collabs selected-list"></ul>
                     <div class="upload-area">
                         <p>Drag and drop files here</p>
-                        <br>or<br>
+                        <br>or</br>
                         <input id="attachmentsInput" type="file" name="attachments[]" multiple hidden title="attachments input">
                         <input id="fileInput" type="file" multiple title="attachments button">
                     </div>
