@@ -6,4 +6,3 @@ window.addEventListener("click", event => {
         return;
     }
 });
-

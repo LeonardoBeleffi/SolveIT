@@ -121,6 +121,7 @@ body > main > section > div > form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
     justify-content: flex-start;
 }
 
@@ -185,6 +186,7 @@ body > main > section > div > form > div > input[type="submit"] {
     box-shadow: 1px 1px var(--borderColor);
     border-color: transparent;
     border-width: 0;
+    cursor: pointer;
 }
 
 body > main > section > div > form > div > input[type="submit"]:active {
@@ -241,6 +243,7 @@ a {
 }
 
 .errorDiv {
+    background-color: var(--deleteObjectColor);
     padding-top: max(26px, 3vh);
     display: block;
 }

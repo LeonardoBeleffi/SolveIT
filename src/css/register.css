@@ -189,6 +189,7 @@ body > main > section > div > form > div > input[type="submit"] {
     box-shadow: 1px 1px var(--borderColor);
     border-color: transparent;
     border-width: 0;
+    cursor: pointer;
 }
 
 body > main > section > div > form > div > input[type="submit"]:active {
