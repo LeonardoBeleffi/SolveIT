@@ -67,7 +67,7 @@ section {
     height: 120px;
     background-color: var(--primaryColor);
     border: 2px solid var(--tertiaryTextColor);
-    color: var(--tertiaryBackground);
+    color: var(--secondaryTextColor);
     border-radius: 50%;
     justify-self: center;
     object-fit: cover;

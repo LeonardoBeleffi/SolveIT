@@ -144,6 +144,7 @@ body > main > section > div > form > h2 {
 body > main > section > div > form > div {
     width: 80%;
     padding: max(8px, 1vh) 0;
+    gap: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -159,15 +160,12 @@ body > main > section > div > form > div input {
     background-color: var(--primaryBackground);
     border-radius: 15px;
     border:none;
-    /* border-style: solid;
-    border-width: 1px; */
     box-shadow: 2px 2px 0 rgba(0,0,0, 0.3);
-    /* border-color: var(--borderColor); */
 }
 
 body > main > section > div > form > div > div {
     display: flex;
-    padding: max(30px, 4vh) 0;
+    /* padding: max(30px, 4vh) 0; */
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;

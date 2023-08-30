@@ -1,3 +1,8 @@
+input {
+    color: var(--primaryTextColor);
+}
+
+
 body > main > section > div > form > div textarea {
     resize: vertical;
     width: 100%;
@@ -12,6 +17,7 @@ body > main > section > div > form > div textarea {
     border-radius: 15px;
     border:none;
     box-shadow: 2px 2px 0 rgba(0,0,0, 0.3);
+    color: var(--primaryTextColor);
 }
 
 .upload-area {
@@ -56,6 +62,7 @@ body > main > section > div > form > div textarea {
 }
 
 .selected-suggestion {
+    color: var(--primaryTextColor);
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -81,7 +88,7 @@ body > main > section > div > form > div textarea {
     user-select: none;
 }
 
-.delete-suggestion:hover {
+.delete-tag-suggestion:hover, .delete-collab-suggestion:hover {
     background-color: var(--deleteObjectColor);
     color: var(--tertiaryBackground);
 }
@@ -92,6 +99,7 @@ body > main > section > div > form > div textarea {
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
+  color: var(--primaryTextColor);
   width: 100%;
   border-radius: 5px;
   transition: background-color 0.2s;
