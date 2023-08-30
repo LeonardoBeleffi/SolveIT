@@ -1,6 +1,6 @@
 "use strict";
 
-function initializeNavBar(){
+function initializeNavBar() {
     const navBarElements = Array.from(document.querySelector("#nav-bar").children);
 
     navBarElements.forEach(link => {
@@ -10,7 +10,7 @@ function initializeNavBar(){
         let hrefFilename = hrefLocal[hrefLocal.length - 1]
         //console.log(url, filename, hrefLocal, hrefFilename)
         if(hrefFilename[hrefFilename.length-1] == "#")
-            hrefFilename = hrefFilename.substring(0, hrefFilename.length-1);
+        hrefFilename = hrefFilename.substring(0, hrefFilename.length-1);
         if(filename == hrefFilename) {
             link.className = "selected-link";
         } else {
@@ -35,6 +35,7 @@ setInterval(() => refreshNotifications(), 2000);
 
 function refreshNotifications() {
 
+    const notification_logo = document.querySelector('.notification-bell');
     const notification_count = document.querySelector('.notification-badge');
 
     if(!notification_count) {
@@ -43,23 +44,29 @@ function refreshNotifications() {
     // Send AJAX request to refresh notifications
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'utils/refresh.php', true);
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    // parse response
-                    try {
-                        const response = JSON.parse(xhr.responseText);
-                        const notifications = response.notifications;
-                        notification_count.innerHTML = notifications > 99 ? "99+" : notifications;
-                    } catch (error) {}
-                } else {
-                    console.error('Failed to refresh Notifications.');
-                }
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // parse response
+                try {
+                    const response = JSON.parse(xhr.responseText);
+                    const notifications = response.notifications;
+                    notification_count.innerHTML = notifications > 99 ? "99+" : notifications;
+
+                    if (notifications) {
+                        notification_logo.classList.add('ringing-bell');
+                    } else {
+                        notification_logo.classList.remove('ringing-bell');
+                    }
+                } catch (error) {}
+            } else {
+                console.error('Failed to refresh Notifications.');
             }
-        };
-        // send parentId and text
-        xhr.send();
+        }
+    };
+    // send parentId and text
+    xhr.send();
 }
 
 function addNotificationButton(){
@@ -91,7 +98,7 @@ window.addEventListener("load", () => {
 window.addEventListener("click", event => {
     if (event.target === document.querySelector("#home-redirect-logo")) {
         if (window.location.href.split("/").pop() === "home.php") 
-            return;
+        return;
         window.location.href = "/src/home.php";
         return;
     }

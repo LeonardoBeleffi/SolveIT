@@ -5,7 +5,11 @@
     <span class = "header-title"> SolveIT </span>
   </div>
   <div class="notifications-container">
-    <span class="fa-solid fa-bell icon" title="Notifications icon"></span>
+    <span class="fa-solid fa-bell icon notification-bell
+            <?php
+                $number = count(getNewNotifications());
+                echo !$number ? "" : " ringing-bell";
+            ?>" title="Notifications icon"></span>
     <span class="sr-only">Notifications icon</span>
     <span class="notification-badge">
             <?php
