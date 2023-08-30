@@ -633,12 +633,16 @@ class DatabaseHelper{
     }
 
     public function updateUserTheme($userId) {
-        $query = "UPDATE Utente SET tema = IF(tema=0, 1, 0)
-                WHERE idUtente = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $userId);
+        try {
+            $query = "UPDATE Utente SET tema = IF(tema=0, 1, 0)
+                    WHERE idUtente = ?";
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('i', $userId);
 
-        return $stmt->execute();
+            return $stmt->execute();
+        } catch (Exception $e) {
+            return -1;
+        }
     }
 
     /// DELETEs-----------

@@ -41,5 +41,14 @@
     function getUserSectorId() {
         return getSessionVar("sectorId");
     }
+
+    function updateUserTheme() {
+        if (!isset($_SESSION["theme"])) {
+            $_SESSION["theme"] = 0;
+            return;
+        }
+        $_SESSION["theme"] = 1 - $_SESSION["theme"];
+    }
+
 ?>
 

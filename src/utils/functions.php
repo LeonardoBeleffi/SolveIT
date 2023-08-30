@@ -7,7 +7,6 @@
     require_once 'functions/postFunctions.php';
     require_once 'functions/profileFunctions.php';
     require_once 'functions/notificationFunctions.php';
-    require_once 'functions/settingsFunctions.php';
 
     function getSessionVar($var) {
         return isset($_SESSION[$var]) ? $_SESSION[$var] : "";

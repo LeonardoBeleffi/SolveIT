@@ -21,6 +21,7 @@
     }
 
     function loadPaletteCSS(){
+        // echo '<script>console.log("' . getUserTheme() . '");</script>';
         switch (getUserTheme()) {
             case 1:
                 echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/dark_theme.css\"/>";
