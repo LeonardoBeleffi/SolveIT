@@ -1,6 +1,8 @@
 "use strict";
 
-function initializeNavBar(navBarElements){
+function initializeNavBar(){
+    const navBarElements = Array.from(document.querySelectorAll("#nav-bar")[0].children);
+
     navBarElements.forEach(link => {
         let url = window.location.pathname;
         let filename = url.substring(url.lastIndexOf('/')+1);
