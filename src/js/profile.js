@@ -46,6 +46,5 @@ window.addEventListener("load", () => {
 		});
 	}
 
-
 });
 

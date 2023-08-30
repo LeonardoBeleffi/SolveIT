@@ -1,7 +1,7 @@
 "use strict";
 
 function initializeNavBar(){
-    const navBarElements = Array.from(document.querySelectorAll("#nav-bar")[0].children);
+    const navBarElements = Array.from(document.querySelector("#nav-bar").children);
 
     navBarElements.forEach(link => {
         let url = window.location.pathname;
@@ -81,4 +81,19 @@ function fix_heights() {
         body.style.minHeight = window.innerHeight+"px";
     });
 }
+
+window.addEventListener("load", () => {
+    fix_heights();
+    initializeNavBar();
+    addNotificationButton();
+});
+
+window.addEventListener("click", event => {
+    if (event.target === document.querySelector("#home-redirect-logo")) {
+        if (window.location.href.split("/").pop() === "home.php") 
+            return;
+        window.location.href = "/src/home.php";
+        return;
+    }
+});
 

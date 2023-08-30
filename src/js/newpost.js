@@ -50,10 +50,6 @@ document.addEventListener("click", (event) =>{
 });
 
 window.addEventListener("load", () => {
-    fix_heights();
-
-    initializeNavBar();
-
     let form = document.querySelector("#newpost_form");
     form.addEventListener('keydown', (event) => {
         // Prevent form submission on Enter key press
@@ -61,8 +57,6 @@ window.addEventListener("load", () => {
             event.preventDefault();
         }
     });
-
-    addNotificationButton();
 });
 
 // add drop listener to box

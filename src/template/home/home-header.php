@@ -5,7 +5,7 @@
     <span class = "header-title"> SolveIT </span>
   </div>
   <div class="notifications-container">
-    <span class="fa-solid fa-bell icon" aria-hidden="true" title="Notifications icon"></span>
+    <span class="fa-solid fa-bell icon" title="Notifications icon"></span>
     <span class="sr-only">Notifications icon</span>
     <span class="notification-badge">
             <?php

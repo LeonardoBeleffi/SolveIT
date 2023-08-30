@@ -5,24 +5,11 @@ let body;
 let main;
 let footer;
 
-window.addEventListener("click", event => {
-    if (event.target === document.querySelector("#home-redirect-logo")) {
-        if (window.location.href.split("/").pop() === "home.php") 
-            return;
-        window.location.href = "/src/home.php";
-        return;
-    }
-});
-
 window.addEventListener("load", () => {
-    fix_heights();
-
     posts = Array.from(document.querySelectorAll("#post-list")[0].children);
     main = document.querySelectorAll("main")[0];
     body = document.querySelectorAll("body")[0];
     footer = body.children[2];
-
-    initializeNavBar();
 
     if(posts){
         posts.forEach(post_li => {
@@ -52,10 +39,7 @@ window.addEventListener("load", () => {
         if (main.children[0].contains(e) || footer.contains(e)) return;
         close_post();
     });
-
-    addNotificationButton();
-
-}, false);
+});
 
 function open_post(post) {
     close_posts_preview();

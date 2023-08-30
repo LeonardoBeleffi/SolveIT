@@ -23,8 +23,7 @@
     setFooter("home/home-footer.php");
     setCSS(["./css/home.css"]);
     setRemoteCSS(["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"]);
-    setJS(["./js/home.js","./js/posts.js","./js/shared.js"]);
-
+    setJS(["./js/shared.js", "./js/home.js","./js/posts.js"]);
     // require template
     require "template/base.php";
 ?>

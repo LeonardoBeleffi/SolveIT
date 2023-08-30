@@ -159,3 +159,4 @@ function toggleLike(event) {
     xhr.send(`postId=${postId}`);
 
 }
+
