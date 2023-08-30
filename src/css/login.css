@@ -244,6 +244,8 @@ a {
 
 .errorDiv {
     background-color: var(--deleteObjectColor);
+    border-radius: 5px;
+    text-align: center;
     padding-top: max(26px, 3vh);
     display: block;
 }
