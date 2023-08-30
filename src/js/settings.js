@@ -1,7 +1,9 @@
 "use strict";
 
 window.addEventListener("load", () => {
-    fix_heights()
+    fix_heights();
+
+    initializeNavBar();
     // let change = document.querySelectorAll("#logout-button")[0];
 
     // if(logoutButton) {
@@ -9,7 +11,6 @@ window.addEventListener("load", () => {
             // window.location.replace("./utils/logout.php");
         // });
     // }
-
 });
 
 window.addEventListener("click", event => {

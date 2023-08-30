@@ -1,21 +1,28 @@
 "use strict";
 
-let nav_bar_links;
 let posts;
 let body;
 let main;
 let footer;
 
+window.addEventListener("click", event => {
+    if (event.target === document.querySelector("#home-redirect-logo")) {
+        if (window.location.href.split("/").pop() === "home.php") 
+            return;
+        window.location.href = "/src/home.php";
+        return;
+    }
+});
+
 window.addEventListener("load", () => {
     fix_heights();
 
-    nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
     posts = Array.from(document.querySelectorAll("#post-list")[0].children);
     main = document.querySelectorAll("main")[0];
     body = document.querySelectorAll("body")[0];
     footer = body.children[2];
 
-    initializeNavBar(nav_bar_links);
+    initializeNavBar();
 
     if(posts){
         posts.forEach(post_li => {

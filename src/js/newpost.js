@@ -1,4 +1,3 @@
-
 "use strict";
 
 // retrieve HTML objects
@@ -21,7 +20,6 @@ const fileList = document.querySelector('.file-list');
     box.classList.remove('is-dragover');
 }), false );
 
-
 document.addEventListener("input", (event) =>{
 
 
@@ -37,7 +35,6 @@ document.addEventListener("input", (event) =>{
 
 });
 
-
 document.addEventListener("click", (event) =>{
 
     if(event.target.classList.contains("delete-tag-suggestion")){
@@ -52,12 +49,10 @@ document.addEventListener("click", (event) =>{
     }
 });
 
-
 window.addEventListener("load", () => {
     fix_heights();
 
-    let nav_bar_links = Array.from(document.querySelectorAll("#nav-bar")[0].children);
-    initializeNavBar(nav_bar_links);
+    initializeNavBar();
 
     let form = document.querySelector("#newpost_form");
     form.addEventListener('keydown', (event) => {
@@ -68,9 +63,7 @@ window.addEventListener("load", () => {
     });
 
     addNotificationButton();
-
 });
-
 
 // add drop listener to box
 box.addEventListener('drop', function(e) {
