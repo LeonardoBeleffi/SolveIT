@@ -58,7 +58,7 @@ body > header {
     -ms-user-select: none;
     user-select: none;
     overflow: hidden;
-    text-overflow: ellipsis;
+    /* text-overflow: ellipsis; */
 }
 
 .logo-container {

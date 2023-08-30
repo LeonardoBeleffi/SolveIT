@@ -21,5 +21,10 @@
         exit();
     }
 
+    function goToPostCreation(){
+        header("Location: /src/newpost.php");
+        exit();
+    }
+
 ?>
 
