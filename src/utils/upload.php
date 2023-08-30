@@ -8,25 +8,19 @@
     setErrorMsg("");
     var_dump($_POST);
     // check files variables -  for $_FILES see "https://www.php.net/manual/en/features.file-upload.multiple.php"
-    if(isset($_FILES['attachments']) && isset($_POST['title']) && isset($_POST['text']) && isset($_POST['collabs'])  && isset($_POST['tags'])) {
+    if(isset($_FILES['attachments']) && isset($_POST['title']) && isset($_POST['text']) && isset($_POST['collabs'])  && isset($_POST['tags']) && $_POST['title']!="" && $_POST['text']!="") {
+        if($_POST['title']!="" ) {
+            setErrorMsg("Failed uploading Post. Empty title");
+            goToPostCreation();
+        }
+        if($_POST['text']!="") {
+            setErrorMsg("Failed uploading Post. Empty text");
+            goToPostCreation();
+        }
+
         $error = $_FILES['attachments']['error'][0];
-        echo "error:".$error."<br>";
         // handle no file uploaded error
         $noFileUploaded = $error==4;
-
-        foreach ($_FILES['attachments']['name'] as $name) {
-            echo $name."<br>";
-        }
-
-        foreach ($_FILES['attachments']['size'] as $size) {
-            echo $size."<br>";
-        }
-
-        foreach ($_FILES['attachments']['tmp_name'] as $tmp_name) {
-            echo $tmp_name."<br>";
-        }
-        echo "tags:".var_dump(explode(";", $_POST['tags']))."<br>";
-        echo "collabs:".var_dump(explode(";", $_POST['collabs']))."<br>";
         // opnening attachments
         $attachs = array();
         $attachsType = array();
@@ -34,8 +28,6 @@
         for($i = 0; $i < count($_FILES['attachments']['name']) && !$noFileUploaded; $i++)
         {
             array_push($attachs, $_FILES['attachments']['tmp_name'][$i]);
-            echo $_FILES['attachments']['type'][$i];
-
             array_push($attachsType, $_FILES['attachments']['type'][$i]);
             array_push($attachsName, $_FILES['attachments']['name'][$i]);
         }
