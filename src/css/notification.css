@@ -16,7 +16,7 @@ body > *{
 }
 
 .notification {
-    height: min(125px, 15vh);
+    height: fit-content;
     background-color: var(--tertiaryBackground);
     box-shadow: 0 0 3px rgba(0,0,0,0.3);
     padding: 15px;
@@ -42,7 +42,6 @@ body > *{
 }
 
 .notificator {
-    font-size: min(12pt, 4vh);
     font-weight: bold;
     color: var(--linkColor);
     border-radius: 10px;
