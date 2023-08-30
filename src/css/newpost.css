@@ -21,7 +21,8 @@ body > main > section > div > form > div textarea {
     border-radius: 15px;
     padding: 20px;
     text-align: center;
-    background-color: whitesmoke;
+    color: var(--primaryTextColor);
+    background-color: var(--secondaryBackground);
 }
 
 

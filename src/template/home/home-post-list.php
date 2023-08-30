@@ -43,7 +43,7 @@
                 <div class="likes-container">
                     <!-- Like button -->
                     <div class="username-section">
-                        <span>
+                        <span class="post-timestamp">
                             <?php echo getPostTimestamp($post); ?> 
                         </span>
 

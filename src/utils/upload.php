@@ -9,12 +9,12 @@
     var_dump($_POST);
     // check files variables -  for $_FILES see "https://www.php.net/manual/en/features.file-upload.multiple.php"
     if(isset($_FILES['attachments']) && isset($_POST['title']) && isset($_POST['text']) && isset($_POST['collabs'])  && isset($_POST['tags']) && $_POST['title']!="" && $_POST['text']!="") {
-        if($_POST['title']!="" ) {
-            setErrorMsg("Failed uploading Post. Empty title");
+        if($_POST['title']=="" ) {
+            setErrorMsg("Failed uploading Post. Empty title.");
             goToPostCreation();
         }
-        if($_POST['text']!="") {
-            setErrorMsg("Failed uploading Post. Empty text");
+        if($_POST['text']=="") {
+            setErrorMsg("Failed uploading Post. Empty text.");
             goToPostCreation();
         }
 
