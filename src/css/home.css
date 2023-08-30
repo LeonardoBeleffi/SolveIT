@@ -461,7 +461,6 @@ h1{
 .form-group {
     height: min(50px, 8vh);
     display: flex;
-    align-items: center;
     justify-content: flex-start;
     gap: 5px;
     padding: 10px;
