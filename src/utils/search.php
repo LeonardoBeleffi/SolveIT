@@ -51,7 +51,7 @@
     // search posts
 
     // on failure
-    setErrorMsg("Failed uploading Comment.");
+    // setErrorMsg("Failed sea.");
     http_response_code(500);
     exit();
 

@@ -35,10 +35,10 @@ INSERT INTO `Utente` (`email`, `nome`, `cognome`, `dataNascita`, `telefono`, `us
 ('sophia.green@example.com', 'Sophia', 'Green', '1995-03-15', '3456789012', 'sophiagreen', 'UI/UX designer with a passion for creating visually stunning and intuitive user interfaces.',1);
 
 INSERT INTO `Credenziali` ( `password`, `idUtente`) VALUES
-('$2y$10$hV3iN5Skc/lyNvZWgV30uuCoZ.bZm1jP/TwtwEU7mecR.uk8fB2DO', '1'),
-('$2y$10$Y/nDqvZeeHVXicrJPsTEkO1WITlUxQ2ecGzRe2OItTnGcPDCfUJke', '2'),
-('$2y$10$OiXV8QgnF5ot0KTRrX7BU.XeyOArmXzSx/5pni843ZPMrrWp3YOiC', '3'),
-('$2y$10$w/Nc0uCS0XvrINqdhw2KA.OVMyoDKL60R1g97DNQhDUEScTwWEYUa', '4');
+('$2y$10$.LhByA7a8aUWV9hkaXVwBOdAuDDwHc3pTT2w9JeJVSSPYt7lob9Fu', '1'),
+('$2y$10$KpDgomKGH.7ify.VwbGbk.X9ecngv9WTyAT9UhdxZ2F0LLIi8B3ku', '2'),
+('$2y$10$BWVxdrEGcHzeaxT2nUelTeSey.YANgdme13aV1iPUjy9b54INWyi2', '3'),
+('$2y$10$Jnl9hSJs5B1qDpXXjR9qgeyMy9DWhlzRbCm0VBfcmSgFHCC57PToC', '4');
 
 INSERT INTO `Amicizia` (`idSeguace`, `idSeguito`, `timestamp`)
 VALUES

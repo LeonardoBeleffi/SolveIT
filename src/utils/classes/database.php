@@ -1,6 +1,7 @@
 <?php
 class DatabaseHelper{
     private $db;
+    private $salt="c1isvFdxMDdmjOlvxpecFw";
 
     public function __construct($servername, $username, $password, $dbname, $port){
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
@@ -158,7 +159,12 @@ class DatabaseHelper{
         $stmt->bind_param('s',$username);
         $stmt->execute();
         $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        echo $username.$password.PHP_EOL;
+        echo $result[0]["password"].PHP_EOL;
+        $password = hash_hmac("sha256", $password, $this->salt);
+        echo password_hash($password, PASSWORD_DEFAULT).PHP_EOL;
 		if(count($result) != 0 && !password_verify($password, $result[0]["password"])) {
+            echo "no_ok";
 			return [];
 		}
         return $result;
@@ -401,6 +407,7 @@ class DatabaseHelper{
     // idUtente, password -> idCredenziali
     public function insertCredenziali($idUtente, $password){
         try {
+            $pwd_salted = hash_hmac("sha256", $password, $this->salt);
 			$password = password_hash($password, PASSWORD_DEFAULT);
             $query = "INSERT INTO Credenziali (idUtente, password) VALUES (?, ?)";
             $stmt = $this->db->prepare($query);
